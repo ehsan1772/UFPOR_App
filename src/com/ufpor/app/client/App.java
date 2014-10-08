@@ -41,9 +41,9 @@ public class App implements EntryPoint {
 
     private void loadApplication(LoginInfo loginInfo) {
         int i = 0;
-        testEnv();
-    //    Composite view = new Designertest(loginInfo);
-     //   RootLayoutPanel.get().add(view);
+   //     testEnv();
+        Composite view = new Designertest(loginInfo);
+        RootLayoutPanel.get().add(view);
     }
 
     private void testEnv() {
