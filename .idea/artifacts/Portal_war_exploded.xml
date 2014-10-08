@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Portal:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Portal_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Portal/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Portal" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$USER_HOME$/Development/gwt-2.6.1/gwt-servlet.jar" />
+          <element id="library" level="project" name="AppEngine API" />
+          <element id="library" level="project" name="AppEngine ORM" />
+        </element>
+      </element>
+      <element id="gwt-compiler-output" facet="Portal/gwt/GWT" />
+    </root>
+  </artifact>
+</component>
