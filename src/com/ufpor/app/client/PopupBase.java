@@ -61,6 +61,7 @@ public class PopupBase extends Composite {
 		super.initWidget(widget);
 		envGeneral = new EnvironmentGeneral();
 		panel.add(envGeneral, "General");
+
 		panel.add(new EnvironmentGrouping(), "Grouping");
 
 		EnvironmentGrouping adjacencies = new EnvironmentGrouping();

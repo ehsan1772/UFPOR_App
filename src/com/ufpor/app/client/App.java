@@ -40,24 +40,9 @@ public class App implements EntryPoint {
     }
 
     private void loadApplication(LoginInfo loginInfo) {
-        int i = 0;
-   //     testEnv();
-        Composite view = new Designertest(loginInfo);
+      //  Composite view = new Designertest(loginInfo);
+        Composite view = new HomeView(loginInfo);
         RootLayoutPanel.get().add(view);
-    }
-
-    private void testEnv() {
-        EnvironmentService.App.getInstance().addEnvironment("Test3", "1000", new AsyncCallback<Void>() {
-            @Override
-            public void onFailure(Throwable caught) {
-                int i = 0;
-            }
-
-            @Override
-            public void onSuccess(Void result) {
-                int i = 0;
-            }
-        });
     }
 
     private void loadLogin() {

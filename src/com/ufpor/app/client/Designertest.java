@@ -142,6 +142,7 @@ public class Designertest extends Composite implements PopupBase.PopupBaseHost {
 
 		popup.setGlassEnabled(true);
 		popup.setWidget(new PopupBase(this));
+
 		popup.center();
 	}
 	
@@ -152,7 +153,8 @@ public class Designertest extends Composite implements PopupBase.PopupBaseHost {
 	  interface MyStyle extends CssResource {
 		    String header();
 		    String treeNode();
-		  }
+
+      }
 
 
 	@Override
