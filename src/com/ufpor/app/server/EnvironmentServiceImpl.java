@@ -7,6 +7,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.ufpor.app.client.EnvironmentDM;
 import com.ufpor.app.client.EnvironmentService;
 import com.ufpor.app.client.NotLoggedInException;
+import com.ufpor.app.shared.Test;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
@@ -14,6 +15,8 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by ovenbits on 10/8/14.
@@ -21,6 +24,7 @@ import java.util.List;
 public class EnvironmentServiceImpl extends RemoteServiceServlet implements EnvironmentService {
  //   private static final Logger LOG = Logger.getLogger(EnvironmentServiceImpl.class.getName());
     private static final PersistenceManagerFactory PMF = JDOHelper.getPersistenceManagerFactory("transactions-optional");
+    private static final String TAG = EnvironmentServiceImpl.class.getSimpleName();
 
     @Override
     public void addEnvironment(String name, String area) throws NotLoggedInException {
@@ -32,6 +36,7 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
             pm.close();
         }
     }
+
 
     @Override
     public void removeEnvironment(String symbol) throws NotLoggedInException {

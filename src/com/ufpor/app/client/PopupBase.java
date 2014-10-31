@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.TabLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.ufpor.app.shared.Test;
 
 public class PopupBase extends Composite {
 	@UiField TabLayoutPanel panel;
@@ -33,21 +34,36 @@ public class PopupBase extends Composite {
 
 	@UiHandler("save")
 	void handleClick1(ClickEvent e) {
-        EnvironmentService.App.getInstance().addEnvironment(envGeneral.getName(),
-                envGeneral.getArea(), new AsyncCallback<Void>() {
+        Test test = new Test();
+        test.setHello("Hello!");
+        EnvironmentService.App.getInstance().addTest(test,new AsyncCallback<Void>() {
+                    @Override
+                    public void onFailure(Throwable caught) {
+
+                    }
 
                     @Override
                     public void onSuccess(Void result) {
-                        Window.alert(envGeneral.getName() + "Is saved");
-                        ((Designertest) host).refreshSpaces();
-                    }
-
-                    @Override
-                    public void onFailure(Throwable caught) {
-                        Window.alert("Failed");
 
                     }
                 });
+
+
+                EnvironmentService.App.getInstance().addEnvironment(envGeneral.getName(),
+                        envGeneral.getArea(), new AsyncCallback<Void>() {
+
+                            @Override
+                            public void onSuccess(Void result) {
+                                Window.alert(envGeneral.getName() + "Is saved");
+                                ((Designertest) host).refreshSpaces();
+                            }
+
+                            @Override
+                            public void onFailure(Throwable caught) {
+                                Window.alert("Failed");
+
+                            }
+                        });
 		
 	}
 	
