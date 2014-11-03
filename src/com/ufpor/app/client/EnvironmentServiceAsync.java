@@ -1,7 +1,7 @@
 package com.ufpor.app.client;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.ufpor.app.shared.Test;
+import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
 
 import java.util.List;
 
@@ -17,4 +17,5 @@ public interface EnvironmentServiceAsync {
 
     void getEnvironments(AsyncCallback<List<EnvironmentDM>> async);
 
+    void addIfcDecSpace(IfcDecSpace space, AsyncCallback<Void> async);
 }

@@ -7,7 +7,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.ufpor.app.client.EnvironmentDM;
 import com.ufpor.app.client.EnvironmentService;
 import com.ufpor.app.client.NotLoggedInException;
-import com.ufpor.app.shared.Test;
+import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
@@ -15,8 +15,6 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Created by ovenbits on 10/8/14.
@@ -32,6 +30,17 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         PersistenceManager pm = getPersistenceManager();
         try {
             pm.makePersistent(new Environment(getUser(), name, area));
+        } finally {
+            pm.close();
+        }
+    }
+
+    @Override
+    public void addIfcDecSpace(IfcDecSpace space) throws NotLoggedInException {
+        checkLoggedIn();
+        PersistenceManager pm = getPersistenceManager();
+        try {
+            pm.makePersistent(space);
         } finally {
             pm.close();
         }

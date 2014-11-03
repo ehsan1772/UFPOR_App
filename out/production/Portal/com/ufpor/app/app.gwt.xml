@@ -28,6 +28,7 @@
     <servlet path="/EnvironmentService" class="com.ufpor.app.server.EnvironmentServiceImpl"/>
     <servlet path="/LoginService" class="com.ufpor.app.server.LoginServiceImpl"/>
     <servlet path="/EnvironmentService" class="com.ufpor.app.server.EnvironmentServiceImpl"/>
+    <servlet path="/IfcGUID" class="com.ufpor.app.server.IfcGUIDImpl"/>
 
 
     <!-- Specify the paths for translatable code                    -->

@@ -3,6 +3,7 @@ package com.ufpor.app.client;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
 
 import java.util.List;
 
@@ -24,6 +25,8 @@ public interface EnvironmentService extends RemoteService {
     }
 
     void addEnvironment(String name, String area) throws NotLoggedInException;
+
+    void addIfcDecSpace(IfcDecSpace space) throws NotLoggedInException;
 
     public void removeEnvironment(String symbol) throws NotLoggedInException;
 

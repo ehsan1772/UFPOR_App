@@ -32,10 +32,18 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
             loginInfo.setLoginUrl(userService.createLoginURL(requestUri));
         }
         return loginInfo;
-//        if (user != null) {
-//            return user.getNickname();
-//        }
-//
-//        return "Yes";
+    }
+
+    @Override
+    public User getUser(String requestUri) {
+        UserService userService = UserServiceFactory.getUserService();
+
+        User user = null;
+
+        if (userService.isUserLoggedIn()) {
+            user = userService.getCurrentUser();
+        }
+
+        return user;
     }
 }

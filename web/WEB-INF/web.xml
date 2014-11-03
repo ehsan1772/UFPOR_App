@@ -16,6 +16,10 @@
         <servlet-name>com.ufpor.app.app EnvironmentService</servlet-name>
         <servlet-class>com.ufpor.app.server.EnvironmentServiceImpl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>com.ufpor.app.app IfcGUID</servlet-name>
+        <servlet-class>com.ufpor.app.server.IfcGUIDImpl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>com.ufpor.app.app appService</servlet-name>
         <url-pattern>/app/appService</url-pattern>
@@ -28,5 +32,9 @@
     <servlet-mapping>
         <servlet-name>com.ufpor.app.app EnvironmentService</servlet-name>
         <url-pattern>/app/EnvironmentService</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>com.ufpor.app.app IfcGUID</servlet-name>
+        <url-pattern>/app/IfcGUID</url-pattern>
     </servlet-mapping>
 </web-app>
