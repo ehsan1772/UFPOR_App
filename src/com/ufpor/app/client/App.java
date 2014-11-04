@@ -11,11 +11,21 @@ import com.google.gwt.user.client.ui.*;
 public class App implements EntryPoint {
   //  private LoginInfo loginInfo = null;
  //   private static EnvironmentServiceAsync envService;
-    private VerticalPanel loginPanel = new VerticalPanel();
-    private Label loginLabel = new Label(
-            "Please sign in to your Google Account to access the UFPOR application.");
-    private Anchor signInLink = new Anchor("Sign In");
+//    private VerticalPanel loginPanel = new VerticalPanel();
+//    private Label loginLabel = new Label(
+//            "Please sign in to your Google Account to access the UFPOR application.");
+//    private Anchor signInLink = new Anchor("Sign In");
+  private VerticalPanel loginPanel;
+    private Label loginLabel;
+    private Anchor signInLink;
     private LoginInfo loginInfo;
+
+    private void initializeTheLoginPanel() {
+        loginPanel = new VerticalPanel();
+        loginLabel = new Label(
+                "Please sign in to your Google Account to access the UFPOR application.");
+        signInLink = new Anchor("Sign In");
+    }
 
     @Override
     public void onModuleLoad() {
@@ -32,6 +42,7 @@ public class App implements EntryPoint {
                 if(loginInfo.isLoggedIn()) {
                     loadApplication(loginInfo);
                 } else {
+                    initializeTheLoginPanel();
                     loadLogin();
                 }
             }
@@ -40,7 +51,7 @@ public class App implements EntryPoint {
     }
 
     private void loadApplication(LoginInfo loginInfo) {
-      //  Composite view = new Designertest(loginInfo);
+      //  Composite view = new Designertest();
         Composite view = new HomeView(loginInfo);
         RootLayoutPanel.get().add(view);
     }

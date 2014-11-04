@@ -1,6 +1,5 @@
 package com.ufpor.app.client;
 
-import com.google.appengine.api.users.User;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
@@ -23,5 +22,4 @@ public interface LoginService extends RemoteService {
     }
 
     public LoginInfo login(String requestUri);
-    public User getUser(String requestUri);
 }

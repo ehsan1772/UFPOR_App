@@ -17,7 +17,6 @@
 
     <!-- Other module inherits                                      -->
     <inherits name="com.google.gwt.logging.Logging"/>
-    <inherits name="com.google.appengine.api.users.User"/>
 
     <!-- Specify the app entry point class.                   -->
     <entry-point class='com.ufpor.app.client.App'/>

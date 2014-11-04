@@ -1,7 +1,7 @@
 package com.ufpor.app.shared.ifcdeckernel.decproduct;
 
 import com.google.appengine.api.users.User;
-import com.ufpor.app.shared.ifckernel.IfcLabel;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecLabel;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
@@ -16,7 +16,7 @@ import javax.jdo.annotations.Persistent;
 @Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
 public abstract class IfcDecSpatialElement extends IfcDecProduct {
     @Persistent
-    protected IfcLabel longName;
+    protected IfcDecLabel longName;
 
     protected IfcDecSpatialElement(String GUID, User user) {
         super(GUID, user);
@@ -25,11 +25,11 @@ public abstract class IfcDecSpatialElement extends IfcDecProduct {
     protected IfcDecSpatialElement() {
     }
 
-    public IfcLabel getLongName() {
+    public IfcDecLabel getLongName() {
         return longName;
     }
 
-    public void setLongName(IfcLabel longName) {
+    public void setLongName(IfcDecLabel longName) {
         this.longName = longName;
     }
 }

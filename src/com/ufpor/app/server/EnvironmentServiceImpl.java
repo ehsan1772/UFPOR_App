@@ -7,6 +7,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.ufpor.app.client.EnvironmentDM;
 import com.ufpor.app.client.EnvironmentService;
 import com.ufpor.app.client.NotLoggedInException;
+import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
 
 import javax.jdo.JDOHelper;
@@ -15,12 +16,14 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by ovenbits on 10/8/14.
  */
 public class EnvironmentServiceImpl extends RemoteServiceServlet implements EnvironmentService {
- //   private static final Logger LOG = Logger.getLogger(EnvironmentServiceImpl.class.getName());
+    private static final Logger LOG = Logger.getLogger(EnvironmentServiceImpl.class.getName());
     private static final PersistenceManagerFactory PMF = JDOHelper.getPersistenceManagerFactory("transactions-optional");
     private static final String TAG = EnvironmentServiceImpl.class.getSimpleName();
 
@@ -36,16 +39,19 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
     }
 
     @Override
-    public void addIfcDecSpace(IfcDecSpace space) throws NotLoggedInException {
+    public void addIfcDecSpace(IfcClientSpace space) throws NotLoggedInException {
+        IfcDecSpace result = IfcDecSpace.getInstance(space);
         checkLoggedIn();
         PersistenceManager pm = getPersistenceManager();
         try {
-            pm.makePersistent(space);
-        } finally {
+            pm.makePersistent(result);
+        } catch (Exception exception) {
+            LOG.log(Level.SEVERE, exception.getMessage());
+        }
+        finally {
             pm.close();
         }
     }
-
 
     @Override
     public void removeEnvironment(String symbol) throws NotLoggedInException {
