@@ -3,10 +3,7 @@ package com.ufpor.app.shared.ifcdeckernel;
 
 import com.google.appengine.api.users.User;
 
-import javax.jdo.annotations.Inheritance;
-import javax.jdo.annotations.InheritanceStrategy;
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.*;
 
 /**
  * Created by Ehsan Barekati on 10/30/14.
@@ -15,9 +12,18 @@ import javax.jdo.annotations.Persistent;
 @PersistenceCapable
 @Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
 public abstract class IfcDecObject extends IfcDecObjectDefinition {
-    //TODO Blob values are not indexed and cannot be used in query filters or sort orders. It's not good! I may want to use it in a query
-    @Persistent(serialized="true")
+    @NotPersistent
     protected IfcDecLabel objectType;
+    @Persistent
+    private String objectTypeString;
+
+    protected IfcDecObject(String GUID, User user) {
+        super(GUID, user);
+    }
+
+    protected IfcDecObject() {
+    }
+
 
     public IfcDecLabel getObjectType() {
         return objectType;
@@ -25,12 +31,11 @@ public abstract class IfcDecObject extends IfcDecObjectDefinition {
 
     public void setDecObjectType(IfcDecLabel objectType) {
         this.objectType = objectType;
+        this.objectTypeString = objectType.getValue();
     }
 
-    protected IfcDecObject(String GUID, User user) {
-        super(GUID, user);
-    }
-
-    protected IfcDecObject() {
+    public void setDecObjectType(String objectType) {
+        this.objectTypeString = objectType;
+        this.objectType = new IfcDecLabel(objectType);
     }
 }

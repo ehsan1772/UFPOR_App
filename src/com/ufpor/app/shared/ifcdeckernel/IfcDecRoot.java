@@ -2,10 +2,7 @@ package com.ufpor.app.shared.ifcdeckernel;
 
 import com.google.appengine.api.users.User;
 
-import javax.jdo.annotations.Inheritance;
-import javax.jdo.annotations.InheritanceStrategy;
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.*;
 import java.io.Serializable;
 
 /**
@@ -19,12 +16,14 @@ public abstract class IfcDecRoot extends GAEObject implements Serializable {
     private IfcDecGloballyUniqueId globalId;
     @Persistent
     private IfcDecOwnerHistory ownerHistory;
-    //TODO Blob values are not indexed and cannot be used in query filters or sort orders. It's not good! I may want to use it in a query
-    @Persistent(serialized="true")
+    @NotPersistent
     private IfcDecLabel name;
-    //TODO Blob values are not indexed and cannot be used in query filters or sort orders. It's not good! I may want to use it in a query
-    @Persistent(serialized="true")
+    @NotPersistent
     private IfcDecText description;
+    @Persistent
+    private String descriptionText;
+    @Persistent
+    private String nameText;
 
     protected IfcDecRoot(String GUID, User user) {
         super(user);
@@ -53,6 +52,12 @@ public abstract class IfcDecRoot extends GAEObject implements Serializable {
 
     public void setName(IfcDecLabel name) {
         this.name = name;
+        this.nameText = name.getValue();
+    }
+
+    public void setName(String name) {
+        this.nameText = name;
+        this.name = new IfcDecLabel(name);
     }
 
     public IfcDecText getDescription() {
@@ -61,5 +66,12 @@ public abstract class IfcDecRoot extends GAEObject implements Serializable {
 
     public void setDescription(IfcDecText description) {
         this.description = description;
+        this.descriptionText = description.getValue();
     }
+
+    public void setDescription(String description) {
+        this.description = new IfcDecText(description);
+        this.descriptionText = description;
+    }
+
 }

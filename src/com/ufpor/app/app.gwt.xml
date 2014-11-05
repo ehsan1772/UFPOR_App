@@ -22,6 +22,9 @@
     <entry-point class='com.ufpor.app.client.App'/>
 
 
+    <!--Adding GIN (dependency injection system).                   -->
+    <inherits name="com.google.gwt.inject.Inject"/>
+
     <!-- Specify the app servlets.                   -->
     <servlet path='/appService' class='com.ufpor.app.server.AppServiceImpl'/>
     <servlet path="/EnvironmentService" class="com.ufpor.app.server.EnvironmentServiceImpl"/>

@@ -4,18 +4,14 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
+import com.ufpor.app.client.dependency.UFPORGinjector;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>
  */
 public class App implements EntryPoint {
-  //  private LoginInfo loginInfo = null;
- //   private static EnvironmentServiceAsync envService;
-//    private VerticalPanel loginPanel = new VerticalPanel();
-//    private Label loginLabel = new Label(
-//            "Please sign in to your Google Account to access the UFPOR application.");
-//    private Anchor signInLink = new Anchor("Sign In");
-  private VerticalPanel loginPanel;
+    private final UFPORGinjector injector = GWT.create(UFPORGinjector.class);
+    private VerticalPanel loginPanel;
     private Label loginLabel;
     private Anchor signInLink;
     private LoginInfo loginInfo;
@@ -29,17 +25,18 @@ public class App implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
+        loginInfo = injector.getLoginInfo();
         // Check login status using login service.
         LoginServiceAsync loginService = LoginService.App.getInstance();
-    //    envService = EnvironmentService.App.getInstance();
+        //    envService = EnvironmentService.App.getInstance();
         loginService.login(GWT.getHostPageBaseURL(), new AsyncCallback<LoginInfo>() {
             public void onFailure(Throwable error) {
                 int i = 0;
             }
 
             public void onSuccess(LoginInfo result) {
-                loginInfo = result;
-                if(loginInfo.isLoggedIn()) {
+                loginInfo.updateValues(result);
+                if (loginInfo.isLoggedIn()) {
                     loadApplication(loginInfo);
                 } else {
                     initializeTheLoginPanel();
@@ -51,8 +48,9 @@ public class App implements EntryPoint {
     }
 
     private void loadApplication(LoginInfo loginInfo) {
-      //  Composite view = new Designertest();
-        Composite view = new HomeView(loginInfo);
+        //  Composite view = new Designertest();
+       // Composite view = new HomeView(loginInfo);
+        Composite view = injector.getHomeView();
         RootLayoutPanel.get().add(view);
     }
 
@@ -65,7 +63,4 @@ public class App implements EntryPoint {
         RootPanel.get().add(loginPanel);
     }
 
-//    public static EnvironmentServiceAsync getEnvService() {
-//        return envService;
-//    }
 }

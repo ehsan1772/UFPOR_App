@@ -11,27 +11,37 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.TabLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.inject.Inject;
 import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
 import com.ufpor.app.shared.ifckernel.IfcText;
 
 public class PopupBase extends Composite {
     private static PopupBaseUiBinder uiBinder = GWT
             .create(PopupBaseUiBinder.class);
-    private final LoginInfo loginInfo;
+
+
+    private LoginInfo loginInfo;
+
+    private PopupBaseHost host;
+
     @UiField
     TabLayoutPanel panel;
     @UiField
     Button save;
     @UiField
     Button cancel;
+
+    @Inject
     private EnvironmentGeneral envGeneral;
-    private PopupBaseHost host;
+
     private String newGUID;
 
-    public PopupBase(PopupBaseHost host, LoginInfo loginInfo) {
+
+
+    @Inject
+    public PopupBase(LoginInfo loginInfo) {
         initWidget(uiBinder.createAndBindUi(this));
         this.loginInfo = loginInfo;
-        this.host = host;
     }
 
     @UiHandler("save")
@@ -124,6 +134,10 @@ public class PopupBase extends Composite {
 
         panel.selectTab(0);
         test.redraw();
+    }
+
+    public void setHost(PopupBaseHost host) {
+        this.host = host;
     }
 
     interface PopupBaseUiBinder extends UiBinder<Widget, PopupBase> {

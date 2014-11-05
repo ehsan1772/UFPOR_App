@@ -4,9 +4,7 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.ufpor.app.server.GuidCompressor;
 import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
-import com.ufpor.app.shared.ifcdeckernel.IfcDecLabel;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecLengthMeasure;
-import com.ufpor.app.shared.ifcdeckernel.IfcDecText;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.PersistenceCapable;
@@ -28,11 +26,18 @@ public class IfcDecSpace extends IfcDecSpatialStructureElement {
     }
 
     public static IfcDecSpace getInstance(IfcClientSpace clienSpace) {
+        //Getting GUID
         String guid = GuidCompressor.getNewIfcGloballyUniqueId();
+
+        //Getting the User
         User user = UserServiceFactory.getUserService().getCurrentUser();
+
         IfcDecSpace space = new IfcDecSpace(guid, user);
-        space.setDescription(new IfcDecText(clienSpace.getDescription().getValue()));
-        space.setName(new IfcDecLabel(clienSpace.getName().getValue()));
+
+        //setting the attributes
+        space.setDescription(clienSpace.getDescription().getValue());
+        space.setName(clienSpace.getName().getValue());
+
 
         return space;
     }

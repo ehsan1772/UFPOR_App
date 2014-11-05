@@ -49,4 +49,12 @@ public class LoginInfo implements Serializable {
 	  public void setNickname(String nickname) {
 	    this.nickname = nickname;
 	  }
-	}
+
+    public void updateValues(LoginInfo result) {
+        this.loggedIn = result.loggedIn;
+        this.loginUrl = result.loginUrl;
+        this.logoutUrl = result.logoutUrl;
+        this.emailAddress = result.emailAddress;
+        this.nickname = result.nickname;
+    }
+}

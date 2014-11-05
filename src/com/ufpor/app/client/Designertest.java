@@ -132,7 +132,8 @@ public class Designertest extends Composite implements PopupBase.PopupBaseHost {
         popup.setHeight(height + "px");
 
         popup.setGlassEnabled(true);
-        popup.setWidget(new PopupBase(this, loginInfo));
+        //popup.setWidget(new PopupBase(this, loginInfo));
+        //popup.setWidget(pop);
 
         popup.center();
     }

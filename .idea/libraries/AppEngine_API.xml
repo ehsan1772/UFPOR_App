@@ -4,11 +4,15 @@
       <root url="file://$USER_HOME$/Development/appengine-java-sdk-1.9.12/lib/user" />
       <root url="file://$USER_HOME$/Development/appengine-java-sdk-1.9.12/lib/opt/user/appengine-endpoints/v1" />
       <root url="file://$USER_HOME$/Development/appengine-java-sdk-1.9.12/lib/opt/user/jsr107/v1" />
+      <root url="file://$USER_HOME$/Development/GWT Libraries/gin-2.1.2" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/gin-2.1.2-sources.jar!/" />
+    </SOURCES>
     <jarDirectory url="file://$USER_HOME$/Development/appengine-java-sdk-1.9.12/lib/opt/user/appengine-endpoints/v1" recursive="false" />
     <jarDirectory url="file://$USER_HOME$/Development/appengine-java-sdk-1.9.12/lib/opt/user/jsr107/v1" recursive="false" />
     <jarDirectory url="file://$USER_HOME$/Development/appengine-java-sdk-1.9.12/lib/user" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/Development/GWT Libraries/gin-2.1.2" recursive="false" />
   </library>
 </component>
