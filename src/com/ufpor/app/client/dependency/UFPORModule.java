@@ -4,6 +4,8 @@ import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.inject.Singleton;
 import com.ufpor.app.client.HomeView;
 import com.ufpor.app.client.LoginInfo;
+import com.ufpor.app.client.data.SpaceBuilder;
+import com.ufpor.app.client.data.SpaceBuilderI;
 
 /**
  *
@@ -17,5 +19,6 @@ public class UFPORModule extends AbstractGinModule {
     protected void configure() {
         bind(HomeView.class).in(Singleton.class);
         bind(LoginInfo.class).in(Singleton.class);
+        bind(SpaceBuilderI.class).to(SpaceBuilder.class).in(Singleton.class);
     }
 }

@@ -10,7 +10,7 @@ import com.ufpor.app.client.dependency.UFPORGinjector;
  * Entry point classes define <code>onModuleLoad()</code>
  */
 public class App implements EntryPoint {
-    private final UFPORGinjector injector = GWT.create(UFPORGinjector.class);
+    private final static UFPORGinjector injector = GWT.create(UFPORGinjector.class);
     private VerticalPanel loginPanel;
     private Label loginLabel;
     private Anchor signInLink;
@@ -61,6 +61,10 @@ public class App implements EntryPoint {
         loginPanel.add(signInLink);
         RootPanel.get().clear();
         RootPanel.get().add(loginPanel);
+    }
+
+    public static UFPORGinjector getInjector() {
+        return injector;
     }
 
 }

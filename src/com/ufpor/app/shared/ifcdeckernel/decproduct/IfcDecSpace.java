@@ -38,7 +38,6 @@ public class IfcDecSpace extends IfcDecSpatialStructureElement {
         space.setDescription(clienSpace.getDescription().getValue());
         space.setName(clienSpace.getName().getValue());
 
-
         return space;
     }
 

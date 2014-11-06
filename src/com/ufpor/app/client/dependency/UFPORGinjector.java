@@ -2,9 +2,9 @@ package com.ufpor.app.client.dependency;
 
 import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
-import com.ufpor.app.client.EnvironmentGeneral;
 import com.ufpor.app.client.HomeView;
 import com.ufpor.app.client.LoginInfo;
+import com.ufpor.app.client.data.SpaceBuilderI;
 
 /**
  *
@@ -18,5 +18,5 @@ import com.ufpor.app.client.LoginInfo;
 public interface UFPORGinjector extends Ginjector {
     HomeView getHomeView();
     LoginInfo getLoginInfo();
-    EnvironmentGeneral getEnvironmentGeneral();
+    SpaceBuilderI getSpaceBuilderI();
 }
