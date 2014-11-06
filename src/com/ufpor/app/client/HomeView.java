@@ -50,7 +50,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
     @Inject
     private PopupBase popUpBase;
     private int count = 0;
-    private Logger logger = Logger.getLogger(Designertest.class.getSimpleName());
+    private Logger logger = Logger.getLogger(HomeView.class.getSimpleName());
 
 
     @Inject

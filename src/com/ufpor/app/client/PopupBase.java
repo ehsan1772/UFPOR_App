@@ -101,7 +101,7 @@ public class PopupBase extends Composite {
             @Override
             public void onSuccess(Void result) {
                 Window.alert(envGeneral.getName() + "Is saved");
-                ((Designertest) host).refreshSpaces();
+                ((HomeView) host).refreshSpaces();
             }
         });
     }
