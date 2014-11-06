@@ -4,6 +4,7 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.ufpor.app.server.GuidCompressor;
 import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecElementCompositionEnum;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecLengthMeasure;
 
 import javax.jdo.annotations.Inheritance;
@@ -35,8 +36,22 @@ public class IfcDecSpace extends IfcDecSpatialStructureElement {
         IfcDecSpace space = new IfcDecSpace(guid, user);
 
         //setting the attributes
-        space.setDescription(clienSpace.getDescription().getValue());
-        space.setName(clienSpace.getName().getValue());
+
+        space.setDescription(clienSpace.getDescription() != null ? clienSpace.getDescription().getValue() : "");
+        space.setName(clienSpace.getName() != null ? clienSpace.getName().getValue() : "");
+
+        for (IfcDecSpaceTypeEnum typeEnum : IfcDecSpaceTypeEnum.values()) {
+            if(typeEnum.toString().equals(clienSpace.getPredefinedType().toString())) {
+                space.setPredefinedType(typeEnum);
+            }
+        }
+
+
+        for (IfcDecElementCompositionEnum typeEnum : IfcDecElementCompositionEnum.values()) {
+            if(typeEnum.toString().equals(clienSpace.getCompositionType().toString())) {
+                space.setCompositionType(typeEnum);
+            }
+        }
 
         return space;
     }

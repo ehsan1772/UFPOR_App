@@ -124,11 +124,11 @@
 				</div>
 				<div class='{style.singleRow}'>
 					<div class='{style.labelContainer}'>
-						<g:Label addStyleNames='{style.label}' text="Description" />
+						<g:Label addStyleNames='{style.label}' text="Long Name" />
 					</div>
 				</div>
 				<div class='{style.bigRow}'>
-					<g:TextArea addStyleNames='{style.bigTextBox}' />
+					<g:TextArea addStyleNames='{style.bigTextBox}' ui:field="longNameTextBox"/>
 				</div>
 
 			</div>
@@ -150,13 +150,28 @@
 						<g:Label addStyleNames='{style.label}' text="Category" />
 					</div>
 					<div class='{style.textBoxContainer}'>
-					<g:ListBox>
-						<g:item>
-							first
+					<g:ListBox ui:field="spaceTypeList">
+						<g:item value=''>
+                            SPACE
 						</g:item>
-						<g:item value='2'>
-							second
+						<g:item value=''>
+                            PARKING
 						</g:item>
+                        <g:item value=''>
+                            GFA
+                        </g:item>
+                        <g:item value=''>
+                            INTERNAL
+                        </g:item>
+                        <g:item value=''>
+                            EXTERNAL
+                        </g:item>
+                        <g:item value=''>
+                            USERDEFINED
+                        </g:item>
+                        <g:item value=''>
+                            NOTDEFINED
+                        </g:item>
 					</g:ListBox>
 
 					</div>
@@ -176,12 +191,16 @@
 						<g:Label addStyleNames='{style.suffix}' text="Dollar" />
 					</div>
 				</div>
-				<div class='{style.singleRow}'>
-
-				</div>
-				<div class='{style.bigRow}'>
+                <div class='{style.singleRow}'>
+                    <div class='{style.labelContainer}'>
+                        <g:Label addStyleNames='{style.label}' text="Description" />
+                    </div>
+                </div>
+                <div class='{style.bigRow}'>
+                    <g:TextArea addStyleNames='{style.bigTextBox}' ui:field="descriptionTextBox"/>
+                </div>
 					
-				</div>
+
 			</div>
 		</div>
 

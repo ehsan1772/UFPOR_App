@@ -2,6 +2,7 @@ package com.ufpor.app.client.data;
 
 import com.ufpor.app.shared.ifcclient.IfcDecLabel;
 import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
+import com.ufpor.app.shared.ifcclient.decproduct.IfcDecSpaceTypeEnum;
 import com.ufpor.app.shared.ifckernel.IfcElementCompositionEnum;
 import com.ufpor.app.shared.ifckernel.IfcText;
 
@@ -13,6 +14,8 @@ public class SpaceBuilder implements SpaceBuilderI {
 
     public SpaceBuilder() {
         space = new IfcClientSpace();
+        space.setPredefinedType(IfcDecSpaceTypeEnum.SPACE);
+        space.setCompositionType(IfcElementCompositionEnum.ELEMENT);
     }
 
     @Override
@@ -35,6 +38,17 @@ public class SpaceBuilder implements SpaceBuilderI {
     }
 
     @Override
+    public String setType(String type) {
+        for (IfcDecSpaceTypeEnum typeEnum : IfcDecSpaceTypeEnum.values()) {
+            if(typeEnum.toString().equals(type)) {
+                space.setPredefinedType(typeEnum);
+                return typeEnum.toString();
+            }
+        }
+        return null;
+    }
+
+    @Override
     public String setDescription(String description) {
         IfcText text = new IfcText(description);
         space.setDescription(text);
@@ -42,9 +56,14 @@ public class SpaceBuilder implements SpaceBuilderI {
     }
 
     @Override
-    public String setCompositionType(IfcElementCompositionEnum type) {
-        space.setCompositionType(type);
-        return type.toString();
+    public String setCompositionType(String type) {
+        for (IfcDecSpaceTypeEnum typeEnum : IfcDecSpaceTypeEnum.values()) {
+            if(typeEnum.toString().equals(type)) {
+                space.setPredefinedType(typeEnum);
+                return typeEnum.toString();
+            }
+        }
+        return null;
     }
 
     @Override

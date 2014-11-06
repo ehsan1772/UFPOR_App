@@ -12,12 +12,13 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.TabLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
+import com.ufpor.app.client.data.SpaceBuilderI;
 import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
-import com.ufpor.app.shared.ifckernel.IfcText;
 
 public class PopupBase extends Composite {
     private static PopupBaseUiBinder uiBinder = GWT
             .create(PopupBaseUiBinder.class);
+    private final SpaceBuilderI spaceBuilder;
 
 
     private LoginInfo loginInfo;
@@ -42,56 +43,18 @@ public class PopupBase extends Composite {
     public PopupBase(LoginInfo loginInfo) {
         initWidget(uiBinder.createAndBindUi(this));
         this.loginInfo = loginInfo;
+        spaceBuilder = App.getInjector().getSpaceBuilderI();
     }
 
     @UiHandler("save")
     void handleClick1(ClickEvent e) {
-
-        getGUID();
-
-//        EnvironmentService.App.getInstance().addEnvironment(envGeneral.getName(),
-//                envGeneral.getArea(), new AsyncCallback<Void>() {
-//
-//                    @Override
-//                    public void onSuccess(Void result) {
-//                        Window.alert(envGeneral.getName() + "Is saved");
-//                        ((Designertest) host).refreshSpaces();
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Throwable caught) {
-//                        Window.alert("Failed");
-//
-//                    }
-//                });
-
-    }
-
-    private void getGUID() {
-        IfcGUID.App.getInstance().getNewIfcGloballyUniqueId(new AsyncCallback<String>() {
-
-            @Override
-            public void onFailure(Throwable caught) {
-
-            }
-
-            @Override
-            public void onSuccess(String result) {
-                newGUID = result;
-                addNewIfcSpace(newGUID, loginInfo);
-            }
-        });
+        addNewIfcSpace();
     }
 
 
-    private void addNewIfcSpace(String guid, LoginInfo loginInfo) {
-        IfcClientSpace space = new IfcClientSpace(guid, loginInfo);
+    private void addNewIfcSpace() {
+        IfcClientSpace space = spaceBuilder.getSpace();
 
-        IfcText description = new IfcText("This is the description");
-        space.setDescription(description);
-
-        com.ufpor.app.shared.ifcclient.IfcDecLabel name = new com.ufpor.app.shared.ifcclient.IfcDecLabel("This is the name");
-        space.setName(name);
         EnvironmentService.App.getInstance().addIfcDecSpace(space, new AsyncCallback<Void>() {
             @Override
             public void onFailure(Throwable caught) {
@@ -100,7 +63,7 @@ public class PopupBase extends Composite {
 
             @Override
             public void onSuccess(Void result) {
-                Window.alert(envGeneral.getName() + "Is saved");
+                Window.alert(spaceBuilder.getSpace().getName() + "Is saved");
                 ((HomeView) host).refreshSpaces();
             }
         });
