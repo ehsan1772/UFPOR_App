@@ -2,15 +2,19 @@ package com.ufpor.app.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.ufpor.app.client.dependency.UFPORGinjector;
+import com.ufpor.app.client.eventbus.MenuEvent;
+import com.ufpor.app.client.service.LoginService;
+import com.ufpor.app.client.service.LoginServiceAsync;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>
  */
 public class App implements EntryPoint {
-    private final static UFPORGinjector injector = GWT.create(UFPORGinjector.class);
+    public final static UFPORGinjector injector = GWT.create(UFPORGinjector.class);
     private VerticalPanel loginPanel;
     private Label loginLabel;
     private Anchor signInLink;
@@ -42,6 +46,13 @@ public class App implements EntryPoint {
                     initializeTheLoginPanel();
                     loadLogin();
                 }
+            }
+        });
+
+        injector.getSimpleEventBus().addHandler(MenuEvent.TYPE, new MenuEvent.MenuEventHandler() {
+            @Override
+            public void onMenuEvent(MenuEvent event) {
+                Window.alert("Event Received");
             }
         });
 

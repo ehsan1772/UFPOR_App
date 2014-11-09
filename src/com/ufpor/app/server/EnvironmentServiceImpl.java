@@ -5,7 +5,7 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.ufpor.app.client.view.EnvironmentDM;
-import com.ufpor.app.client.EnvironmentService;
+import com.ufpor.app.client.service.EnvironmentService;
 import com.ufpor.app.client.NotLoggedInException;
 import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;

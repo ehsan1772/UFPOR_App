@@ -1,8 +1,8 @@
 package com.ufpor.app.client.data;
 
-import com.ufpor.app.shared.ifcclient.IfcDecLabel;
+import com.ufpor.app.shared.ifcclient.IfcClientLabel;
 import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
-import com.ufpor.app.shared.ifcclient.decproduct.IfcDecSpaceTypeEnum;
+import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpaceTypeEnum;
 import com.ufpor.app.shared.ifckernel.IfcElementCompositionEnum;
 import com.ufpor.app.shared.ifckernel.IfcText;
 
@@ -14,7 +14,7 @@ public class SpaceBuilder implements SpaceBuilderI {
 
     public SpaceBuilder() {
         space = new IfcClientSpace();
-        space.setPredefinedType(IfcDecSpaceTypeEnum.SPACE);
+        space.setPredefinedType(IfcClientSpaceTypeEnum.SPACE);
         space.setCompositionType(IfcElementCompositionEnum.ELEMENT);
     }
 
@@ -25,21 +25,21 @@ public class SpaceBuilder implements SpaceBuilderI {
 
     @Override
     public String setName(String name) {
-        IfcDecLabel label = new IfcDecLabel(name);
-        space.setName(new IfcDecLabel(name));
+        IfcClientLabel label = new IfcClientLabel(name);
+        space.setName(new IfcClientLabel(name));
         return label.getValue();
     }
 
     @Override
     public String setLongName(String longName) {
-        IfcDecLabel label = new IfcDecLabel(longName);
+        IfcClientLabel label = new IfcClientLabel(longName);
         space.setLongName(label);
         return label.getValue();
     }
 
     @Override
     public String setType(String type) {
-        for (IfcDecSpaceTypeEnum typeEnum : IfcDecSpaceTypeEnum.values()) {
+        for (IfcClientSpaceTypeEnum typeEnum : IfcClientSpaceTypeEnum.values()) {
             if(typeEnum.toString().equals(type)) {
                 space.setPredefinedType(typeEnum);
                 return typeEnum.toString();
@@ -57,7 +57,7 @@ public class SpaceBuilder implements SpaceBuilderI {
 
     @Override
     public String setCompositionType(String type) {
-        for (IfcDecSpaceTypeEnum typeEnum : IfcDecSpaceTypeEnum.values()) {
+        for (IfcClientSpaceTypeEnum typeEnum : IfcClientSpaceTypeEnum.values()) {
             if(typeEnum.toString().equals(type)) {
                 space.setPredefinedType(typeEnum);
                 return typeEnum.toString();

@@ -9,14 +9,13 @@ import java.io.Serializable;
  */
 
 public abstract class GAEObject implements Serializable {
-
     protected LoginInfo user;
+
+    protected GAEObject() {
+    }
 
     protected GAEObject(LoginInfo user) {
         this.user = user;
-    }
-
-    protected GAEObject() {
     }
 
     public LoginInfo getUser() {

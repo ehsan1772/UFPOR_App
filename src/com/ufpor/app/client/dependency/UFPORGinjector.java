@@ -1,5 +1,6 @@
 package com.ufpor.app.client.dependency;
 
+import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
 import com.ufpor.app.client.view.HomeView;
@@ -19,4 +20,5 @@ public interface UFPORGinjector extends Ginjector {
     HomeView getHomeView();
     LoginInfo getLoginInfo();
     SpaceBuilderI getSpaceBuilderI();
+    SimpleEventBus getSimpleEventBus();
 }

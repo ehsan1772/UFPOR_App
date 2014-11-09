@@ -5,7 +5,7 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.ufpor.app.client.LoginInfo;
-import com.ufpor.app.client.LoginService;
+import com.ufpor.app.client.service.LoginService;
 
 /**
  * Created by ovenbits on 10/8/14.

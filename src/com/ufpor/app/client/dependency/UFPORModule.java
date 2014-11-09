@@ -1,11 +1,13 @@
 package com.ufpor.app.client.dependency;
 
+import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.inject.Singleton;
-import com.ufpor.app.client.view.HomeView;
 import com.ufpor.app.client.LoginInfo;
 import com.ufpor.app.client.data.SpaceBuilder;
 import com.ufpor.app.client.data.SpaceBuilderI;
+import com.ufpor.app.client.eventbus.EventBusProvider;
+import com.ufpor.app.client.view.HomeView;
 
 /**
  *
@@ -20,5 +22,6 @@ public class UFPORModule extends AbstractGinModule {
         bind(HomeView.class).in(Singleton.class);
         bind(LoginInfo.class).in(Singleton.class);
         bind(SpaceBuilderI.class).to(SpaceBuilder.class).in(Singleton.class);
+        bind(SimpleEventBus.class).toProvider(EventBusProvider.class).in(Singleton.class);
     }
 }

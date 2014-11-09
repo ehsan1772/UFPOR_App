@@ -13,7 +13,7 @@ import com.google.gwt.user.client.ui.TabLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.ufpor.app.client.App;
-import com.ufpor.app.client.EnvironmentService;
+import com.ufpor.app.client.service.EnvironmentService;
 import com.ufpor.app.client.LoginInfo;
 import com.ufpor.app.client.data.SpaceBuilderI;
 import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;

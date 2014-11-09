@@ -1,7 +1,7 @@
 package com.ufpor.app.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.ufpor.app.client.AppService;
+import com.ufpor.app.client.service.AppService;
 
 public class AppServiceImpl extends RemoteServiceServlet implements AppService {
     // Implementation of sample interface method

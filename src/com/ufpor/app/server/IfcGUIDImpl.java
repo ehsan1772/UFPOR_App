@@ -1,7 +1,7 @@
 package com.ufpor.app.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.ufpor.app.client.IfcGUID;
+import com.ufpor.app.client.service.IfcGUID;
 
 /**
  * Created by Ehsan Barekati on 11/1/14.

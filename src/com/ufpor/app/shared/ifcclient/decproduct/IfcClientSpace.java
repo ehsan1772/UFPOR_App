@@ -1,17 +1,17 @@
 package com.ufpor.app.shared.ifcclient.decproduct;
 
 import com.ufpor.app.client.LoginInfo;
-import com.ufpor.app.shared.ifcclient.IfcDecLengthMeasure;
+import com.ufpor.app.shared.ifcclient.IfcClientLengthMeasure;
 
 /**
  * Created by Ehsan Barekati on 10/31/14.
  */
 
-public class IfcClientSpace extends IfcDecSpatialStructureElement {
+public class IfcClientSpace extends IfcClientSpatialStructureElement {
 
-    protected IfcDecSpaceTypeEnum predefinedType;
+    protected IfcClientSpaceTypeEnum predefinedType;
 
-    protected IfcDecLengthMeasure elevationWithFlooring;
+    protected IfcClientLengthMeasure elevationWithFlooring;
 
     public IfcClientSpace(String GUID, LoginInfo user) {
         super(GUID, user);
@@ -21,19 +21,19 @@ public class IfcClientSpace extends IfcDecSpatialStructureElement {
         super();
     }
 
-    public IfcDecSpaceTypeEnum getPredefinedType() {
+    public IfcClientSpaceTypeEnum getPredefinedType() {
         return predefinedType;
     }
 
-    public void setPredefinedType(IfcDecSpaceTypeEnum predefinedType) {
+    public void setPredefinedType(IfcClientSpaceTypeEnum predefinedType) {
         this.predefinedType = predefinedType;
     }
 
-    public IfcDecLengthMeasure getElevationWithFlooring() {
+    public IfcClientLengthMeasure getElevationWithFlooring() {
         return elevationWithFlooring;
     }
 
-    public void setElevationWithFlooring(IfcDecLengthMeasure elevationWithFlooring) {
+    public void setElevationWithFlooring(IfcClientLengthMeasure elevationWithFlooring) {
         this.elevationWithFlooring = elevationWithFlooring;
     }
 }

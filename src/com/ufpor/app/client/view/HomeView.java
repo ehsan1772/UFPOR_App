@@ -12,6 +12,8 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.google.inject.Inject;
 import com.ufpor.app.client.*;
+import com.ufpor.app.client.service.EnvironmentService;
+import com.ufpor.app.client.service.EnvironmentServiceAsync;
 
 import java.util.List;
 import java.util.logging.Level;

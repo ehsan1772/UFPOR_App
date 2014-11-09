@@ -25,158 +25,29 @@
     <splitter split-orientation="horizontal" split-proportion="0.47173488">
       <split-first>
         <leaf>
-          <file leaf-file-name="HomeView.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="488" max-vertical-offset="2205">
-                  <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="App.java" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="App.java" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/App.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="398" max-vertical-offset="1020">
-                  <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="PopupBase.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/PopupBase.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1470">
-                  <caret line="34" column="12" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="EnvironmentGeneral.ui.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/EnvironmentGeneral.ui.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="361" max-vertical-offset="3195">
-                  <caret line="199" column="88" selection-start-line="199" selection-start-column="88" selection-end-line="199" selection-end-column="88" />
+                <state vertical-scroll-proportion="0.7096774" vertical-offset="55" max-vertical-offset="1125">
+                  <caret line="43" column="47" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
                   <folding>
-                    <marker date="1415283996000" expanded="true" signature="198:250" placeholder="{...}" />
-                    <marker date="1415283996000" expanded="true" signature="277:368" placeholder="{...}" />
-                    <marker date="1415283996000" expanded="true" signature="383:408" placeholder="{...}" />
-                    <marker date="1415283996000" expanded="true" signature="424:431" placeholder="{...}" />
-                    <marker date="1415283996000" expanded="true" signature="446:480" placeholder="{...}" />
-                    <marker date="1415283996000" expanded="true" signature="502:550" placeholder="{...}" />
-                    <marker date="1415283996000" expanded="true" signature="570:619" placeholder="{...}" />
-                    <marker date="1415283996000" expanded="true" signature="640:689" placeholder="{...}" />
-                    <marker date="1415283996000" expanded="true" signature="700:784" placeholder="{...}" />
-                    <marker date="1415283996000" expanded="true" signature="796:894" placeholder="{...}" />
-                    <marker date="1415283996000" expanded="true" signature="907:1037" placeholder="{...}" />
-                    <marker date="1415283996000" expanded="true" signature="1049:1082" placeholder="{...}" />
-                    <marker date="1415283996000" expanded="true" signature="1098:1147" placeholder="{...}" />
+                    <element signature="e#1917#2100#0" expanded="true" />
+                    <element signature="e#2089#2090#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="DoubleTable.ui.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/DoubleTable.ui.xml">
+          <file leaf-file-name="EventBusProvider.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/eventbus/EventBusProvider.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="1425">
-                  <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
+                  <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
                   <folding>
-                    <marker date="1411990761000" expanded="true" signature="200:235" placeholder="{...}" />
-                    <marker date="1411990761000" expanded="true" signature="245:322" placeholder="{...}" />
-                    <marker date="1411990761000" expanded="true" signature="337:386" placeholder="{...}" />
-                    <marker date="1411990761000" expanded="true" signature="403:452" placeholder="{...}" />
-                    <marker date="1411990761000" expanded="true" signature="478:513" placeholder="{...}" />
-                    <marker date="1411990761000" expanded="true" signature="529:562" placeholder="{...}" />
-                    <marker date="1411990761000" expanded="true" signature="576:729" placeholder="{...}" />
-                    <marker date="1411990761000" expanded="true" signature="742:802" placeholder="{...}" />
-                    <marker date="1411990761000" expanded="true" signature="815:885" placeholder="{...}" />
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#290#291#0" expanded="true" />
+                    <element signature="e#333#334#0" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="EnvironmentGrouping.ui.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/EnvironmentGrouping.ui.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065">
-                  <caret line="3" column="54" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="54" />
-                  <folding>
-                    <marker date="1415497742000" expanded="true" signature="254:289" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="316:379" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="394:401" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="417:424" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="444:499" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="523:572" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="584:668" placeholder="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="EnvironmentActivity.ui.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/EnvironmentActivity.ui.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1290">
-                  <caret line="2" column="105" selection-start-line="2" selection-start-column="105" selection-end-line="2" selection-end-column="105" />
-                  <folding>
-                    <marker date="1415497742000" expanded="true" signature="250:285" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="312:375" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="390:397" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="413:451" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="471:526" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="547:581" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="592:676" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="698:754" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="770:866" placeholder="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="EnvironmentReq.ui.xml" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/EnvironmentReq.ui.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.6132879" vertical-offset="735" max-vertical-offset="1890">
-                  <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-                  <folding>
-                    <marker date="1415497742000" expanded="true" signature="317:352" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="379:442" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="457:464" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="480:518" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="538:593" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="616:650" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="674:737" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="761:824" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="835:919" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="929:948" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="972:992" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="1014:1070" placeholder="{...}" />
-                    <marker date="1415497742000" expanded="true" signature="1083:1116" placeholder="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="EnvironmentReq.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/EnvironmentReq.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1260">
-                  <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="DataGridTest.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/DataGridTest.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="1820" max-vertical-offset="3495">
-                  <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-                  <folding />
                 </state>
               </provider>
             </entry>
@@ -185,72 +56,119 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="MenuBuilder.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/MenuBuilder.java">
+          <file leaf-file-name="SpaceDataManagerI.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/data/SpaceDataManagerI.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1425">
-                  <caret line="85" column="23" selection-start-line="85" selection-start-column="23" selection-end-line="85" selection-end-column="23" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#652#794#0" expanded="true" />
-                    <element signature="e#783#784#0" expanded="true" />
-                    <element signature="e#830#973#0" expanded="true" />
-                    <element signature="e#962#963#0" expanded="true" />
-                    <element signature="e#1042#1185#0" expanded="true" />
-                    <element signature="e#1174#1175#0" expanded="true" />
-                    <element signature="e#1345#1488#0" expanded="true" />
-                    <element signature="e#1477#1478#0" expanded="true" />
-                    <element signature="e#1524#1667#0" expanded="true" />
-                    <element signature="e#1656#1657#0" expanded="true" />
-                    <element signature="e#1702#1844#0" expanded="true" />
-                    <element signature="e#1833#1834#0" expanded="true" />
-                    <element signature="e#1880#2023#0" expanded="true" />
-                    <element signature="e#2012#2013#0" expanded="true" />
-                    <element signature="e#2060#2204#0" expanded="true" />
-                    <element signature="e#2193#2194#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="HomeView.ui.xml" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.ui.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.71879935" vertical-offset="850" max-vertical-offset="2145">
-                  <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-                  <folding>
-                    <marker date="1415497354000" expanded="true" signature="205:278" placeholder="{...}" />
-                    <marker date="1415497354000" expanded="true" signature="299:346" placeholder="{...}" />
-                    <marker date="1415497354000" expanded="true" signature="368:415" placeholder="{...}" />
-                    <marker date="1415497354000" expanded="true" signature="437:484" placeholder="{...}" />
-                    <marker date="1415497354000" expanded="true" signature="507:605" placeholder="{...}" />
-                    <marker date="1415497354000" expanded="true" signature="625:698" placeholder="{...}" />
-                    <marker date="1415497354000" expanded="true" signature="716:839" placeholder="{...}" />
-                    <marker date="1415497354000" expanded="true" signature="858:980" placeholder="{...}" />
-                    <marker date="1415497354000" expanded="true" signature="1000:1126" placeholder="{...}" />
-                    <marker date="1415497354000" expanded="true" signature="965:1099" placeholder="{...}" />
-                    <marker date="1415497354000" expanded="true" signature="1150:1273" placeholder="{...}" />
-                    <marker date="1415497354000" expanded="true" signature="1293:1485" placeholder="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="test.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/dependency/test.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
+                  <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="test.ui.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/dependency/test.ui.xml">
+          <file leaf-file-name="SpaceBuilderI.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/data/SpaceBuilderI.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+                  <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MenuBuilder.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/MenuBuilder.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-8.076923" vertical-offset="0" max-vertical-offset="1515">
+                  <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#743#1006#0" expanded="true" />
+                    <element signature="e#995#996#0" expanded="true" />
+                    <element signature="e#1042#1185#0" expanded="true" />
+                    <element signature="e#1174#1175#0" expanded="true" />
+                    <element signature="e#1254#1397#0" expanded="true" />
+                    <element signature="e#1386#1387#0" expanded="true" />
+                    <element signature="e#1559#1702#0" expanded="true" />
+                    <element signature="e#1691#1692#0" expanded="true" />
+                    <element signature="e#1738#1881#0" expanded="true" />
+                    <element signature="e#1870#1871#0" expanded="true" />
+                    <element signature="e#1916#2058#0" expanded="true" />
+                    <element signature="e#2047#2048#0" expanded="true" />
+                    <element signature="e#2094#2237#0" expanded="true" />
+                    <element signature="e#2226#2227#0" expanded="true" />
+                    <element signature="e#2274#2418#0" expanded="true" />
+                    <element signature="e#2407#2408#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DataManager.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/data/DataManager.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
+                  <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="HomeView.java" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.3752094" vertical-offset="736" max-vertical-offset="2205">
+                  <caret line="83" column="30" selection-start-line="83" selection-start-column="30" selection-end-line="83" selection-end-column="30" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="UFPORModule.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/dependency/UFPORModule.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
+                  <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="UFPORGinjector.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/dependency/UFPORGinjector.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
+                  <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="IfcClientSpace.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/decproduct/IfcClientSpace.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+                  <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="GAEObject.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/GAEObject.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
+                  <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SpaceBuilder.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/data/SpaceBuilder.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="1125">
+                  <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
                   <folding />
                 </state>
               </provider>
@@ -268,11 +186,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/EnvironmentService.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/EnvironmentServiceAsync.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/GAEObject.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcDecTimeStamp.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcDecApplication.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcDecGloballyUniqueId.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcDecOrganization.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcDecPersonAndOrganization.java" />
@@ -301,15 +214,11 @@
         <option value="$PROJECT_DIR$/src/com/ufpor/app/client/dependency/PopupPanelProvider.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/client/data/DataManager.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/client/data/SpaceDataManagerI.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/dependency/UFPORModule.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/dependency/UFPORGinjector.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/App.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/client/DivTest.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/client/PopupBase.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/client/EnvironmentGeneral.ui.xml" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/client/EnvironmentGeneral.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/client/data/SpaceBuilderI.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/decproduct/IfcClientSpace.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/decproduct/IfcDecSpace.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/client/data/SpaceBuilder.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/client/MenuBuilder.java" />
@@ -319,6 +228,15 @@
         <option value="$PROJECT_DIR$/src/com/ufpor/app/client/view/EnvironmentGrouping.ui.xml" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/client/view/EnvironmentActivity.ui.xml" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/client/view/EnvironmentReq.ui.xml" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/dependency/UFPORGinjector.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/eventbus/MenuEvent.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/decproduct/IfcClientSpace.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/GAEObject.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/dependency/UFPORModule.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/eventbus/EventBusProvider.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/App.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/view/MenuBuilder.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.java" />
       </list>
     </option>
   </component>
@@ -487,7 +405,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ifckernel" />
+              <option name="myItemId" value="ifcclient" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -513,11 +431,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ifckernel" />
+              <option name="myItemId" value="ifcclient" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="product" />
+              <option name="myItemId" value="decproduct" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -587,7 +505,59 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
+              <option name="myItemId" value="eventbus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GWT_UFPOR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GWT_UFPOR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -621,6 +591,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ufpor.app.client.view" />
       <recent name="com.ufpor.app.shared.ifcdeckernel.decproduct" />
       <recent name="com.ufpor.app.shared.ifcdeckernel" />
       <recent name="com.ufpor.app.server.ifcKernel" />
@@ -869,21 +840,21 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1053" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3253886" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32466182" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.301769" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32746115" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32674298" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885212" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -891,9 +862,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19595315" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31217483" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31217483" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -926,7 +897,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/ufpor/app/client/view/PopupBase.java</url>
-          <line>60</line>
+          <line>62</line>
           <properties />
           <option name="timeStamp" value="55" />
         </line-breakpoint>
@@ -950,34 +921,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecLabel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecAddress.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
-          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
-          <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecRoot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="434" max-vertical-offset="1080">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecText.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17470881" vertical-offset="0" max-vertical-offset="601">
@@ -1073,48 +1016,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/data/DataManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcDecLabel.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientLabel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11462882" vertical-offset="0" max-vertical-offset="916">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcDecRoot.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientRoot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="750">
           <caret line="47" column="28" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/dependency/UFPORGinjector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-          <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/dependency/UFPORModule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
-          <caret line="21" column="75" selection-start-line="21" selection-start-column="75" selection-end-line="21" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/data/SpaceDataManagerI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
-          <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -1127,7 +1040,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/decproduct/IfcDecSpaceTypeEnum.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/decproduct/IfcClientSpaceTypeEnum.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
           <caret line="8" column="9" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="9" />
@@ -1150,26 +1063,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/decproduct/IfcDecSpatialStructureElement.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/decproduct/IfcClientSpatialStructureElement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="465">
           <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/data/SpaceBuilderI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
-          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/decproduct/IfcClientSpace.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1222,14 +1119,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/data/SpaceBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="1110">
-          <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/dependency/test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="939">
@@ -1242,69 +1131,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="939">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/MenuBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1425">
-          <caret line="85" column="23" selection-start-line="85" selection-start-column="23" selection-end-line="85" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#652#794#0" expanded="true" />
-            <element signature="e#783#784#0" expanded="true" />
-            <element signature="e#830#973#0" expanded="true" />
-            <element signature="e#962#963#0" expanded="true" />
-            <element signature="e#1042#1185#0" expanded="true" />
-            <element signature="e#1174#1175#0" expanded="true" />
-            <element signature="e#1345#1488#0" expanded="true" />
-            <element signature="e#1477#1478#0" expanded="true" />
-            <element signature="e#1524#1667#0" expanded="true" />
-            <element signature="e#1656#1657#0" expanded="true" />
-            <element signature="e#1702#1844#0" expanded="true" />
-            <element signature="e#1833#1834#0" expanded="true" />
-            <element signature="e#1880#2023#0" expanded="true" />
-            <element signature="e#2012#2013#0" expanded="true" />
-            <element signature="e#2060#2204#0" expanded="true" />
-            <element signature="e#2193#2194#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="398" max-vertical-offset="1020">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.ui.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71879935" vertical-offset="850" max-vertical-offset="2145">
-          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding>
-            <marker date="1415497354000" expanded="true" signature="205:278" placeholder="{...}" />
-            <marker date="1415497354000" expanded="true" signature="299:346" placeholder="{...}" />
-            <marker date="1415497354000" expanded="true" signature="368:415" placeholder="{...}" />
-            <marker date="1415497354000" expanded="true" signature="437:484" placeholder="{...}" />
-            <marker date="1415497354000" expanded="true" signature="507:605" placeholder="{...}" />
-            <marker date="1415497354000" expanded="true" signature="625:698" placeholder="{...}" />
-            <marker date="1415497354000" expanded="true" signature="716:839" placeholder="{...}" />
-            <marker date="1415497354000" expanded="true" signature="858:980" placeholder="{...}" />
-            <marker date="1415497354000" expanded="true" signature="1000:1126" placeholder="{...}" />
-            <marker date="1415497354000" expanded="true" signature="965:1099" placeholder="{...}" />
-            <marker date="1415497354000" expanded="true" signature="1150:1273" placeholder="{...}" />
-            <marker date="1415497354000" expanded="true" signature="1293:1485" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="488" max-vertical-offset="2205">
-          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1338,19 +1164,19 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1989" max-vertical-offset="2700">
           <caret line="199" column="88" selection-start-line="199" selection-start-column="88" selection-end-line="199" selection-end-column="88" />
           <folding>
-            <marker date="1415283996000" expanded="true" signature="198:250" placeholder="{...}" />
-            <marker date="1415283996000" expanded="true" signature="277:368" placeholder="{...}" />
-            <marker date="1415283996000" expanded="true" signature="383:408" placeholder="{...}" />
-            <marker date="1415283996000" expanded="true" signature="424:431" placeholder="{...}" />
-            <marker date="1415283996000" expanded="true" signature="446:480" placeholder="{...}" />
-            <marker date="1415283996000" expanded="true" signature="502:550" placeholder="{...}" />
-            <marker date="1415283996000" expanded="true" signature="570:619" placeholder="{...}" />
-            <marker date="1415283996000" expanded="true" signature="640:689" placeholder="{...}" />
-            <marker date="1415283996000" expanded="true" signature="700:784" placeholder="{...}" />
-            <marker date="1415283996000" expanded="true" signature="796:894" placeholder="{...}" />
-            <marker date="1415283996000" expanded="true" signature="907:1037" placeholder="{...}" />
-            <marker date="1415283996000" expanded="true" signature="1049:1082" placeholder="{...}" />
-            <marker date="1415283996000" expanded="true" signature="1098:1147" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -1360,15 +1186,15 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="1425">
           <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
           <folding>
-            <marker date="1411990761000" expanded="true" signature="200:235" placeholder="{...}" />
-            <marker date="1411990761000" expanded="true" signature="245:322" placeholder="{...}" />
-            <marker date="1411990761000" expanded="true" signature="337:386" placeholder="{...}" />
-            <marker date="1411990761000" expanded="true" signature="403:452" placeholder="{...}" />
-            <marker date="1411990761000" expanded="true" signature="478:513" placeholder="{...}" />
-            <marker date="1411990761000" expanded="true" signature="529:562" placeholder="{...}" />
-            <marker date="1411990761000" expanded="true" signature="576:729" placeholder="{...}" />
-            <marker date="1411990761000" expanded="true" signature="742:802" placeholder="{...}" />
-            <marker date="1411990761000" expanded="true" signature="815:885" placeholder="{...}" />
+            <marker date="1411990761000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1411990761000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1411990761000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1411990761000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1411990761000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1411990761000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1411990761000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1411990761000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1411990761000" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -1378,13 +1204,13 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065">
           <caret line="3" column="54" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="54" />
           <folding>
-            <marker date="1415497742000" expanded="true" signature="254:289" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="316:379" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="394:401" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="417:424" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="444:499" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="523:572" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="584:668" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -1394,37 +1220,202 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1290">
           <caret line="2" column="105" selection-start-line="2" selection-start-column="105" selection-end-line="2" selection-end-column="105" />
           <folding>
-            <marker date="1415497742000" expanded="true" signature="250:285" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="312:375" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="390:397" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="413:451" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="471:526" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="547:581" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="592:676" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="698:754" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="770:866" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/EnvironmentReq.ui.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6132879" vertical-offset="735" max-vertical-offset="1890">
-          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="735" max-vertical-offset="1890">
+          <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
           <folding>
-            <marker date="1415497742000" expanded="true" signature="317:352" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="379:442" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="457:464" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="480:518" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="538:593" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="616:650" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="674:737" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="761:824" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="835:919" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="929:948" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="972:992" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="1014:1070" placeholder="{...}" />
-            <marker date="1415497742000" expanded="true" signature="1083:1116" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497742000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Development/gwt-2.6.1/gwt-user.jar!/com/google/gwt/event/shared/GwtEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33275262" vertical-offset="199" max-vertical-offset="1425">
+          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.ui.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="2145">
+          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding>
+            <marker date="1415497354000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497354000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497354000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497354000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497354000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497354000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497354000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497354000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497354000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497354000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497354000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1415497354000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/eventbus/MenuEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#315#333#0" expanded="true" />
+            <element signature="e#406#407#0" expanded="true" />
+            <element signature="e#433#434#0" expanded="true" />
+            <element signature="e#504#505#0" expanded="true" />
+            <element signature="e#545#546#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/dependency/UFPORGinjector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
+          <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/data/SpaceDataManagerI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
+          <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/data/SpaceBuilderI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/data/SpaceBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1110">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/decproduct/IfcClientSpace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/GAEObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/eventbus/EventBusProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#290#291#0" expanded="true" />
+            <element signature="e#333#334#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/dependency/UFPORModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/data/DataManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/MenuBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.076923" vertical-offset="0" max-vertical-offset="1515">
+          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#743#1006#0" expanded="true" />
+            <element signature="e#995#996#0" expanded="true" />
+            <element signature="e#1042#1185#0" expanded="true" />
+            <element signature="e#1174#1175#0" expanded="true" />
+            <element signature="e#1254#1397#0" expanded="true" />
+            <element signature="e#1386#1387#0" expanded="true" />
+            <element signature="e#1559#1702#0" expanded="true" />
+            <element signature="e#1691#1692#0" expanded="true" />
+            <element signature="e#1738#1881#0" expanded="true" />
+            <element signature="e#1870#1871#0" expanded="true" />
+            <element signature="e#1916#2058#0" expanded="true" />
+            <element signature="e#2047#2048#0" expanded="true" />
+            <element signature="e#2094#2237#0" expanded="true" />
+            <element signature="e#2226#2227#0" expanded="true" />
+            <element signature="e#2274#2418#0" expanded="true" />
+            <element signature="e#2407#2408#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3752094" vertical-offset="736" max-vertical-offset="2205">
+          <caret line="83" column="30" selection-start-line="83" selection-start-column="30" selection-end-line="83" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7096774" vertical-offset="55" max-vertical-offset="1125">
+          <caret line="43" column="47" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+          <folding>
+            <element signature="e#1917#2100#0" expanded="true" />
+            <element signature="e#2089#2090#0" expanded="true" />
           </folding>
         </state>
       </provider>
