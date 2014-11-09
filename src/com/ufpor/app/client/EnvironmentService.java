@@ -3,6 +3,7 @@ package com.ufpor.app.client;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import com.ufpor.app.client.view.EnvironmentDM;
 import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
 
 import java.util.List;

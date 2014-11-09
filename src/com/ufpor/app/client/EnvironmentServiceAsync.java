@@ -1,6 +1,7 @@
 package com.ufpor.app.client;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.ufpor.app.client.view.EnvironmentDM;
 import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
 
 import java.util.List;

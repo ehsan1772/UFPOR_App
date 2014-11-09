@@ -1,7 +1,7 @@
 package com.ufpor.app.server;
 
 import com.google.appengine.api.users.User;
-import com.ufpor.app.client.EnvironmentDM;
+import com.ufpor.app.client.view.EnvironmentDM;
 
 import javax.jdo.annotations.*;
 import java.util.Date;

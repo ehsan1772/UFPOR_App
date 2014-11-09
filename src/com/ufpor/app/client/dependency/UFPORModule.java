@@ -2,7 +2,7 @@ package com.ufpor.app.client.dependency;
 
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.inject.Singleton;
-import com.ufpor.app.client.HomeView;
+import com.ufpor.app.client.view.HomeView;
 import com.ufpor.app.client.LoginInfo;
 import com.ufpor.app.client.data.SpaceBuilder;
 import com.ufpor.app.client.data.SpaceBuilderI;
