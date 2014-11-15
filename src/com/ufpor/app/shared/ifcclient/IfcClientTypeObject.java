@@ -7,5 +7,5 @@ import java.util.List;
  */
 public class IfcClientTypeObject extends IfcClientObjectDefinition {
     protected IfcClientIdentifier applicableOccurance;
-    protected List<IfcClientPrppertySetDefinition> hasProperties;
+    protected List<IfcClientPropertySetDefinition> hasProperties;
 }

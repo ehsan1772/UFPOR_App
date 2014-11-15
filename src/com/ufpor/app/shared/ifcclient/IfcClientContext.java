@@ -17,4 +17,43 @@ public abstract class IfcClientContext extends IfcClientObjectDefinition {
     protected IfcClientLabel longName;
     protected IfcClientLabel phase;
 
+    public ArrayList<IfcClientPropertySetDefinition> getIsDefinedBy() {
+        return isDefinedBy;
+    }
+
+    public void setIsDefinedBy(ArrayList<IfcClientPropertySetDefinition> isDefinedBy) {
+        this.isDefinedBy = isDefinedBy;
+    }
+
+    public ArrayList<IfcClientDefinitionSelect> getDeclares() {
+        return declares;
+    }
+
+    public void setDeclares(ArrayList<IfcClientDefinitionSelect> declares) {
+        this.declares = declares;
+    }
+
+    public IfcClientLabel getObjectType() {
+        return objectType;
+    }
+
+    public void setObjectType(IfcClientLabel objectType) {
+        this.objectType = objectType;
+    }
+
+    public IfcClientLabel getLongName() {
+        return longName;
+    }
+
+    public void setLongName(IfcClientLabel longName) {
+        this.longName = longName;
+    }
+
+    public IfcClientLabel getPhase() {
+        return phase;
+    }
+
+    public void setPhase(IfcClientLabel phase) {
+        this.phase = phase;
+    }
 }

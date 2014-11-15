@@ -1,11 +1,9 @@
 package com.ufpor.app.shared.ifcclient;
 
-import java.io.Serializable;
-
 /**
  * Created by Ehsan Barekati on 10/30/14.
  */
-public class IfcClientText extends IfcClientSimpleValue implements Serializable{
+public class IfcClientText implements IfcClientSimpleValue {
     public IfcClientText(String value) {
         this.value = value;
     }

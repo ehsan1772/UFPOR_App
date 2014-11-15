@@ -24,16 +24,16 @@ public class PopupBase extends Composite {
     private final SpaceBuilderI spaceBuilder;
 
 
-    private LoginInfo loginInfo;
+    protected LoginInfo loginInfo;
 
-    private PopupBaseHost host;
+    protected PopupBaseHost host;
 
     @UiField
-    TabLayoutPanel panel;
+    public TabLayoutPanel panel;
     @UiField
-    Button save;
+    public Button save;
     @UiField
-    Button cancel;
+    public Button cancel;
 
     @Inject
     private EnvironmentGeneral envGeneral;
@@ -50,7 +50,7 @@ public class PopupBase extends Composite {
     }
 
     @UiHandler("save")
-    void handleClick1(ClickEvent e) {
+    public void handleClick1(ClickEvent e) {
         addNewIfcSpace();
     }
 
@@ -73,7 +73,7 @@ public class PopupBase extends Composite {
     }
 
     @UiHandler("cancel")
-    void handleClick(ClickEvent e) {
+    public void handleClick(ClickEvent e) {
         host.closePopupBase();
     }
 
@@ -100,6 +100,9 @@ public class PopupBase extends Composite {
 
         panel.selectTab(0);
         test.redraw();
+    }
+    protected void initWidgetSuper(Widget widget) {
+        super.initWidget(widget);
     }
 
     public void setHost(PopupBaseHost host) {

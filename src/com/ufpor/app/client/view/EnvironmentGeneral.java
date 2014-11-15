@@ -25,6 +25,7 @@ public class EnvironmentGeneral extends Composite {
             spaceBuilder.setType(selected);
         }
     };
+
     private final KeyUpHandler descriptionTextBoxChangeHandler = new KeyUpHandler() {
         @Override
         public void onKeyUp(KeyUpEvent event) {

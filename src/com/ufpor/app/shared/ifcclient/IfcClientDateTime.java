@@ -1,9 +1,14 @@
 package com.ufpor.app.shared.ifcclient;
 
+import java.io.Serializable;
+
 /**
  * Created by Ehsan Barekati on 11/11/14.
  */
-public class IfcClientDateTime {
+public class IfcClientDateTime implements Serializable {
+    public IfcClientDateTime() {
+    }
+
     public String getValue() {
         return value;
     }

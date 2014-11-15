@@ -5,21 +5,29 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
+import com.google.inject.Inject;
 import com.ufpor.app.client.dependency.UFPORGinjector;
 import com.ufpor.app.client.eventbus.MenuEvent;
 import com.ufpor.app.client.service.LoginService;
 import com.ufpor.app.client.service.LoginServiceAsync;
+import com.ufpor.app.client.view.PopupBase;
+import com.ufpor.app.client.view.project.PopupGeneral;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>
  */
-public class App implements EntryPoint {
+public class App implements EntryPoint, PopupBase.PopupBaseHost {
     public final static UFPORGinjector injector = GWT.create(UFPORGinjector.class);
     private VerticalPanel loginPanel;
     private Label loginLabel;
     private Anchor signInLink;
     private LoginInfo loginInfo;
-
+    @Inject
+    private PopupPanel popup;
+    @Inject
+    private PopupBase popUpBase;
+    @Inject
+    private PopupGeneral popUpGeneral;
     private void initializeTheLoginPanel() {
         loginPanel = new VerticalPanel();
         loginLabel = new Label(
@@ -52,7 +60,23 @@ public class App implements EntryPoint {
         injector.getSimpleEventBus().addHandler(MenuEvent.TYPE, new MenuEvent.MenuEventHandler() {
             @Override
             public void onMenuEvent(MenuEvent event) {
-                Window.alert("Event Received");
+           //     Window.alert("Event Received");
+                popup = new PopupPanel();
+               // popup.clear();
+
+                int width = (Window.getClientWidth() / 2);
+                popup.setWidth(width + "px");
+
+                int height = (Window.getClientHeight() / 2);
+                popup.setHeight(height + "px");
+
+                popup.setGlassEnabled(true);
+                //   popup.setWidget(new PopupBase(this, loginInfo));
+                popUpGeneral = new PopupGeneral(loginInfo);
+                popUpGeneral.setHost(App.this);
+                popup.setWidget(popUpGeneral);
+
+                popup.center();
             }
         });
 
@@ -78,4 +102,8 @@ public class App implements EntryPoint {
         return injector;
     }
 
+    @Override
+    public void closePopupBase() {
+        popup.removeFromParent();
+    }
 }
