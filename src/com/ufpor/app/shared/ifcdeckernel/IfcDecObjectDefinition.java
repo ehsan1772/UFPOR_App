@@ -1,6 +1,7 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
 import com.google.appengine.api.users.User;
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecDefinitionSelect;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
@@ -12,7 +13,7 @@ import javax.jdo.annotations.PersistenceCapable;
 
 @PersistenceCapable
 @Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
-public abstract class IfcDecObjectDefinition extends IfcDecRoot {
+public abstract class IfcDecObjectDefinition extends IfcDecRoot implements IfcDecDefinitionSelect {
     protected IfcDecObjectDefinition(String GUID, User user) {
         super(GUID, user);
     }

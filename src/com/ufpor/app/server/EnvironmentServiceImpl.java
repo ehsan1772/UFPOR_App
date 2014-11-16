@@ -7,6 +7,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.ufpor.app.client.view.EnvironmentDM;
 import com.ufpor.app.client.service.EnvironmentService;
 import com.ufpor.app.client.NotLoggedInException;
+import com.ufpor.app.shared.ifcclient.IfcClientProject;
 import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
 
@@ -96,6 +97,11 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         }
         return result;
 
+    }
+
+    @Override
+    public List<String> addProject(IfcClientProject project) throws NotLoggedInException {
+        return null;
     }
 
     private void checkLoggedIn() throws NotLoggedInException {

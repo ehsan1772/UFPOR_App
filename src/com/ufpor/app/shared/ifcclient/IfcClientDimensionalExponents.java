@@ -1,9 +1,11 @@
 package com.ufpor.app.shared.ifcclient;
 
+import java.io.Serializable;
+
 /**
  * Created by Ehsan Barekati on 11/9/14.
  */
-public class IfcClientDimensionalExponents {
+public class IfcClientDimensionalExponents implements Serializable {
     private int lengthExponent;
     private int massExponent;
     private int timeExponent;

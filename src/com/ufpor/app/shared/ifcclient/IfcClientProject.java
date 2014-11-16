@@ -2,6 +2,7 @@ package com.ufpor.app.shared.ifcclient;
 
 import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpatialElement;
 import com.ufpor.app.shared.ifcclient.measure.IfcClientAreaMeasure;
+import com.ufpor.app.shared.ifcclient.select.IfcClientPropertySetDefinitionSelect;
 
 import java.util.ArrayList;
 
@@ -10,6 +11,9 @@ import java.util.ArrayList;
  */
 public class IfcClientProject extends IfcClientContext {
     protected final static IfcClientSIUnit AREA_UNIT = getAreaUnit();
+    /**
+     * this is how we can add properties such as total area. those properties might be associated with constraints
+     */
     // TODO this property represents IfcRelDefinesByProperties
     protected IfcClientPropertySet generalProperties;
 
@@ -23,9 +27,11 @@ public class IfcClientProject extends IfcClientContext {
     private IfcClientPropertySingleValue areaProperties;
 
     public IfcClientProject() {
-        isDefinedBy = new ArrayList<IfcClientPropertySetDefinition>();
+        isDefinedBy = new ArrayList<IfcClientPropertySetDefinitionSelect>();
         //creating the property set
         generalProperties = new IfcClientPropertySet();
+
+        isDefinedBy.add(generalProperties);
 
         spatialStructureRoot = new ArrayList<IfcClientSpatialElement>();
 

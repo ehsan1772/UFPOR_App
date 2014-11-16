@@ -11,6 +11,9 @@ public class IfcClientPropertySingleValue extends IfcClientSimpleProperty {
         this.unit = unit;
     }
 
+    public IfcClientPropertySingleValue() {
+    }
+
     public IfcClientValue getNominalValue() {
 
         return nominalValue;

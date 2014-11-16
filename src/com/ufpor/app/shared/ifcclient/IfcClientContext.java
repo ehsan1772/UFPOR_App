@@ -1,6 +1,7 @@
 package com.ufpor.app.shared.ifcclient;
 
 import com.ufpor.app.shared.ifcclient.select.IfcClientDefinitionSelect;
+import com.ufpor.app.shared.ifcclient.select.IfcClientPropertySetDefinitionSelect;
 
 import java.util.ArrayList;
 
@@ -11,17 +12,17 @@ public abstract class IfcClientContext extends IfcClientObjectDefinition {
     /*
     Set of property set definitions attached to this context. Those statically or dynamically defined properties contain alphanumeric information content that further defines the context.
      */
-    protected ArrayList<IfcClientPropertySetDefinition> isDefinedBy;
+    protected ArrayList<IfcClientPropertySetDefinitionSelect> isDefinedBy;
     protected ArrayList<IfcClientDefinitionSelect> declares;
     protected IfcClientLabel objectType;
     protected IfcClientLabel longName;
     protected IfcClientLabel phase;
 
-    public ArrayList<IfcClientPropertySetDefinition> getIsDefinedBy() {
+    public ArrayList<IfcClientPropertySetDefinitionSelect> getIsDefinedBy() {
         return isDefinedBy;
     }
 
-    public void setIsDefinedBy(ArrayList<IfcClientPropertySetDefinition> isDefinedBy) {
+    public void setIsDefinedBy(ArrayList<IfcClientPropertySetDefinitionSelect> isDefinedBy) {
         this.isDefinedBy = isDefinedBy;
     }
 

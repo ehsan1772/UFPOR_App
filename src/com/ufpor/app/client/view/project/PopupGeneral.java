@@ -1,7 +1,9 @@
 package com.ufpor.app.client.view.project;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Widget;
 import com.ufpor.app.client.LoginInfo;
 import com.ufpor.app.client.view.PopupBase;
@@ -23,10 +25,14 @@ public class PopupGeneral extends PopupBase  {
     @Override
     protected void initWidget(Widget widget) {
         initWidgetSuper(widget);
-
         IfcClientProject project = new IfcClientProject();
         ProjectPresenter pr = new ProjectPresenter(project);
         panel.add(pr.getView(), "General2");
+    }
+
+    @UiHandler("save")
+    public void handleClick1(ClickEvent e) {
+        int i = 0;
     }
 
 

@@ -1,22 +1,18 @@
-package com.ufpor.app.shared.ifcclient;
+package com.ufpor.app.shared.ifcdeckernel.property;
 
 /**
- * Created by Ehsan Barekati on 11/9/14.
+ * Created by Ehsan Barekati on 11/15/14.
  */
-public class IfcClientSIUnit extends IfcClientNamedUnit {
-    private IfcClientSIPrefix prefix;
-    private IfcClientSIUnitName name;
+public class IfcDecSIUnit extends IfcDecNamedUnit{
+    private IfcDecSIPrefix prefix;
+    private IfcDecSIUnitName name;
 
-    public IfcClientSIUnit(IfcClientUnitEnum unitType, IfcClientDimensionalExponents dimensions, IfcClientSIUnitName name) {
+    public IfcDecSIUnit(IfcDecUnitEnum unitType, IfcDecDimensionalExponents dimensions, IfcDecSIUnitName name) {
         super(unitType, dimensions);
         this.name = name;
     }
 
-    public IfcClientSIUnit() {
-    }
-
-
-    public enum IfcClientSIPrefix {
+    public enum IfcDecSIPrefix {
         EXA,
         PETA,
         TERA,
@@ -35,7 +31,7 @@ public class IfcClientSIUnit extends IfcClientNamedUnit {
         ATTO
     }
 
-    public enum IfcClientSIUnitName {
+    public enum IfcDecSIUnitName {
         AMPERE,
         BECQUEREL,
         CANDELA,

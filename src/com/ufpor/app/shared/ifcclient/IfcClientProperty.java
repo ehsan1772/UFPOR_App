@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by Ehsan Barekati on 11/9/14.
  */
-public class IfcClientProperty extends IfcClientPropertyAbstraction {
+public abstract class IfcClientProperty extends IfcClientPropertyAbstraction {
     private static final String MIN_CLIENT = "min_area";
     private static final String MAX_CLIENT = "max_area";
     private IfcClientIdentifier name;

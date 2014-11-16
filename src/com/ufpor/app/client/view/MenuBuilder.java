@@ -1,6 +1,5 @@
 package com.ufpor.app.client.view;
 
-import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.MenuBar;
@@ -28,9 +27,9 @@ public class MenuBuilder {
         fileMenu.addItem("New", new Command() {
             @Override
             public void execute() {
-                showSelectedMenuItem("New");
+              //  showSelectedMenuItem("New");
                 MenuEvent event = new MenuEvent();
-               SimpleEventBus gg =  App.getInjector().getSimpleEventBus();
+             //  SimpleEventBus gg =  App.getInjector().getSimpleEventBus();
              App.getInjector().getSimpleEventBus().fireEvent(event);
 
             }

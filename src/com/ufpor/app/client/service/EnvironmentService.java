@@ -5,6 +5,7 @@ import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import com.ufpor.app.client.NotLoggedInException;
 import com.ufpor.app.client.view.EnvironmentDM;
+import com.ufpor.app.shared.ifcclient.IfcClientProject;
 import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
 
 import java.util.List;
@@ -35,4 +36,7 @@ public interface EnvironmentService extends RemoteService {
     public String[] getEnvironmentNames() throws NotLoggedInException;
 
     public List<EnvironmentDM> getEnvironments() throws NotLoggedInException;
+
+    public List<String> addProject(IfcClientProject project) throws NotLoggedInException;
+
 }

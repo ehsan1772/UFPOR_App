@@ -10,6 +10,9 @@ public class IfcClientReal implements IfcClientSimpleValue{
         this.value = value;
     }
 
+    public IfcClientReal() {
+    }
+
     public double getValue() {
         return value;
     }

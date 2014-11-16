@@ -7,12 +7,32 @@ import java.io.Serializable;
  */
 public abstract class IfcClientNamedUnit implements IfcClientUnit, Serializable {
 
+    private IfcClientUnitEnum unitType;
+    private IfcClientDimensionalExponents dimensions;
+
     protected IfcClientNamedUnit(IfcClientUnitEnum unitType, IfcClientDimensionalExponents dimensions) {
         this.unitType = unitType;
         this.dimensions = dimensions;
     }
 
+
     protected IfcClientNamedUnit() {
+    }
+
+    public IfcClientDimensionalExponents getDimensions() {
+        return dimensions;
+    }
+
+    public void setDimensions(IfcClientDimensionalExponents dimensions) {
+        this.dimensions = dimensions;
+    }
+
+    public IfcClientUnitEnum getUnitType() {
+        return unitType;
+    }
+
+    public void setUnitType(IfcClientUnitEnum unitType) {
+        this.unitType = unitType;
     }
 
     public enum IfcClientUnitEnum {
@@ -47,26 +67,6 @@ public abstract class IfcClientNamedUnit implements IfcClientUnit, Serializable 
         VOLUMEUNIT,
         USERDEFINED
     }
-
-
-    public IfcClientDimensionalExponents getDimensions() {
-        return dimensions;
-    }
-
-    public void setDimensions(IfcClientDimensionalExponents dimensions) {
-        this.dimensions = dimensions;
-    }
-
-    public IfcClientUnitEnum getUnitType() {
-        return unitType;
-    }
-
-    public void setUnitType(IfcClientUnitEnum unitType) {
-        this.unitType = unitType;
-    }
-
-    private IfcClientUnitEnum unitType;
-    private IfcClientDimensionalExponents dimensions;
 
 
 }
