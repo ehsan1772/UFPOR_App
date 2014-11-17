@@ -15,7 +15,8 @@ public class IfcClientConstraint implements Serializable {
     private IfcClientText description;
     private IfcClientConstraintEnum constraintGrade;
     private IfcClientLabel constraintSource;
-    private IfcClientActorSelect creatingActor;
+    //TODO figure out why it fails if this field is not transient
+    private transient IfcClientActorSelect creatingActor;
     private IfcClientDateTime creatingTime;
 
     public IfcClientLabel getName() {

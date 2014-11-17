@@ -1,5 +1,7 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
+import com.ufpor.app.shared.ifcclient.IfcClientLabel;
+
 import java.io.Serializable;
 
 /**
@@ -23,4 +25,8 @@ public class IfcDecLabel implements Serializable {
     }
 
     private String value;
+
+    public static IfcDecLabel getInstance(IfcClientLabel client) {
+        return new IfcDecLabel(client.getValue());
+    }
 }

@@ -1,7 +1,6 @@
 package com.ufpor.app.shared.ifcclient;
 
 import com.ufpor.app.client.LoginInfo;
-import com.ufpor.app.shared.ifckernel.IfcText;
 
 import java.io.Serializable;
 
@@ -18,7 +17,7 @@ public abstract class IfcClientRoot extends GAEObject implements Serializable {
 
     private IfcClientLabel name;
 
-    private IfcText description;
+    private IfcClientText description;
 
     public IfcClientRoot(String GUID, LoginInfo user) {
         super(user);
@@ -49,11 +48,11 @@ public abstract class IfcClientRoot extends GAEObject implements Serializable {
         this.name = name;
     }
 
-    public IfcText getDescription() {
+    public IfcClientText getDescription() {
         return description;
     }
 
-    public void setDescription(IfcText description) {
+    public void setDescription(IfcClientText description) {
         this.description = description;
     }
 }

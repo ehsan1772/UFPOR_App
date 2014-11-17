@@ -1,10 +1,10 @@
 package com.ufpor.app.client.data;
 
 import com.ufpor.app.shared.ifcclient.IfcClientLabel;
+import com.ufpor.app.shared.ifcclient.IfcClientText;
 import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
 import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpaceTypeEnum;
 import com.ufpor.app.shared.ifckernel.IfcElementCompositionEnum;
-import com.ufpor.app.shared.ifckernel.IfcText;
 
 /**
  * Created by Ehsan Barekati on 11/6/14.
@@ -50,7 +50,7 @@ public class SpaceBuilder implements SpaceBuilderI {
 
     @Override
     public String setDescription(String description) {
-        IfcText text = new IfcText(description);
+        IfcClientText text = new IfcClientText(description);
         space.setDescription(text);
         return text.getValue();
     }

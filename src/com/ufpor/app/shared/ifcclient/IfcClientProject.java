@@ -35,6 +35,10 @@ public class IfcClientProject extends IfcClientContext {
 
         spatialStructureRoot = new ArrayList<IfcClientSpatialElement>();
 
+
+        // to create and add the property to the project
+        setTotalGrossArea(0);
+
     }
 
     public static IfcClientSIUnit getAreaUnit() {

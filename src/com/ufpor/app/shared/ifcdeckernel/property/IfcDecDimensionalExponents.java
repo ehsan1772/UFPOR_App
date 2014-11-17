@@ -1,5 +1,7 @@
 package com.ufpor.app.shared.ifcdeckernel.property;
 
+import com.ufpor.app.shared.ifcclient.IfcClientDimensionalExponents;
+
 /**
  * Created by Ehsan Barekati on 11/15/14.
  */
@@ -10,6 +12,7 @@ public class IfcDecDimensionalExponents {
     private int electricCurrentExponent;
     private int thermodynamicTemperatureExponent;
     private int amountOfSubstanceExponent;
+    private int luminousntensityExponent;
 
     public int getLuminousntensityExponent() {
         return luminousntensityExponent;
@@ -67,5 +70,17 @@ public class IfcDecDimensionalExponents {
         this.lengthExponent = lengthExponent;
     }
 
-    private int luminousntensityExponent;
+    public static IfcDecDimensionalExponents getInstance(IfcClientDimensionalExponents client) {
+        IfcDecDimensionalExponents result = new IfcDecDimensionalExponents();
+
+        result.setLengthExponent(client.getLengthExponent());
+        result.setAmountOfSubstanceExponent(client.getAmountOfSubstanceExponent());
+        result.setElectricCurrentExponent(client.getElectricCurrentExponent());
+        result.setLuminousntensityExponent(client.getLuminousntensityExponent());
+        result.setMassExponent(client.getMassExponent());
+        result.setThermodynamicTemperatureExponent(client.getThermodynamicTemperatureExponent());
+        result.setTimeExponent(client.getTimeExponent());
+
+        return result;
+    }
 }

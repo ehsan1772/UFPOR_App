@@ -7,6 +7,14 @@ public class IfcClientSIUnit extends IfcClientNamedUnit {
     private IfcClientSIPrefix prefix;
     private IfcClientSIUnitName name;
 
+    public IfcClientSIPrefix getPrefix() {
+        return prefix;
+    }
+
+    public IfcClientSIUnitName getName() {
+        return name;
+    }
+
     public IfcClientSIUnit(IfcClientUnitEnum unitType, IfcClientDimensionalExponents dimensions, IfcClientSIUnitName name) {
         super(unitType, dimensions);
         this.name = name;

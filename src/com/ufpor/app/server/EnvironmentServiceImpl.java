@@ -9,6 +9,7 @@ import com.ufpor.app.client.service.EnvironmentService;
 import com.ufpor.app.client.NotLoggedInException;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
 import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecProject;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
 
 import javax.jdo.JDOHelper;
@@ -101,6 +102,8 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
 
     @Override
     public List<String> addProject(IfcClientProject project) throws NotLoggedInException {
+        checkLoggedIn();
+        IfcDecProject result = IfcDecProject.getInstance(project);
         return null;
     }
 

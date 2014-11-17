@@ -1,5 +1,7 @@
 package com.ufpor.app.shared.ifcdeckernel.property;
 
+import com.ufpor.app.shared.ifcclient.IfcClientNamedUnit;
+
 /**
  * Created by Ehsan Barekati on 11/15/14.
  */
@@ -42,6 +44,16 @@ public abstract class IfcDecNamedUnit implements IfcDecUnit {
         THERMODYNAMICTEMPERATUREUNIT,
         TIMEUNIT,
         VOLUMEUNIT,
-        USERDEFINED
+        USERDEFINED;
+
+        public static IfcDecUnitEnum getInstance(IfcClientNamedUnit.IfcClientUnitEnum client) {
+            for(IfcDecUnitEnum val : IfcDecUnitEnum.values()) {
+                if (val.name().equals(client.name())) {
+                    return val;
+                }
+            }
+            return null;
+        }
     }
+
 }

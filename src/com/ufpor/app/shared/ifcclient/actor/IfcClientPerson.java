@@ -19,4 +19,7 @@ public class IfcClientPerson implements IfcClientActorSelect {
     private ArrayList<IfcClientLabel> suffixTitles;
     private ArrayList<IfcActorRole> roles;
     private ArrayList<IfcClientAddress> addresses;
+
+    public IfcClientPerson() {
+    }
 }

@@ -9,5 +9,5 @@ import javax.jdo.annotations.PersistenceCapable;
  */
 @PersistenceCapable
 @Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
-public abstract class IfcDecPropertySetDefinition extends IfcDecProperryDefinition {
+public abstract class IfcDecPropertySetDefinition extends IfcDecProperryDefinition implements IfcDecPropertySetDefinitionSelect {
 }

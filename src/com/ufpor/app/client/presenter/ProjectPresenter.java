@@ -41,7 +41,7 @@ public class ProjectPresenter implements ProjectPresenterI {
     private KeyUpHandler minAreaChanged = new KeyUpHandler() {
         @Override
         public void onKeyUp(KeyUpEvent event) {
-            project.setMaxArea(Double.valueOf(projectView1.getThirdTextBoxLText()));
+            project.setMinArea(Double.valueOf(projectView1.getThirdTextBoxLText()));
         }
     };
 

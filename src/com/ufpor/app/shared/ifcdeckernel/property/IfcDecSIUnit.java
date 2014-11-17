@@ -1,5 +1,7 @@
 package com.ufpor.app.shared.ifcdeckernel.property;
 
+import com.ufpor.app.shared.ifcclient.IfcClientSIUnit;
+
 /**
  * Created by Ehsan Barekati on 11/15/14.
  */
@@ -28,7 +30,16 @@ public class IfcDecSIUnit extends IfcDecNamedUnit{
         NANO,
         PICO,
         FEMTO,
-        ATTO
+        ATTO;
+
+        public IfcDecSIPrefix getInstance(IfcClientSIUnit.IfcClientSIPrefix client) {
+            for(IfcDecSIPrefix val : IfcDecSIPrefix.values()) {
+                if (val.name().equals(client.name())) {
+                    return val;
+                }
+            }
+            return null;
+        }
     }
 
     public enum IfcDecSIUnitName {
@@ -61,6 +72,23 @@ public class IfcDecSIUnit extends IfcDecNamedUnit{
         TESLA,
         VOLT,
         WATT,
-        WEBER
+        WEBER;
+
+        public static IfcDecSIUnitName getInstance(IfcClientSIUnit.IfcClientSIUnitName client) {
+            for(IfcDecSIUnitName val : IfcDecSIUnitName.values()) {
+                if (val.name().equals(client.name())) {
+                    return val;
+                }
+            }
+            return null;
+        }
+    }
+
+    public static IfcDecSIUnit getInstance(IfcClientSIUnit client) {
+        IfcDecSIPrefix prefix;
+        IfcDecSIUnitName unit;
+
+        IfcDecDimensionalExponents ex = IfcDecDimensionalExponents.getInstance(client.getDimensions());
+        return new IfcDecSIUnit(IfcDecUnitEnum.getInstance(client.getUnitType()), ex, IfcDecSIUnitName.getInstance(client.getName()));
     }
 }

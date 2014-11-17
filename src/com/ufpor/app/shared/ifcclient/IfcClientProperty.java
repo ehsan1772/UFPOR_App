@@ -16,6 +16,9 @@ public abstract class IfcClientProperty extends IfcClientPropertyAbstraction {
     private IfcClientIdentifier name;
     private IfcClientText description;
     private ArrayList<IfcClientConstraint> constraints = new ArrayList<IfcClientConstraint>();
+    private IfcClientMetric max;
+    private IfcClientMetric min;
+
 
     public IfcClientIdentifier getName() {
         return name;
@@ -43,10 +46,12 @@ public abstract class IfcClientProperty extends IfcClientPropertyAbstraction {
      * @param minValue
      */
     public void setMinArea(double minValue) {
-        IfcClientMetric min = new IfcClientMetric(new IfcClientLabel(MIN_CLIENT), IfcClientConstraintEnum.HARD);
+        if (min == null) {
+            min = new IfcClientMetric(new IfcClientLabel(MIN_CLIENT), IfcClientConstraintEnum.HARD);
+            constraints.add(min);
+        }
         min.setBenchMark(IfcClientBenchmarkEnum.GREATERTHANOREQUALTO);
         min.setDataValue(new IfcClientReal(minValue));
-        constraints.add(min);
     }
 
     /**
@@ -55,10 +60,12 @@ public abstract class IfcClientProperty extends IfcClientPropertyAbstraction {
      * @param maxValue
      */
     public void setMaxArea(double maxValue) {
-        IfcClientMetric max = new IfcClientMetric(new IfcClientLabel(MAX_CLIENT), IfcClientConstraintEnum.HARD);
+        if (max == null) {
+            max = new IfcClientMetric(new IfcClientLabel(MAX_CLIENT), IfcClientConstraintEnum.HARD);
+            constraints.add(max);
+        }
         max.setBenchMark(IfcClientBenchmarkEnum.LESSTHANOREQUALTO);
         max.setDataValue(new IfcClientReal(maxValue));
-        constraints.add(max);
     }
 
 }

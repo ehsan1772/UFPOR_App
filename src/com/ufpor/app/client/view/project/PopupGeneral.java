@@ -4,11 +4,15 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Widget;
 import com.ufpor.app.client.LoginInfo;
-import com.ufpor.app.client.view.PopupBase;
 import com.ufpor.app.client.presenter.ProjectPresenter;
+import com.ufpor.app.client.service.EnvironmentService;
+import com.ufpor.app.client.view.PopupBase;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
+
+import java.util.List;
 
 /**
  * Created by Ehsan Barekati on 11/13/14.
@@ -17,6 +21,7 @@ import com.ufpor.app.shared.ifcclient.IfcClientProject;
 public class PopupGeneral extends PopupBase  {
     private static PopupGeneralUiBinder uiBinder = GWT.create(PopupGeneralUiBinder.class);
     private HalfPopUpView projectView1;
+    private IfcClientProject project;
 
     public PopupGeneral(LoginInfo loginInfo) {
         super(loginInfo);
@@ -25,14 +30,24 @@ public class PopupGeneral extends PopupBase  {
     @Override
     protected void initWidget(Widget widget) {
         initWidgetSuper(widget);
-        IfcClientProject project = new IfcClientProject();
+        project = new IfcClientProject();
         ProjectPresenter pr = new ProjectPresenter(project);
         panel.add(pr.getView(), "General2");
     }
 
     @UiHandler("save")
     public void handleClick1(ClickEvent e) {
-        int i = 0;
+        EnvironmentService.App.getInstance().addProject(project, new AsyncCallback<List<String>>() {
+            @Override
+            public void onFailure(Throwable caught) {
+
+            }
+
+            @Override
+            public void onSuccess(List<String> result) {
+
+            }
+        });
     }
 
 
