@@ -1,6 +1,9 @@
 package com.ufpor.app.shared.ifcdeckernel.property;
 
 import com.ufpor.app.shared.ifcclient.*;
+import com.ufpor.app.shared.ifcclient.constraint.IfcClientConstraint;
+import com.ufpor.app.shared.ifcclient.constraint.IfcClientMetric;
+import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecMetric;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.PersistenceCapable;
@@ -47,12 +50,19 @@ public class IfcDecPropertySingleValue extends IfcDecSimpleProperty {
         }
 
         if (client.getUnit() instanceof IfcClientSIUnit) {
-            unit = IfcDecSIUnit.getInstance((IfcClientSIUnit) client.getNominalValue());
+            unit = IfcDecSIUnit.getInstance((IfcClientSIUnit) client.getUnit());
         }
 
         IfcDecPropertySingleValue result = new IfcDecPropertySingleValue();
         result.setNominalValue(nominalValue);
         result.setUnit(unit);
+
+        for (IfcClientConstraint constraint :client.getConstraints()) {
+            if (constraint instanceof IfcClientMetric) {
+                result.addConstraint(IfcDecMetric.getInstance((IfcClientMetric) constraint));
+            }
+
+        }
 
         return result;
     }

@@ -14,6 +14,9 @@ public class IfcDecSIUnit extends IfcDecNamedUnit{
         this.name = name;
     }
 
+    public IfcDecSIUnit() {
+    }
+
     public enum IfcDecSIPrefix {
         EXA,
         PETA,

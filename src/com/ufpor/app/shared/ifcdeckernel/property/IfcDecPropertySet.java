@@ -6,6 +6,7 @@ import com.ufpor.app.shared.ifcclient.IfcClientPropertySingleValue;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 import java.util.ArrayList;
 
 /**
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 @PersistenceCapable
 @Inheritance(customStrategy = "complete-table")
 public class IfcDecPropertySet extends IfcDecPropertySetDefinition {
+    @Persistent(serialized = "true")
     protected ArrayList<IfcDecProperty> properties;
 
     public IfcDecPropertySet() {
@@ -34,6 +36,7 @@ public class IfcDecPropertySet extends IfcDecPropertySetDefinition {
             if (prop instanceof IfcClientPropertySingleValue) {
                 properties.add(IfcDecPropertySingleValue.getInstance((IfcClientPropertySingleValue) prop));
             }
+
         }
         IfcDecPropertySet result = new IfcDecPropertySet();
         result.setProperties(properties);

@@ -1,5 +1,7 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecText;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

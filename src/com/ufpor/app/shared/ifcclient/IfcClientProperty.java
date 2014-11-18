@@ -15,6 +15,11 @@ public abstract class IfcClientProperty extends IfcClientPropertyAbstraction {
     private static final String MAX_CLIENT = "max_area";
     private IfcClientIdentifier name;
     private IfcClientText description;
+
+    public ArrayList<IfcClientConstraint> getConstraints() {
+        return constraints;
+    }
+
     private ArrayList<IfcClientConstraint> constraints = new ArrayList<IfcClientConstraint>();
     private IfcClientMetric max;
     private IfcClientMetric min;

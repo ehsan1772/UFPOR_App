@@ -27,6 +27,9 @@ public class IfcDecLabel implements Serializable {
     private String value;
 
     public static IfcDecLabel getInstance(IfcClientLabel client) {
-        return new IfcDecLabel(client.getValue());
+        if (client != null) {
+            return new IfcDecLabel(client.getValue());
+        }
+        return null;
     }
 }

@@ -8,6 +8,9 @@ import com.ufpor.app.shared.ifcclient.IfcClientText;
 public class IfcDecText implements IfcDecSimpleValue {
     private String value;
 
+    public IfcDecText() {
+    }
+
     public String getValue() {
         return value;
     }
@@ -22,6 +25,9 @@ public class IfcDecText implements IfcDecSimpleValue {
     }
 
     public static IfcDecText getInstance(IfcClientText client) {
-        return new IfcDecText(client.getValue());
+        if (client != null) {
+            return new IfcDecText(client.getValue());
+        }
+        return null;
     }
 }

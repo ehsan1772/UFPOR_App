@@ -1,18 +1,17 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserServiceFactory;
+import com.ufpor.app.server.GuidCompressor;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
 import com.ufpor.app.shared.ifcclient.IfcClientPropertySet;
 import com.ufpor.app.shared.ifcclient.select.IfcClientPropertySetDefinitionSelect;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpatialElement;
-import com.ufpor.app.shared.ifcdeckernel.property.IfcDecDimensionalExponents;
-import com.ufpor.app.shared.ifcdeckernel.property.IfcDecNamedUnit;
-import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySet;
-import com.ufpor.app.shared.ifcdeckernel.property.IfcDecSIUnit;
+import com.ufpor.app.shared.ifcdeckernel.property.*;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.NotPersistent;
 import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
 import java.util.ArrayList;
 
 /**
@@ -21,7 +20,8 @@ import java.util.ArrayList;
 @PersistenceCapable
 @Inheritance(customStrategy = "complete-table")
 public class IfcDecProject extends IfcDecContext {
-    protected final static IfcDecSIUnit AREA_UNIT = getAreaUnit();
+    @NotPersistent
+    protected IfcDecSIUnit AREA_UNIT = getAreaUnit();
     /**
      * this is how we can add properties such as total area. those properties might be associated with constraints
      * it doesn;t need to be persistent because we are adding it to "isDefinedBy" which is store as a
@@ -39,8 +39,16 @@ public class IfcDecProject extends IfcDecContext {
      * //TODO right now we store it through an owned one-to-one relationship. it means deleting
      * //TODO the project will delete the spatial structure attached to it. If we want to have an archive of spatial elements. it's not a good idea
      */
-    @Persistent
+   // @Persistent(serialized = "true")
+    @NotPersistent
     protected ArrayList<IfcDecSpatialElement> spatialStructureRoot;
+
+    public IfcDecProject(String guid, User user) {
+        super(guid, user);
+    }
+
+    public IfcDecProject() {
+    }
 
     public static IfcDecSIUnit getAreaUnit() {
         IfcDecDimensionalExponents dimension = new IfcDecDimensionalExponents();
@@ -53,9 +61,15 @@ public class IfcDecProject extends IfcDecContext {
         return unit;
     }
 
+
     public static IfcDecProject getInstance(IfcClientProject project) {
-        int i = 0;
-        IfcDecProject result = new IfcDecProject();
+        //Getting GUID
+        String guid = GuidCompressor.getNewIfcGloballyUniqueId();
+
+        //Getting the User
+        User user = UserServiceFactory.getUserService().getCurrentUser();
+
+        IfcDecProject result = new IfcDecProject(guid, user);
         for (IfcClientPropertySetDefinitionSelect property : project.getIsDefinedBy())
         if (property instanceof IfcClientPropertySet) {
             IfcDecPropertySet propertSet = IfcDecPropertySet.getInstance((IfcClientPropertySet) property);
@@ -65,7 +79,9 @@ public class IfcDecProject extends IfcDecContext {
         //TODO complete this list
         result.setLongName(IfcDecLabel.getInstance(project.getLongName()));
         result.setName(IfcDecLabel.getInstance(project.getName()));
-        result.setDescription(IfcDecText.getInstance(project.getDescription()));
+        if (project.getDescription() != null) {
+            result.setDescription(IfcDecText.getInstance(project.getDescription()));
+        }
 
 
         return result;

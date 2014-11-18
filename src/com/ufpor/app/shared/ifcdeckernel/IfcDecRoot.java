@@ -1,6 +1,7 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
 import com.google.appengine.api.users.User;
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecText;
 
 import javax.jdo.annotations.*;
 import java.io.Serializable;

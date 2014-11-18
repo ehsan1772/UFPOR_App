@@ -14,6 +14,9 @@ public abstract class IfcDecNamedUnit implements IfcDecUnit {
         this.dimensions = dimensions;
     }
 
+    protected IfcDecNamedUnit() {
+    }
+
     public enum IfcDecUnitEnum {
         ABSORBEDDOSEUNIT,
         AMOUNTOFSUBSTANCEUNIT,

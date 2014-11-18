@@ -2,10 +2,12 @@ package com.ufpor.app.shared.ifcdeckernel.property;
 
 import com.ufpor.app.shared.ifcclient.IfcClientDimensionalExponents;
 
+import java.io.Serializable;
+
 /**
  * Created by Ehsan Barekati on 11/15/14.
  */
-public class IfcDecDimensionalExponents {
+public class IfcDecDimensionalExponents implements Serializable {
     private int lengthExponent;
     private int massExponent;
     private int timeExponent;

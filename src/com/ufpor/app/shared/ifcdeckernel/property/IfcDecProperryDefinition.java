@@ -1,5 +1,6 @@
 package com.ufpor.app.shared.ifcdeckernel.property;
 
+import com.ufpor.app.shared.ifcdeckernel.IfcDecDefinitionSelect;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecRoot;
 
 import javax.jdo.annotations.Inheritance;
