@@ -6,10 +6,7 @@ import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecBenchmarkEnum
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecConstraint;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecMetric;
 
-import javax.jdo.annotations.Inheritance;
-import javax.jdo.annotations.InheritanceStrategy;
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.*;
 import java.util.ArrayList;
 
 /**
@@ -22,7 +19,12 @@ public abstract class IfcDecProperty extends IfcDecPropertyAbstraction {
     private IfcDecIdentifier name;
     @Persistent
     private IfcDecText description;
-    @Persistent
+
+    public ArrayList<IfcDecConstraint> getConstraints() {
+        return constraints;
+    }
+
+    @Persistent(serialized = "true")
     private ArrayList<IfcDecConstraint> constraints = new ArrayList<IfcDecConstraint>();
 
     public IfcDecText getDescription() {

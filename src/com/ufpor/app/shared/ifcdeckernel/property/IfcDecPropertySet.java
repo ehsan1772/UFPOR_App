@@ -5,6 +5,7 @@ import com.ufpor.app.shared.ifcclient.IfcClientPropertySet;
 import com.ufpor.app.shared.ifcclient.IfcClientPropertySingleValue;
 
 import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.NotPersistent;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import java.util.ArrayList;
@@ -15,19 +16,14 @@ import java.util.ArrayList;
 @PersistenceCapable
 @Inheritance(customStrategy = "complete-table")
 public class IfcDecPropertySet extends IfcDecPropertySetDefinition {
-    @Persistent(serialized = "true")
+    @NotPersistent
     protected ArrayList<IfcDecProperty> properties;
+
+    @Persistent
+    protected ArrayList<IfcDecPropertySingleValue> properties_SingleValue;
 
     public IfcDecPropertySet() {
         properties = new ArrayList<IfcDecProperty>();
-    }
-
-    public ArrayList<IfcDecProperty> getProperties() {
-        return properties;
-    }
-
-    public void setProperties(ArrayList<IfcDecProperty> properties) {
-        this.properties = properties;
     }
 
     public static IfcDecPropertySet getInstance(IfcClientPropertySet client) {
@@ -41,5 +37,36 @@ public class IfcDecPropertySet extends IfcDecPropertySetDefinition {
         IfcDecPropertySet result = new IfcDecPropertySet();
         result.setProperties(properties);
         return result;
+    }
+
+    public ArrayList<IfcDecProperty> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(ArrayList<IfcDecProperty> properties) {
+        this.properties = properties;
+    }
+
+    public void onPrePut() {
+        if (properties != null) {
+            properties_SingleValue = new ArrayList<IfcDecPropertySingleValue>();
+            for (IfcDecProperty property : properties) {
+                IfcDecPropertySingleValue singleValue = (IfcDecPropertySingleValue) property;
+                singleValue.onPrePut();
+                properties_SingleValue.add(singleValue);
+            }
+        }
+
+    }
+
+    public void onPostLoad() {
+        if (properties_SingleValue != null) {
+            properties = new ArrayList<IfcDecProperty>();
+            for (IfcDecPropertySingleValue singleValue : properties_SingleValue) {
+                singleValue.onPostLoad();
+                properties.add(singleValue);
+            }
+        }
+
     }
 }

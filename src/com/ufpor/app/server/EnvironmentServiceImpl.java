@@ -7,6 +7,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.ufpor.app.client.NotLoggedInException;
 import com.ufpor.app.client.service.EnvironmentService;
 import com.ufpor.app.client.view.EnvironmentDM;
+import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
 import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecProject;
@@ -105,6 +106,9 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         checkLoggedIn();
 
         IfcDecProject pr = IfcDecProject.getInstance(project);
+
+        pr.prepareDataForStore(null);
+        pr.prepareDataForStoreIfcDecContext(null);
         PersistenceManager pm = getPersistenceManager();
         try {
             pm.makePersistent(pr);
@@ -114,7 +118,38 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         finally {
             pm.close();
         }
-        return null;
+
+
+        ArrayList<String> finalResult = new ArrayList<String>();
+        String header = Constants.getHeader(pr.getLongName().getValue(), pr.getName().getValue(), pr.getUser().getNickname(),pr.getUser().getEmail(), pr.getUser().getAuthDomain());
+        LOG.log(Level.INFO, "Header is: " + header);
+        finalResult.add(header);
+        return finalResult;
+
+
+//        PersistenceManager pm2 = getPersistenceManager();
+//        List<IfcDecProject> projects = null;
+//        IfcDecProject finalResult = null;
+//        ArrayList<IfcDecConstraint> constratints = null;
+//        try {
+//            Query q = pm2.newQuery(IfcDecProject.class, "user == u");
+//            q.declareParameters("com.google.appengine.api.users.User u");
+//            projects = (List<IfcDecProject>) q.execute(getUser());
+//            finalResult = projects.get(projects.size() - 1);
+//            finalResult.prepareDataForClient(null);
+//            finalResult.prepareDataForClientIfcDecContext(null);
+//            IfcDecPropertySet defin = (IfcDecPropertySet) finalResult.getIsDefinedBy().get(0);
+//            IfcDecPropertySingleValue prop = (IfcDecPropertySingleValue) defin.getProperties().get(0);
+//            constratints = prop.getConstraints();
+//
+//        } catch (Exception exception) {
+//            LOG.log(Level.SEVERE, exception.getMessage());
+//        }
+//        finally {
+//            pm2.close();
+//        }
+
+  //      return null;
     }
 
     private void checkLoggedIn() throws NotLoggedInException {

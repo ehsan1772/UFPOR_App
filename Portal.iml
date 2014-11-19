@@ -26,6 +26,7 @@
         <files-to-enhance>
           <file path="$MODULE_DIR$/src" />
         </files-to-enhance>
+        <persistence-api>JDO3</persistence-api>
       </configuration>
     </facet>
   </component>
@@ -39,7 +40,7 @@
     <orderEntry type="library" name="gwt-user" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="AppEngine Dev 1.9.12" level="application_server_libraries" />
     <orderEntry type="library" name="AppEngine API" level="project" />
-    <orderEntry type="library" name="AppEngine ORM" level="project" />
+    <orderEntry type="library" name="v2" level="project" />
   </component>
 </module>
 

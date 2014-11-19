@@ -1,7 +1,12 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
+import com.google.appengine.api.datastore.PostLoad;
+import com.google.appengine.api.datastore.PostLoadContext;
+import com.google.appengine.api.datastore.PrePut;
+import com.google.appengine.api.datastore.PutContext;
 import com.google.appengine.api.users.User;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySet;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySetDefinition;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySetDefinitionSelect;
 
@@ -15,15 +20,15 @@ import java.util.ArrayList;
 @PersistenceCapable
 @Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
 public abstract class IfcDecContext extends IfcDecObjectDefinition {
-    //TODO figure out why I cannot use IfcDecPropertySetDefinitionSelect instead of IfcDecPropertySetDefinition
-//    protected ArrayList<IfcDecPropertySetDefinitionSelect> isDefinedBy;
-//    protected ArrayList<IfcDecDefinitionSelect> declares;
-    @Persistent(serialized = "true")
-    protected ArrayList<IfcDecPropertySetDefinition> isDefinedBy;
+    @NotPersistent
+    protected ArrayList<IfcDecPropertySetDefinitionSelect> isDefinedBy;
 
-    @Persistent(serialized = "true")
+    @Persistent
+    protected ArrayList<IfcDecPropertySet> isDefinedBy_PropertySet;
+
+    @NotPersistent
     protected ArrayList<IfcDecObjectDefinition> declaresObject;
-    @Persistent(serialized = "true")
+    @Persistent
     protected ArrayList<IfcDecPropertyDefinition> declaresProperty;
     @NotPersistent
     protected IfcDecLabel objectType;
@@ -53,15 +58,12 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
     }
 
     public ArrayList<IfcDecPropertySetDefinitionSelect> getIsDefinedBy() {
-        ArrayList<IfcDecPropertySetDefinitionSelect> result = new ArrayList<IfcDecPropertySetDefinitionSelect>();
-        for (IfcDecPropertySetDefinition item : isDefinedBy) {
-            result.add(item);
-        }
-        return result;
+
+        return isDefinedBy;
     }
 
     public void setIsDefinedBy(ArrayList<IfcDecPropertySetDefinitionSelect> isDefinedBy) {
-        this.isDefinedBy = new ArrayList<IfcDecPropertySetDefinition>();
+        this.isDefinedBy = new ArrayList<IfcDecPropertySetDefinitionSelect>();
         for (IfcDecPropertySetDefinitionSelect item : isDefinedBy) {
             if (item instanceof IfcDecPropertySetDefinition) {
                 this.isDefinedBy.add((IfcDecPropertySetDefinition) item);
@@ -127,11 +129,32 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
 
     public void addDefinedBy(IfcDecPropertySetDefinitionSelect definedBy) {
         if (this.isDefinedBy == null) {
-            this.isDefinedBy = new ArrayList<IfcDecPropertySetDefinition>();
+            this.isDefinedBy = new ArrayList<IfcDecPropertySetDefinitionSelect>();
         }
 
         this.isDefinedBy.add((IfcDecPropertySetDefinition) definedBy);
 
+    }
+
+    @PrePut(kinds = {"IfcDecProject"})
+    public void prepareDataForStoreIfcDecContext(PutContext context) {
+        isDefinedBy_PropertySet = new ArrayList<IfcDecPropertySet>();
+        for (IfcDecPropertySetDefinitionSelect element : isDefinedBy) {
+            if (element instanceof IfcDecPropertySet) {
+                ((IfcDecPropertySet) element).onPrePut();
+                isDefinedBy_PropertySet.add((IfcDecPropertySet) element);
+            }
+        }
+
+    }
+
+    @PostLoad(kinds = {"IfcDecProject"})
+    public void prepareDataForClientIfcDecContext(PostLoadContext context) {
+        isDefinedBy = new ArrayList<IfcDecPropertySetDefinitionSelect>();
+        for (IfcDecPropertySet set : isDefinedBy_PropertySet) {
+            set.onPostLoad();
+            isDefinedBy.add(set);
+        }
     }
 
 }

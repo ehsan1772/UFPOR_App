@@ -7,10 +7,12 @@ import com.ufpor.app.shared.ifcclient.constraint.IfcClientMetric;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecLabel;
 import com.ufpor.app.shared.ifcdeckernel.property.*;
 
+import java.io.Serializable;
+
 /**
  * Created by Ehsan Barekati on 11/18/14.
  */
-public class IfcDecMetric extends IfcDecConstraint {
+public class IfcDecMetric extends IfcDecConstraint implements Serializable {
     private IfcDecBenchmarkEnum benchMark;
     private IfcDecLabel valueSource;
     private IfcDecMetricValueSelect dataValue;
