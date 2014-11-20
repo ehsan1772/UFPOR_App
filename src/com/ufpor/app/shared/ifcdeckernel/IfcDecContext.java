@@ -44,10 +44,12 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
     @Persistent
     protected String objectTypeString;
 
+    @Persistent(serialized = "true")
+    protected IfcDecUnitAssignment unitsInContext;
+
     public IfcDecContext(String guid, User user) {
         super(guid, user);
     }
-
 
     protected IfcDecContext() {
     }
@@ -55,6 +57,14 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
     public static int getInstance2(IfcClientProject proj) {
         int i = 0;
         return i;
+    }
+
+    public IfcDecUnitAssignment getUnitsInContext() {
+        return unitsInContext;
+    }
+
+    public void setUnitsInContext(IfcDecUnitAssignment unitsInContext) {
+        this.unitsInContext = unitsInContext;
     }
 
     public ArrayList<IfcDecPropertySetDefinitionSelect> getIsDefinedBy() {

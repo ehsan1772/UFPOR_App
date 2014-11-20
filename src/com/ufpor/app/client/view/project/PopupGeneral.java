@@ -32,7 +32,10 @@ public class PopupGeneral extends PopupBase  {
         initWidgetSuper(widget);
         project = new IfcClientProject();
         ProjectPresenter pr = new ProjectPresenter(project);
-        panel.add(pr.getView(), "General2");
+
+        for(String title : pr.getView().keySet()) {
+            panel.add(pr.getView().get(title) , title);
+        }
     }
 
     @UiHandler("save")

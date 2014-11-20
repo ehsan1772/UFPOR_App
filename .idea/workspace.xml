@@ -25,109 +25,131 @@
     <splitter split-orientation="horizontal" split-proportion="0.4372523">
       <split-first>
         <leaf>
-          <file leaf-file-name="IfcDecProperty.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecProperty.java">
+          <file leaf-file-name="IfcClientContext.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientContext.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="86" max-vertical-offset="960">
-                  <caret line="22" column="57" selection-start-line="22" selection-start-column="57" selection-end-line="22" selection-end-column="57" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
+                  <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
                   <folding>
-                    <element signature="e#880#881#0" expanded="true" />
-                    <element signature="e#987#1005#0" expanded="true" />
-                    <element signature="e#2194#2195#0" expanded="true" />
-                    <element signature="e#2237#2238#0" expanded="true" />
+                    <element signature="e#1297#1298#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="IfcDecSpatialElement.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/decproduct/IfcDecSpatialElement.java">
+          <file leaf-file-name="IfcClientUnitAssignment.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientUnitAssignment.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="615">
-                  <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="IfcDecProject.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecProject.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="1099" max-vertical-offset="1650">
-                  <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
+                  <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
                   <folding>
-                    <element signature="e#2445#2446#0" expanded="true" />
-                    <element signature="e#2478#2479#0" expanded="true" />
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#290#291#0" expanded="true" />
+                    <element signature="e#342#343#0" expanded="true" />
+                    <element signature="e#390#391#0" expanded="true" />
+                    <element signature="e#418#419#0" expanded="true" />
+                    <element signature="e#476#477#0" expanded="true" />
+                    <element signature="e#510#511#0" expanded="true" />
+                    <element signature="e#557#558#0" expanded="true" />
+                    <element signature="e#588#589#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="IfcDecContext.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecContext.java">
+          <file leaf-file-name="EnvironmentGeneral.ui.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/EnvironmentGeneral.ui.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-8.653846" vertical-offset="0" max-vertical-offset="2205">
-                  <caret line="26" column="33" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="1494" max-vertical-offset="3195">
+                  <caret line="152" column="20" selection-start-line="152" selection-start-column="20" selection-end-line="152" selection-end-column="56" />
+                  <folding>
+                    <marker date="1415283996000" expanded="true" signature="198:250" placeholder="{...}" />
+                    <marker date="1415283996000" expanded="true" signature="277:368" placeholder="{...}" />
+                    <marker date="1415283996000" expanded="true" signature="383:408" placeholder="{...}" />
+                    <marker date="1415283996000" expanded="true" signature="424:431" placeholder="{...}" />
+                    <marker date="1415283996000" expanded="true" signature="446:480" placeholder="{...}" />
+                    <marker date="1415283996000" expanded="true" signature="502:550" placeholder="{...}" />
+                    <marker date="1415283996000" expanded="true" signature="570:619" placeholder="{...}" />
+                    <marker date="1415283996000" expanded="true" signature="640:689" placeholder="{...}" />
+                    <marker date="1415283996000" expanded="true" signature="700:784" placeholder="{...}" />
+                    <marker date="1415283996000" expanded="true" signature="796:894" placeholder="{...}" />
+                    <marker date="1415283996000" expanded="true" signature="907:1037" placeholder="{...}" />
+                    <marker date="1415283996000" expanded="true" signature="1049:1082" placeholder="{...}" />
+                    <marker date="1415283996000" expanded="true" signature="1098:1147" placeholder="{...}" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="IfcDecUnitAssignment.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecUnitAssignment.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+                  <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="27" selection-end-column="5" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#347#348#0" expanded="true" />
+                    <element signature="e#396#397#0" expanded="true" />
+                    <element signature="e#441#442#0" expanded="true" />
+                    <element signature="e#469#470#0" expanded="true" />
+                    <element signature="e#524#525#0" expanded="true" />
+                    <element signature="e#558#559#0" expanded="true" />
+                    <element signature="e#602#603#0" expanded="true" />
+                    <element signature="e#633#634#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SpinnerPopUpView.ui.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/project/SpinnerPopUpView.ui.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-5.0925927" vertical-offset="820" max-vertical-offset="2835">
+                  <caret line="73" column="4" selection-start-line="73" selection-start-column="4" selection-end-line="73" selection-end-column="4" />
+                  <folding>
+                    <marker date="1416491363000" expanded="true" signature="198:250" placeholder="{...}" />
+                    <marker date="1416491363000" expanded="true" signature="277:368" placeholder="{...}" />
+                    <marker date="1416491363000" expanded="true" signature="383:408" placeholder="{...}" />
+                    <marker date="1416491363000" expanded="true" signature="424:431" placeholder="{...}" />
+                    <marker date="1416491363000" expanded="true" signature="446:480" placeholder="{...}" />
+                    <marker date="1416491363000" expanded="true" signature="502:550" placeholder="{...}" />
+                    <marker date="1416491363000" expanded="true" signature="570:619" placeholder="{...}" />
+                    <marker date="1416491363000" expanded="true" signature="640:689" placeholder="{...}" />
+                    <marker date="1416491363000" expanded="true" signature="700:784" placeholder="{...}" />
+                    <marker date="1416491363000" expanded="true" signature="796:894" placeholder="{...}" />
+                    <marker date="1416491363000" expanded="true" signature="907:1037" placeholder="{...}" />
+                    <marker date="1416491363000" expanded="true" signature="1049:1082" placeholder="{...}" />
+                    <marker date="1416491363000" expanded="true" signature="1098:1147" placeholder="{...}" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="IfcClientProject.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientProject.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1170">
+                  <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="IfcDecPropertyDefinition.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecPropertyDefinition.java">
+          <file leaf-file-name="IfcClientSIUnit.java" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientSIUnit.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
-                  <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+                <state vertical-scroll-proportion="0.6561403" vertical-offset="46" max-vertical-offset="1215">
+                  <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="IfcDecMetric.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/constraint/IfcDecMetric.java">
+          <file leaf-file-name="IfcClientDimensionalExponents.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientDimensionalExponents.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="159" max-vertical-offset="855">
-                  <caret line="43" column="39" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="IfcDecConstraint.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/constraint/IfcDecConstraint.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="1125">
-                  <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="54" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="IfcDecPropertySet.java" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecPropertySet.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.59891105" vertical-offset="0" max-vertical-offset="960">
-                  <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="IfcDecSimpleProperty.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecSimpleProperty.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-                  <caret line="11" column="58" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="58" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="IfcDecPropertySingleValue.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecPropertySingleValue.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="1785">
-                  <caret line="81" column="32" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="32" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="870">
+                  <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
                   <folding />
                 </state>
               </provider>
@@ -137,23 +159,57 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="EnvironmentServiceImpl.java" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/server/EnvironmentServiceImpl.java">
+          <file leaf-file-name="ProjectPresenter.java" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/presenter/ProjectPresenter.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.33275262" vertical-offset="1384" max-vertical-offset="2565">
-                  <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.80944353" vertical-offset="945" max-vertical-offset="2430">
+                  <caret line="116" column="67" selection-start-line="116" selection-start-column="67" selection-end-line="116" selection-end-column="67" />
                   <folding>
-                    <element signature="e#4425#4433#0" expanded="true" />
+                    <element signature="e#1715#1902#0" expanded="true" />
+                    <element signature="e#1895#1896#0" expanded="true" />
+                    <element signature="e#1950#2381#0" expanded="true" />
+                    <element signature="e#2374#2375#0" expanded="true" />
+                    <element signature="e#2427#2853#0" expanded="true" />
+                    <element signature="e#2846#2847#0" expanded="true" />
+                    <element signature="e#2901#3332#0" expanded="true" />
+                    <element signature="e#3325#3326#0" expanded="true" />
+                    <element signature="e#4451#4459#0" expanded="true" />
+                    <element signature="e#5645#5646#0" expanded="true" />
+                    <element signature="e#5686#5687#0" expanded="true" />
+                    <element signature="e#5759#5760#0" expanded="true" />
+                    <element signature="e#5795#5796#0" expanded="true" />
+                    <element signature="e#6087#6088#0" expanded="true" />
+                    <element signature="e#6115#6116#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Constants.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/server/ifcphysical/Constants.java">
+          <file leaf-file-name="ArrayList.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_60.jdk/Contents/Home/src.zip!/java/util/ArrayList.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="146" max-vertical-offset="720">
-                  <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="4995" max-vertical-offset="16695">
+                  <caret line="356" column="20" selection-start-line="356" selection-start-column="20" selection-end-line="356" selection-end-column="20" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ProjectPresenterI.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/presenter/ProjectPresenterI.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
+                  <caret line="5" column="48" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PresenterI.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/presenter/PresenterI.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+                  <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -161,81 +217,61 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="jdoconfig.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/META-INF/jdoconfig.xml">
+          <file leaf-file-name="IfcClientNamedUnit.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientNamedUnit.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
-                  <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1050">
+                  <caret line="46" column="31" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+          <file leaf-file-name="HalfPopUpView.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/project/HalfPopUpView.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3630">
+                  <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Portal.iml" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Portal.iml">
+          <file leaf-file-name="IfcDecProject.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecProject.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="780">
-                  <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1620">
+                  <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Environment.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/server/Environment.java">
+          <file leaf-file-name="PopupGeneral.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/project/PopupGeneral.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1260">
-                  <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="193" max-vertical-offset="780">
+                  <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ProjectPresenter.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/presenter/ProjectPresenter.java">
+          <file leaf-file-name="SpinnerPopUpView.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/project/SpinnerPopUpView.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="1425">
-                  <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="3092" max-vertical-offset="3765">
+                  <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="IfcDecPropertySetDefinition.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecPropertySetDefinition.java">
+          <file leaf-file-name="IfcDecContext.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecContext.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="285">
-                  <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="GAEObject.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/GAEObject.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="465">
-                  <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="16" selection-end-column="22" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="IfcDecText.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecText.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="615">
-                  <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="2295">
+                  <caret line="71" column="27" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="27" />
                   <folding />
                 </state>
               </provider>
@@ -253,17 +289,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/actor/IfcClientPerson.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/presenter/ProjectPresenter.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecUnit.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecPropetySet.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecPropertySetDefinition.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientPropertySet.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientSIUnit.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientRoot.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/data/SpaceBuilder.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecText.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecNamedUnit.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecProperryDefinition.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecDefinitionSelect.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/decproduct/IfcDecSpace.java" />
@@ -297,13 +322,24 @@
         <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecProject.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecPropertySet.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecSIUnit.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecContext.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecPropertySingleValue.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecProperty.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecPrppertySetDefinition.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcphysical/Constants.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/server/ifcphysical/Constants.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/server/EnvironmentServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecUnitAssignment.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientUnitAssignment.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/view/project/SpinnerPopUpView.ui.xml" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/presenter/ProjectPresenterUnits.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/view/project/SpinnerPopUpView.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecContext.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientContext.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientSIUnit.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/presenter/ProjectPresenterI.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/presenter/PresenterI.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/view/project/PopupGeneral.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/presenter/ProjectPresenter.java" />
       </list>
     </option>
   </component>
@@ -341,8 +377,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -447,7 +483,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="shared" />
+              <option name="myItemId" value="client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -469,7 +505,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="presenter" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -523,15 +563,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ufpor.app.client.presenter" />
+      <recent name="com.ufpor.app.client.view.project" />
       <recent name="com.ufpor.app.client.view" />
       <recent name="com.ufpor.app.shared.ifcdeckernel.decproduct" />
       <recent name="com.ufpor.app.shared.ifcdeckernel" />
-      <recent name="com.ufpor.app.server.ifcKernel" />
-    </key>
-    <key name="GwtCreateUiBinderDialog.RecentRootElementType">
-      <recent name="com.google.gwt.dom.client.DivElement" />
-      <recent name="com.google.gwt.user.client.ui.SplitLayoutPanel" />
-      <recent name="com.google.gwt.user.client.ui.HTMLPanel" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/com/ufpor/app/client/view/project" />
@@ -539,6 +575,11 @@
       <recent name="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient" />
       <recent name="$PROJECT_DIR$/src/com/ufpor/app/shared" />
       <recent name="$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/decproduct" />
+    </key>
+    <key name="GwtCreateUiBinderDialog.RecentRootElementType">
+      <recent name="com.google.gwt.dom.client.DivElement" />
+      <recent name="com.google.gwt.user.client.ui.SplitLayoutPanel" />
+      <recent name="com.google.gwt.user.client.ui.HTMLPanel" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="com.ufpor.app.server" />
@@ -599,19 +640,6 @@
     <configuration default="true" type="google-app-engine-deploy" factoryName="Google App Engine Deployment">
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -639,6 +667,19 @@
       <listeners />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" />
       <option name="VM_PARAMETERS" />
@@ -651,10 +692,6 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="GWT.ConfigurationType" factoryName="GWT Configuration">
-      <module name="" />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -675,6 +712,10 @@
       </option>
       <envs />
       <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="GWT.ConfigurationType" factoryName="GWT Configuration">
+      <module name="" />
       <method />
     </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -782,7 +823,7 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32778355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23517169" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23468328" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3361082" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -798,7 +839,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19382322" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15601704" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31718394" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31633714" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -868,118 +909,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/constraint/IfcClientBenchmarkEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/actor/IfcClientActorSelect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/actor/IfcDecPerson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
-          <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecActorRole.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="53" max-vertical-offset="615">
-          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecAddress.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
-          <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/constraint/IfcClientConstraint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientProperty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1005">
-          <caret line="18" column="60" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/constraint/IfcDecConstraintEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="20" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/constraint/IfcDecBenchmarkEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
-          <caret line="29" column="56" selection-start-line="29" selection-start-column="56" selection-end-line="29" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDectDateTime.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47158405" vertical-offset="0" max-vertical-offset="827">
-          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecDimensionalExponents.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.375" vertical-offset="30" max-vertical-offset="1110">
-          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Development/appengine-java-sdk-1.9.12/src/orm/jdo2-api-2.3-SNAPSHOT-src.zip!/javax/jdo/PersistenceManagerFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33238232" vertical-offset="817" max-vertical-offset="10905">
-          <caret line="98" column="23" selection-start-line="98" selection-start-column="23" selection-end-line="98" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecPropertySetDefinitionSelect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240">
-          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecNamedUnit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18292683" vertical-offset="0" max-vertical-offset="1020">
-          <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecReal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20100503" vertical-offset="0" max-vertical-offset="597">
-          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecSimpleValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11848341" vertical-offset="0" max-vertical-offset="633">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecValue.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11432927" vertical-offset="0" max-vertical-offset="656">
@@ -1027,7 +956,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
           <caret line="16" column="53" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1120,7 +1048,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="633">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1140,38 +1067,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecUnit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1861702" vertical-offset="0" max-vertical-offset="564">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecSIUnit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21778585" vertical-offset="0" max-vertical-offset="1575">
-          <caret line="10" column="75" selection-start-line="10" selection-start-column="75" selection-end-line="10" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/constraint/IfcDecMetric.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="159" max-vertical-offset="855">
           <caret line="43" column="39" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecProject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1099" max-vertical-offset="1650">
-          <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
-          <folding>
-            <element signature="e#2445#2446#0" expanded="true" />
-            <element signature="e#2478#2479#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1195,12 +1095,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="86" max-vertical-offset="960">
           <caret line="22" column="57" selection-start-line="22" selection-start-column="57" selection-end-line="22" selection-end-column="57" />
-          <folding>
-            <element signature="e#880#881#0" expanded="true" />
-            <element signature="e#987#1005#0" expanded="true" />
-            <element signature="e#2194#2195#0" expanded="true" />
-            <element signature="e#2237#2238#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1208,7 +1103,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11574074" vertical-offset="0" max-vertical-offset="648">
           <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1220,47 +1114,263 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.653846" vertical-offset="0" max-vertical-offset="2205">
-          <caret line="26" column="33" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/presenter/ProjectPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="168" max-vertical-offset="1425">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/server/ifcphysical/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="146" max-vertical-offset="720">
           <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecPropertySet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="960">
+          <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecSIUnit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1575">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecUnit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecUnitAssignment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="27" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#347#348#0" expanded="true" />
+            <element signature="e#396#397#0" expanded="true" />
+            <element signature="e#441#442#0" expanded="true" />
+            <element signature="e#469#470#0" expanded="true" />
+            <element signature="e#524#525#0" expanded="true" />
+            <element signature="e#558#559#0" expanded="true" />
+            <element signature="e#602#603#0" expanded="true" />
+            <element signature="e#633#634#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/server/EnvironmentServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33275262" vertical-offset="1384" max-vertical-offset="2565">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1366" max-vertical-offset="2565">
           <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/project/HalfPopUpView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3630">
+          <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/EnvironmentGeneral.ui.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1494" max-vertical-offset="3195">
+          <caret line="152" column="20" selection-start-line="152" selection-start-column="20" selection-end-line="152" selection-end-column="56" />
           <folding>
-            <element signature="e#4425#4433#0" expanded="true" />
+            <marker date="1415283996000" expanded="true" signature="198:250" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="277:368" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="383:408" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="424:431" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="446:480" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="502:550" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="570:619" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="640:689" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="700:784" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="796:894" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="907:1037" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="1049:1082" placeholder="{...}" />
+            <marker date="1415283996000" expanded="true" signature="1098:1147" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/property/IfcDecPropertySet.java">
+    <entry file="jar://$USER_HOME$/Development/gwt-2.6.1/gwt-user.jar!/com/google/gwt/user/client/ui/ListBox.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59891105" vertical-offset="0" max-vertical-offset="960">
-          <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
+        <state vertical-scroll-proportion="-1.8958786" vertical-offset="2648" max-vertical-offset="7980">
+          <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/project/SpinnerPopUpView.ui.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.0925927" vertical-offset="820" max-vertical-offset="2835">
+          <caret line="73" column="4" selection-start-line="73" selection-start-column="4" selection-end-line="73" selection-end-column="4" />
+          <folding>
+            <marker date="1416491363000" expanded="true" signature="198:250" placeholder="{...}" />
+            <marker date="1416491363000" expanded="true" signature="277:368" placeholder="{...}" />
+            <marker date="1416491363000" expanded="true" signature="383:408" placeholder="{...}" />
+            <marker date="1416491363000" expanded="true" signature="424:431" placeholder="{...}" />
+            <marker date="1416491363000" expanded="true" signature="446:480" placeholder="{...}" />
+            <marker date="1416491363000" expanded="true" signature="502:550" placeholder="{...}" />
+            <marker date="1416491363000" expanded="true" signature="570:619" placeholder="{...}" />
+            <marker date="1416491363000" expanded="true" signature="640:689" placeholder="{...}" />
+            <marker date="1416491363000" expanded="true" signature="700:784" placeholder="{...}" />
+            <marker date="1416491363000" expanded="true" signature="796:894" placeholder="{...}" />
+            <marker date="1416491363000" expanded="true" signature="907:1037" placeholder="{...}" />
+            <marker date="1416491363000" expanded="true" signature="1049:1082" placeholder="{...}" />
+            <marker date="1416491363000" expanded="true" signature="1098:1147" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecProject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1620">
+          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientProject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1170">
+          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcdeckernel/IfcDecContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="2295">
+          <caret line="71" column="27" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientUnitAssignment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#290#291#0" expanded="true" />
+            <element signature="e#342#343#0" expanded="true" />
+            <element signature="e#390#391#0" expanded="true" />
+            <element signature="e#418#419#0" expanded="true" />
+            <element signature="e#476#477#0" expanded="true" />
+            <element signature="e#510#511#0" expanded="true" />
+            <element signature="e#557#558#0" expanded="true" />
+            <element signature="e#588#589#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
+          <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+          <folding>
+            <element signature="e#1297#1298#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/project/SpinnerPopUpView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3092" max-vertical-offset="3765">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientDimensionalExponents.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="870">
+          <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientNamedUnit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1050">
+          <caret line="46" column="31" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/presenter/PresenterI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/presenter/ProjectPresenterI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
+          <caret line="5" column="48" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/project/PopupGeneral.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="193" max-vertical-offset="780">
+          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_60.jdk/Contents/Home/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4995" max-vertical-offset="16695">
+          <caret line="356" column="20" selection-start-line="356" selection-start-column="20" selection-end-line="356" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/shared/ifcclient/IfcClientSIUnit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6561403" vertical-offset="46" max-vertical-offset="1215">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/presenter/ProjectPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.80944353" vertical-offset="945" max-vertical-offset="2430">
+          <caret line="116" column="67" selection-start-line="116" selection-start-column="67" selection-end-line="116" selection-end-column="67" />
+          <folding>
+            <element signature="e#1715#1902#0" expanded="true" />
+            <element signature="e#1895#1896#0" expanded="true" />
+            <element signature="e#1950#2381#0" expanded="true" />
+            <element signature="e#2374#2375#0" expanded="true" />
+            <element signature="e#2427#2853#0" expanded="true" />
+            <element signature="e#2846#2847#0" expanded="true" />
+            <element signature="e#2901#3332#0" expanded="true" />
+            <element signature="e#3325#3326#0" expanded="true" />
+            <element signature="e#4451#4459#0" expanded="true" />
+            <element signature="e#5645#5646#0" expanded="true" />
+            <element signature="e#5686#5687#0" expanded="true" />
+            <element signature="e#5759#5760#0" expanded="true" />
+            <element signature="e#5795#5796#0" expanded="true" />
+            <element signature="e#6087#6088#0" expanded="true" />
+            <element signature="e#6115#6116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

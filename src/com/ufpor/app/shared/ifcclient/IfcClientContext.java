@@ -17,6 +17,21 @@ public abstract class IfcClientContext extends IfcClientObjectDefinition {
     protected IfcClientLabel objectType;
     protected IfcClientLabel longName;
     protected IfcClientLabel phase;
+    protected IfcClientUnitAssignment unitsInContext;
+
+    public IfcClientUnitAssignment getUnitsInContext() {
+        if (unitsInContext != null) {
+            unitsInContext = new IfcClientUnitAssignment();
+        }
+        return unitsInContext;
+    }
+
+    public void setUnitsInContext(IfcClientUnitAssignment unitsInContext) {
+        if (unitsInContext != null) {
+            unitsInContext = new IfcClientUnitAssignment();
+        }
+        this.unitsInContext = unitsInContext;
+    }
 
     public ArrayList<IfcClientPropertySetDefinitionSelect> getIsDefinedBy() {
         return isDefinedBy;

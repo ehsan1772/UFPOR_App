@@ -74,5 +74,6 @@ public class IfcClientSIUnit extends IfcClientNamedUnit {
         VOLT,
         WATT,
         WEBER
+
     }
 }

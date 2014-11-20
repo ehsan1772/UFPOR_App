@@ -11,12 +11,6 @@ public interface ProjectPresenterI extends PresenterI{
     void setProjectMaxArea(double area);
     void setProjectMinArea(double area);
 
-//    //getters
-//    String getProjectName();
-//    double getProjectTotalArea();
-//    double getProjectMaxArea();
-//    double gerProjectMinArea();
-
     //event listeners
     void totalAreaChangedListener(double area);
     void projectNameChangedListener(String name);
