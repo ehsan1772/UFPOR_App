@@ -88,6 +88,11 @@ public class IfcDecProject extends IfcDecContext {
                 result.addDefinedBy(propertSet);
             }
 
+        if (project.getUnitsInContext() != null) {
+            IfcDecUnitAssignment unitAssignment = IfcDecUnitAssignment.getInstance(project.getUnitsInContext());
+            result.setUnitsInContext(unitAssignment);
+        }
+
         //TODO complete this list
         result.setLongName(IfcDecLabel.getInstance(project.getLongName()));
         result.setName(IfcDecLabel.getInstance(project.getName()));

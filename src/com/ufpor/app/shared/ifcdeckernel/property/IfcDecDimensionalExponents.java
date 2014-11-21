@@ -16,6 +16,22 @@ public class IfcDecDimensionalExponents implements Serializable {
     private int amountOfSubstanceExponent;
     private int luminousntensityExponent;
 
+    public static IfcDecDimensionalExponents getInstance(IfcClientDimensionalExponents client) {
+        IfcDecDimensionalExponents result = new IfcDecDimensionalExponents();
+
+        if (client != null) {
+            result.setLengthExponent(client.getLengthExponent());
+            result.setAmountOfSubstanceExponent(client.getAmountOfSubstanceExponent());
+            result.setElectricCurrentExponent(client.getElectricCurrentExponent());
+            result.setLuminousntensityExponent(client.getLuminousntensityExponent());
+            result.setMassExponent(client.getMassExponent());
+            result.setThermodynamicTemperatureExponent(client.getThermodynamicTemperatureExponent());
+            result.setTimeExponent(client.getTimeExponent());
+        }
+
+        return result;
+    }
+
     public int getLuminousntensityExponent() {
         return luminousntensityExponent;
     }
@@ -70,19 +86,5 @@ public class IfcDecDimensionalExponents implements Serializable {
 
     public void setLengthExponent(int lengthExponent) {
         this.lengthExponent = lengthExponent;
-    }
-
-    public static IfcDecDimensionalExponents getInstance(IfcClientDimensionalExponents client) {
-        IfcDecDimensionalExponents result = new IfcDecDimensionalExponents();
-
-        result.setLengthExponent(client.getLengthExponent());
-        result.setAmountOfSubstanceExponent(client.getAmountOfSubstanceExponent());
-        result.setElectricCurrentExponent(client.getElectricCurrentExponent());
-        result.setLuminousntensityExponent(client.getLuminousntensityExponent());
-        result.setMassExponent(client.getMassExponent());
-        result.setThermodynamicTemperatureExponent(client.getThermodynamicTemperatureExponent());
-        result.setTimeExponent(client.getTimeExponent());
-
-        return result;
     }
 }

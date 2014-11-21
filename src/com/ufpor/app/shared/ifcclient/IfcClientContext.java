@@ -20,14 +20,14 @@ public abstract class IfcClientContext extends IfcClientObjectDefinition {
     protected IfcClientUnitAssignment unitsInContext;
 
     public IfcClientUnitAssignment getUnitsInContext() {
-        if (unitsInContext != null) {
+        if (unitsInContext == null) {
             unitsInContext = new IfcClientUnitAssignment();
         }
         return unitsInContext;
     }
 
     public void setUnitsInContext(IfcClientUnitAssignment unitsInContext) {
-        if (unitsInContext != null) {
+        if (unitsInContext == null) {
             unitsInContext = new IfcClientUnitAssignment();
         }
         this.unitsInContext = unitsInContext;

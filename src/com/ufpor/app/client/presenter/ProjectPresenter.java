@@ -1,8 +1,6 @@
 package com.ufpor.app.client.presenter;
 
-import com.google.gwt.event.dom.client.HasKeyUpHandlers;
-import com.google.gwt.event.dom.client.KeyUpEvent;
-import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.ui.Widget;
 import com.ufpor.app.client.view.project.HalfPopUpView;
 import com.ufpor.app.client.view.project.SpinnerPopUpView;
@@ -53,27 +51,27 @@ public class ProjectPresenter implements ProjectPresenterI {
         }
     };
 
-    private KeyUpHandler lengthUnitChanged = new KeyUpHandler() {
+    private ChangeHandler lengthUnitChanged = new ChangeHandler() {
         @Override
-        public void onKeyUp(KeyUpEvent event) {
+        public void onChange(ChangeEvent event) {
             IfcClientSIUnit.IfcClientSIUnitName unitName = IfcClientSIUnit.IfcClientSIUnitName.valueOf(projectView2.getFirstListBoxLText());
             IfcClientSIUnit lengthUnit = new IfcClientSIUnit(IfcClientNamedUnit.IfcClientUnitEnum.LENGTHUNIT, null, unitName);
             project.getUnitsInContext().addUnit(lengthUnit);
         }
     };
 
-    private KeyUpHandler areaUnitChanged = new KeyUpHandler() {
+    private ChangeHandler areaUnitChanged = new ChangeHandler() {
         @Override
-        public void onKeyUp(KeyUpEvent event) {
+        public void onChange(ChangeEvent event) {
             IfcClientSIUnit.IfcClientSIUnitName unitName = IfcClientSIUnit.IfcClientSIUnitName.valueOf(projectView2.getSecondListBoxLText());
             IfcClientSIUnit areaUnit = new IfcClientSIUnit(IfcClientNamedUnit.IfcClientUnitEnum.AREAUNIT, null, unitName);
             project.getUnitsInContext().addUnit(areaUnit);
         }
     };
 
-    private KeyUpHandler volumeUnitChanged = new KeyUpHandler() {
+    private ChangeHandler volumeUnitChanged = new ChangeHandler() {
         @Override
-        public void onKeyUp(KeyUpEvent event) {
+        public void onChange(ChangeEvent event) {
             IfcClientSIUnit.IfcClientSIUnitName unitName = IfcClientSIUnit.IfcClientSIUnitName.valueOf(projectView2.getThirdListBoxLText());
             IfcClientSIUnit volumeUnit = new IfcClientSIUnit(IfcClientNamedUnit.IfcClientUnitEnum.VOLUMEUNIT, null, unitName);
             project.getUnitsInContext().addUnit(volumeUnit);
@@ -116,9 +114,9 @@ public class ProjectPresenter implements ProjectPresenterI {
         projectView2.setSecondListBoxL(vals.toArray(new String[0]));
         projectView2.setThirdListBoxL(vals.toArray(new String[0]));
 
-        projectView2.getFirstListBoxL().addKeyUpHandler(lengthUnitChanged);
-        projectView2.getSecondListBoxL().addKeyUpHandler(areaUnitChanged);
-        projectView2.getThirdListBoxL().addKeyUpHandler(volumeUnitChanged);
+        projectView2.getFirstListBoxL().addChangeHandler(lengthUnitChanged);
+        projectView2.getSecondListBoxL().addChangeHandler(areaUnitChanged);
+        projectView2.getThirdListBoxL().addChangeHandler(volumeUnitChanged);
     }
 
     @Override

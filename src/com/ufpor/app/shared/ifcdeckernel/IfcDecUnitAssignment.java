@@ -1,5 +1,8 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
+import com.ufpor.app.shared.ifcclient.IfcClientUnit;
+import com.ufpor.app.shared.ifcclient.IfcClientUnitAssignment;
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecSIUnit;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecUnit;
 
 import java.io.Serializable;
@@ -27,4 +30,12 @@ public class IfcDecUnitAssignment implements Serializable {
         units.add(unit);
     }
 
+    public static IfcDecUnitAssignment getInstance(IfcClientUnitAssignment unitsInContext) {
+        IfcDecUnitAssignment result = new IfcDecUnitAssignment();
+        for (IfcClientUnit unit : unitsInContext.getUnits()) {
+            IfcDecUnit decUnit = IfcDecSIUnit.getInstance((com.ufpor.app.shared.ifcclient.IfcClientSIUnit) unit);
+            result.addUnit(decUnit);
+        }
+        return result;
+    }
 }

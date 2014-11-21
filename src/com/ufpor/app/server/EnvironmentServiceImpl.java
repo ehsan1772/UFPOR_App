@@ -11,7 +11,12 @@ import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
 import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecProject;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecUnitAssignment;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySet;
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySingleValue;
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecUnit;
+import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecConstraint;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
@@ -107,6 +112,8 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
 
         IfcDecProject pr = IfcDecProject.getInstance(project);
 
+
+
         pr.prepareDataForStore(null);
         pr.prepareDataForStoreIfcDecContext(null);
         PersistenceManager pm = getPersistenceManager();
@@ -123,33 +130,45 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         ArrayList<String> finalResult = new ArrayList<String>();
         String header = Constants.getHeader(pr.getLongName().getValue(), pr.getName().getValue(), pr.getUser().getNickname(),pr.getUser().getEmail(), pr.getUser().getAuthDomain());
         LOG.log(Level.INFO, "Header is: " + header);
-        finalResult.add(header);
+
+
+        Constants costant = new Constants();
+        costant.getProject(pr, finalResult);
+
+        String ifcFile = Constants.getIfcFile(header, finalResult);
+
+
+        LOG.log(Level.INFO, "The file is: " + ifcFile);
+
+        PersistenceManager pm2 = getPersistenceManager();
+        List<IfcDecProject> projects = null;
+        IfcDecProject finalOutCome = null;
+        ArrayList<IfcDecUnit> units = null;
+        IfcDecUnit unit = null;
+        ArrayList<IfcDecConstraint> constratints = null;
+        try {
+            Query q = pm2.newQuery(IfcDecProject.class, "user == u");
+            q.declareParameters("com.google.appengine.api.users.User u");
+            projects = (List<IfcDecProject>) q.execute(getUser());
+            finalOutCome = projects.get(projects.size() - 1);
+            finalOutCome.prepareDataForClient(null);
+            finalOutCome.prepareDataForClientIfcDecContext(null);
+            IfcDecPropertySet defin = (IfcDecPropertySet) finalOutCome.getIsDefinedBy().get(0);
+            IfcDecPropertySingleValue prop = (IfcDecPropertySingleValue) defin.getProperties().get(0);
+            constratints = prop.getConstraints();
+
+            IfcDecUnitAssignment assignment = finalOutCome.getUnitsInContext();
+
+            units.addAll(finalOutCome.getUnitsInContext().getUnits());
+            unit = units.get(0);
+        } catch (Exception exception) {
+            LOG.log(Level.SEVERE, exception.getMessage());
+        }
+        finally {
+            pm2.close();
+        }
+
         return finalResult;
-
-
-//        PersistenceManager pm2 = getPersistenceManager();
-//        List<IfcDecProject> projects = null;
-//        IfcDecProject finalResult = null;
-//        ArrayList<IfcDecConstraint> constratints = null;
-//        try {
-//            Query q = pm2.newQuery(IfcDecProject.class, "user == u");
-//            q.declareParameters("com.google.appengine.api.users.User u");
-//            projects = (List<IfcDecProject>) q.execute(getUser());
-//            finalResult = projects.get(projects.size() - 1);
-//            finalResult.prepareDataForClient(null);
-//            finalResult.prepareDataForClientIfcDecContext(null);
-//            IfcDecPropertySet defin = (IfcDecPropertySet) finalResult.getIsDefinedBy().get(0);
-//            IfcDecPropertySingleValue prop = (IfcDecPropertySingleValue) defin.getProperties().get(0);
-//            constratints = prop.getConstraints();
-//
-//        } catch (Exception exception) {
-//            LOG.log(Level.SEVERE, exception.getMessage());
-//        }
-//        finally {
-//            pm2.close();
-//        }
-
-  //      return null;
     }
 
     private void checkLoggedIn() throws NotLoggedInException {

@@ -13,6 +13,14 @@ public class IfcDecSIUnit extends IfcDecNamedUnit implements Serializable {
 
     private IfcDecSIUnitName name;
 
+    public IfcDecSIPrefix getPrefix() {
+        return prefix;
+    }
+
+    public IfcDecSIUnitName getName() {
+        return name;
+    }
+
     public IfcDecSIUnit(IfcDecUnitEnum unitType, IfcDecDimensionalExponents dimensions, IfcDecSIUnitName name) {
         super(unitType, dimensions);
         this.name = name;
@@ -20,6 +28,8 @@ public class IfcDecSIUnit extends IfcDecNamedUnit implements Serializable {
 
     public IfcDecSIUnit() {
     }
+
+
 
     public enum IfcDecSIPrefix {
         EXA,
@@ -94,8 +104,12 @@ public class IfcDecSIUnit extends IfcDecNamedUnit implements Serializable {
     public static IfcDecSIUnit getInstance(IfcClientSIUnit client) {
         IfcDecSIPrefix prefix;
         IfcDecSIUnitName unit;
+        IfcDecDimensionalExponents ex = null;
 
-        IfcDecDimensionalExponents ex = IfcDecDimensionalExponents.getInstance(client.getDimensions());
+        if (client.getDimensions() != null) {
+            ex = IfcDecDimensionalExponents.getInstance(client.getDimensions());
+        }
         return new IfcDecSIUnit(IfcDecUnitEnum.getInstance(client.getUnitType()), ex, IfcDecSIUnitName.getInstance(client.getName()));
     }
+
 }

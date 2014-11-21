@@ -1,6 +1,7 @@
 package com.ufpor.app.client.view.project;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.HasChangeHandlers;
 import com.google.gwt.event.dom.client.HasKeyUpHandlers;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -225,15 +226,15 @@ public class SpinnerPopUpView extends Composite {
         return firstListBoxR;
     }
 
-    public HasKeyUpHandlers getFirstListBoxL() {
+    public HasChangeHandlers getFirstListBoxL() {
         return firstListBoxL;
     }
 
-    public HasKeyUpHandlers getSecondListBoxL() {
+    public HasChangeHandlers getSecondListBoxL() {
         return secondListBoxL;
     }
 
-    public HasKeyUpHandlers getThirdListBoxL() {
+    public HasChangeHandlers getThirdListBoxL() {
         return thirdListBoxL;
     }
 

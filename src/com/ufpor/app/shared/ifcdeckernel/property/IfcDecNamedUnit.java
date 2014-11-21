@@ -9,6 +9,14 @@ public abstract class IfcDecNamedUnit implements IfcDecUnit {
     private IfcDecUnitEnum unitType;
     private IfcDecDimensionalExponents dimensions;
 
+    public IfcDecUnitEnum getUnitType() {
+        return unitType;
+    }
+
+    public IfcDecDimensionalExponents getDimensions() {
+        return dimensions;
+    }
+
     public IfcDecNamedUnit(IfcDecUnitEnum unitType, IfcDecDimensionalExponents dimensions) {
         this.unitType = unitType;
         this.dimensions = dimensions;
