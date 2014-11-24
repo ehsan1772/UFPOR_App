@@ -6,7 +6,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import com.ufpor.app.client.NotLoggedInException;
 import com.ufpor.app.client.view.EnvironmentDM;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
-import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
+import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
 
 import java.util.List;
 

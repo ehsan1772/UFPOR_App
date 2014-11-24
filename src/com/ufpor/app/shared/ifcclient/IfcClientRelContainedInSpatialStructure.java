@@ -1,8 +1,8 @@
 package com.ufpor.app.shared.ifcclient;
 
 
-import com.ufpor.app.shared.ifcclient.decproduct.IfcClientProduct;
-import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpatialElement;
+import com.ufpor.app.shared.ifcclient.product.IfcClientProduct;
+import com.ufpor.app.shared.ifcclient.product.IfcClientSpatialElement;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -6,10 +6,7 @@ import com.google.appengine.api.datastore.PrePut;
 import com.google.appengine.api.datastore.PutContext;
 import com.google.appengine.api.users.User;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
-import com.ufpor.app.shared.ifcdeckernel.property.IfcDecElementQuantity;
-import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySet;
-import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySetDefinition;
-import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySetDefinitionSelect;
+import com.ufpor.app.shared.ifcdeckernel.property.*;
 
 import javax.jdo.annotations.*;
 import java.util.ArrayList;

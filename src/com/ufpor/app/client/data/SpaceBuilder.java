@@ -2,8 +2,8 @@ package com.ufpor.app.client.data;
 
 import com.ufpor.app.shared.ifcclient.IfcClientLabel;
 import com.ufpor.app.shared.ifcclient.IfcClientText;
-import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
-import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpaceTypeEnum;
+import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
+import com.ufpor.app.shared.ifcclient.product.IfcClientSpaceTypeEnum;
 import com.ufpor.app.shared.ifckernel.IfcElementCompositionEnum;
 
 /**

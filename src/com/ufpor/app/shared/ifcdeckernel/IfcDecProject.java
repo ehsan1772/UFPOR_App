@@ -101,9 +101,9 @@ public class IfcDecProject extends IfcDecContext {
 
         //TODO complete this list
         result.setLongName(IfcDecLabel.getInstance(project.getLongName()));
-        result.setName(IfcDecLabel.getInstance(project.getName()));
+        result.setName(project.getName());
         if (project.getDescription() != null) {
-            result.setDescription(IfcDecText.getInstance(project.getDescription()));
+            result.setDescription(project.getDescription());
         }
 
 

@@ -15,9 +15,9 @@ public abstract class IfcClientRoot extends GAEObject implements Serializable {
 
     private IfcClientOwnerHistory ownerHistory;
 
-    private IfcClientLabel name;
+    private String name;
 
-    private IfcClientText description;
+    private String description;
 
     public IfcClientRoot(String GUID, LoginInfo user) {
         super(user);
@@ -40,19 +40,19 @@ public abstract class IfcClientRoot extends GAEObject implements Serializable {
         this.ownerHistory = ownerHistory;
     }
 
-    public IfcClientLabel getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(IfcClientLabel name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public IfcClientText getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(IfcClientText description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 }

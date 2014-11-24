@@ -1,6 +1,6 @@
 package com.ufpor.app.client.data;
 
-import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
+import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
 
 import java.util.ArrayList;
 

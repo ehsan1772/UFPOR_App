@@ -9,7 +9,7 @@ import com.ufpor.app.client.service.EnvironmentService;
 import com.ufpor.app.client.view.EnvironmentDM;
 import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
-import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
+import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecProject;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecUnitAssignment;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;

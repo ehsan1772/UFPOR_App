@@ -1,6 +1,6 @@
 package com.ufpor.app.shared.ifcclient;
 
-import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpatialElement;
+import com.ufpor.app.shared.ifcclient.product.IfcClientSpatialElement;
 import com.ufpor.app.shared.ifcclient.property.IfcClientQuantityArea;
 import com.ufpor.app.shared.ifcclient.select.IfcClientPropertySetDefinitionSelect;
 
@@ -58,17 +58,8 @@ public class IfcClientProject extends IfcClientContext {
      * @param area
      */
     public void setTotalGrossArea(double area) {
-//        IfcClientValue areaMeasure = new IfcClientAreaMeasure(area);
-//
-//        IfcClientPropertySingleValue property = new IfcClientPropertySingleValue(AREA_UNIT);
-//        property.setNominalValue(areaMeasure);
-//        property.setName(new IfcClientIdentifier());
         netAreaQuantity = new IfcClientQuantityArea(IfcClientQuantityArea.Type.NetFloorArea, area);
-      //  IfcClientElementQuantity property = new IfcClientElementQuantity();
         generalQuantities.getQuantities().add(netAreaQuantity);
-
-      //  areaProperties = property;
-
     }
 
 

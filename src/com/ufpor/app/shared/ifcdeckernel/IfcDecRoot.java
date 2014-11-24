@@ -5,9 +5,11 @@ import com.google.appengine.api.datastore.PostLoadContext;
 import com.google.appengine.api.datastore.PrePut;
 import com.google.appengine.api.datastore.PutContext;
 import com.google.appengine.api.users.User;
-import com.ufpor.app.shared.ifcdeckernel.property.IfcDecText;
 
-import javax.jdo.annotations.*;
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 import java.io.Serializable;
 
 /**
@@ -21,10 +23,7 @@ public abstract class IfcDecRoot extends GAEObject implements Serializable {
     private IfcDecGloballyUniqueId globalId;
     @Persistent
     private IfcDecOwnerHistory ownerHistory;
-    @NotPersistent
-    private IfcDecLabel name;
-    @NotPersistent
-    private IfcDecText description;
+
     @Persistent
     private String descriptionText;
     @Persistent
@@ -51,49 +50,27 @@ public abstract class IfcDecRoot extends GAEObject implements Serializable {
         this.ownerHistory = ownerHistory;
     }
 
-    public IfcDecLabel getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.nameText = name;
-        this.name = new IfcDecLabel(name);
     }
 
-    public void setName(IfcDecLabel name) {
-        this.name = name;
-        this.nameText = name.getValue();
-    }
 
-    public IfcDecText getDescription() {
-        return description;
+    public String getDescription() {
+        return descriptionText;
     }
 
     public void setDescription(String description) {
-        this.description = new IfcDecText(description);
         this.descriptionText = description;
-    }
-
-    public void setDescription(IfcDecText description) {
-        this.description = description;
-        this.descriptionText = description.getValue();
     }
 
     @PostLoad(kinds = {"IfcDecProject"})
     public void prepareDataForClient(PostLoadContext context) {
-        description = new IfcDecText(descriptionText);
-        name = new IfcDecLabel(nameText);
+
     }
 
     @PrePut(kinds = {"IfcDecProject"})
     public void prepareDataForStoreIfcDecContext(PutContext context) {
-        if (description != null) {
-            descriptionText = description.getValue();
-        }
 
-        if (name != null) {
-            nameText = name.getValue();
-        }
     }
 
 }

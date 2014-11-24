@@ -1,4 +1,4 @@
-package com.ufpor.app.shared.ifcclient.decproduct;
+package com.ufpor.app.shared.ifcclient.product;
 
 import java.io.Serializable;
 

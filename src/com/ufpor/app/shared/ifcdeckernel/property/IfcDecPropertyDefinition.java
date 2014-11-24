@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 @PersistenceCapable
 @Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
-public abstract class IfcDecProperryDefinition extends IfcDecRoot implements IfcDecDefinitionSelect {
+public abstract class IfcDecPropertyDefinition extends IfcDecRoot implements IfcDecDefinitionSelect {
     @Persistent(serialized = "true")
     protected ArrayList<IfcDecConstraint> constraints = new ArrayList<IfcDecConstraint>();
 

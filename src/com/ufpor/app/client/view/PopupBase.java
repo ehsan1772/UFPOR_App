@@ -16,7 +16,7 @@ import com.ufpor.app.client.App;
 import com.ufpor.app.client.service.EnvironmentService;
 import com.ufpor.app.client.LoginInfo;
 import com.ufpor.app.client.data.SpaceBuilderI;
-import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
+import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
 
 public class PopupBase extends Composite {
     private static PopupBaseUiBinder uiBinder = GWT

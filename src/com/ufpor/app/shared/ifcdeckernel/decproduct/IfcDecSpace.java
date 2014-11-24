@@ -3,7 +3,7 @@ package com.ufpor.app.shared.ifcdeckernel.decproduct;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.ufpor.app.server.GuidCompressor;
-import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
+import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecElementCompositionEnum;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecLengthMeasure;
 

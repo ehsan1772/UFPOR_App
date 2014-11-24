@@ -1,4 +1,4 @@
-package com.ufpor.app.shared.ifcclient.decproduct;
+package com.ufpor.app.shared.ifcclient.product;
 
 import com.ufpor.app.client.LoginInfo;
 import com.ufpor.app.shared.ifcclient.IfcClientLabel;
