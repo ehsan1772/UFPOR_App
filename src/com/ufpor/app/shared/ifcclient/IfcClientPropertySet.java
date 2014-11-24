@@ -19,4 +19,5 @@ public class IfcClientPropertySet extends IfcClientPropertySetDefinition {
     public void setProperties(ArrayList<IfcClientProperty> properties) {
         this.properties = properties;
     }
+
 }

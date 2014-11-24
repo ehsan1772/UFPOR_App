@@ -26,7 +26,10 @@ public class IfcDecInteger implements IfcDecSimpleValue, Serializable {
         this.value = value;
     }
 
-
+    @Override
+    public String getIfcString() {
+        return String.valueOf(value);
+    }
 
     public static IfcDecInteger getInstance(IfcClientInteger client) {
         return new IfcDecInteger(client.getValue());

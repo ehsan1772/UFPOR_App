@@ -1,5 +1,6 @@
 package com.ufpor.app.shared.ifcdeckernel.property;
 
+import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.shared.ifcclient.IfcClientSIUnit;
 
 import java.io.Serializable;
@@ -29,6 +30,21 @@ public class IfcDecSIUnit extends IfcDecNamedUnit implements Serializable {
     public IfcDecSIUnit() {
     }
 
+    @Override
+    public String getIfcString() {
+
+        String unitType = "*";
+        String prefix =  "." + getUnitType().name();
+        String name = getPrefix() == null ? "$" : "." + getPrefix().name();
+        String dimensions =  "." + getName().name();
+
+        String ifcUnit = String.format(Constants.IFCSIUNIT,
+                unitType,
+                prefix,
+                name,
+                dimensions);
+        return ifcUnit;
+    }
 
 
     public enum IfcDecSIPrefix {

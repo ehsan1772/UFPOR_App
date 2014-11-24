@@ -1,7 +1,7 @@
 package com.ufpor.app.shared.ifcclient;
 
 import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpatialElement;
-import com.ufpor.app.shared.ifcclient.measure.IfcClientAreaMeasure;
+import com.ufpor.app.shared.ifcclient.property.IfcClientQuantityArea;
 import com.ufpor.app.shared.ifcclient.select.IfcClientPropertySetDefinitionSelect;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class IfcClientProject extends IfcClientContext {
      * this is how we can add properties such as total area. those properties might be associated with constraints
      */
     // TODO this property represents IfcRelDefinesByProperties
-    protected IfcClientPropertySet generalProperties;
+    protected IfcClientElementQuantity generalQuantities;
 
     /**
      * This is the root of the spatial structure and is either a building, a site
@@ -24,14 +24,14 @@ public class IfcClientProject extends IfcClientContext {
      * //TODO this relationship should be represented by IfcRelAggregates
      */
     protected ArrayList<IfcClientSpatialElement> spatialStructureRoot;
-    private IfcClientPropertySingleValue areaProperties;
+    private IfcClientQuantityArea netAreaQuantity;
 
     public IfcClientProject() {
         isDefinedBy = new ArrayList<IfcClientPropertySetDefinitionSelect>();
         //creating the property set
-        generalProperties = new IfcClientPropertySet();
+        generalQuantities = new IfcClientElementQuantity();
 
-        isDefinedBy.add(generalProperties);
+        isDefinedBy.add(generalQuantities);
 
         spatialStructureRoot = new ArrayList<IfcClientSpatialElement>();
 
@@ -58,22 +58,26 @@ public class IfcClientProject extends IfcClientContext {
      * @param area
      */
     public void setTotalGrossArea(double area) {
-        IfcClientValue areaMeasure = new IfcClientAreaMeasure(area);
+//        IfcClientValue areaMeasure = new IfcClientAreaMeasure(area);
+//
+//        IfcClientPropertySingleValue property = new IfcClientPropertySingleValue(AREA_UNIT);
+//        property.setNominalValue(areaMeasure);
+//        property.setName(new IfcClientIdentifier());
+        netAreaQuantity = new IfcClientQuantityArea(IfcClientQuantityArea.Type.NetFloorArea, area);
+      //  IfcClientElementQuantity property = new IfcClientElementQuantity();
+        generalQuantities.getQuantities().add(netAreaQuantity);
 
-        IfcClientPropertySingleValue property = new IfcClientPropertySingleValue(AREA_UNIT);
-        property.setNominalValue(areaMeasure);
+      //  areaProperties = property;
 
-        areaProperties = property;
-        generalProperties.getProperties().add(property);
     }
 
 
     public void setMinArea(double minValue) {
-        areaProperties.setMinArea(minValue);
+        generalQuantities.setMin(minValue, IfcClientElementQuantity.ConstraintType.GrossFloorArea_Min);
     }
 
     public void setMaxArea(double maxValue) {
-        areaProperties.setMaxArea(maxValue);
+        generalQuantities.setMax(maxValue, IfcClientElementQuantity.ConstraintType.GrossFloorArea_Max);
     }
 
     public void addSpatialStructureRoot(IfcClientSpatialElement root) {

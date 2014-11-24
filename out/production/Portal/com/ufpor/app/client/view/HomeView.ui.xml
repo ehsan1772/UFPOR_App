@@ -129,9 +129,15 @@
 
         </g:east>
         <g:south size="150">
+            <!--
             <g:FlowPanel styleName="{style.southPanel}">
-                <g:Label>This is the SOUTH panel</g:Label>
+                <g:Label ui:field="southLabel">This is the SOUTH panel</g:Label>
             </g:FlowPanel>
+            -->
+            <g:HTMLPanel width="100%" height="100%" ui:field="south">
+                <!-- <g:ScrollPanel styleName="{style.centerPanel}" ui:field="treeContainer">
+                    </g:ScrollPanel> -->
+            </g:HTMLPanel>
         </g:south>
     </g:SplitLayoutPanel>
 

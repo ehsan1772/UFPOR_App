@@ -6,6 +6,7 @@ import com.google.appengine.api.datastore.PrePut;
 import com.google.appengine.api.datastore.PutContext;
 import com.google.appengine.api.users.User;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecElementQuantity;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySet;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySetDefinition;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySetDefinitionSelect;
@@ -23,8 +24,12 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
     @NotPersistent
     protected ArrayList<IfcDecPropertySetDefinitionSelect> isDefinedBy;
 
+
     @Persistent
     protected ArrayList<IfcDecPropertySet> isDefinedBy_PropertySet;
+
+    @Persistent
+    protected ArrayList<IfcDecElementQuantity> isDefinedBy_QuantitySet;
 
     @NotPersistent
     protected ArrayList<IfcDecObjectDefinition> declaresObject;
@@ -148,11 +153,18 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
 
     @PrePut(kinds = {"IfcDecProject"})
     public void prepareDataForStoreIfcDecContext(PutContext context) {
+        super.prepareDataForStoreIfcDecContext(context);
         isDefinedBy_PropertySet = new ArrayList<IfcDecPropertySet>();
+        isDefinedBy_QuantitySet = new ArrayList<IfcDecElementQuantity>();
         for (IfcDecPropertySetDefinitionSelect element : isDefinedBy) {
             if (element instanceof IfcDecPropertySet) {
                 ((IfcDecPropertySet) element).onPrePut();
                 isDefinedBy_PropertySet.add((IfcDecPropertySet) element);
+            }
+
+            if (element instanceof IfcDecElementQuantity) {
+                ((IfcDecElementQuantity) element).onPrePut();
+                isDefinedBy_QuantitySet.add((IfcDecElementQuantity) element);
             }
         }
 
@@ -160,11 +172,19 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
 
     @PostLoad(kinds = {"IfcDecProject"})
     public void prepareDataForClientIfcDecContext(PostLoadContext context) {
+        super.prepareDataForClient(context);
         isDefinedBy = new ArrayList<IfcDecPropertySetDefinitionSelect>();
         for (IfcDecPropertySet set : isDefinedBy_PropertySet) {
             set.onPostLoad();
             isDefinedBy.add(set);
         }
+        for (IfcDecElementQuantity set : isDefinedBy_QuantitySet) {
+            set.onPostLoad();
+            isDefinedBy.add(set);
+        }
+        objectType = new IfcDecLabel(objectTypeString);
+        longName = new IfcDecLabel(longNameString);
+        phase = new IfcDecLabel(phaseString);
     }
 
 }

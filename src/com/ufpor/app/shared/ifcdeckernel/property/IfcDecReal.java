@@ -29,4 +29,9 @@ public class IfcDecReal implements IfcDecSimpleValue, Serializable {
     public static IfcDecReal getInstance(IfcClientReal client) {
         return new IfcDecReal(client.getValue());
     }
+
+    @Override
+    public String getIfcString() {
+        return String.valueOf(value);
+    }
 }

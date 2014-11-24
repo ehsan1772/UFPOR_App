@@ -4,6 +4,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.resources.client.CssResource;
+import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -11,7 +12,10 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.google.inject.Inject;
-import com.ufpor.app.client.*;
+import com.ufpor.app.client.App;
+import com.ufpor.app.client.LoginInfo;
+import com.ufpor.app.client.dependency.test;
+import com.ufpor.app.client.eventbus.ServerResultEvent;
 import com.ufpor.app.client.service.EnvironmentService;
 import com.ufpor.app.client.service.EnvironmentServiceAsync;
 
@@ -29,12 +33,16 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
     Anchor signOut;
     @UiField
     Label greeting;
+//    @UiField
+    HTML southLabel;
     @UiField
     SplitLayoutPanel mainPanel;
     @UiField
     HTMLPanel tabPanel1;
     @UiField
     HTMLPanel center;
+    @UiField
+    HTMLPanel south;
     //	@UiField
     ScrollPanel treeContainer;
     @UiField
@@ -53,6 +61,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
     private PopupBase popUpBase;
     private int count = 0;
     private Logger logger = Logger.getLogger(HomeView.class.getSimpleName());
+    private ScrollPanel resultContainer;
 
 
     @Inject
@@ -62,7 +71,22 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
         greeting.setText("Hello " + loginInfo.getNickname());
         signOut.setHref(loginInfo.getLoginUrl());
         eastPanel.selectTab(0);
+        App.injector.getSimpleEventBus().addHandler(ServerResultEvent.TYPE, mServerResultHandler);
+
+
     }
+
+    private ServerResultEvent.ServerResultEventHandler mServerResultHandler = new ServerResultEvent.ServerResultEventHandler() {
+        @Override
+        public void onServerResultEvent(ServerResultEvent event) {
+           // southLabel.setText(event.getResult());
+            if (southLabel != null ) {
+                resultContainer.remove(southLabel);
+            }
+            southLabel = new HTML(new SafeHtmlBuilder().appendEscapedLines(event.getResult()).toSafeHtml());
+            resultContainer.add(southLabel);
+        }
+    };
 
     @Override
     protected void onLoad() {
@@ -86,8 +110,54 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
                 populateTree(treeContainer);
 
                 refreshSpaces();
+
+
+                addResultPanel();
+
             }
         });
+    }
+
+    private void addResultPanel() {
+        int h = south.getElement().getOffsetHeight();
+        int w = south.getElement().getOffsetWidth();
+
+        logger.log(Level.INFO, "South Width is " + w + " and South Height is " + h);
+
+        resultContainer = new ScrollPanel();
+        resultContainer.setWidth(String.valueOf(w) + "px");
+        resultContainer.setHeight(String.valueOf(h) + "px");
+        resultContainer.getElement().getStyle().setProperty("backgroundColor", "#99C");
+
+        south.add(resultContainer);
+
+
+
+
+
+
+//        String test = "#1=IFCPROJECT(\u009200ZhrqZYLBcgy$rVVaiu2A\u0092, $, \u0092Example project\u0092, $, $, $, $, $, #2);<br />" +
+//                "#2=IFCUNITASSIGNMENT((#3, #4, #5, #6, #7, #8, #9, #10));<br/>" +
+//                "#3=IFCSIUNIT(*, .LENGTHUNIT., .MILLI., .METRE.);<br/>" +
+//                "#4=IFCSIUNIT(*, .AREAUNIT., $, .SQUARE_METRE.);<br/>" +
+//                "#5=IFCSIUNIT(*, .VOLUMEUNIT., $, .CUBIC_METRE.);<br>" +
+//                "#6=IFCSIUNIT(*, .TIMEUNIT., $, .SECOND.);<br>" +
+//                "#7=IFCSIUNIT(*, .ENERGYUNIT., $, .JOULE.);<br/>" +
+//                "#8=IFCSIUNIT(*, .MASSUNIT., .KILO., .GRAM.);\n" +
+//                "#9=IFCSIUNIT(*, .THERMODYNAMICTEMPERATUREUNIT., $, .KELVIN.);\n" +
+//                "#10=IFCDERIVEDUNIT((#11, #12, #13), .SPECIFICHEATCAPACITYUNIT., $);\n" +
+//                "#11=IFCDERIVEDUNITELEMENT(#7, 1);\n" +
+//                "#12=IFCDERIVEDUNITELEMENT(#8, -1);\n" +
+//                "#13=IFCDERIVEDUNITELEMENT(#9, -1);\n";
+//        for (int i = 1 ; i < 10 ; i++) {
+//            test = test.concat(test);
+//
+//        }
+
+ //       southLabel = new HTML(new SafeHtmlBuilder().appendEscapedLines(test).toSafeHtml());
+   //     southLabel = new HTML();
+   //     resultContainer.add(southLabel);
+
     }
 
     @Override

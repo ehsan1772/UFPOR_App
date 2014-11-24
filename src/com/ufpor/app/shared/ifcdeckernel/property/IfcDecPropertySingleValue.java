@@ -1,5 +1,6 @@
 package com.ufpor.app.shared.ifcdeckernel.property;
 
+import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.shared.ifcclient.*;
 import com.ufpor.app.shared.ifcclient.constraint.IfcClientConstraint;
 import com.ufpor.app.shared.ifcclient.constraint.IfcClientMetric;
@@ -126,4 +127,13 @@ public class IfcDecPropertySingleValue extends IfcDecSimpleProperty {
         }
     }
 
+    @Override
+    public String getIfcString() {
+        String name = getName().getValue();
+        String description = (getDescription() == null || getDescription().getValue() == null || getDescription().getValue().isEmpty()) ? "*" : getDescription().getValue();
+        String nominalValue = (getNominalValue() == null || getNominalValue().getIfcString() == null || getNominalValue().getIfcString().isEmpty()) ? "*" : getNominalValue().getIfcString();
+        String unit = (getUnit() == null) ? "*" : Constants.getInstance().getUnit(this.getUnit(), null);
+
+        return String.format(Constants.IFCPROPERTYSINGLEVALUE, "'"+name+"'", "'"+description+"'",  nominalValue, unit);
+    }
 }

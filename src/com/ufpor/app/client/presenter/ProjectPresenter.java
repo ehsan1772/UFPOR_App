@@ -117,6 +117,11 @@ public class ProjectPresenter implements ProjectPresenterI {
         projectView2.getFirstListBoxL().addChangeHandler(lengthUnitChanged);
         projectView2.getSecondListBoxL().addChangeHandler(areaUnitChanged);
         projectView2.getThirdListBoxL().addChangeHandler(volumeUnitChanged);
+
+        projectView2.getFirstListBoxL().setSelectedIndex(vals.indexOf(IfcClientSIUnit.IfcClientSIUnitName.METRE));
+        projectView2.getSecondListBoxL().setSelectedIndex(vals.indexOf(IfcClientSIUnit.IfcClientSIUnitName.SQUARE_METRE));
+        projectView2.getThirdListBoxL().setSelectedIndex(vals.indexOf(IfcClientSIUnit.IfcClientSIUnitName.CUBIC_METRE));
+
     }
 
     @Override

@@ -1,5 +1,8 @@
 package com.ufpor.app.shared.ifcdeckernel.property.constraint;
 
+import com.ufpor.app.server.Guid;
+import com.ufpor.app.server.GuidCompressor;
+import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.shared.ifcclient.IfcClientInteger;
 import com.ufpor.app.shared.ifcclient.IfcClientReal;
 import com.ufpor.app.shared.ifcclient.IfcClientText;
@@ -67,4 +70,37 @@ public class IfcDecMetric extends IfcDecConstraint implements Serializable {
         return constraint;
 
     }
+
+    @Override
+    public String getIfcString() {
+        // String guid = GuidCompressor.getNewIfcGloballyUniqueId();
+        String name = Constants.getStringFromLabel(getName());
+        String description = Constants.getStringFromText(getDescription());
+        String grade = getConstraintGrade().name();
+        String source = Constants.getStringFromLabel(getValueSource());
+        String actor = "*";
+        //String creationTime = getCreatingTime().getValue();
+        String creationTime = "*";
+        String userDefined = getUserDefinedGrade() != null ? getUserDefinedGrade() : "*";
+
+        String benchMark = getBenchMark().name();
+        String valueSource = Constants.getStringFromLabel(getValueSource());
+
+        String value = ((IfcDecValue) getDataValue()).getIfcString();
+        String referencePath = "*";
+
+        return String.format(Constants.IFCMETRIC, name, description, grade, source, actor, creationTime, userDefined, benchMark, valueSource, value, referencePath);
+    }
+
+    @Override
+    public String getIfcStringConstraintRelationship(String constraintNumber, String arrayObjects) {
+        String name = Constants.getStringFromLabel(getName());
+        String description = Constants.getStringFromText(getDescription());
+
+        return String.format(Constants.IFCRESOURCECONSTRAINTRELATIONSHIP, name, description, constraintNumber, arrayObjects);
+
+
+    }
+
+
 }

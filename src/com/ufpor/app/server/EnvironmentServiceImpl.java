@@ -13,10 +13,10 @@ import com.ufpor.app.shared.ifcclient.decproduct.IfcClientSpace;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecProject;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecUnitAssignment;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
-import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySet;
-import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySingleValue;
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecElementQuantity;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecUnit;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecConstraint;
+import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecMetric;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
@@ -112,7 +112,7 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
 
         IfcDecProject pr = IfcDecProject.getInstance(project);
 
-
+        String ifcFile;
 
         pr.prepareDataForStore(null);
         pr.prepareDataForStoreIfcDecContext(null);
@@ -132,13 +132,11 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         LOG.log(Level.INFO, "Header is: " + header);
 
 
-        Constants costant = new Constants();
+        Constants costant = Constants.getInstance();
         costant.getProject(pr, finalResult);
 
-        String ifcFile = Constants.getIfcFile(header, finalResult);
-
-
-        LOG.log(Level.INFO, "The file is: " + ifcFile);
+        ifcFile = Constants.getIfcFile(header, finalResult);
+        LOG.log(Level.INFO, "The file is:\n " + ifcFile);
 
         PersistenceManager pm2 = getPersistenceManager();
         List<IfcDecProject> projects = null;
@@ -153,14 +151,33 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
             finalOutCome = projects.get(projects.size() - 1);
             finalOutCome.prepareDataForClient(null);
             finalOutCome.prepareDataForClientIfcDecContext(null);
-            IfcDecPropertySet defin = (IfcDecPropertySet) finalOutCome.getIsDefinedBy().get(0);
-            IfcDecPropertySingleValue prop = (IfcDecPropertySingleValue) defin.getProperties().get(0);
-            constratints = prop.getConstraints();
+            IfcDecElementQuantity defin = (IfcDecElementQuantity) finalOutCome.getIsDefinedBy().get(0);
+            //max area
+
+            IfcDecMetric maxConstraint = (IfcDecMetric) defin.getConstraints().get(0);
+            IfcDecMetric minConstraint = (IfcDecMetric) defin.getConstraints().get(1);
+       //     IfcDecPropertySingleValue prop = (IfcDecMetric) maxConstraint defin.getConstraints().get(0);
+       //     constratints = prop.getConstraints();
 
             IfcDecUnitAssignment assignment = finalOutCome.getUnitsInContext();
 
-            units.addAll(finalOutCome.getUnitsInContext().getUnits());
-            unit = units.get(0);
+//            units.addAll(assignment.getUnits());
+//            unit = units.get(0);
+
+            pr = null;
+            header = null;
+            costant = null;
+
+            Constants costant2 = Constants.getInstance();
+            costant2.reset();
+            ArrayList<String> finalResult2 = new ArrayList<String>();
+            String header2 = Constants.getHeader(finalOutCome);
+            LOG.log(Level.INFO, "Header is: \n" + header2);
+
+            costant2.getProject(finalOutCome, finalResult2);
+            String ifcFile2 = Constants.getIfcFile(header2, finalResult2);
+            LOG.log(Level.INFO, "The file is:\n " + ifcFile2);
+
         } catch (Exception exception) {
             LOG.log(Level.SEVERE, exception.getMessage());
         }
@@ -168,7 +185,9 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
             pm2.close();
         }
 
-        return finalResult;
+        ArrayList<String> retunrvalue = new ArrayList<String>();
+        retunrvalue.add(ifcFile);
+        return retunrvalue;
     }
 
     private void checkLoggedIn() throws NotLoggedInException {

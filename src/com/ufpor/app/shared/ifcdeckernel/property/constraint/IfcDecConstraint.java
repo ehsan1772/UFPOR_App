@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * Created by Ehsan Barekati on 11/18/14.
  */
-public class IfcDecConstraint implements Serializable {
+public abstract class IfcDecConstraint implements Serializable {
     private IfcDecLabel name;
     private IfcDecText description;
     private IfcDecConstraintEnum constraintGrade;
@@ -18,6 +18,15 @@ public class IfcDecConstraint implements Serializable {
     //TODO figure out why it fails if this field is not transient
     private transient IfcDecActorSelect creatingActor;
     private IfcDectDateTime creatingTime;
+    private String userDefinedGrade;
+
+    public String getUserDefinedGrade() {
+        return userDefinedGrade;
+    }
+
+    public void setUserDefinedGrade(String userDefinedGrade) {
+        this.userDefinedGrade = userDefinedGrade;
+    }
 
     public IfcDecLabel getName() {
         return name;
@@ -66,4 +75,8 @@ public class IfcDecConstraint implements Serializable {
     public void setCreatingTime(IfcDectDateTime creatingTime) {
         this.creatingTime = creatingTime;
     }
+
+    public abstract String getIfcString();
+    public abstract String getIfcStringConstraintRelationship(String constraintNumber, String arrayObjects);
+
 }

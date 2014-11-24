@@ -32,4 +32,9 @@ public class IfcDecText implements IfcDecSimpleValue, Serializable {
         }
         return null;
     }
+
+    @Override
+    public String getIfcString() {
+        return "'" + String.valueOf(value) + "'";
+    }
 }

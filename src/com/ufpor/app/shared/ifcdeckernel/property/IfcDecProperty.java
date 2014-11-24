@@ -19,6 +19,7 @@ public abstract class IfcDecProperty extends IfcDecPropertyAbstraction {
     private IfcDecIdentifier name;
     @Persistent
     private IfcDecText description;
+    private String ifcString;
 
     public ArrayList<IfcDecConstraint> getConstraints() {
         return constraints;
@@ -70,4 +71,6 @@ public abstract class IfcDecProperty extends IfcDecPropertyAbstraction {
     public void addConstraint(IfcDecConstraint constraint) {
         constraints.add(constraint);
     }
+
+    public abstract String getIfcString();
 }

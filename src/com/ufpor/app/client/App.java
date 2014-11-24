@@ -28,6 +28,8 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
     private PopupBase popUpBase;
     @Inject
     private PopupGeneral popUpGeneral;
+
+
     private void initializeTheLoginPanel() {
         loginPanel = new VerticalPanel();
         loginLabel = new Label(
@@ -82,9 +84,9 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
 
     }
 
+
+
     private void loadApplication(LoginInfo loginInfo) {
-        //  Composite view = new Designertest();
-       // Composite view = new HomeView(loginInfo);
         Composite view = injector.getHomeView();
         RootLayoutPanel.get().add(view);
     }

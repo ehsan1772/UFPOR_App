@@ -7,6 +7,7 @@ import com.google.appengine.api.datastore.PutContext;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.ufpor.app.server.GuidCompressor;
+import com.ufpor.app.shared.ifcclient.IfcClientElementQuantity;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
 import com.ufpor.app.shared.ifcclient.IfcClientPropertySet;
 import com.ufpor.app.shared.ifcclient.select.IfcClientPropertySetDefinitionSelect;
@@ -36,7 +37,7 @@ public class IfcDecProject extends IfcDecContext {
      */
     // TODO this property represents IfcRelDefinesByProperties
     @NotPersistent
-    protected IfcDecPropertySet generalProperties;
+    protected IfcDecElementQuantity generalProperties;
 
     /**
      * This is the root of the spatial structure and is either a building, a site
@@ -82,11 +83,16 @@ public class IfcDecProject extends IfcDecContext {
         IfcDecProject result = new IfcDecProject(guid, user);
 
 
-        for (IfcClientPropertySetDefinitionSelect property : project.getIsDefinedBy())
+        for (IfcClientPropertySetDefinitionSelect property : project.getIsDefinedBy()) {
             if (property instanceof IfcClientPropertySet) {
                 IfcDecPropertySet propertSet = IfcDecPropertySet.getInstance((IfcClientPropertySet) property);
                 result.addDefinedBy(propertSet);
             }
+            if (property instanceof IfcClientElementQuantity) {
+                IfcDecElementQuantity propertSet = IfcDecElementQuantity.getInstance((IfcClientElementQuantity) property);
+                result.addDefinedBy(propertSet);
+            }
+        }
 
         if (project.getUnitsInContext() != null) {
             IfcDecUnitAssignment unitAssignment = IfcDecUnitAssignment.getInstance(project.getUnitsInContext());
