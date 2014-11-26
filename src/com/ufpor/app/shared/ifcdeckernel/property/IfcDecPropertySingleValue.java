@@ -17,7 +17,7 @@ import javax.jdo.annotations.Persistent;
 @Inheritance(customStrategy = "complete-table")
 public class IfcDecPropertySingleValue extends IfcDecSimpleProperty {
     @Persistent(serialized = "true")
-    IfcDecObjective constraint;
+    private IfcDecObjective constraint;
     @NotPersistent
     private IfcDecValue nominalValue;
     @Persistent
@@ -126,6 +126,7 @@ public class IfcDecPropertySingleValue extends IfcDecSimpleProperty {
         if (unit_SIUnit != null) {
             unit = unit_SIUnit;
         }
+        getConstraint().onPostLoad();
     }
 
     @Override

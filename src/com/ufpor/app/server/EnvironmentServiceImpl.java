@@ -214,6 +214,7 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
 
         } catch (Exception exception) {
             LOG.log(Level.SEVERE, exception.getMessage());
+            exception.printStackTrace();
         }
         finally {
             pm2.close();
@@ -229,6 +230,7 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
             q.declareParameters("com.google.appengine.api.users.User u");
             List<IfcDecProject> projects = (List<IfcDecProject>) q.execute(getUser());
             IfcDecProject finalOutCome = projects.get(projects.size() - 1);
+            finalOutCome.removeAllTheSpaces();
             finalOutCome.addSpaceType(spaceType);
 
         } catch (Exception exception) {
@@ -291,7 +293,9 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
             pm2.close();
         }
 
-        return null;
+        ArrayList<String> reult = new ArrayList<String>();
+        reult.add(getLastProjectIfcString());
+        return reult;
     }
 
 
@@ -318,6 +322,7 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         try {
             for (Key key : keys) {
                 IfcDecSpaceType spaceTypeResult = pm2.getObjectById(IfcDecSpaceType.class, key);
+                spaceTypeResult.prepareDataForClientIfcDecContext(null);
                 spaceTypeResults.add(spaceTypeResult);
             }
 

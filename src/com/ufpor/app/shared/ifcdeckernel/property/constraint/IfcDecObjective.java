@@ -1,8 +1,10 @@
 package com.ufpor.app.shared.ifcdeckernel.property.constraint;
 
+import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.shared.ifcclient.constraint.IfcClientConstraint;
 import com.ufpor.app.shared.ifcclient.constraint.IfcClientMetric;
 import com.ufpor.app.shared.ifcclient.constraint.IfcClientObjective;
+import com.ufpor.app.shared.ifcclient.constraint.IfcConstraintEnum;
 
 import java.util.ArrayList;
 
@@ -14,6 +16,14 @@ public class IfcDecObjective extends IfcDecConstraint {
     private IfcClientObjective.IfcLogicalOperatorEnum logicalAggregator;
     private IfcClientObjective.IfcObjectiveEnum objectiveQualifier;
     private String userDefinedQualifier;
+
+    protected IfcDecObjective() {
+    }
+
+    public IfcDecObjective(String name, IfcConstraintEnum constraintGrade, IfcClientObjective.IfcObjectiveEnum objectiveQualifier) {
+        super(name, constraintGrade);
+        this.objectiveQualifier = objectiveQualifier;
+    }
 
     public ArrayList<IfcDecConstraint> getBenchmarkValues() {
         return benchmarkValues;
@@ -51,6 +61,45 @@ public class IfcDecObjective extends IfcDecConstraint {
         this.userDefinedQualifier = userDefinedQualifier;
     }
 
+    /**
+     *
+     ENTITY IfcObjective
+     ENTITY IfcConstraint
+     Name	:	IfcLabel;
+     Description	:	OPTIONAL IfcText;
+     ConstraintGrade	:	IfcConstraintEnum;
+     ConstraintSource	:	OPTIONAL IfcLabel;
+     CreatingActor	:	OPTIONAL IfcActorSelect;
+     CreationTime	:	OPTIONAL IfcDateTime;
+     UserDefinedGrade	:	OPTIONAL IfcLabel;
+     INVERSE
+     HasExternalReferences	:	SET OF IfcExternalReferenceRelationship FOR RelatedResourceObjects;
+     PropertiesForConstraint	:	SET OF IfcResourceConstraintRelationship FOR RelatingConstraint;
+     ENTITY IfcObjective
+     BenchmarkValues	:	OPTIONAL LIST [1:?] OF IfcConstraint;
+     LogicalAggregator	:	OPTIONAL IfcLogicalOperatorEnum;
+     ObjectiveQualifier	:	IfcObjectiveEnum;
+     UserDefinedQualifier	:	OPTIONAL IfcLabel;
+     END_ENTITY;
+     * @param stringList
+     * @return
+     */
+    public String getIfcString(String benchmark) {
+        String name = getName();
+        String description = (getDescription() != null && !getDescription().isEmpty()) ? getDescription() : "*";
+        String grade = getConstraintGrade().name();
+        String source = (getConstraintSource() != null && !getConstraintSource().isEmpty()) ? getConstraintSource() : "*";
+        String actor = "*";
+        String time = "*";
+        String userGrade = (getUserDefinedGrade() != null && !getUserDefinedGrade().isEmpty()) ? getUserDefinedGrade() : "*";
+        String benchmarkValues = benchmark;
+        String logicalAggregation = getLogicalAggregator().name();
+        String objectiveQualifier = getObjectiveQualifier().name();
+        String userQualifier = (getUserDefinedQualifier() != null && !getUserDefinedQualifier().isEmpty()) ? getUserDefinedQualifier() : "*";
+
+        return String.format(Constants.IFCOBJECTIVE, name,description, grade, source, actor, time, userGrade, benchmarkValues, logicalAggregation, objectiveQualifier, userQualifier);
+    }
+
     @Override
     public String getIfcString() {
         return null;
@@ -62,7 +111,7 @@ public class IfcDecObjective extends IfcDecConstraint {
     }
 
     public static IfcDecObjective getInstance(IfcClientObjective client) {
-        IfcDecObjective result = new IfcDecObjective();
+        IfcDecObjective result = new IfcDecObjective(client.getName(), IfcConstraintEnum.HARD, IfcClientObjective.IfcObjectiveEnum.REQUIREMENT);
         result.setDescription(client.getDescription());
         result.setName(client.getName());
         result.setConstraintGrade(client.getConstraintGrade());
@@ -79,5 +128,13 @@ public class IfcDecObjective extends IfcDecConstraint {
         result.setConstraintSource(client.getConstraintSource());
         //result.setCreatingActor(client.getCreatingActor());
         return result;
+    }
+
+    public void onPostLoad() {
+        getBenchmarkValues();
+        getUserDefinedQualifier();
+        getName();
+        getDescription();
+        getUserDefinedGrade();
     }
 }

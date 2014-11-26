@@ -55,6 +55,10 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
         spaceTypes.add(key);
     }
 
+    public void removeAllTheSpaces() {
+        spaceTypes.removeAll(spaceTypes);
+    }
+
     public IfcDecContext(String guid, User user) {
         super(guid, user);
     }

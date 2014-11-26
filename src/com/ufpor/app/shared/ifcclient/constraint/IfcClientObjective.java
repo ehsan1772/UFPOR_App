@@ -14,6 +14,8 @@ public class IfcClientObjective extends IfcClientConstraint {
     public IfcClientObjective() {
         benchmarkValues = new ArrayList<IfcClientConstraint>();
         logicalAggregator = IfcLogicalOperatorEnum.LOGICALAND;
+        objectiveQualifier = IfcObjectiveEnum.REQUIREMENT;
+        setConstraintGrade(IfcConstraintEnum.HARD);
     }
 
     public ArrayList<IfcClientConstraint> getBenchmarkValues() {

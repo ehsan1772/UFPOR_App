@@ -1,5 +1,7 @@
 package com.ufpor.app.shared.ifcdeckernel.property;
 
+import com.ufpor.app.server.GuidCompressor;
+import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.shared.ifcclient.IfcClientElementQuantity;
 import com.ufpor.app.shared.ifcclient.property.IfcClientPhysicalQuantity;
 import com.ufpor.app.shared.ifcclient.property.IfcClientQuantityArea;
@@ -35,10 +37,19 @@ public class IfcDecElementQuantity extends IfcDecQuantitySet {
 
     @NotPersistent
     private ArrayList<IfcDecPhysicalQuantity> quantities = new ArrayList<IfcDecPhysicalQuantity>();
+
+    public ArrayList<IfcDecQuantityArea> getQuantities_area() {
+        return quantities_area;
+    }
+
+    public ArrayList<IfcDecQuantityLength> getQuantities_length() {
+        return quantities_length;
+    }
+
     @Persistent(serialized = "true")
-    private ArrayList<IfcDecQuantityArea> quantities_area = new ArrayList<IfcDecQuantityArea>();
+    private ArrayList<IfcDecQuantityArea> quantities_area;
     @Persistent(serialized = "true")
-    private ArrayList<IfcDecQuantityLength> quantities_length = new ArrayList<IfcDecQuantityLength>();
+    private ArrayList<IfcDecQuantityLength> quantities_length;
     @Persistent
     private String methodOfMeasurement;
 
@@ -62,6 +73,7 @@ public class IfcDecElementQuantity extends IfcDecQuantitySet {
 
     public void onPrePut() {
         quantities_area = new ArrayList<IfcDecQuantityArea>();
+        quantities_length = new ArrayList<IfcDecQuantityLength>();
         for ( IfcDecPhysicalQuantity q : getQuantities()) {
             if (q instanceof IfcDecQuantityArea) {
                 quantities_area.add((IfcDecQuantityArea) q);
@@ -73,14 +85,33 @@ public class IfcDecElementQuantity extends IfcDecQuantitySet {
     }
 
     public void onPostLoad() {
+        getQuantities_area();
+        getQuantities_length();
         for (IfcDecQuantityArea area : quantities_area) {
+            area.onPostLoad();
             quantities.add(area);
         }
         for (IfcDecQuantityLength area : quantities_length) {
+            area.onPostLoad();
             quantities.add(area);
         }
     }
 
+    public String getIfcString(String quantitiesChain) {
+        String guid = GuidCompressor.getNewIfcGloballyUniqueId();
+        String ownerHistory = "*";
+        String name = (getName() == null || getName().isEmpty()) ? "*" : getName();
+        String description = (getDescription() == null || getDescription().isEmpty()) ? "*" : getDescription();
+
+        String methodOfMeasurement = "*";
+
+        String quantities = quantitiesChain;
+
+
+        //adding IFCELEMENTQUANTITY
+        return String.format(Constants.IFCELEMENTQUANTITY, guid, ownerHistory, name, description, methodOfMeasurement, quantities);
+
+    }
 }
 
 

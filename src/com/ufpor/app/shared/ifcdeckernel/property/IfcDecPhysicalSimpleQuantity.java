@@ -1,5 +1,7 @@
 package com.ufpor.app.shared.ifcdeckernel.property;
 
+import com.ufpor.app.shared.ifcclient.constraint.IfcClientObjective;
+import com.ufpor.app.shared.ifcclient.constraint.IfcConstraintEnum;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecObjective;
 
 /**
@@ -30,14 +32,15 @@ public abstract class IfcDecPhysicalSimpleQuantity extends IfcDecPhysicalQuantit
 
     protected IfcDecPhysicalSimpleQuantity(String name) {
         super(name);
-        constraints = new IfcDecObjective();
+        constraints = new IfcDecObjective(name+"_CONSTRAINT", IfcConstraintEnum.HARD, IfcClientObjective.IfcObjectiveEnum.REQUIREMENT);
     }
 
     protected IfcDecPhysicalSimpleQuantity() {
-        constraints = new IfcDecObjective();
+      //  constraints = new IfcDecObjective();
     }
 
     public abstract void setMaxValue(Object value);
     public abstract void setMinValue(Object value);
+    public abstract void onPostLoad();
 
 }

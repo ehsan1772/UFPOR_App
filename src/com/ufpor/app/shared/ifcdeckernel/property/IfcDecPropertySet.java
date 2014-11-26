@@ -1,5 +1,7 @@
 package com.ufpor.app.shared.ifcdeckernel.property;
 
+import com.ufpor.app.server.GuidCompressor;
+import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.shared.ifcclient.IfcClientProperty;
 import com.ufpor.app.shared.ifcclient.IfcClientPropertySet;
 import com.ufpor.app.shared.ifcclient.IfcClientPropertySingleValue;
@@ -68,5 +70,15 @@ public class IfcDecPropertySet extends IfcDecPropertySetDefinition {
             }
         }
 
+    }
+
+    public String getIfcString(String properties) {
+        String guid = GuidCompressor.getNewIfcGloballyUniqueId();
+        String ownerHistory = "*";
+        String name = (getName() == null || getName().isEmpty()) ? "*" : getName();
+        String description = (getDescription() == null || getDescription().isEmpty()) ? "*" : getDescription();
+        String hasProperties = properties;
+
+        return String.format(Constants.IFCPROPERTYSET, guid, ownerHistory, name, description, hasProperties);
     }
 }

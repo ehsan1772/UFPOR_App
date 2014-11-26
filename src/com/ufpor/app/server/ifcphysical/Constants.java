@@ -10,6 +10,7 @@ import com.ufpor.app.shared.ifcdeckernel.IfcDecProject;
 import com.ufpor.app.shared.ifcdeckernel.property.*;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecConstraint;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecMetric;
+import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecObjective;
 import com.ufpor.app.shared.ifcdeckernel.type.IfcDecSpaceType;
 
 import java.text.DateFormat;
@@ -48,11 +49,13 @@ public class Constants {
     public final static String IFCSIUNIT = "IFCSIUNIT(%1s, %2s, %3s, %4s);";
     public final static String IFCPROPERTYSINGLEVALUE = "IFCPROPERTYSINGLEVALUE(%1s, %2s, %3s, %4s);";
     public final static String IFCELEMENTQUANTITY = "IFCELEMENTQUANTITY(%1s, %2s, %3s, %4s, %5s, %6s);";
+    public final static String IFCPROPERTYSET = "IFCPROPERTYSET(%1s, %2s, %3s, %4s, %5s);";
     public final static String IFCQUANTITYAREA = "IFCQUANTITYAREA(%1s, %2s, %3s, %4s, %5s);";
     public final static String IFCQUANTITYLENGTH = "IFCQUANTITYLENGTH(%1s, %2s, %3s, %4s, %5s);";
     public final static String IFCRELDEFINESBYPROPERTIES =  "IFCRELDEFINESBYPROPERTIES(%1s, %2s, %3s, %4s, %5s, %6s);";
     public final static String IFCSPACETYPE = "IFCSPACETYPE ('%1s', %2s, %3s, %4s, %5s, %6s, %7s, %8s, %9s, %10s, %11s);";
     public final static String IFCMETRIC = "IFCMETRIC ('%1s', %2s, %3s, %4s, %5s, %6s, %7s, %8s, %9s, %10s, %11s);";
+    public final static String IFCOBJECTIVE = "IFCOBJECTIVE ('%1s', %2s, %3s, %4s, %5s, %6s, %7s, %8s, %9s, %10s, %11s);";
     public static final String IFCRESOURCECONSTRAINTRELATIONSHIP = "IFCRESOURCECONSTRAINTRELATIONSHIP(%1s, %2s, %3s, %4s);";
 
     private final static IFCComparator COMPARATOR = new IFCComparator();
@@ -125,7 +128,9 @@ public class Constants {
         addIsDefinedBy(project.getIsDefinedBy(), number, file);
 
         //adding space types
-        addSpaceTypes(project.getSpaceTypes(), project, service);
+        if (project.getSpaceTypes() != null && project.getSpaceTypes().size() != 0) {
+            addSpaceTypesIfcString(project.getSpaceTypes(), project, service);
+        }
 
 
         String ifcProject = String.format(PROJECT,
@@ -143,7 +148,7 @@ public class Constants {
         return "#" + number;
     }
 
-    private void addSpaceTypes(Set<Key> spaceTypes, IfcDecProject project, EnvironmentServiceImpl service) {
+    private void addSpaceTypesIfcString(Set<Key> spaceTypes, IfcDecProject project, EnvironmentServiceImpl service) {
         ArrayList<IfcDecSpaceType> spaces = null;
         try {
             spaces = service.getSpaceTypeByKey(project.getSpaceTypes());
@@ -152,14 +157,41 @@ public class Constants {
         }
         if (spaces != null && spaces.size() != 0) {
             for (IfcDecSpaceType space : spaces) {
-                space.prepareDataForStoreIfcDecContext(null);
+               // space.prepareDataForClient(null);
+             //   space.prepareDataForClientIfcDecContext(null);
 
-                space.getHasProperties_PropertySet();
+                ArrayList<String> setsNumbers = new ArrayList<String>();
+                //adding propertsets
+                for (IfcDecPropertySet set : space.getHasProperties_PropertySet()) {
+                    //getting all the properties in a property set
+                    ArrayList<String> properties = addProperties(set, mFile);
+                    String propertiesChain = getStringList(properties);
 
-                space.getHasProperties_QuantitySet();
+                    // adding property set
+                    String number = getNextNumber();
+                    setsNumbers.add(number);
+                    String propertyset = set.getIfcString(propertiesChain);
+                    mFile.add("#" + number + "= " + propertyset);
+                    setsNumbers.add(number);
+                }
+
+                for (IfcDecElementQuantity quantitySet : space.getHasProperties_QuantitySet()) {
+                    //getting all the quantities in an element quantity
+                    ArrayList<String> quantities = addPhysicalQuantity(quantitySet, mFile);
+                    String quantitiesChain = getStringList(quantities);
+
+                    // adding elementquantity
+                    String number = getNextNumber();
+                    setsNumbers.add(number);
+                    String propertyset = quantitySet.getIfcString(quantitiesChain);
+                    mFile.add("#" + number + "= " + propertyset);
+                    setsNumbers.add(number);
+                }
+
+                String properties = getStringList(setsNumbers);
 
                 String number = getNextNumber();
-                String ifcSpaceType = space.getIfcString();
+                String ifcSpaceType = space.getIfcString(properties);
                 mFile.add("#" + number + "= " + ifcSpaceType);
             }
         }
@@ -176,11 +208,11 @@ public class Constants {
         for (IfcDecPropertySetDefinitionSelect select : isDefinedBy) {
             if (select instanceof IfcDecPropertySetDefinition) {
                 if (select instanceof IfcDecPropertySet) {
-                    associatedPropertiesString.addAll(addIfcRelDefinesByPropertiesPropertSet((IfcDecPropertySet) select, file));
+                    associatedPropertiesString.addAll(addProperties((IfcDecPropertySet) select, file));
                     associatedProperties.add((IfcDecPropertySet) select);
                 }
                 if (select instanceof IfcDecElementQuantity) {
-                    associatedElementQuantitiesString.addAll(addIfcRelDefinesByPropertiesElementQuantity((IfcDecElementQuantity) select, file));
+                    associatedElementQuantitiesString.addAll(addPhysicalQuantity((IfcDecElementQuantity) select, file));
                     associatedElementQuantities.add((IfcDecElementQuantity) select);
                 }
             }
@@ -245,18 +277,45 @@ public class Constants {
         return result;
     }
 
-    private ArrayList<String> addIfcRelDefinesByPropertiesElementQuantity(IfcDecElementQuantity elementQuantity, ArrayList<String> file) {
+    private ArrayList<String> addPhysicalQuantity(IfcDecElementQuantity elementQuantity, ArrayList<String> file) {
         ArrayList<String> properties = new ArrayList<String>();
         String propertyNumber = null;
         for(IfcDecPhysicalQuantity property : elementQuantity.getQuantities()) {
             if (property instanceof IfcDecPhysicalSimpleQuantity) {
                 propertyNumber = getNextNumber();
                 file.add("#" + propertyNumber + "= " + property.getIfcString());
+                if (((IfcDecPhysicalSimpleQuantity) property).getConstraints() != null){
+                    addIfcObjective(propertyNumber, ((IfcDecPhysicalSimpleQuantity) property).getConstraints());
+                }
                 properties.add(propertyNumber);
             }
         }
 
         return properties;
+    }
+
+    private void addIfcObjective(String propertyNumber,  IfcDecObjective objective) {
+        //adding the constranit that define the IfcObjective constraint
+        ArrayList<String> benchmarkConstraints = new ArrayList<String>();
+        for (IfcDecConstraint constraint : objective.getBenchmarkValues()) {
+            String number = getNextNumber();
+            benchmarkConstraints.add(number);
+            mFile.add("#" + number + "= " + constraint.getIfcString());
+        }
+
+        //adding ifcobjective
+        String number = getNextNumber();
+        String objectiveString = objective.getIfcString(getStringList(benchmarkConstraints));
+        mFile.add("#" + number + "= " + objectiveString);
+
+        //adding the relationship
+        addIfcResourceConstraintRelationship(number, propertyNumber);
+    }
+
+    private void addIfcResourceConstraintRelationship(String constraint, String object) {
+        String number = getNextNumber();
+        String rel = String.format(IFCRESOURCECONSTRAINTRELATIONSHIP, "*", "*", constraint, object);
+        mFile.add("#" + number + "= " + rel);
     }
 
     private void addConstraint(ArrayList<IfcDecConstraint> constraints, String relatedProperty, ArrayList<String> file) {
@@ -268,12 +327,27 @@ public class Constants {
             }
     }
 
-    private ArrayList<String> addIfcRelDefinesByPropertiesPropertSet(IfcDecPropertySet propertySet, ArrayList<String> file) {
+    /**
+     *             if (property instanceof IfcDecPhysicalSimpleQuantity) {
+     propertyNumber = getNextNumber();
+     file.add("#" + propertyNumber + "= " + property.getIfcString());
+     addIfcObjective(propertyNumber, (IfcDecPhysicalSimpleQuantity) property);
+     properties.add(propertyNumber);
+     }
+     * @param propertySet
+     * @param file
+     * @return
+     */
+    private ArrayList<String> addProperties(IfcDecPropertySet propertySet, ArrayList<String> file) {
         ArrayList<String> properties = new ArrayList<String>();
         for(IfcDecProperty property : propertySet.getProperties()) {
             String number = getNextNumber();
             file.add("#" + number + "= " + property.getIfcString());
             properties.add(number);
+
+            if (property instanceof IfcDecPropertySingleValue) {
+                addIfcObjective(number, ((IfcDecPropertySingleValue) property).getConstraint());
+            }
         }
         return properties;
     }

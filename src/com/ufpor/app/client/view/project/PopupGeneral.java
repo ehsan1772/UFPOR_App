@@ -151,7 +151,9 @@ public class PopupGeneral extends PopupBase  {
 
             @Override
             public void onSuccess(List<String> result) {
-                int i = 1;
+                ServerResultEvent event = new ServerResultEvent(result.get(0));
+                App.getInjector().getSimpleEventBus().fireEvent(event);
+                host.closePopupBase();
             }
         });
 

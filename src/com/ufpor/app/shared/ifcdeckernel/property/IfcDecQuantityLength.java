@@ -40,6 +40,11 @@ public class IfcDecQuantityLength extends IfcDecPhysicalSimpleQuantity {
     }
 
     @Override
+    public void onPostLoad() {
+        getConstraints().onPostLoad();
+    }
+
+    @Override
     public String getIfcString() {
         String name = getName();
         String description = (getDescription() != null && !getDescription().isEmpty()) ? getDescription() : "*";
