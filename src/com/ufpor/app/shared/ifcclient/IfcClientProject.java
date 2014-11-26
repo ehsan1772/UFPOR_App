@@ -64,11 +64,13 @@ public class IfcClientProject extends IfcClientContext {
 
 
     public void setMinArea(double minValue) {
-        generalQuantities.setMin(minValue, IfcClientElementQuantity.ConstraintType.GrossFloorArea_Min);
+      //  generalQuantities.setMin(minValue, IfcClientElementQuantity.ConstraintType.GrossFloorArea_Min);
+        netAreaQuantity.setMinValue(minValue);
     }
 
     public void setMaxArea(double maxValue) {
-        generalQuantities.setMax(maxValue, IfcClientElementQuantity.ConstraintType.GrossFloorArea_Max);
+       // generalQuantities.setMax(maxValue, IfcClientElementQuantity.ConstraintType.GrossFloorArea_Max);
+        netAreaQuantity.setMaxValue(maxValue);
     }
 
     public void addSpatialStructureRoot(IfcClientSpatialElement root) {

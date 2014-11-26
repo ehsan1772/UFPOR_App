@@ -10,6 +10,16 @@ public class IfcClientQuantityCount extends IfcClientPhysicalSimpleQuantity {
     public IfcClientQuantityCount() {
     }
 
+    @Override
+    public void setMaxValue(Object value) {
+
+    }
+
+    @Override
+    public void setMinValue(Object value) {
+
+    }
+
     public IfcClientQuantityCount(Type name, int count) {
         super(name.name());
         countMeasure = count;

@@ -1,11 +1,9 @@
 package com.ufpor.app.shared.ifcdeckernel.property;
 
 import com.ufpor.app.shared.ifcclient.IfcClientElementQuantity;
-import com.ufpor.app.shared.ifcclient.constraint.IfcClientConstraint;
-import com.ufpor.app.shared.ifcclient.constraint.IfcClientMetric;
 import com.ufpor.app.shared.ifcclient.property.IfcClientPhysicalQuantity;
 import com.ufpor.app.shared.ifcclient.property.IfcClientQuantityArea;
-import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecMetric;
+import com.ufpor.app.shared.ifcclient.property.IfcClientQuantityLength;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.NotPersistent;
@@ -39,23 +37,24 @@ public class IfcDecElementQuantity extends IfcDecQuantitySet {
     private ArrayList<IfcDecPhysicalQuantity> quantities = new ArrayList<IfcDecPhysicalQuantity>();
     @Persistent(serialized = "true")
     private ArrayList<IfcDecQuantityArea> quantities_area = new ArrayList<IfcDecQuantityArea>();
+    @Persistent(serialized = "true")
+    private ArrayList<IfcDecQuantityLength> quantities_length = new ArrayList<IfcDecQuantityLength>();
     @Persistent
     private String methodOfMeasurement;
 
     public static IfcDecElementQuantity getInstance(IfcClientElementQuantity client) {
         IfcDecElementQuantity result = new IfcDecElementQuantity();
-        for (IfcClientConstraint clientConstraint : client.getConstraints()) {
-            if (clientConstraint instanceof IfcClientMetric) {
-                result.getConstraints().add(IfcDecMetric.getInstance((IfcClientMetric) clientConstraint));
-            }
-        }
-        result.setDescription(client.getDescription() != null ? client.getDescription().getValue() : null);
-        result.setName(client.getName() != null ? client.getName().getValue() : null);
+        result.setDescription(client.getDescription() != null ? client.getDescription() : null);
+        result.setName(client.getName() != null ? client.getName() : null);
         result.setMethodOfMeasurement(client.getMethodOfMeasurement());
         for (IfcClientPhysicalQuantity quantity : client.getQuantities()) {
             if (quantity instanceof IfcClientQuantityArea) {
                 result.getQuantities().add(IfcDecQuantityArea.getInstance((IfcClientQuantityArea) quantity));
             }
+            if (quantity instanceof IfcClientQuantityLength) {
+                result.getQuantities().add(IfcDecQuantityLength.getInstance((IfcClientQuantityLength) quantity));
+            }
+
         }
         return result;
 
@@ -64,12 +63,20 @@ public class IfcDecElementQuantity extends IfcDecQuantitySet {
     public void onPrePut() {
         quantities_area = new ArrayList<IfcDecQuantityArea>();
         for ( IfcDecPhysicalQuantity q : getQuantities()) {
-            quantities_area.add((IfcDecQuantityArea) q);
+            if (q instanceof IfcDecQuantityArea) {
+                quantities_area.add((IfcDecQuantityArea) q);
+            }
+            if (q instanceof IfcDecQuantityLength) {
+                quantities_length.add((IfcDecQuantityLength) q);
+            }
         }
     }
 
     public void onPostLoad() {
         for (IfcDecQuantityArea area : quantities_area) {
+            quantities.add(area);
+        }
+        for (IfcDecQuantityLength area : quantities_length) {
             quantities.add(area);
         }
     }

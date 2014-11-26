@@ -1,5 +1,8 @@
 package com.ufpor.app.server.ifcphysical;
 
+import com.google.appengine.api.datastore.Key;
+import com.ufpor.app.client.NotLoggedInException;
+import com.ufpor.app.server.EnvironmentServiceImpl;
 import com.ufpor.app.server.GuidCompressor;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecLabel;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecOwnerHistory;
@@ -7,6 +10,7 @@ import com.ufpor.app.shared.ifcdeckernel.IfcDecProject;
 import com.ufpor.app.shared.ifcdeckernel.property.*;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecConstraint;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecMetric;
+import com.ufpor.app.shared.ifcdeckernel.type.IfcDecSpaceType;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -45,14 +49,16 @@ public class Constants {
     public final static String IFCPROPERTYSINGLEVALUE = "IFCPROPERTYSINGLEVALUE(%1s, %2s, %3s, %4s);";
     public final static String IFCELEMENTQUANTITY = "IFCELEMENTQUANTITY(%1s, %2s, %3s, %4s, %5s, %6s);";
     public final static String IFCQUANTITYAREA = "IFCQUANTITYAREA(%1s, %2s, %3s, %4s, %5s);";
+    public final static String IFCQUANTITYLENGTH = "IFCQUANTITYLENGTH(%1s, %2s, %3s, %4s, %5s);";
     public final static String IFCRELDEFINESBYPROPERTIES =  "IFCRELDEFINESBYPROPERTIES(%1s, %2s, %3s, %4s, %5s, %6s);";
+    public final static String IFCSPACETYPE = "IFCSPACETYPE ('%1s', %2s, %3s, %4s, %5s, %6s, %7s, %8s, %9s, %10s, %11s);";
     public final static String IFCMETRIC = "IFCMETRIC ('%1s', %2s, %3s, %4s, %5s, %6s, %7s, %8s, %9s, %10s, %11s);";
     public static final String IFCRESOURCECONSTRAINTRELATIONSHIP = "IFCRESOURCECONSTRAINTRELATIONSHIP(%1s, %2s, %3s, %4s);";
 
     private final static IFCComparator COMPARATOR = new IFCComparator();
     private ArrayList<String> mFile;
 
-    public static String getIfcFile(String header, ArrayList<String> lines) {
+    public static String getIfcFile(String header, ArrayList<String> lines, EnvironmentServiceImpl service) {
         Collections.sort(lines, COMPARATOR);
         String result = header;
         for (String line : lines) {
@@ -77,7 +83,7 @@ public class Constants {
 
     public static String getHeader(IfcDecProject project) {
         String fileDescription = project.getLongName().getValue();
-        String fileName = project.getName().getValue();
+        String fileName = project.getName();
         String author = project.getUser().getNickname();
         String organization = project.getUser().getEmail();
         String authorization = project.getUser().getAuthDomain();
@@ -98,15 +104,15 @@ public class Constants {
         return String.format(HEADER, fileDescription, fileName, getCurrentDate(), author, organization, authorization);
     }
 
-    public String getProject(IfcDecProject project, ArrayList<String> file) {
+    public String getProject(IfcDecProject project, ArrayList<String> file, EnvironmentServiceImpl service) {
         mFile = file;
         String number = getNextNumber();
 
         //ROOT
         String GUI = project.getGlobalId().getValue();
         String ownerHistory = project.getOwnerHistory() == null ? "$" : getOwnerHistory(project.getOwnerHistory(),file);
-        String name = (project.getName().getValue() == null || project.getName().getValue().isEmpty()) ? "$" : project.getName().getValue();
-        String description = (project.getDescription() == null || project.getDescription().getValue() == null || project.getDescription().getValue().isEmpty()) ? "$" : project.getDescription().getValue();
+        String name = (project.getName() == null || project.getName().isEmpty()) ? "$" : project.getName();
+        String description = (project.getDescription() == null || project.getDescription().isEmpty()) ? "$" : project.getDescription();
 
         //IfcContext
         String objectType = (project.getObjectType() == null || project.getObjectType().getValue() == null || project.getObjectType().getValue().isEmpty()) ? "$" : project.getObjectType().getValue();
@@ -117,6 +123,10 @@ public class Constants {
 
         //adding properties and their constraints
         addIsDefinedBy(project.getIsDefinedBy(), number, file);
+
+        //adding space types
+        addSpaceTypes(project.getSpaceTypes(), project, service);
+
 
         String ifcProject = String.format(PROJECT,
                 GUI,
@@ -131,6 +141,28 @@ public class Constants {
 
         file.add("#" + number + "= " + ifcProject);
         return "#" + number;
+    }
+
+    private void addSpaceTypes(Set<Key> spaceTypes, IfcDecProject project, EnvironmentServiceImpl service) {
+        ArrayList<IfcDecSpaceType> spaces = null;
+        try {
+            spaces = service.getSpaceTypeByKey(project.getSpaceTypes());
+        } catch (NotLoggedInException e) {
+            e.printStackTrace();
+        }
+        if (spaces != null && spaces.size() != 0) {
+            for (IfcDecSpaceType space : spaces) {
+                space.prepareDataForStoreIfcDecContext(null);
+
+                space.getHasProperties_PropertySet();
+
+                space.getHasProperties_QuantitySet();
+
+                String number = getNextNumber();
+                String ifcSpaceType = space.getIfcString();
+                mFile.add("#" + number + "= " + ifcSpaceType);
+            }
+        }
     }
 
     private void addIsDefinedBy(ArrayList<IfcDecPropertySetDefinitionSelect> isDefinedBy, String objectNumber, ArrayList<String> file) {

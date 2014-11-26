@@ -4,7 +4,6 @@ import com.google.appengine.api.datastore.PostLoad;
 import com.google.appengine.api.datastore.PostLoadContext;
 import com.google.appengine.api.datastore.PrePut;
 import com.google.appengine.api.datastore.PutContext;
-import com.ufpor.app.shared.ifcdeckernel.IfcDecIdentifier;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecObject;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecObjectDefinition;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecElementQuantity;
@@ -23,26 +22,37 @@ import java.util.List;
 @Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
 public class IfcDecTypeObject extends IfcDecObjectDefinition {
     @Persistent
-    protected IfcDecIdentifier applicableOccurance;
+    protected String applicableOccurance;
     @NotPersistent
     protected List<IfcDecPropertySetDefinition> hasProperties;
+    @Persistent
+    protected ArrayList<IfcDecPropertySet> hasProperties_PropertySet;
+    @Persistent
+    protected ArrayList<IfcDecElementQuantity> hasProperties_QuantitySet;
+    //this property represents IfcRelDefinesByType relationship between a type and an object
+    //this is how we can connect a SpaceType to a space
+    //TODO move it to the object
+    private ArrayList<IfcDecObject> relatedObjects;
 
-    public IfcDecIdentifier getApplicableOccurance() {
+    public IfcDecTypeObject() {
+//        hasProperties = new ArrayList<IfcDecPropertySetDefinition>();
+//        hasProperties_PropertySet = new ArrayList<IfcDecPropertySet>();
+//        hasProperties_QuantitySet = new ArrayList<IfcDecElementQuantity>();
+    }
+
+    public String getApplicableOccurance() {
         return applicableOccurance;
     }
 
-    public IfcDecTypeObject() {
-        hasProperties = new ArrayList<IfcDecPropertySetDefinition>();
-        hasProperties_PropertySet = new ArrayList<IfcDecPropertySet>();
-        hasProperties_QuantitySet = new ArrayList<IfcDecElementQuantity>();
+    public void setApplicableOccurance(String applicableOccurance) {
+        this.applicableOccurance = applicableOccurance;
     }
 
     public void addPropert(IfcDecPropertySetDefinition property) {
+        if (hasProperties == null) {
+            hasProperties = new ArrayList<IfcDecPropertySetDefinition>();
+        }
         hasProperties.add(property);
-    }
-
-    public void setApplicableOccurance(IfcDecIdentifier applicableOccurance) {
-        this.applicableOccurance = applicableOccurance;
     }
 
     public List<IfcDecPropertySetDefinition> getHasProperties() {
@@ -77,16 +87,6 @@ public class IfcDecTypeObject extends IfcDecObjectDefinition {
         this.relatedObjects = relatedObjects;
     }
 
-    @Persistent
-    protected ArrayList<IfcDecPropertySet> hasProperties_PropertySet;
-
-    @Persistent
-    protected ArrayList<IfcDecElementQuantity> hasProperties_QuantitySet;
-    //this property represents IfcRelDefinesByType relationship between a type and an object
-    //this is how we can connect a SpaceType to a space
-    //TODO move it to the object
-    private ArrayList<IfcDecObject> relatedObjects;
-
     @PrePut(kinds = {"IfcDecProject"})
     public void prepareDataForStoreIfcDecContext(PutContext context) {
         super.prepareDataForStoreIfcDecContext(context);
@@ -95,7 +95,7 @@ public class IfcDecTypeObject extends IfcDecObjectDefinition {
         for (IfcDecPropertySetDefinitionSelect element : hasProperties) {
             if (element instanceof IfcDecPropertySet) {
                 ((IfcDecPropertySet) element).onPrePut();
-                hasProperties.add((IfcDecPropertySet) element);
+                hasProperties_PropertySet.add((IfcDecPropertySet) element);
             }
 
             if (element instanceof IfcDecElementQuantity) {

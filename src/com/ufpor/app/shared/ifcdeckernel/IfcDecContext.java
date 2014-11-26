@@ -1,15 +1,15 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
-import com.google.appengine.api.datastore.PostLoad;
-import com.google.appengine.api.datastore.PostLoadContext;
-import com.google.appengine.api.datastore.PrePut;
-import com.google.appengine.api.datastore.PutContext;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.*;
 import com.google.appengine.api.users.User;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
 import com.ufpor.app.shared.ifcdeckernel.property.*;
 
 import javax.jdo.annotations.*;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Ehsan Barekati on 11/15/14.
@@ -21,13 +21,11 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
     @NotPersistent
     protected ArrayList<IfcDecPropertySetDefinitionSelect> isDefinedBy;
 
-
     @Persistent
     protected ArrayList<IfcDecPropertySet> isDefinedBy_PropertySet;
 
     @Persistent
     protected ArrayList<IfcDecElementQuantity> isDefinedBy_QuantitySet;
-
     @NotPersistent
     protected ArrayList<IfcDecObjectDefinition> declaresObject;
     @Persistent
@@ -38,16 +36,24 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
     protected IfcDecLabel longName;
     @NotPersistent
     protected IfcDecLabel phase;
-
     @Persistent
     protected String phaseString;
     @Persistent
     protected String longNameString;
     @Persistent
     protected String objectTypeString;
-
     @Persistent(serialized = "true")
     protected IfcDecUnitAssignment unitsInContext;
+
+    @Persistent
+    private Set<com.google.appengine.api.datastore.Key> spaceTypes;
+
+    public void addSpaceType(Key key) {
+        if (spaceTypes == null) {
+            spaceTypes = new HashSet<Key>();
+        }
+        spaceTypes.add(key);
+    }
 
     public IfcDecContext(String guid, User user) {
         super(guid, user);
@@ -59,6 +65,14 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
     public static int getInstance2(IfcClientProject proj) {
         int i = 0;
         return i;
+    }
+
+    public Set<Key> getSpaceTypes() {
+        return spaceTypes;
+    }
+
+    public void setSpaceTypes(Set<Key> spaceTypes) {
+        this.spaceTypes = spaceTypes;
     }
 
     public IfcDecUnitAssignment getUnitsInContext() {

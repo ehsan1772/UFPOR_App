@@ -1,7 +1,12 @@
 package com.ufpor.app.shared.ifcdeckernel.property;
 
 import com.ufpor.app.server.ifcphysical.Constants;
+import com.ufpor.app.shared.ifcclient.IfcClientReal;
+import com.ufpor.app.shared.ifcclient.constraint.IfcBenchmarkEnum;
+import com.ufpor.app.shared.ifcclient.constraint.IfcConstraintEnum;
 import com.ufpor.app.shared.ifcclient.property.IfcClientQuantityArea;
+import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecMetric;
+import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecObjective;
 
 /**
  * Created by Ehsan Barekati on 11/23/14.
@@ -17,6 +22,22 @@ public class IfcDecQuantityArea extends IfcDecPhysicalSimpleQuantity {
     }
 
     public IfcDecQuantityArea() {
+    }
+
+    @Override
+    public void setMaxValue(Object value) {
+        IfcDecMetric maxMetric = new IfcDecMetric("MAX_VALUE", IfcConstraintEnum.HARD);
+        maxMetric.setBenchMark(IfcBenchmarkEnum.LESSTHANOREQUALTO);
+        maxMetric.setDataValue(new IfcDecReal((Double) value));
+        constraints.getBenchmarkValues().add(maxMetric);
+    }
+
+    @Override
+    public void setMinValue(Object value) {
+        IfcDecMetric minMetric = new IfcDecMetric("MIN_VALUE", IfcConstraintEnum.HARD);
+        minMetric.setBenchMark(IfcBenchmarkEnum.GREATERTHANOREQUALTO);
+        minMetric.setDataValue(new IfcDecReal((Double) value));
+        constraints.getBenchmarkValues().add(minMetric);
     }
 
     @Override
@@ -44,6 +65,8 @@ public class IfcDecQuantityArea extends IfcDecPhysicalSimpleQuantity {
         if (client.getUnit() != null) {
             result.setUnit(IfcDecSIUnit.getInstance((com.ufpor.app.shared.ifcclient.IfcClientSIUnit) client.getUnit()));
         }
+
+        result.setConstraints(IfcDecObjective.getInstance(client.getConstraints()));
 
         return result;
     }

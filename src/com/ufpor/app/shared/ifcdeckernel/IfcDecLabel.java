@@ -32,4 +32,11 @@ public class IfcDecLabel implements Serializable {
         }
         return null;
     }
+
+    public static IfcDecLabel getInstance(String client) {
+        if (client != null) {
+            return new IfcDecLabel(client);
+        }
+        return null;
+    }
 }

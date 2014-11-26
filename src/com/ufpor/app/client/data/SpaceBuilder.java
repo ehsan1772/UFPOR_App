@@ -1,7 +1,6 @@
 package com.ufpor.app.client.data;
 
 import com.ufpor.app.shared.ifcclient.IfcClientLabel;
-import com.ufpor.app.shared.ifcclient.IfcClientText;
 import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
 import com.ufpor.app.shared.ifcclient.product.IfcClientSpaceTypeEnum;
 import com.ufpor.app.shared.ifckernel.IfcElementCompositionEnum;
@@ -25,9 +24,8 @@ public class SpaceBuilder implements SpaceBuilderI {
 
     @Override
     public String setName(String name) {
-        IfcClientLabel label = new IfcClientLabel(name);
-        space.setName(new IfcClientLabel(name));
-        return label.getValue();
+        space.setName(name);
+        return name;
     }
 
     @Override
@@ -50,9 +48,8 @@ public class SpaceBuilder implements SpaceBuilderI {
 
     @Override
     public String setDescription(String description) {
-        IfcClientText text = new IfcClientText(description);
-        space.setDescription(text);
-        return text.getValue();
+        space.setDescription(description);
+        return description;
     }
 
     @Override

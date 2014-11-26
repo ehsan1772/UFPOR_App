@@ -37,8 +37,8 @@ public class IfcDecSpace extends IfcDecSpatialStructureElement {
 
         //setting the attributes
 
-        space.setDescription(clienSpace.getDescription() != null ? clienSpace.getDescription().getValue() : "");
-        space.setName(clienSpace.getName() != null ? clienSpace.getName().getValue() : "");
+        space.setDescription(clienSpace.getDescription() != null ? clienSpace.getDescription() : "");
+        space.setName(clienSpace.getName() != null ? clienSpace.getName() : "");
 
         for (IfcDecSpaceTypeEnum typeEnum : IfcDecSpaceTypeEnum.values()) {
             if(typeEnum.toString().equals(clienSpace.getPredefinedType().toString())) {

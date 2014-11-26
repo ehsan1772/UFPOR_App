@@ -26,6 +26,11 @@ public abstract class IfcDecRoot extends GAEObject implements Serializable {
 
     @Persistent
     private String descriptionText;
+
+    public String getName() {
+        return nameText;
+    }
+
     @Persistent
     private String nameText;
 

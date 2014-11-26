@@ -2,7 +2,6 @@ package com.ufpor.app.shared.ifcclient.constraint;
 
 import com.ufpor.app.shared.ifcclient.IfcClientDateTime;
 import com.ufpor.app.shared.ifcclient.IfcClientLabel;
-import com.ufpor.app.shared.ifcclient.IfcClientText;
 import com.ufpor.app.shared.ifcclient.actor.IfcClientActorSelect;
 
 import java.io.Serializable;
@@ -11,44 +10,21 @@ import java.io.Serializable;
  * Created by Ehsan Barekati on 11/11/14.
  */
 public class IfcClientConstraint implements Serializable {
-    private IfcClientLabel name;
-    private IfcClientText description;
-    private IfcClientConstraintEnum constraintGrade;
-    private IfcClientLabel constraintSource;
+    private String name;
+    private String description;
+    private IfcConstraintEnum constraintGrade;
+    private String constraintSource;
     //TODO figure out why it fails if this field is not transient
     private transient IfcClientActorSelect creatingActor;
     private IfcClientDateTime creatingTime;
 
-    public IfcClientLabel getName() {
-        return name;
-    }
 
-    public void setName(IfcClientLabel name) {
-        this.name = name;
-    }
-
-    public IfcClientText getDescription() {
-        return description;
-    }
-
-    public void setDescription(IfcClientText description) {
-        this.description = description;
-    }
-
-    public IfcClientConstraintEnum getConstraintGrade() {
+    public IfcConstraintEnum getConstraintGrade() {
         return constraintGrade;
     }
 
-    public void setConstraintGrade(IfcClientConstraintEnum constraintGrade) {
+    public void setConstraintGrade(IfcConstraintEnum constraintGrade) {
         this.constraintGrade = constraintGrade;
-    }
-
-    public IfcClientLabel getConstraintSource() {
-        return constraintSource;
-    }
-
-    public void setConstraintSource(IfcClientLabel constraintSource) {
-        this.constraintSource = constraintSource;
     }
 
     public IfcClientActorSelect getCreatingActor() {
@@ -77,7 +53,31 @@ public class IfcClientConstraint implements Serializable {
 
     private IfcClientLabel userDefinedGrade;
 
-    public IfcClientConstraint(IfcClientLabel name, IfcClientConstraintEnum constraintGrade) {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getConstraintSource() {
+        return constraintSource;
+    }
+
+    public void setConstraintSource(String constraintSource) {
+        this.constraintSource = constraintSource;
+    }
+
+    public IfcClientConstraint(String name, IfcConstraintEnum constraintGrade) {
         this.name = name;
         this.constraintGrade = constraintGrade;
     }

@@ -1,35 +1,33 @@
 package com.ufpor.app.shared.ifcclient.constraint;
 
-import com.ufpor.app.shared.ifcclient.IfcClientLabel;
-
 /**
  * Created by Ehsan Barekati on 11/11/14.
  */
 public class IfcClientMetric extends IfcClientConstraint {
-    private IfcClientBenchmarkEnum benchMark;
-    private IfcClientLabel valueSource;
+    private IfcBenchmarkEnum benchMark;
+    private String valueSource;
     private IfcClientMetricValueSelect dataValue;
 
-    public IfcClientMetric(IfcClientLabel name, IfcClientConstraintEnum constraintGrade) {
+    public IfcClientMetric(String name, IfcConstraintEnum constraintGrade) {
         super(name, constraintGrade);
     }
 
     protected IfcClientMetric() {
     }
 
-    public IfcClientBenchmarkEnum getBenchMark() {
+    public IfcBenchmarkEnum getBenchMark() {
         return benchMark;
     }
 
-    public void setBenchMark(IfcClientBenchmarkEnum benchMark) {
+    public void setBenchMark(IfcBenchmarkEnum benchMark) {
         this.benchMark = benchMark;
     }
 
-    public IfcClientLabel getValueSource() {
+    public String getValueSource() {
         return valueSource;
     }
 
-    public void setValueSource(IfcClientLabel valueSource) {
+    public void setValueSource(String valueSource) {
         this.valueSource = valueSource;
     }
 

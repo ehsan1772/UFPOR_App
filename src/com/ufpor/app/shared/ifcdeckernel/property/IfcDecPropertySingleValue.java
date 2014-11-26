@@ -2,9 +2,8 @@ package com.ufpor.app.shared.ifcdeckernel.property;
 
 import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.shared.ifcclient.*;
-import com.ufpor.app.shared.ifcclient.constraint.IfcClientConstraint;
-import com.ufpor.app.shared.ifcclient.constraint.IfcClientMetric;
-import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecMetric;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecIdentifier;
+import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecObjective;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.NotPersistent;
@@ -17,42 +16,22 @@ import javax.jdo.annotations.Persistent;
 @PersistenceCapable
 @Inheritance(customStrategy = "complete-table")
 public class IfcDecPropertySingleValue extends IfcDecSimpleProperty {
+    @Persistent(serialized = "true")
+    IfcDecObjective constraint;
     @NotPersistent
     private IfcDecValue nominalValue;
-
     @Persistent
     private double nominalValue_Real;
-
     @Persistent
     private int nominalValue_Integer;
-
     @Persistent
     private String nominalValue_Text;
-
     @NotPersistent
     private IfcDecUnit unit;
-
     @Persistent(serialized = "true")
     private IfcDecSIUnit unit_SIUnit;
-
     @Persistent
     private String type;
-
-    public IfcDecValue getNominalValue() {
-        return nominalValue;
-    }
-
-    public void setNominalValue(IfcDecValue nominalValue) {
-        this.nominalValue = nominalValue;
-    }
-
-    public IfcDecUnit getUnit() {
-        return unit;
-    }
-
-    public void setUnit(IfcDecUnit unit) {
-        this.unit = unit;
-    }
 
     public static IfcDecPropertySingleValue getInstance(IfcClientPropertySingleValue client) {
         IfcDecValue nominalValue = null;
@@ -77,15 +56,37 @@ public class IfcDecPropertySingleValue extends IfcDecSimpleProperty {
         IfcDecPropertySingleValue result = new IfcDecPropertySingleValue();
         result.setNominalValue(nominalValue);
         result.setUnit(unit);
+        result.setName(client.getName());
 
-        for (IfcClientConstraint constraint :client.getConstraints()) {
-            if (constraint instanceof IfcClientMetric) {
-                result.addConstraint(IfcDecMetric.getInstance((IfcClientMetric) constraint));
-            }
+        IfcDecObjective objective = IfcDecObjective.getInstance(client.getConstraint());
+        result.setConstraint(objective);
 
-        }
 
         return result;
+    }
+
+    public IfcDecObjective getConstraint() {
+        return constraint;
+    }
+
+    public void setConstraint(IfcDecObjective constraint) {
+        this.constraint = constraint;
+    }
+
+    public IfcDecValue getNominalValue() {
+        return nominalValue;
+    }
+
+    public void setNominalValue(IfcDecValue nominalValue) {
+        this.nominalValue = nominalValue;
+    }
+
+    public IfcDecUnit getUnit() {
+        return unit;
+    }
+
+    public void setUnit(IfcDecUnit unit) {
+        this.unit = unit;
     }
 
     public void onPrePut() {
@@ -134,6 +135,6 @@ public class IfcDecPropertySingleValue extends IfcDecSimpleProperty {
         String nominalValue = (getNominalValue() == null || getNominalValue().getIfcString() == null || getNominalValue().getIfcString().isEmpty()) ? "*" : getNominalValue().getIfcString();
         String unit = (getUnit() == null) ? "*" : Constants.getInstance().getUnit(this.getUnit(), null);
 
-        return String.format(Constants.IFCPROPERTYSINGLEVALUE, "'"+name+"'", "'"+description+"'",  nominalValue, unit);
+        return String.format(Constants.IFCPROPERTYSINGLEVALUE, "'" + name + "'", "'" + description + "'", nominalValue, unit);
     }
 }

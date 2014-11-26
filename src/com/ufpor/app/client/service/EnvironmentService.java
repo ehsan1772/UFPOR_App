@@ -7,6 +7,7 @@ import com.ufpor.app.client.NotLoggedInException;
 import com.ufpor.app.client.view.EnvironmentDM;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
 import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
+import com.ufpor.app.shared.ifcclient.type.IfcClientSpaceType;
 
 import java.util.List;
 
@@ -38,5 +39,7 @@ public interface EnvironmentService extends RemoteService {
     public List<EnvironmentDM> getEnvironments() throws NotLoggedInException;
 
     public List<String> addProject(IfcClientProject project) throws NotLoggedInException;
+
+    public List<String> addSpaceType(IfcClientSpaceType spaceType) throws NotLoggedInException;
 
 }

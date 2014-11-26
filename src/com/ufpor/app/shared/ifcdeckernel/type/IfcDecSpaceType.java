@@ -3,6 +3,7 @@ package com.ufpor.app.shared.ifcdeckernel.type;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.ufpor.app.server.GuidCompressor;
+import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.shared.ifcclient.IfcClientElementQuantity;
 import com.ufpor.app.shared.ifcclient.IfcClientPropertySet;
 import com.ufpor.app.shared.ifcclient.IfcClientPropertySetDefinition;
@@ -25,6 +26,7 @@ public class IfcDecSpaceType extends IfcDecSpatialStructureElementType {
     private IfcClientSpaceType.IfcSpaceTypeEnum predefinedType;
     @Persistent
     private String longName;
+    private String ifcString;
 
     public IfcClientSpaceType.IfcSpaceTypeEnum getPredefinedType() {
         return predefinedType;
@@ -69,5 +71,30 @@ public class IfcDecSpaceType extends IfcDecSpatialStructureElementType {
         }
 
         return type;
+    }
+
+    public String getIfcString(String properties) {
+        //ROOT
+        String guid = GuidCompressor.getNewIfcGloballyUniqueId();
+        String ownerHistory = "*";
+        String name = getName();
+        String description = (getDescription() == null || getHasProperties().isEmpty()) ? "*" : getDescription() ;
+
+        //IFCTYPEOBJECT
+        String applicableOccurance = (getApplicableOccurance()== null || getApplicableOccurance().isEmpty()) ? "*" : getApplicableOccurance();
+        String hasPropertSets = properties;
+
+        //IfcTypeProduct
+        String representationalMap = "*";
+        String tag = "*";
+
+        //IFCspatialelementtype
+        String elementType = (getElementType() == null || getElementType().isEmpty()) ? "*" : getElementType();
+
+        //IfcSpaceType
+        String predefinedType = getPredefinedType().name();
+        String longName = (getLongName() == null || getLongName().isEmpty()) ? "*" : getLongName();
+
+        return String.format(Constants.IFCSPACETYPE, guid, ownerHistory, name, description, applicableOccurance, hasPropertSets, representationalMap, tag, elementType, predefinedType, longName);
     }
 }

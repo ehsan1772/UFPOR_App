@@ -33,6 +33,13 @@ public class IfcDecText implements IfcDecSimpleValue, Serializable {
         return null;
     }
 
+    public static IfcDecText getInstance(String client) {
+        if (client != null) {
+            return new IfcDecText(client);
+        }
+        return null;
+    }
+
     @Override
     public String getIfcString() {
         return "'" + String.valueOf(value) + "'";

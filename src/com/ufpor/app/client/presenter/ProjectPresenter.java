@@ -26,7 +26,7 @@ public class ProjectPresenter implements ProjectPresenterI {
     private KeyUpHandler nameChanged = new KeyUpHandler() {
         @Override
         public void onKeyUp(KeyUpEvent event) {
-            project.setName(new IfcClientLabel(projectView1.getFirstTextBoxLText()));
+            project.setName(projectView1.getFirstTextBoxLText());
         }
     };
 
@@ -126,7 +126,7 @@ public class ProjectPresenter implements ProjectPresenterI {
 
     @Override
     public void setProjectName(String name) {
-        project.setName(new IfcClientLabel(name));
+        project.setName(name);
     }
 
     @Override
@@ -170,11 +170,6 @@ public class ProjectPresenter implements ProjectPresenterI {
     public HashMap<String, Widget> getView() {
         return views;
     }
-
-//    @Override
-//    public Widget getView() {
-//        return projectView1;
-//    }
 
     public interface Display {
         HasKeyUpHandlers getNameHandler();

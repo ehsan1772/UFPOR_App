@@ -41,5 +41,13 @@ public abstract class IfcClientTypeObject extends IfcClientObjectDefinition {
         this.applicationOccurance = applicationOccurance;
     }
 
+    public void addPropertySet(IfcClientPropertySetDefinition set) {
+        if (properties == null) {
+            properties = new ArrayList<IfcClientPropertySetDefinition>();
+        }
+
+        properties.add(set);
+    }
+
     private ArrayList<IfcClientObject> relatedObjects;
 }

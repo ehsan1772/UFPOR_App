@@ -1,8 +1,7 @@
 package com.ufpor.app.shared.ifcdeckernel.property.constraint;
 
-import com.ufpor.app.shared.ifcdeckernel.IfcDecLabel;
+import com.ufpor.app.shared.ifcclient.constraint.IfcConstraintEnum;
 import com.ufpor.app.shared.ifcdeckernel.actor.IfcDecActorSelect;
-import com.ufpor.app.shared.ifcdeckernel.property.IfcDecText;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDectDateTime;
 
 import java.io.Serializable;
@@ -11,14 +10,46 @@ import java.io.Serializable;
  * Created by Ehsan Barekati on 11/18/14.
  */
 public abstract class IfcDecConstraint implements Serializable {
-    private IfcDecLabel name;
-    private IfcDecText description;
-    private IfcDecConstraintEnum constraintGrade;
-    private IfcDecLabel constraintSource;
+    private String name;
+    private String description;
+    private IfcConstraintEnum constraintGrade;
+    private String constraintSource;
     //TODO figure out why it fails if this field is not transient
     private transient IfcDecActorSelect creatingActor;
     private IfcDectDateTime creatingTime;
     private String userDefinedGrade;
+
+    public IfcDecConstraint(String name, IfcConstraintEnum constraintGrade) {
+        this.name = name;
+        this.constraintGrade = constraintGrade;
+    }
+
+    protected IfcDecConstraint() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getConstraintSource() {
+        return constraintSource;
+    }
+
+    public void setConstraintSource(String constraintSource) {
+        this.constraintSource = constraintSource;
+    }
 
     public String getUserDefinedGrade() {
         return userDefinedGrade;
@@ -28,36 +59,13 @@ public abstract class IfcDecConstraint implements Serializable {
         this.userDefinedGrade = userDefinedGrade;
     }
 
-    public IfcDecLabel getName() {
-        return name;
-    }
 
-    public void setName(IfcDecLabel name) {
-        this.name = name;
-    }
-
-    public IfcDecText getDescription() {
-        return description;
-    }
-
-    public void setDescription(IfcDecText description) {
-        this.description = description;
-    }
-
-    public IfcDecConstraintEnum getConstraintGrade() {
+    public IfcConstraintEnum getConstraintGrade() {
         return constraintGrade;
     }
 
-    public void setConstraintGrade(IfcDecConstraintEnum constraintGrade) {
+    public void setConstraintGrade(IfcConstraintEnum constraintGrade) {
         this.constraintGrade = constraintGrade;
-    }
-
-    public IfcDecLabel getConstraintSource() {
-        return constraintSource;
-    }
-
-    public void setConstraintSource(IfcDecLabel constraintSource) {
-        this.constraintSource = constraintSource;
     }
 
     public IfcDecActorSelect getCreatingActor() {

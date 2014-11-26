@@ -1,5 +1,6 @@
 package com.ufpor.app.server;
 
+import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -10,13 +11,13 @@ import com.ufpor.app.client.view.EnvironmentDM;
 import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
 import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
+import com.ufpor.app.shared.ifcclient.type.IfcClientSpaceType;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecProject;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecUnitAssignment;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
-import com.ufpor.app.shared.ifcdeckernel.property.IfcDecElementQuantity;
-import com.ufpor.app.shared.ifcdeckernel.property.IfcDecUnit;
+import com.ufpor.app.shared.ifcdeckernel.property.*;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecConstraint;
-import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecMetric;
+import com.ufpor.app.shared.ifcdeckernel.type.IfcDecSpaceType;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
@@ -24,6 +25,7 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -113,6 +115,7 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         IfcDecProject pr = IfcDecProject.getInstance(project);
 
         String ifcFile;
+        Key key;
 
         pr.prepareDataForStore(null);
         pr.prepareDataForStoreIfcDecContext(null);
@@ -128,14 +131,14 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
 
 
         ArrayList<String> finalResult = new ArrayList<String>();
-        String header = Constants.getHeader(pr.getLongName().getValue(), pr.getName().getValue(), pr.getUser().getNickname(),pr.getUser().getEmail(), pr.getUser().getAuthDomain());
+        String header = Constants.getHeader(pr.getLongName().getValue(), pr.getName(), pr.getUser().getNickname(),pr.getUser().getEmail(), pr.getUser().getAuthDomain());
         LOG.log(Level.INFO, "Header is: " + header);
 
 
         Constants costant = Constants.getInstance();
-        costant.getProject(pr, finalResult);
+        costant.getProject(pr, finalResult, this);
 
-        ifcFile = Constants.getIfcFile(header, finalResult);
+        ifcFile = Constants.getIfcFile(header, finalResult, this);
         LOG.log(Level.INFO, "The file is:\n " + ifcFile);
 
         PersistenceManager pm2 = getPersistenceManager();
@@ -154,28 +157,17 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
             IfcDecElementQuantity defin = (IfcDecElementQuantity) finalOutCome.getIsDefinedBy().get(0);
             //max area
 
-            IfcDecMetric maxConstraint = (IfcDecMetric) defin.getConstraints().get(0);
-            IfcDecMetric minConstraint = (IfcDecMetric) defin.getConstraints().get(1);
-       //     IfcDecPropertySingleValue prop = (IfcDecMetric) maxConstraint defin.getConstraints().get(0);
-       //     constratints = prop.getConstraints();
-
             IfcDecUnitAssignment assignment = finalOutCome.getUnitsInContext();
 
-//            units.addAll(assignment.getUnits());
-//            unit = units.get(0);
-
-            pr = null;
-            header = null;
-            costant = null;
-
+            key = finalOutCome.getKey();
             Constants costant2 = Constants.getInstance();
             costant2.reset();
             ArrayList<String> finalResult2 = new ArrayList<String>();
             String header2 = Constants.getHeader(finalOutCome);
             LOG.log(Level.INFO, "Header is: \n" + header2);
 
-            costant2.getProject(finalOutCome, finalResult2);
-            String ifcFile2 = Constants.getIfcFile(header2, finalResult2);
+            costant2.getProject(finalOutCome, finalResult2, this);
+            String ifcFile2 = Constants.getIfcFile(header2, finalResult2, this);
             LOG.log(Level.INFO, "The file is:\n " + ifcFile2);
 
         } catch (Exception exception) {
@@ -188,6 +180,156 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         ArrayList<String> retunrvalue = new ArrayList<String>();
         retunrvalue.add(ifcFile);
         return retunrvalue;
+    }
+
+    private String getLastProjectIfcString() {
+        PersistenceManager pm2 = getPersistenceManager();
+        List<IfcDecProject> projects = null;
+        IfcDecProject finalOutCome = null;
+        ArrayList<IfcDecUnit> units = null;
+        IfcDecUnit unit = null;
+        String ifcFile2 = null;
+        ArrayList<IfcDecConstraint> constratints = null;
+        try {
+            Query q = pm2.newQuery(IfcDecProject.class, "user == u");
+            q.declareParameters("com.google.appengine.api.users.User u");
+            projects = (List<IfcDecProject>) q.execute(getUser());
+            finalOutCome = projects.get(projects.size() - 1);
+            finalOutCome.prepareDataForClient(null);
+            finalOutCome.prepareDataForClientIfcDecContext(null);
+            IfcDecElementQuantity defin = (IfcDecElementQuantity) finalOutCome.getIsDefinedBy().get(0);
+            //max area
+
+            IfcDecUnitAssignment assignment = finalOutCome.getUnitsInContext();
+
+            Constants costant2 = Constants.getInstance();
+            costant2.reset();
+            ArrayList<String> finalResult2 = new ArrayList<String>();
+            String header2 = Constants.getHeader(finalOutCome);
+            LOG.log(Level.INFO, "Header is: \n" + header2);
+
+            costant2.getProject(finalOutCome, finalResult2, this);
+            ifcFile2 = Constants.getIfcFile(header2, finalResult2, this);
+            LOG.log(Level.INFO, "The file is:\n " + ifcFile2);
+
+        } catch (Exception exception) {
+            LOG.log(Level.SEVERE, exception.getMessage());
+        }
+        finally {
+            pm2.close();
+        }
+
+        return ifcFile2;
+    }
+
+    private void addSpaceTypeToTheProject(Key spaceType) {
+        PersistenceManager pm2 = getPersistenceManager();
+        try {
+            Query q = pm2.newQuery(IfcDecProject.class, "user == u");
+            q.declareParameters("com.google.appengine.api.users.User u");
+            List<IfcDecProject> projects = (List<IfcDecProject>) q.execute(getUser());
+            IfcDecProject finalOutCome = projects.get(projects.size() - 1);
+            finalOutCome.addSpaceType(spaceType);
+
+        } catch (Exception exception) {
+            LOG.log(Level.SEVERE, exception.getMessage());
+        }
+        finally {
+            pm2.close();
+        }
+    }
+
+    @Override
+    public List<String> addSpaceType(IfcClientSpaceType spaceType) throws NotLoggedInException {
+        checkLoggedIn();
+
+        IfcDecSpaceType decSpaceType = IfcDecSpaceType.getInstance(spaceType);
+
+        String ifcFile;
+
+        decSpaceType.prepareDataForStoreIfcDecContext(null);
+        PersistenceManager pm = getPersistenceManager();
+        try {
+            pm.makePersistent(decSpaceType);
+        } catch (Exception exception) {
+            LOG.log(Level.SEVERE, exception.getMessage());
+            exception.printStackTrace();
+        }
+        finally {
+            pm.close();
+        }
+
+        addSpaceTypeToTheProject(decSpaceType.getKey());
+
+        List<IfcDecSpaceType> spaceTypes = null;
+        IfcDecSpaceType spaceTypeResult = null;
+        PersistenceManager pm2 = getPersistenceManager();
+        try {
+//            Query q = pm2.newQuery(IfcDecSpaceType.class, "user == u");
+//            q.declareParameters("com.google.appengine.api.users.User u");
+            Query q = pm2.newQuery(IfcDecSpaceType.class);
+ //           spaceTypes = (List<IfcDecSpaceType>) q.execute(getUser());
+            spaceTypes = (List<IfcDecSpaceType>) q.execute();
+            spaceTypeResult = spaceTypes.get(spaceTypes.size() - 1);
+            spaceTypeResult.prepareDataForClientIfcDecContext(null);
+
+            IfcDecPropertySetDefinition prop = spaceTypeResult.getHasProperties().get(0);
+            if (prop instanceof IfcDecPropertySet) {
+                ArrayList<IfcDecProperty> pr = ((IfcDecPropertySet) prop).getProperties();
+               // String n1 = pr.get(0).getName();
+                String n2 = pr.get(1).getIfcString();
+                String n3 = pr.get(2).getIfcString();
+                String n4 = pr.get(3).getIfcString();
+                int i = 0;
+            }
+
+        } catch (Exception exception) {
+            LOG.log(Level.SEVERE, exception.getMessage());
+            exception.printStackTrace();
+        }
+        finally {
+            pm2.close();
+        }
+
+        return null;
+    }
+
+
+    public IfcDecSpaceType getSpaceTypeByKey(Key key) throws NotLoggedInException {
+        PersistenceManager pm2 = getPersistenceManager();
+        IfcDecSpaceType spaceTypeResult = null;
+        try {
+            spaceTypeResult = pm2.getObjectById(IfcDecSpaceType.class, key);
+
+        } catch (Exception exception) {
+            LOG.log(Level.SEVERE, exception.getMessage());
+            exception.printStackTrace();
+        }
+        finally {
+            pm2.close();
+        }
+
+        return spaceTypeResult;
+    }
+
+    public ArrayList<IfcDecSpaceType> getSpaceTypeByKey(Set<Key> keys) throws NotLoggedInException {
+        PersistenceManager pm2 = getPersistenceManager();
+        ArrayList<IfcDecSpaceType> spaceTypeResults = new ArrayList<IfcDecSpaceType>();
+        try {
+            for (Key key : keys) {
+                IfcDecSpaceType spaceTypeResult = pm2.getObjectById(IfcDecSpaceType.class, key);
+                spaceTypeResults.add(spaceTypeResult);
+            }
+
+        } catch (Exception exception) {
+            LOG.log(Level.SEVERE, exception.getMessage());
+            exception.printStackTrace();
+        }
+        finally {
+            pm2.close();
+        }
+
+        return spaceTypeResults;
     }
 
     private void checkLoggedIn() throws NotLoggedInException {

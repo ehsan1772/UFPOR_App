@@ -1,12 +1,12 @@
 package com.ufpor.app.shared.ifcdeckernel.property;
 
-import com.ufpor.app.shared.ifcclient.constraint.IfcClientBenchmarkEnum;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecIdentifier;
-import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecBenchmarkEnum;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecConstraint;
-import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecMetric;
 
-import javax.jdo.annotations.*;
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 import java.util.ArrayList;
 
 /**
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 @Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
 public abstract class IfcDecProperty extends IfcDecPropertyAbstraction {
     @Persistent
-    private IfcDecIdentifier name;
+    private String name;
     @Persistent
     private IfcDecText description;
     private String ifcString;
@@ -37,36 +37,13 @@ public abstract class IfcDecProperty extends IfcDecPropertyAbstraction {
     }
 
     public IfcDecIdentifier getName() {
-        return name;
+        return new IfcDecIdentifier(name);
     }
 
-    public void setName(IfcDecIdentifier name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * TODO This relationship represents IfcResourceConstraintRelationship
-     *
-     * @param minValue
-     */
-    public void setMinArea(double minValue) {
-        IfcDecMetric min = new IfcDecMetric();
-        constraints.add(min);
-        min.setBenchMark(IfcDecBenchmarkEnum.get(IfcClientBenchmarkEnum.GREATERTHANOREQUALTO));
-        min.setDataValue(new IfcDecReal(minValue));
-    }
-
-    /**
-     * TODO This relationship represents IfcResourceConstraintRelationship
-     *
-     * @param maxValue
-     */
-    public void setMaxArea(double maxValue) {
-        IfcDecMetric max = new IfcDecMetric();
-        constraints.add(max);
-        max.setBenchMark(IfcDecBenchmarkEnum.get(IfcClientBenchmarkEnum.LESSTHANOREQUALTO));
-        max.setDataValue(new IfcDecReal(maxValue));
-    }
 
     public void addConstraint(IfcDecConstraint constraint) {
         constraints.add(constraint);

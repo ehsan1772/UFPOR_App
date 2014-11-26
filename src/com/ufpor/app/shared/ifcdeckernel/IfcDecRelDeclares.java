@@ -1,5 +1,6 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertyDefinition;
 import com.ufpor.app.shared.ifckernel.IfcObjectDefinition;
 
 import java.util.ArrayList;
