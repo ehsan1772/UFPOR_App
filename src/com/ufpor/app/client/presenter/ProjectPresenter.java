@@ -1,7 +1,9 @@
 package com.ufpor.app.client.presenter;
 
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.ui.Widget;
+import com.ufpor.app.client.view.project.FullPopUpView;
 import com.ufpor.app.client.view.project.HalfPopUpView;
 import com.ufpor.app.client.view.project.SpinnerPopUpView;
 import com.ufpor.app.shared.ifcclient.IfcClientLabel;
@@ -16,7 +18,8 @@ import java.util.HashMap;
  * Created by Ehsan Barekati on 11/13/14.
  */
 
-public class ProjectPresenter implements ProjectPresenterI {
+public class ProjectPresenter implements ProjectPresenterI, FullPopUpView.Presenter {
+    private FullPopUpView projectView3;
     private IfcClientProject project;
     private HalfPopUpView projectView1;
     private SpinnerPopUpView projectView2;
@@ -83,9 +86,11 @@ public class ProjectPresenter implements ProjectPresenterI {
         views = new HashMap<String, Widget>();
         projectView1 = new HalfPopUpView();
         projectView2 = new SpinnerPopUpView();
+        projectView3 = new FullPopUpView(this);
 
         views.put("General", projectView1);
         views.put("Setting", projectView2);
+        views.put("Test", projectView3);
 
         initializeView();
     }
@@ -167,8 +172,13 @@ public class ProjectPresenter implements ProjectPresenterI {
     }
 
     @Override
-    public HashMap<String, Widget> getView() {
+    public HashMap<String, Widget> getViews() {
         return views;
+    }
+
+    @Override
+    public void listboxValueChanged(String value, Element as) {
+        int i = 3;
     }
 
     public interface Display {

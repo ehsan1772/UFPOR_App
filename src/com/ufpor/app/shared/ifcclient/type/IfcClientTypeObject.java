@@ -46,7 +46,9 @@ public abstract class IfcClientTypeObject extends IfcClientObjectDefinition {
             properties = new ArrayList<IfcClientPropertySetDefinition>();
         }
 
-        properties.add(set);
+        if (!properties.contains(set)) {
+            properties.add(set);
+        }
     }
 
     private ArrayList<IfcClientObject> relatedObjects;

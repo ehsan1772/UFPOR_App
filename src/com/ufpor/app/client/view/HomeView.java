@@ -132,32 +132,6 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
         south.add(resultContainer);
 
 
-
-
-
-
-//        String test = "#1=IFCPROJECT(\u009200ZhrqZYLBcgy$rVVaiu2A\u0092, $, \u0092Example project\u0092, $, $, $, $, $, #2);<br />" +
-//                "#2=IFCUNITASSIGNMENT((#3, #4, #5, #6, #7, #8, #9, #10));<br/>" +
-//                "#3=IFCSIUNIT(*, .LENGTHUNIT., .MILLI., .METRE.);<br/>" +
-//                "#4=IFCSIUNIT(*, .AREAUNIT., $, .SQUARE_METRE.);<br/>" +
-//                "#5=IFCSIUNIT(*, .VOLUMEUNIT., $, .CUBIC_METRE.);<br>" +
-//                "#6=IFCSIUNIT(*, .TIMEUNIT., $, .SECOND.);<br>" +
-//                "#7=IFCSIUNIT(*, .ENERGYUNIT., $, .JOULE.);<br/>" +
-//                "#8=IFCSIUNIT(*, .MASSUNIT., .KILO., .GRAM.);\n" +
-//                "#9=IFCSIUNIT(*, .THERMODYNAMICTEMPERATUREUNIT., $, .KELVIN.);\n" +
-//                "#10=IFCDERIVEDUNIT((#11, #12, #13), .SPECIFICHEATCAPACITYUNIT., $);\n" +
-//                "#11=IFCDERIVEDUNITELEMENT(#7, 1);\n" +
-//                "#12=IFCDERIVEDUNITELEMENT(#8, -1);\n" +
-//                "#13=IFCDERIVEDUNITELEMENT(#9, -1);\n";
-//        for (int i = 1 ; i < 10 ; i++) {
-//            test = test.concat(test);
-//
-//        }
-
- //       southLabel = new HTML(new SafeHtmlBuilder().appendEscapedLines(test).toSafeHtml());
-   //     southLabel = new HTML();
-   //     resultContainer.add(southLabel);
-
     }
 
     @Override
@@ -210,7 +184,6 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
         popup.setHeight(height + "px");
 
         popup.setGlassEnabled(true);
-     //   popup.setWidget(new PopupBase(this, loginInfo));
         popUpBase.setHost(this);
         popup.setWidget(popUpBase);
 

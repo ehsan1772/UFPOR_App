@@ -39,10 +39,10 @@ public class PopupGeneral extends PopupBase  {
     protected void initWidget(Widget widget) {
         initWidgetSuper(widget);
         project = new IfcClientProject();
-        ProjectPresenter pr = new ProjectPresenter(project);
+        ProjectPresenter projectPresenter = new ProjectPresenter(project);
 
-        for(String title : pr.getView().keySet()) {
-            panel.add(pr.getView().get(title) , title);
+        for(String title : projectPresenter.getViews().keySet()) {
+            panel.add(projectPresenter.getViews().get(title) , title);
         }
     }
 

@@ -13,10 +13,12 @@ import com.google.gwt.user.client.ui.TabLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.ufpor.app.client.App;
-import com.ufpor.app.client.service.EnvironmentService;
 import com.ufpor.app.client.LoginInfo;
 import com.ufpor.app.client.data.SpaceBuilderI;
+import com.ufpor.app.client.presenter.SpaceTypePresenter;
+import com.ufpor.app.client.service.EnvironmentService;
 import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
+import com.ufpor.app.shared.ifcclient.type.IfcClientSpaceType;
 
 public class PopupBase extends Composite {
     private static PopupBaseUiBinder uiBinder = GWT
@@ -39,7 +41,7 @@ public class PopupBase extends Composite {
     private EnvironmentGeneral envGeneral;
 
     private String newGUID;
-
+    private SpaceTypePresenter spaceTypePresenter;
 
 
     @Inject
@@ -80,26 +82,33 @@ public class PopupBase extends Composite {
     @Override
     protected void initWidget(Widget widget) {
         super.initWidget(widget);
-        envGeneral = new EnvironmentGeneral();
-        panel.add(envGeneral, "General");
+//        envGeneral = new EnvironmentGeneral();
+//        panel.add(envGeneral, "General");
+//
+//        panel.add(new EnvironmentGrouping(), "Grouping");
+//
+//        EnvironmentGrouping adjacencies = new EnvironmentGrouping();
+//        adjacencies.setFirstTitle("Required Adjacencies");
+//        adjacencies.setSecondTitle("Avoid Adjacencies");
+//        panel.add(adjacencies, "Adjacencies");
+//
+//        EnvironmentActivity activity = new EnvironmentActivity();
+//        activity.setFirstTitle("Activities");
+//        activity.setSecondTitle("People");
+//        panel.add(activity, "Activities");
+//
+//        DataGridTest test = new DataGridTest();
+//        panel.add(test, "Requirements");
 
-        panel.add(new EnvironmentGrouping(), "Grouping");
+        spaceTypePresenter = new SpaceTypePresenter(new IfcClientSpaceType());
 
-        EnvironmentGrouping adjacencies = new EnvironmentGrouping();
-        adjacencies.setFirstTitle("Required Adjacencies");
-        adjacencies.setSecondTitle("Avoid Adjacencies");
-        panel.add(adjacencies, "Adjacencies");
+        for (String name : spaceTypePresenter.getViews().keySet()) {
+            panel.add(spaceTypePresenter.getViews().get(name), name);
+        }
 
-        EnvironmentActivity activity = new EnvironmentActivity();
-        activity.setFirstTitle("Activities");
-        activity.setSecondTitle("People");
-        panel.add(activity, "Activities");
-
-        DataGridTest test = new DataGridTest();
-        panel.add(test, "Requirements");
 
         panel.selectTab(0);
-        test.redraw();
+   //     test.redraw();
     }
     protected void initWidgetSuper(Widget widget) {
         super.initWidget(widget);
