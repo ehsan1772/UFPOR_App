@@ -18,6 +18,7 @@ import com.ufpor.app.client.dependency.test;
 import com.ufpor.app.client.eventbus.ServerResultEvent;
 import com.ufpor.app.client.service.EnvironmentService;
 import com.ufpor.app.client.service.EnvironmentServiceAsync;
+import com.ufpor.app.client.view.project.PopupSpaceType;
 
 import java.util.List;
 import java.util.logging.Level;
@@ -59,6 +60,8 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
     private PopupPanel popup;
     @Inject
     private PopupBase popUpBase;
+    @Inject
+    private PopupSpaceType popUpSpace;
     private int count = 0;
     private Logger logger = Logger.getLogger(HomeView.class.getSimpleName());
     private ScrollPanel resultContainer;
@@ -184,8 +187,13 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
         popup.setHeight(height + "px");
 
         popup.setGlassEnabled(true);
-        popUpBase.setHost(this);
-        popup.setWidget(popUpBase);
+
+
+        popUpSpace.setHost(this);
+        popup.setWidget(popUpSpace);
+
+//        popUpBase.setHost(this);
+//        popup.setWidget(popUpBase);
 
         popup.center();
     }
