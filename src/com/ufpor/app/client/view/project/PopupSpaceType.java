@@ -24,6 +24,7 @@ import java.util.List;
 public class PopupSpaceType extends PopupBase  {
     private static PopupSpaceTypeUiBinder uiBinder = GWT.create(PopupSpaceTypeUiBinder.class);
     private IfcClientSpaceType spaceType;
+    private SpaceTypePresenter spaceTypePresenter;
 
     @Inject
     public PopupSpaceType(LoginInfo loginInfo) {
@@ -34,7 +35,7 @@ public class PopupSpaceType extends PopupBase  {
     protected void initWidget(Widget widget) {
         initWidgetSuper(widget);
         spaceType = new IfcClientSpaceType();
-        SpaceTypePresenter spaceTypePresenter = new SpaceTypePresenter(spaceType);
+        spaceTypePresenter = new SpaceTypePresenter(spaceType);
 
         for(String title : spaceTypePresenter.getViews().keySet()) {
             panel.add(spaceTypePresenter.getViews().get(title) , title);
@@ -43,7 +44,7 @@ public class PopupSpaceType extends PopupBase  {
 
     @UiHandler("save")
     public void handleClick1(ClickEvent e) {
-        EnvironmentService.App.getInstance().addSpaceType(spaceType, new AsyncCallback<List<String>>() {
+        EnvironmentService.App.getInstance().addSpaceType(spaceTypePresenter.getSpaceType(), new AsyncCallback<List<String>>() {
             @Override
             public void onFailure(Throwable caught) {
                 int i = 0;

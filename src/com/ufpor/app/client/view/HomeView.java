@@ -192,9 +192,6 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
         popUpSpace.setHost(this);
         popup.setWidget(popUpSpace);
 
-//        popUpBase.setHost(this);
-//        popup.setWidget(popUpBase);
-
         popup.center();
     }
 

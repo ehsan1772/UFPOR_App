@@ -84,4 +84,17 @@ public class IfcClientConstraint implements Serializable {
 
     protected IfcClientConstraint() {
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof IfcClientConstraint) {
+            return getName().equals(((IfcClientConstraint) obj).getName());
+        }
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        return getName().hashCode();
+    }
 }

@@ -49,7 +49,7 @@ public class PopupGeneral extends PopupBase  {
     @UiHandler("save")
     public void handleClick1(ClickEvent e) {
 
-        setProjectTestValues();
+       // setProjectTestValues();
 
 
 
@@ -66,7 +66,7 @@ public class PopupGeneral extends PopupBase  {
                 App.getInjector().getSimpleEventBus().fireEvent(event);
                 host.closePopupBase();
 
-                setTestSpaceTpeValues();
+        //        setTestSpaceTpeValues();
             }
         });
 

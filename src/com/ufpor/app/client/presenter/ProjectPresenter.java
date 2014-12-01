@@ -23,8 +23,6 @@ public class ProjectPresenter implements ProjectPresenterI, FullPopUpView.Presen
     private IfcClientProject project;
     private HalfPopUpView projectView1;
     private SpinnerPopUpView projectView2;
-    private double minArea;
-    private double maxArea;
     private HashMap<String, Widget> views;
     private KeyUpHandler nameChanged = new KeyUpHandler() {
         @Override
@@ -86,11 +84,9 @@ public class ProjectPresenter implements ProjectPresenterI, FullPopUpView.Presen
         views = new HashMap<String, Widget>();
         projectView1 = new HalfPopUpView();
         projectView2 = new SpinnerPopUpView();
-        projectView3 = new FullPopUpView(this);
 
         views.put("General", projectView1);
         views.put("Setting", projectView2);
-        views.put("Test", projectView3);
 
         initializeView();
     }
@@ -141,13 +137,13 @@ public class ProjectPresenter implements ProjectPresenterI, FullPopUpView.Presen
 
     @Override
     public void setProjectMaxArea(double area) {
-        maxArea = area;
+      //  maxArea = area;
         //    project.setAreaBound(maxArea, minArea);
     }
 
     @Override
     public void setProjectMinArea(double area) {
-        minArea = area;
+       // minArea = area;
         //   project.setAreaBound(maxArea, minArea);
     }
 

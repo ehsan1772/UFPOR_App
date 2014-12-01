@@ -1,10 +1,7 @@
 package com.ufpor.app.shared.ifcclient.property;
 
 import com.ufpor.app.shared.ifcclient.IfcClientReal;
-import com.ufpor.app.shared.ifcclient.constraint.IfcBenchmarkEnum;
-import com.ufpor.app.shared.ifcclient.constraint.IfcClientMetric;
-import com.ufpor.app.shared.ifcclient.constraint.IfcClientObjective;
-import com.ufpor.app.shared.ifcclient.constraint.IfcConstraintEnum;
+import com.ufpor.app.shared.ifcclient.constraint.*;
 
 /**
  * Created by Ehsan Barekati on 11/22/14.
@@ -22,6 +19,7 @@ public class IfcClientQuantityArea extends IfcClientPhysicalSimpleQuantity {
         IfcClientMetric maxMetric = new IfcClientMetric("MAX_VALUE", IfcConstraintEnum.HARD);
         maxMetric.setBenchMark(IfcBenchmarkEnum.LESSTHANOREQUALTO);
         maxMetric.setDataValue(new IfcClientReal((Double) value));
+        constraints.getBenchmarkValues().remove(maxMetric);
         constraints.getBenchmarkValues().add(maxMetric);
     }
 
@@ -30,6 +28,7 @@ public class IfcClientQuantityArea extends IfcClientPhysicalSimpleQuantity {
         IfcClientMetric maxMetric = new IfcClientMetric("MIN_VALUE", IfcConstraintEnum.HARD);
         maxMetric.setBenchMark(IfcBenchmarkEnum.GREATERTHANOREQUALTO);
         maxMetric.setDataValue(new IfcClientReal((Double) value));
+        constraints.getBenchmarkValues().remove(maxMetric);
         constraints.getBenchmarkValues().add(maxMetric);
     }
 

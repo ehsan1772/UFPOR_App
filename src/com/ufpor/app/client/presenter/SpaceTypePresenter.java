@@ -10,7 +10,6 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.ufpor.app.client.view.DataGridTest;
 import com.ufpor.app.client.view.EnvironmentActivity;
-import com.ufpor.app.client.view.EnvironmentGeneral;
 import com.ufpor.app.client.view.EnvironmentGrouping;
 import com.ufpor.app.client.view.project.FullPopUpView;
 import com.ufpor.app.shared.ifcclient.property.SpaceBaseQuantitiesBuilder;
@@ -77,6 +76,7 @@ public class SpaceTypePresenter implements SpaceTypePresenterI, FullPopUpView.Pr
 
     public IfcClientSpaceType getSpaceType() {
         spaceType.addPropertySet(pBuilder.getProperties());
+        spaceType.addPropertySet((constraintBuilder.getIfcClientElementQuantity()));
         return spaceType;
     }
 
@@ -100,7 +100,7 @@ public class SpaceTypePresenter implements SpaceTypePresenterI, FullPopUpView.Pr
         views.put("Height Constraints", constraintsWidgets.get(1));
 
 
-        views.put("General", new EnvironmentGeneral());
+       // views.put("General", new EnvironmentGeneral());
 
 
 

@@ -1,28 +1,28 @@
 package com.ufpor.app.shared.ifcclient.constraint;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Created by Ehsan Barekati on 11/25/14.
  */
 public class IfcClientObjective extends IfcClientConstraint {
-    private ArrayList<IfcClientConstraint> benchmarkValues;
+    private HashSet<IfcClientConstraint> benchmarkValues;
     private IfcLogicalOperatorEnum logicalAggregator;
     private IfcObjectiveEnum objectiveQualifier;
     private String userDefinedQualifier;
 
     public IfcClientObjective() {
-        benchmarkValues = new ArrayList<IfcClientConstraint>();
+        benchmarkValues = new HashSet<IfcClientConstraint>();
         logicalAggregator = IfcLogicalOperatorEnum.LOGICALAND;
         objectiveQualifier = IfcObjectiveEnum.REQUIREMENT;
         setConstraintGrade(IfcConstraintEnum.HARD);
     }
 
-    public ArrayList<IfcClientConstraint> getBenchmarkValues() {
+    public HashSet<IfcClientConstraint> getBenchmarkValues() {
         return benchmarkValues;
     }
 
-    public void setBenchmarkValues(ArrayList<IfcClientConstraint> benchmarkValues) {
+    public void setBenchmarkValues(HashSet<IfcClientConstraint> benchmarkValues) {
         this.benchmarkValues = benchmarkValues;
     }
 

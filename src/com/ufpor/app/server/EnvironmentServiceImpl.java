@@ -267,10 +267,8 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         IfcDecSpaceType spaceTypeResult = null;
         PersistenceManager pm2 = getPersistenceManager();
         try {
-//            Query q = pm2.newQuery(IfcDecSpaceType.class, "user == u");
-//            q.declareParameters("com.google.appengine.api.users.User u");
+
             Query q = pm2.newQuery(IfcDecSpaceType.class);
- //           spaceTypes = (List<IfcDecSpaceType>) q.execute(getUser());
             spaceTypes = (List<IfcDecSpaceType>) q.execute();
             spaceTypeResult = spaceTypes.get(spaceTypes.size() - 1);
             spaceTypeResult.prepareDataForClientIfcDecContext(null);
