@@ -1,12 +1,14 @@
 package com.ufpor.app.shared.ifcdeckernel.property.constraint;
 
 import com.ufpor.app.server.ifcphysical.Constants;
+import com.ufpor.app.shared.ifcclient.IfcClientObject;
 import com.ufpor.app.shared.ifcclient.constraint.IfcClientConstraint;
 import com.ufpor.app.shared.ifcclient.constraint.IfcClientMetric;
 import com.ufpor.app.shared.ifcclient.constraint.IfcClientObjective;
 import com.ufpor.app.shared.ifcclient.constraint.IfcConstraintEnum;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Created by Ehsan Barekati on 11/25/14.
@@ -136,5 +138,28 @@ public class IfcDecObjective extends IfcDecConstraint {
         getName();
         getDescription();
         getUserDefinedGrade();
+    }
+
+    public static IfcClientObjective getClientInstance(IfcDecObjective server) {
+        IfcClientObjective result = new IfcClientObjective();
+
+        result.setConstraintGrade(server.getConstraintGrade());
+        result.setDescription(server.getDescription());
+        result.setName(server.getName());
+        result.setConstraintSource(server.getConstraintSource());
+        result.setLogicalAggregator(server.getLogicalAggregator());
+        result.setObjectiveQualifier(server.getObjectiveQualifier());
+        result.setUserDefinedQualifier(server.getUserDefinedQualifier());
+
+        HashSet<IfcClientConstraint> benchMarks = new HashSet<IfcClientConstraint>();
+        for (IfcDecConstraint constraint : server.getBenchmarkValues()) {
+            if (constraint instanceof IfcDecMetric) {
+                benchMarks.add(IfcDecMetric.getClientInstance((IfcDecMetric) constraint));
+            }
+        }
+
+        result.setBenchmarkValues(benchMarks);
+
+        return result;
     }
 }

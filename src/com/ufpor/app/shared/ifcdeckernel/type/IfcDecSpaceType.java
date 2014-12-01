@@ -97,4 +97,29 @@ public class IfcDecSpaceType extends IfcDecSpatialStructureElementType {
 
         return String.format(Constants.IFCSPACETYPE, guid, ownerHistory, name, description, applicableOccurance, hasPropertSets, representationalMap, tag, elementType, predefinedType, longName);
     }
+
+    public static IfcClientSpaceType getClientSpace(IfcDecSpaceType decSpace) {
+        IfcClientSpaceType clientSpace = new IfcClientSpaceType();
+
+        clientSpace.setDescription(decSpace.getDescription());
+        clientSpace.setName(decSpace.getName());
+        clientSpace.setLongName(decSpace.getLongName());
+
+        //properties
+
+        IfcClientPropertySetDefinition propertySet = null;
+        for(IfcDecPropertySetDefinition property : decSpace.getHasProperties()) {
+            if (property instanceof IfcDecPropertySet) {
+                propertySet = IfcDecPropertySet.getClientInstance((IfcDecPropertySet) property);
+            }
+
+            if (property instanceof IfcDecElementQuantity) {
+                propertySet = IfcDecElementQuantity.getClientInstance((IfcDecElementQuantity) property);
+            }
+
+            clientSpace.addProperty(propertySet);
+        }
+
+        return clientSpace;
+    }
 }

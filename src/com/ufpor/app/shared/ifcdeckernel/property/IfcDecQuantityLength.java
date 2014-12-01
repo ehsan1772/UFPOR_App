@@ -3,6 +3,7 @@ package com.ufpor.app.shared.ifcdeckernel.property;
 import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.shared.ifcclient.constraint.IfcBenchmarkEnum;
 import com.ufpor.app.shared.ifcclient.constraint.IfcConstraintEnum;
+import com.ufpor.app.shared.ifcclient.property.IfcClientPhysicalQuantity;
 import com.ufpor.app.shared.ifcclient.property.IfcClientQuantityLength;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecMetric;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecObjective;
@@ -68,6 +69,20 @@ public class IfcDecQuantityLength extends IfcDecPhysicalSimpleQuantity {
         return result;
     }
 
+    public static IfcClientQuantityLength getClientInstance(IfcDecQuantityLength server) {
+        IfcClientQuantityLength result = new IfcClientQuantityLength();
+
+        result.setDescription(server.getDescription());
+        result.setFormula(server.getFormula());
+        if (server.getUnit() != null) {
+            result.setUnit(IfcDecSIUnit.getClientInstance((IfcDecSIUnit) server.getUnit()));
+        }
+
+        result.setConstraints(IfcDecObjective.getClientInstance(server.getConstraints()));
+
+        return result;
+    }
+
     public double getLengthValue() {
         return lengthValue;
     }
@@ -83,6 +98,8 @@ public class IfcDecQuantityLength extends IfcDecPhysicalSimpleQuantity {
     public void setFormula(String formula) {
         this.formula = formula;
     }
+
+
 
 
     //public enum Type {GrossFloorArea, NetFloorArea, GrossWallArea, NetWallArea, GrossCeilingArea, NetCeilingArea}

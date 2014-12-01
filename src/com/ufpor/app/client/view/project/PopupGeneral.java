@@ -81,16 +81,16 @@ public class PopupGeneral extends PopupBase  {
         project.setLongName(new IfcClientLabel("Long Test Name"));
         project.setDescription("Test Description");
 
-        IfcClientSIUnit.IfcClientSIUnitName unitName = IfcClientSIUnit.IfcClientSIUnitName.valueOf("METRE");
-        IfcClientSIUnit lengthUnit = new IfcClientSIUnit(IfcClientNamedUnit.IfcClientUnitEnum.LENGTHUNIT, null, unitName);
+        IfcClientSIUnit.IfcSIUnitName unitName = IfcClientSIUnit.IfcSIUnitName.valueOf("METRE");
+        IfcClientSIUnit lengthUnit = new IfcClientSIUnit(IfcClientNamedUnit.IfcUnitEnum.LENGTHUNIT, null, unitName);
         project.getUnitsInContext().addUnit(lengthUnit);
 
-        IfcClientSIUnit.IfcClientSIUnitName unitName2 = IfcClientSIUnit.IfcClientSIUnitName.valueOf("SQUARE_METRE");
-        IfcClientSIUnit lengthUnit2 = new IfcClientSIUnit(IfcClientNamedUnit.IfcClientUnitEnum.AREAUNIT, null, unitName);
+        IfcClientSIUnit.IfcSIUnitName unitName2 = IfcClientSIUnit.IfcSIUnitName.valueOf("SQUARE_METRE");
+        IfcClientSIUnit lengthUnit2 = new IfcClientSIUnit(IfcClientNamedUnit.IfcUnitEnum.AREAUNIT, null, unitName);
         project.getUnitsInContext().addUnit(lengthUnit2);
 
-        IfcClientSIUnit.IfcClientSIUnitName unitName3 = IfcClientSIUnit.IfcClientSIUnitName.valueOf("CUBIC_METRE");
-        IfcClientSIUnit lengthUnit3 = new IfcClientSIUnit(IfcClientNamedUnit.IfcClientUnitEnum.VOLUMEUNIT, null, unitName);
+        IfcClientSIUnit.IfcSIUnitName unitName3 = IfcClientSIUnit.IfcSIUnitName.valueOf("CUBIC_METRE");
+        IfcClientSIUnit lengthUnit3 = new IfcClientSIUnit(IfcClientNamedUnit.IfcUnitEnum.VOLUMEUNIT, null, unitName);
         project.getUnitsInContext().addUnit(lengthUnit3);
     }
 

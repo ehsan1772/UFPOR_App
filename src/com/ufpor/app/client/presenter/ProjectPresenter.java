@@ -55,8 +55,8 @@ public class ProjectPresenter implements ProjectPresenterI, FullPopUpView.Presen
     private ChangeHandler lengthUnitChanged = new ChangeHandler() {
         @Override
         public void onChange(ChangeEvent event) {
-            IfcClientSIUnit.IfcClientSIUnitName unitName = IfcClientSIUnit.IfcClientSIUnitName.valueOf(projectView2.getFirstListBoxLText());
-            IfcClientSIUnit lengthUnit = new IfcClientSIUnit(IfcClientNamedUnit.IfcClientUnitEnum.LENGTHUNIT, null, unitName);
+            IfcClientSIUnit.IfcSIUnitName unitName = IfcClientSIUnit.IfcSIUnitName.valueOf(projectView2.getFirstListBoxLText());
+            IfcClientSIUnit lengthUnit = new IfcClientSIUnit(IfcClientNamedUnit.IfcUnitEnum.LENGTHUNIT, null, unitName);
             project.getUnitsInContext().addUnit(lengthUnit);
         }
     };
@@ -64,8 +64,8 @@ public class ProjectPresenter implements ProjectPresenterI, FullPopUpView.Presen
     private ChangeHandler areaUnitChanged = new ChangeHandler() {
         @Override
         public void onChange(ChangeEvent event) {
-            IfcClientSIUnit.IfcClientSIUnitName unitName = IfcClientSIUnit.IfcClientSIUnitName.valueOf(projectView2.getSecondListBoxLText());
-            IfcClientSIUnit areaUnit = new IfcClientSIUnit(IfcClientNamedUnit.IfcClientUnitEnum.AREAUNIT, null, unitName);
+            IfcClientSIUnit.IfcSIUnitName unitName = IfcClientSIUnit.IfcSIUnitName.valueOf(projectView2.getSecondListBoxLText());
+            IfcClientSIUnit areaUnit = new IfcClientSIUnit(IfcClientNamedUnit.IfcUnitEnum.AREAUNIT, null, unitName);
             project.getUnitsInContext().addUnit(areaUnit);
         }
     };
@@ -73,8 +73,8 @@ public class ProjectPresenter implements ProjectPresenterI, FullPopUpView.Presen
     private ChangeHandler volumeUnitChanged = new ChangeHandler() {
         @Override
         public void onChange(ChangeEvent event) {
-            IfcClientSIUnit.IfcClientSIUnitName unitName = IfcClientSIUnit.IfcClientSIUnitName.valueOf(projectView2.getThirdListBoxLText());
-            IfcClientSIUnit volumeUnit = new IfcClientSIUnit(IfcClientNamedUnit.IfcClientUnitEnum.VOLUMEUNIT, null, unitName);
+            IfcClientSIUnit.IfcSIUnitName unitName = IfcClientSIUnit.IfcSIUnitName.valueOf(projectView2.getThirdListBoxLText());
+            IfcClientSIUnit volumeUnit = new IfcClientSIUnit(IfcClientNamedUnit.IfcUnitEnum.VOLUMEUNIT, null, unitName);
             project.getUnitsInContext().addUnit(volumeUnit);
         }
     };
@@ -108,7 +108,7 @@ public class ProjectPresenter implements ProjectPresenterI, FullPopUpView.Presen
 
         ArrayList<String> vals = new ArrayList<String>();
 
-        for (IfcClientSIUnit.IfcClientSIUnitName val :IfcClientSIUnit.IfcClientSIUnitName.values() ) {
+        for (IfcClientSIUnit.IfcSIUnitName val : IfcClientSIUnit.IfcSIUnitName.values() ) {
             vals.add(val.name());
         }
         projectView2.setFirstListBoxL(vals.toArray(new String[0]));
@@ -119,9 +119,9 @@ public class ProjectPresenter implements ProjectPresenterI, FullPopUpView.Presen
         projectView2.getSecondListBoxL().addChangeHandler(areaUnitChanged);
         projectView2.getThirdListBoxL().addChangeHandler(volumeUnitChanged);
 
-        projectView2.getFirstListBoxL().setSelectedIndex(vals.indexOf(IfcClientSIUnit.IfcClientSIUnitName.METRE));
-        projectView2.getSecondListBoxL().setSelectedIndex(vals.indexOf(IfcClientSIUnit.IfcClientSIUnitName.SQUARE_METRE));
-        projectView2.getThirdListBoxL().setSelectedIndex(vals.indexOf(IfcClientSIUnit.IfcClientSIUnitName.CUBIC_METRE));
+        projectView2.getFirstListBoxL().setSelectedIndex(vals.indexOf(IfcClientSIUnit.IfcSIUnitName.METRE));
+        projectView2.getSecondListBoxL().setSelectedIndex(vals.indexOf(IfcClientSIUnit.IfcSIUnitName.SQUARE_METRE));
+        projectView2.getThirdListBoxL().setSelectedIndex(vals.indexOf(IfcClientSIUnit.IfcSIUnitName.CUBIC_METRE));
 
     }
 

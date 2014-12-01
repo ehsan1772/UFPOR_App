@@ -2,7 +2,7 @@ package com.ufpor.app.shared.ifcdeckernel.property;
 
 import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.shared.ifcclient.*;
-import com.ufpor.app.shared.ifcdeckernel.IfcDecIdentifier;
+import com.ufpor.app.shared.ifcclient.constraint.IfcClientObjective;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecObjective;
 
 import javax.jdo.annotations.Inheritance;
@@ -23,6 +23,7 @@ public class IfcDecPropertySingleValue extends IfcDecSimpleProperty {
     @Persistent
     private double nominalValue_Real;
     @Persistent
+
     private int nominalValue_Integer;
     @Persistent
     private String nominalValue_Text;
@@ -63,6 +64,51 @@ public class IfcDecPropertySingleValue extends IfcDecSimpleProperty {
 
 
         return result;
+    }
+
+    public static IfcClientPropertySingleValue getClientInstance(IfcDecPropertySingleValue server) {
+        IfcClientValue nominalValue = null;
+        IfcClientUnit unit = null;
+
+        if (server.getNominalValue_Integer() != 0) {
+            nominalValue = new IfcClientInteger(server.getNominalValue_Integer());
+        }
+
+        if (server.getNominalValue_Real() != 0) {
+            nominalValue = new IfcClientReal(server.getNominalValue_Real());
+        }
+
+        if (server.getNominalValue_Text() != null) {
+            nominalValue = new IfcClientText(server.getNominalValue_Text());
+        }
+
+
+        if (server.getUnit() instanceof IfcDecSIUnit) {
+            unit = IfcDecSIUnit.getClientInstance((IfcDecSIUnit) server.getUnit());
+        }
+
+        IfcClientPropertySingleValue result = new IfcClientPropertySingleValue();
+        result.setNominalValue(nominalValue);
+        result.setUnit(unit);
+        result.setName(server.getName().getValue());
+
+        IfcClientObjective objective = IfcDecObjective.getClientInstance(server.getConstraint());
+        result.setConstraint(objective);
+
+
+        return result;
+    }
+
+    public double getNominalValue_Real() {
+        return nominalValue_Real;
+    }
+
+    public int getNominalValue_Integer() {
+        return nominalValue_Integer;
+    }
+
+    public String getNominalValue_Text() {
+        return nominalValue_Text;
     }
 
     public IfcDecObjective getConstraint() {

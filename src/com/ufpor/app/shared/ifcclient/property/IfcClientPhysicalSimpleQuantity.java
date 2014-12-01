@@ -16,6 +16,10 @@ public abstract class IfcClientPhysicalSimpleQuantity extends IfcClientPhysicalQ
     //this is the IfcResourceConstraintRelationship
     protected IfcClientObjective constraints;
 
+    public void setConstraints(IfcClientObjective constraints) {
+        this.constraints = constraints;
+    }
+
     protected IfcClientPhysicalSimpleQuantity(String name) {
         super(name);
     }

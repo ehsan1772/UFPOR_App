@@ -12,6 +12,7 @@ import com.ufpor.app.client.service.LoginService;
 import com.ufpor.app.client.service.LoginServiceAsync;
 import com.ufpor.app.client.view.PopupBase;
 import com.ufpor.app.client.view.project.PopupGeneral;
+import com.ufpor.app.client.view.project.PopupOpenProject;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>
@@ -62,28 +63,61 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
         injector.getSimpleEventBus().addHandler(MenuEvent.TYPE, new MenuEvent.MenuEventHandler() {
             @Override
             public void onMenuEvent(MenuEvent event) {
-           //     Window.alert("Event Received");
-                popup = new PopupPanel();
-               // popup.clear();
+                switch (event.getEvent()) {
+                    case NEW:
+                        startNewProject();
+                        break;
+                    case OPEN:
+                        startOpenProject();
+                        break;
+                    case OPEN_FILE:
+                        openProject((String) event.getValue());
+                        break;
+                }
 
-                int width = (Window.getClientWidth() / 2);
-                popup.setWidth(width + "px");
-
-                int height = (Window.getClientHeight() / 2);
-                popup.setHeight(height + "px");
-
-                popup.setGlassEnabled(true);
-                //   popup.setWidget(new PopupBase(this, loginInfo));
-                popUpGeneral = new PopupGeneral(loginInfo);
-                popUpGeneral.setHost(App.this);
-                popup.setWidget(popUpGeneral);
-
-                popup.center();
             }
         });
 
     }
 
+    private void openProject(String value) {
+
+    }
+
+    private void startNewProject() {
+        popup = new PopupPanel();
+
+        int width = (Window.getClientWidth() / 2);
+        popup.setWidth(width + "px");
+
+        int height = (Window.getClientHeight() / 2);
+        popup.setHeight(height + "px");
+
+        popup.setGlassEnabled(true);
+        popUpGeneral = new PopupGeneral(loginInfo);
+        popUpGeneral.setHost(this);
+        popup.setWidget(popUpGeneral);
+
+        popup.center();
+    }
+
+    private void startOpenProject() {
+        popup = new PopupPanel();
+
+        int width = (Window.getClientWidth() / 4);
+        popup.setWidth(width + "px");
+
+        int height = (Window.getClientHeight() / 2);
+        popup.setHeight(height + "px");
+
+        popup.setGlassEnabled(true);
+
+        PopupOpenProject popUpOpenProject = new PopupOpenProject(loginInfo);
+        popUpOpenProject.setHost(this);
+        popup.setWidget(popUpOpenProject);
+
+        popup.center();
+    }
 
 
     private void loadApplication(LoginInfo loginInfo) {

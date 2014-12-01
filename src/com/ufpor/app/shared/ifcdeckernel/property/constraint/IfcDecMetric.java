@@ -1,10 +1,12 @@
 package com.ufpor.app.shared.ifcdeckernel.property.constraint;
 
 import com.ufpor.app.server.ifcphysical.Constants;
+import com.ufpor.app.shared.ifcclient.IfcClientDateTime;
 import com.ufpor.app.shared.ifcclient.IfcClientInteger;
 import com.ufpor.app.shared.ifcclient.IfcClientReal;
 import com.ufpor.app.shared.ifcclient.IfcClientText;
 import com.ufpor.app.shared.ifcclient.constraint.IfcBenchmarkEnum;
+import com.ufpor.app.shared.ifcclient.constraint.IfcClientConstraint;
 import com.ufpor.app.shared.ifcclient.constraint.IfcClientMetric;
 import com.ufpor.app.shared.ifcclient.constraint.IfcConstraintEnum;
 import com.ufpor.app.shared.ifcdeckernel.property.*;
@@ -51,7 +53,7 @@ public class IfcDecMetric extends IfcDecConstraint implements Serializable {
         IfcDecMetric constraint = new IfcDecMetric(client.getName(), client.getConstraintGrade());
         constraint.setDescription(client.getDescription());
         constraint.setConstraintSource(client.getConstraintSource());
-        constraint.setCreatingTime(IfcDectDateTime.getInstance(client.getCreatingTime()));
+        constraint.setCreatingTime(IfcDecDateTime.getInstance(client.getCreatingTime()));
         //TODO add actor from the client to the dec
         constraint.setBenchMark(client.getBenchMark());
         constraint.setValueSource(client.getValueSource());
@@ -69,6 +71,30 @@ public class IfcDecMetric extends IfcDecConstraint implements Serializable {
         }
 
         return constraint;
+
+    }
+
+    public static IfcClientConstraint getClientInstance(IfcDecMetric server) {
+        IfcClientMetric client = new IfcClientMetric(server.getName(), server.getConstraintGrade());
+        client.setDescription(server.getDescription());
+        client.setConstraintSource(server.getConstraintSource());
+        client.setCreatingTime(IfcDecDateTime.getInstance(server.getCreatingTime()));
+        client.setBenchMark(server.getBenchMark());
+        client.setValueSource(server.getValueSource());
+
+        if (client.getDataValue() instanceof IfcDecReal) {
+            client.setDataValue(new IfcClientReal(((IfcClientReal) client.getDataValue()).getValue()));
+        }
+
+        if (client.getDataValue() instanceof IfcDecText) {
+            client.setDataValue(new IfcClientText(((IfcClientText) client.getDataValue()).getValue()));
+        }
+
+        if (client.getDataValue() instanceof IfcDecInteger) {
+            client.setDataValue(new IfcClientInteger(((IfcClientInteger) client.getDataValue()).getValue()));
+        }
+
+        return client;
 
     }
 
@@ -102,6 +128,5 @@ public class IfcDecMetric extends IfcDecConstraint implements Serializable {
 
 
     }
-
 
 }

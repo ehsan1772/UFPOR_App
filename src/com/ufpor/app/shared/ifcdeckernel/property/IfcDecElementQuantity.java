@@ -3,6 +3,7 @@ package com.ufpor.app.shared.ifcdeckernel.property;
 import com.ufpor.app.server.GuidCompressor;
 import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.shared.ifcclient.IfcClientElementQuantity;
+import com.ufpor.app.shared.ifcclient.IfcClientPropertySetDefinition;
 import com.ufpor.app.shared.ifcclient.property.IfcClientPhysicalQuantity;
 import com.ufpor.app.shared.ifcclient.property.IfcClientQuantityArea;
 import com.ufpor.app.shared.ifcclient.property.IfcClientQuantityLength;
@@ -71,6 +72,23 @@ public class IfcDecElementQuantity extends IfcDecQuantitySet {
 
     }
 
+    public static IfcClientElementQuantity getClientInstance(IfcDecElementQuantity server) {
+        IfcClientElementQuantity result = new IfcClientElementQuantity();
+        result.setDescription(server.getDescription());
+        result.setName(server.getName());
+        result.setMethodOfMeasurement(server.getMethodOfMeasurement());
+        for (IfcDecPhysicalQuantity quantity : server.getQuantities()) {
+            if (quantity instanceof IfcDecQuantityArea) {
+                result.getQuantities().add(IfcDecQuantityArea.getClientInstance((IfcDecQuantityArea) quantity));
+            }
+            if (quantity instanceof IfcDecQuantityLength) {
+                result.getQuantities().add(IfcDecQuantityLength.getClientInstance((IfcDecQuantityLength) quantity));
+            }
+        }
+
+        return result;
+    }
+
     public void onPrePut() {
         quantities_area = new ArrayList<IfcDecQuantityArea>();
         quantities_length = new ArrayList<IfcDecQuantityLength>();
@@ -112,6 +130,8 @@ public class IfcDecElementQuantity extends IfcDecQuantitySet {
         return String.format(Constants.IFCELEMENTQUANTITY, guid, ownerHistory, name, description, methodOfMeasurement, quantities);
 
     }
+
+
 }
 
 

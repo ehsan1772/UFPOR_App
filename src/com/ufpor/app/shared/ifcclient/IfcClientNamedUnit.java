@@ -7,10 +7,10 @@ import java.io.Serializable;
  */
 public abstract class IfcClientNamedUnit implements IfcClientUnit, Serializable {
 
-    private IfcClientUnitEnum unitType;
+    private IfcUnitEnum unitType;
     private IfcClientDimensionalExponents dimensions;
 
-    protected IfcClientNamedUnit(IfcClientUnitEnum unitType, IfcClientDimensionalExponents dimensions) {
+    protected IfcClientNamedUnit(IfcUnitEnum unitType, IfcClientDimensionalExponents dimensions) {
         this.unitType = unitType;
         this.dimensions = dimensions;
     }
@@ -27,15 +27,15 @@ public abstract class IfcClientNamedUnit implements IfcClientUnit, Serializable 
         this.dimensions = dimensions;
     }
 
-    public IfcClientUnitEnum getUnitType() {
+    public IfcUnitEnum getUnitType() {
         return unitType;
     }
 
-    public void setUnitType(IfcClientUnitEnum unitType) {
+    public void setUnitType(IfcUnitEnum unitType) {
         this.unitType = unitType;
     }
 
-    public enum IfcClientUnitEnum {
+    public enum IfcUnitEnum {
         ABSORBEDDOSEUNIT,
         AMOUNTOFSUBSTANCEUNIT,
         AREAUNIT,

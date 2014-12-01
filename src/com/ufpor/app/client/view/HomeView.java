@@ -178,6 +178,10 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
         });
     }
 
+    public void loadSpaceTypes(String projectName) {
+        EnvironmentService.App.getInstance().getProject(projectName);
+    }
+
     @UiHandler("button")
     void onButtonClick(ClickEvent event) {
         int width = (Window.getClientWidth() / 2);

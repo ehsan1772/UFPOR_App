@@ -41,6 +41,18 @@ public class IfcDecPropertySet extends IfcDecPropertySetDefinition {
         return result;
     }
 
+    public static IfcClientPropertySet getClientInstance(IfcDecPropertySet server) {
+        ArrayList<IfcClientProperty> properties = new ArrayList<IfcClientProperty>();
+        for (IfcDecProperty prop : server.getProperties()) {
+            if (prop instanceof IfcDecPropertySingleValue) {
+                properties.add(IfcDecPropertySingleValue.getClientInstance((IfcDecPropertySingleValue) prop));
+            }
+
+        }
+        IfcClientPropertySet result = new IfcClientPropertySet();
+        result.setProperties(properties);
+        return result;
+    }
     public ArrayList<IfcDecProperty> getProperties() {
         return properties;
     }

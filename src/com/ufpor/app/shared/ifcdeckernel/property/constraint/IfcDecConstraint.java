@@ -2,7 +2,7 @@ package com.ufpor.app.shared.ifcdeckernel.property.constraint;
 
 import com.ufpor.app.shared.ifcclient.constraint.IfcConstraintEnum;
 import com.ufpor.app.shared.ifcdeckernel.actor.IfcDecActorSelect;
-import com.ufpor.app.shared.ifcdeckernel.property.IfcDectDateTime;
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecDateTime;
 
 import java.io.Serializable;
 
@@ -16,7 +16,7 @@ public abstract class IfcDecConstraint implements Serializable {
     private String constraintSource;
     //TODO figure out why it fails if this field is not transient
     private transient IfcDecActorSelect creatingActor;
-    private IfcDectDateTime creatingTime;
+    private IfcDecDateTime creatingTime;
     private String userDefinedGrade;
 
     public IfcDecConstraint(String name, IfcConstraintEnum constraintGrade) {
@@ -76,11 +76,11 @@ public abstract class IfcDecConstraint implements Serializable {
         this.creatingActor = creatingActor;
     }
 
-    public IfcDectDateTime getCreatingTime() {
+    public IfcDecDateTime getCreatingTime() {
         return creatingTime;
     }
 
-    public void setCreatingTime(IfcDectDateTime creatingTime) {
+    public void setCreatingTime(IfcDecDateTime creatingTime) {
         this.creatingTime = creatingTime;
     }
 

@@ -45,9 +45,9 @@ public class IfcClientProject extends IfcClientContext {
         IfcClientDimensionalExponents dimension = new IfcClientDimensionalExponents();
         dimension.setLengthExponent(2);
 
-        IfcClientSIUnit unit = new IfcClientSIUnit(IfcClientNamedUnit.IfcClientUnitEnum.AREAUNIT,
+        IfcClientSIUnit unit = new IfcClientSIUnit(IfcClientNamedUnit.IfcUnitEnum.AREAUNIT,
                 dimension,
-                IfcClientSIUnit.IfcClientSIUnitName.SQUARE_METRE
+                IfcClientSIUnit.IfcSIUnitName.SQUARE_METRE
         );
 
         return unit;

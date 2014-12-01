@@ -42,4 +42,8 @@ public interface EnvironmentService extends RemoteService {
 
     public List<String> addSpaceType(IfcClientSpaceType spaceType) throws NotLoggedInException;
 
+    public List<String> getProjectsNames() throws NotLoggedInException;
+
+    public List<IfcClientSpaceType> getSpaceTypes(String projectName);
+
 }

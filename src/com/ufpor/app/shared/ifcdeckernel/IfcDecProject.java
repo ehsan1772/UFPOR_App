@@ -7,13 +7,14 @@ import com.google.appengine.api.datastore.PutContext;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.ufpor.app.server.GuidCompressor;
-import com.ufpor.app.shared.ifcclient.IfcClientElementQuantity;
-import com.ufpor.app.shared.ifcclient.IfcClientProject;
-import com.ufpor.app.shared.ifcclient.IfcClientPropertySet;
+import com.ufpor.app.shared.ifcclient.*;
 import com.ufpor.app.shared.ifcclient.select.IfcClientPropertySetDefinitionSelect;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpatialElement;
-import com.ufpor.app.shared.ifcdeckernel.property.*;
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecDimensionalExponents;
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecElementQuantity;
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySet;
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecSIUnit;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.NotPersistent;
@@ -65,9 +66,9 @@ public class IfcDecProject extends IfcDecContext {
         IfcDecDimensionalExponents dimension = new IfcDecDimensionalExponents();
         dimension.setLengthExponent(2);
 
-        IfcDecSIUnit unit = new IfcDecSIUnit(IfcDecNamedUnit.IfcDecUnitEnum.AREAUNIT,
+        IfcDecSIUnit unit = new IfcDecSIUnit(IfcClientNamedUnit.IfcUnitEnum.AREAUNIT,
                 dimension,
-                IfcDecSIUnit.IfcDecSIUnitName.SQUARE_METRE
+                IfcClientSIUnit.IfcSIUnitName.SQUARE_METRE
         );
         return unit;
     }

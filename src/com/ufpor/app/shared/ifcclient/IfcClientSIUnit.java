@@ -4,18 +4,18 @@ package com.ufpor.app.shared.ifcclient;
  * Created by Ehsan Barekati on 11/9/14.
  */
 public class IfcClientSIUnit extends IfcClientNamedUnit {
-    private IfcClientSIPrefix prefix;
-    private IfcClientSIUnitName name;
+    private IfcSIPrefix prefix;
+    private IfcSIUnitName name;
 
-    public IfcClientSIPrefix getPrefix() {
+    public IfcSIPrefix getPrefix() {
         return prefix;
     }
 
-    public IfcClientSIUnitName getName() {
+    public IfcSIUnitName getName() {
         return name;
     }
 
-    public IfcClientSIUnit(IfcClientUnitEnum unitType, IfcClientDimensionalExponents dimensions, IfcClientSIUnitName name) {
+    public IfcClientSIUnit(IfcUnitEnum unitType, IfcClientDimensionalExponents dimensions, IfcSIUnitName name) {
         super(unitType, dimensions);
         this.name = name;
     }
@@ -24,7 +24,7 @@ public class IfcClientSIUnit extends IfcClientNamedUnit {
     }
 
 
-    public enum IfcClientSIPrefix {
+    public enum IfcSIPrefix {
         EXA,
         PETA,
         TERA,
@@ -43,7 +43,7 @@ public class IfcClientSIUnit extends IfcClientNamedUnit {
         ATTO
     }
 
-    public enum IfcClientSIUnitName {
+    public enum IfcSIUnitName {
         AMPERE,
         BECQUEREL,
         CANDELA,

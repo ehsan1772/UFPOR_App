@@ -1,9 +1,10 @@
 package com.ufpor.app.shared.ifcdeckernel.property;
 
 import com.ufpor.app.server.ifcphysical.Constants;
-import com.ufpor.app.shared.ifcclient.IfcClientReal;
+import com.ufpor.app.shared.ifcclient.IfcClientQuantitySet;
 import com.ufpor.app.shared.ifcclient.constraint.IfcBenchmarkEnum;
 import com.ufpor.app.shared.ifcclient.constraint.IfcConstraintEnum;
+import com.ufpor.app.shared.ifcclient.property.IfcClientPhysicalQuantity;
 import com.ufpor.app.shared.ifcclient.property.IfcClientQuantityArea;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecMetric;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecObjective;
@@ -76,6 +77,22 @@ public class IfcDecQuantityArea extends IfcDecPhysicalSimpleQuantity {
         return result;
     }
 
+    public static IfcClientQuantityArea getClientInstance(IfcDecQuantityArea server) {
+        IfcClientQuantityArea result = new IfcClientQuantityArea();
+
+        result.setAreaValue(server.getAreaValue());
+        result.setDescription(server.getDescription());
+        if (server.getUnit() instanceof IfcDecSIUnit) {
+            result.setUnit(IfcDecSIUnit.getClientInstance((IfcDecSIUnit) server.getUnit()));
+        }
+
+        result.setConstraints(IfcDecObjective.getClientInstance(server.getConstraints()));
+
+        return result;
+
+
+    }
+
     public double getAreaValue() {
         return areaValue;
     }
@@ -91,6 +108,8 @@ public class IfcDecQuantityArea extends IfcDecPhysicalSimpleQuantity {
     public void setFormula(String formula) {
         this.formula = formula;
     }
+
+
 
 
     public enum Type {GrossFloorArea, NetFloorArea, GrossWallArea, NetWallArea, GrossCeilingArea, NetCeilingArea}

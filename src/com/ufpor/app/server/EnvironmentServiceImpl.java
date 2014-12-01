@@ -296,6 +296,52 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         return reult;
     }
 
+    @Override
+    public List<String> getProjectsNames() throws NotLoggedInException {
+        PersistenceManager pm2 = getPersistenceManager();
+        try {
+            Query q = pm2.newQuery(IfcDecProject.class, "user == u");
+            q.declareParameters("com.google.appengine.api.users.User u");
+            List<IfcDecProject> projects = (List<IfcDecProject>) q.execute(getUser());
+            List<String> result = new ArrayList<String>();
+            for (IfcDecProject project : projects) {
+                result.add(project.getName());
+            }
+            return result;
+
+        } catch (Exception exception) {
+            LOG.log(Level.SEVERE, exception.getMessage());
+            exception.printStackTrace();
+        }
+        finally {
+            pm2.close();
+        }
+        return null;
+    }
+
+    @Override
+    public List<IfcClientSpaceType> getSpaceTypes(String projectName) {
+        PersistenceManager pm2 = getPersistenceManager();
+        try {
+            Query q = pm2.newQuery(IfcDecSpaceType.class, "nameText == name");
+            q.declareParameters("String name, ");
+            List<IfcDecProject> projects = (List<IfcDecProject>) q.execute(getUser());
+            List<String> result = new ArrayList<String>();
+            for (IfcDecProject project : projects) {
+                result.add(project.getName());
+            }
+            return result;
+
+        } catch (Exception exception) {
+            LOG.log(Level.SEVERE, exception.getMessage());
+            exception.printStackTrace();
+        }
+        finally {
+            pm2.close();
+        }
+        return null;
+    }
+
 
     public IfcDecSpaceType getSpaceTypeByKey(Key key) throws NotLoggedInException {
         PersistenceManager pm2 = getPersistenceManager();

@@ -52,4 +52,11 @@ public abstract class IfcClientTypeObject extends IfcClientObjectDefinition {
     }
 
     private ArrayList<IfcClientObject> relatedObjects;
+
+    public void addProperty(IfcClientPropertySetDefinition property) {
+        if (properties == null) {
+            properties = new ArrayList<IfcClientPropertySetDefinition>();
+        }
+        properties.add(property);
+    }
 }

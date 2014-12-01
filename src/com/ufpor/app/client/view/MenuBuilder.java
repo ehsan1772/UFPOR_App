@@ -27,9 +27,7 @@ public class MenuBuilder {
         fileMenu.addItem("New", new Command() {
             @Override
             public void execute() {
-              //  showSelectedMenuItem("New");
-                MenuEvent event = new MenuEvent();
-             //  SimpleEventBus gg =  App.getInjector().getSimpleEventBus();
+             MenuEvent event = new MenuEvent(MenuEvent.Event.NEW);
              App.getInjector().getSimpleEventBus().fireEvent(event);
 
             }
@@ -37,7 +35,8 @@ public class MenuBuilder {
         fileMenu.addItem("Open", new Command() {
             @Override
             public void execute() {
-                showSelectedMenuItem("Open");
+                MenuEvent event = new MenuEvent(MenuEvent.Event.OPEN);
+                App.getInjector().getSimpleEventBus().fireEvent(event);
             }
         });
         fileMenu.addSeparator();

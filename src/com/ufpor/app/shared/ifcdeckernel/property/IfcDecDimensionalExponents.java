@@ -32,6 +32,22 @@ public class IfcDecDimensionalExponents implements Serializable {
         return result;
     }
 
+    public static IfcClientDimensionalExponents getClientInstance(IfcDecDimensionalExponents server) {
+        IfcClientDimensionalExponents result = new IfcClientDimensionalExponents();
+
+        if (server != null) {
+            result.setLengthExponent(server.getLengthExponent());
+            result.setAmountOfSubstanceExponent(server.getAmountOfSubstanceExponent());
+            result.setElectricCurrentExponent(server.getElectricCurrentExponent());
+            result.setLuminousntensityExponent(server.getLuminousntensityExponent());
+            result.setMassExponent(server.getMassExponent());
+            result.setThermodynamicTemperatureExponent(server.getThermodynamicTemperatureExponent());
+            result.setTimeExponent(server.getTimeExponent());
+        }
+
+        return result;
+    }
+
     public int getLuminousntensityExponent() {
         return luminousntensityExponent;
     }

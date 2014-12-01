@@ -1,6 +1,8 @@
 package com.ufpor.app.shared.ifcdeckernel.property;
 
 import com.ufpor.app.server.ifcphysical.Constants;
+import com.ufpor.app.shared.ifcclient.IfcClientDimensionalExponents;
+import com.ufpor.app.shared.ifcclient.IfcClientNamedUnit;
 import com.ufpor.app.shared.ifcclient.IfcClientSIUnit;
 
 import java.io.Serializable;
@@ -10,19 +12,19 @@ import java.io.Serializable;
  */
 
 public class IfcDecSIUnit extends IfcDecNamedUnit implements Serializable {
-    private IfcDecSIPrefix prefix;
+    private IfcClientSIUnit.IfcSIPrefix prefix;
 
-    private IfcDecSIUnitName name;
+    private IfcClientSIUnit.IfcSIUnitName name;
 
-    public IfcDecSIPrefix getPrefix() {
+    public IfcClientSIUnit.IfcSIPrefix getPrefix() {
         return prefix;
     }
 
-    public IfcDecSIUnitName getName() {
+    public IfcClientSIUnit.IfcSIUnitName getName() {
         return name;
     }
 
-    public IfcDecSIUnit(IfcDecUnitEnum unitType, IfcDecDimensionalExponents dimensions, IfcDecSIUnitName name) {
+    public IfcDecSIUnit(IfcClientNamedUnit.IfcUnitEnum unitType, IfcDecDimensionalExponents dimensions, IfcClientSIUnit.IfcSIUnitName name) {
         super(unitType, dimensions);
         this.name = name;
     }
@@ -47,85 +49,94 @@ public class IfcDecSIUnit extends IfcDecNamedUnit implements Serializable {
     }
 
 
-    public enum IfcDecSIPrefix {
-        EXA,
-        PETA,
-        TERA,
-        GIGA,
-        MEGA,
-        KILO,
-        HECTO,
-        DECA,
-        DECI,
-        CENTI,
-        MILLI,
-        MICRO,
-        NANO,
-        PICO,
-        FEMTO,
-        ATTO;
-
-        public IfcDecSIPrefix getInstance(IfcClientSIUnit.IfcClientSIPrefix client) {
-            for(IfcDecSIPrefix val : IfcDecSIPrefix.values()) {
-                if (val.name().equals(client.name())) {
-                    return val;
-                }
-            }
-            return null;
-        }
-    }
-
-    public enum IfcDecSIUnitName {
-        AMPERE,
-        BECQUEREL,
-        CANDELA,
-        COULOMB,
-        CUBIC_METRE,
-        DEGREE_CELSIUS,
-        FARAD,
-        GRAM,
-        GRAY,
-        HENRY,
-        HERTZ,
-        JOULE,
-        KELVIN,
-        LUMEN,
-        LUX,
-        METRE,
-        MOLE,
-        NEWTON,
-        OHM,
-        PASCAL,
-        RADIAN,
-        SECOND,
-        SIEMENS,
-        SIEVERT,
-        SQUARE_METRE,
-        STERADIAN,
-        TESLA,
-        VOLT,
-        WATT,
-        WEBER;
-
-        public static IfcDecSIUnitName getInstance(IfcClientSIUnit.IfcClientSIUnitName client) {
-            for(IfcDecSIUnitName val : IfcDecSIUnitName.values()) {
-                if (val.name().equals(client.name())) {
-                    return val;
-                }
-            }
-            return null;
-        }
-    }
+//    public enum IfcDecSIPrefix {
+//        EXA,
+//        PETA,
+//        TERA,
+//        GIGA,
+//        MEGA,
+//        KILO,
+//        HECTO,
+//        DECA,
+//        DECI,
+//        CENTI,
+//        MILLI,
+//        MICRO,
+//        NANO,
+//        PICO,
+//        FEMTO,
+//        ATTO;
+//
+//        public IfcDecSIPrefix getInstance(IfcClientSIUnit.IfcClientSIPrefix client) {
+//            for(IfcDecSIPrefix val : IfcDecSIPrefix.values()) {
+//                if (val.name().equals(client.name())) {
+//                    return val;
+//                }
+//            }
+//            return null;
+//        }
+//    }
+//
+//    public enum IfcDecSIUnitName {
+//        AMPERE,
+//        BECQUEREL,
+//        CANDELA,
+//        COULOMB,
+//        CUBIC_METRE,
+//        DEGREE_CELSIUS,
+//        FARAD,
+//        GRAM,
+//        GRAY,
+//        HENRY,
+//        HERTZ,
+//        JOULE,
+//        KELVIN,
+//        LUMEN,
+//        LUX,
+//        METRE,
+//        MOLE,
+//        NEWTON,
+//        OHM,
+//        PASCAL,
+//        RADIAN,
+//        SECOND,
+//        SIEMENS,
+//        SIEVERT,
+//        SQUARE_METRE,
+//        STERADIAN,
+//        TESLA,
+//        VOLT,
+//        WATT,
+//        WEBER;
+//
+//        public static IfcDecSIUnitName getInstance(IfcClientSIUnit.IfcClientSIUnitName client) {
+//            for(IfcDecSIUnitName val : IfcDecSIUnitName.values()) {
+//                if (val.name().equals(client.name())) {
+//                    return val;
+//                }
+//            }
+//            return null;
+//        }
+//    }
 
     public static IfcDecSIUnit getInstance(IfcClientSIUnit client) {
-        IfcDecSIPrefix prefix;
-        IfcDecSIUnitName unit;
+        IfcClientSIUnit.IfcSIPrefix prefix;
+        IfcClientSIUnit.IfcSIUnitName unit;
         IfcDecDimensionalExponents ex = null;
 
         if (client.getDimensions() != null) {
             ex = IfcDecDimensionalExponents.getInstance(client.getDimensions());
         }
-        return new IfcDecSIUnit(IfcDecUnitEnum.getInstance(client.getUnitType()), ex, IfcDecSIUnitName.getInstance(client.getName()));
+        return new IfcDecSIUnit(client.getUnitType(), ex, client.getName());
+    }
+
+    public static IfcClientSIUnit getClientInstance(IfcDecSIUnit server) {
+        IfcClientDimensionalExponents ex = null;
+
+        if (server.getDimensions() != null) {
+            ex = IfcDecDimensionalExponents.getClientInstance(server.getDimensions());
+        }
+        return new IfcClientSIUnit(server.getUnitType(), ex,server.getName());
     }
 
 }

@@ -75,4 +75,5 @@ public class IfcDecSpace extends IfcDecSpatialStructureElement {
     public void setElevationWithFlooring(IfcDecLengthMeasure elevationWithFlooring) {
         this.elevationWithFlooring = elevationWithFlooring;
     }
+
 }
