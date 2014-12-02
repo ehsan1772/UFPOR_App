@@ -50,6 +50,9 @@ public class IfcDecPropertySet extends IfcDecPropertySetDefinition {
 
         }
         IfcClientPropertySet result = new IfcClientPropertySet();
+        result.setName(server.getName());
+        result.setDescription(server.getDescription());
+
         result.setProperties(properties);
         return result;
     }

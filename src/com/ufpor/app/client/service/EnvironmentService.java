@@ -46,4 +46,8 @@ public interface EnvironmentService extends RemoteService {
 
     public List<IfcClientSpaceType> getSpaceTypes(String projectName);
 
+    public String getProjectString(String projectName);
+
+    public void deleteProjectByName(String name);
+
 }

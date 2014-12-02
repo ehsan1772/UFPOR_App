@@ -15,6 +15,20 @@ public class OpenProjectPresenter {
 
     public OpenProjectPresenter() {
         view = new SingleTable();
+        refresh();
+
+    }
+
+    public Widget getView() {
+        return view;
+    }
+
+    public String getSelectedProjectName() {
+        return view.getSelectedItem();
+    }
+
+    public void refresh() {
+        view.removeAll();
         EnvironmentService.App.getInstance().getProjectsNames(new AsyncCallback<List<String>>() {
             @Override
             public void onFailure(Throwable caught) {
@@ -26,14 +40,5 @@ public class OpenProjectPresenter {
                 view.addToTheList(result);
             }
         });
-
-    }
-
-    public Widget getView() {
-        return view;
-    }
-
-    public String getSelectedProjectName() {
-        return view.getSelectedItem();
     }
 }

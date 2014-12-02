@@ -14,11 +14,13 @@ import com.google.gwt.user.client.ui.*;
 import com.google.inject.Inject;
 import com.ufpor.app.client.App;
 import com.ufpor.app.client.LoginInfo;
-import com.ufpor.app.client.dependency.test;
+import com.ufpor.app.client.eventbus.MenuEvent;
 import com.ufpor.app.client.eventbus.ServerResultEvent;
 import com.ufpor.app.client.service.EnvironmentService;
 import com.ufpor.app.client.service.EnvironmentServiceAsync;
 import com.ufpor.app.client.view.project.PopupSpaceType;
+import com.ufpor.app.shared.ifcclient.*;
+import com.ufpor.app.shared.ifcclient.type.IfcClientSpaceType;
 
 import java.util.List;
 import java.util.logging.Level;
@@ -28,8 +30,11 @@ import java.util.logging.Logger;
  * Created by ovenbits on 10/9/14.
  */
 public class HomeView extends Composite implements PopupBase.PopupBaseHost {
+    //TODO fix this!
+    public static String projectName;
     private static HomeViewUiBinder ourUiBinder = GWT.create(HomeViewUiBinder.class);
     private final EnvironmentServiceAsync environmentService = GWT.create(EnvironmentService.class);
+
     @UiField
     Anchor signOut;
     @UiField
@@ -75,7 +80,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
         signOut.setHref(loginInfo.getLoginUrl());
         eastPanel.selectTab(0);
         App.injector.getSimpleEventBus().addHandler(ServerResultEvent.TYPE, mServerResultHandler);
-
+        App.injector.getSimpleEventBus().addHandler(MenuEvent.TYPE, mMenuEventHandler);
 
     }
 
@@ -88,6 +93,16 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
             }
             southLabel = new HTML(new SafeHtmlBuilder().appendEscapedLines(event.getResult()).toSafeHtml());
             resultContainer.add(southLabel);
+            loadSpaceTypes(projectName);
+        }
+    };
+
+    private  MenuEvent.MenuEventHandler mMenuEventHandler = new MenuEvent.MenuEventHandler() {
+        @Override
+        public void onMenuEvent(MenuEvent event) {
+            if (event.getEvent() == MenuEvent.Event.OPEN_FILE) {
+                loadSpaceTypes((String) event.getValue());
+            }
         }
     };
 
@@ -112,7 +127,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
 
                 populateTree(treeContainer);
 
-                refreshSpaces();
+             //   refreshSpaces();
 
 
                 addResultPanel();
@@ -155,31 +170,58 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
 
     }
 
-    public void refreshSpaces() {
-        EnvironmentService.App.getInstance().getEnvironments(new AsyncCallback<List<EnvironmentDM>>() {
-
-            @Override
-            public void onSuccess(List<EnvironmentDM> result) {
-                envContainer.clear();
-                for (EnvironmentDM env : result) {
-                    EnvironmentTreeItem b = new EnvironmentTreeItem(true, true);
-                    b.setName(env.getName());
-                    b.setArea(env.getArea());
-                    envContainer.add(b);
-                }
-
-            }
-
-            @Override
-            public void onFailure(Throwable caught) {
-                // TODO Auto-generated method stub
-
-            }
-        });
-    }
+//    public void refreshSpaces() {
+//        EnvironmentService.App.getInstance().getEnvironments(new AsyncCallback<List<EnvironmentDM>>() {
+//
+//            @Override
+//            public void onSuccess(List<EnvironmentDM> result) {
+//                envContainer.clear();
+//                for (EnvironmentDM env : result) {
+//                    EnvironmentTreeItem b = new EnvironmentTreeItem(true, true);
+//                    b.setName(env.getName());
+//                    b.setArea(env.getArea());
+//                    envContainer.add(b);
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Throwable caught) {
+//                // TODO Auto-generated method stub
+//
+//            }
+//        });
+//    }
 
     public void loadSpaceTypes(String projectName) {
-        EnvironmentService.App.getInstance().getProject(projectName);
+        EnvironmentService.App.getInstance().getSpaceTypes(projectName, new AsyncCallback<List<IfcClientSpaceType>>() {
+            @Override
+            public void onFailure(Throwable caught) {
+
+            }
+
+            @Override
+            public void onSuccess(List<IfcClientSpaceType> result) {
+                envContainer.clear();
+                for (IfcClientSpaceType env : result) {
+                    EnvironmentTreeItem b = new EnvironmentTreeItem(true, true);
+                    b.setName(env.getName());
+                    for (IfcClientPropertySetDefinition propset :env.getProperties()) {
+                        if (propset instanceof IfcClientPropertySet) {
+                          //  if (propset.getName().equals("Pset_SpaceCommon")) {
+                                for (IfcClientProperty nextProp : ((IfcClientPropertySet) propset).getProperties()) {
+                                    if (nextProp.getName().equals("GrossPlannedArea")) {
+                                        String area = ((IfcClientText) ((IfcClientPropertySingleValue) nextProp).getNominalValue()).getValue();
+                                        b.setArea(area);
+                                    }
+                                }
+                          //  }
+                        }
+                    }
+                    envContainer.add(b);
+                }
+            }
+        });
     }
 
     @UiHandler("button")

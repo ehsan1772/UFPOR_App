@@ -11,6 +11,7 @@ import com.ufpor.app.client.LoginInfo;
 import com.ufpor.app.client.eventbus.ServerResultEvent;
 import com.ufpor.app.client.presenter.ProjectPresenter;
 import com.ufpor.app.client.service.EnvironmentService;
+import com.ufpor.app.client.view.HomeView;
 import com.ufpor.app.client.view.PopupBase;
 import com.ufpor.app.shared.ifcclient.IfcClientLabel;
 import com.ufpor.app.shared.ifcclient.IfcClientNamedUnit;
@@ -49,11 +50,6 @@ public class PopupGeneral extends PopupBase  {
     @UiHandler("save")
     public void handleClick1(ClickEvent e) {
 
-       // setProjectTestValues();
-
-
-
-
         EnvironmentService.App.getInstance().addProject(project, new AsyncCallback<List<String>>() {
             @Override
             public void onFailure(Throwable caught) {
@@ -64,6 +60,7 @@ public class PopupGeneral extends PopupBase  {
             public void onSuccess(List<String> result) {
                 ServerResultEvent event = new ServerResultEvent(result.get(0));
                 App.getInjector().getSimpleEventBus().fireEvent(event);
+                HomeView.projectName = project.getName();
                 host.closePopupBase();
 
         //        setTestSpaceTpeValues();

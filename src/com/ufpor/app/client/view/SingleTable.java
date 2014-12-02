@@ -16,8 +16,12 @@ public class SingleTable extends Composite {
 
 	@UiField ListBox sourceList;
 
+    public void removeAll() {
+        sourceList.clear();
+    }
 
-	interface SingleTableUiBinder extends UiBinder<Widget, SingleTable> {
+
+    interface SingleTableUiBinder extends UiBinder<Widget, SingleTable> {
 	}
 
 	public SingleTable() {

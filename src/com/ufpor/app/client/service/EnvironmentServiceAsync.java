@@ -29,4 +29,8 @@ public interface EnvironmentServiceAsync {
     void getProjectsNames(AsyncCallback<List<String>> async);
 
     void getSpaceTypes(String projectName, AsyncCallback<List<IfcClientSpaceType>> async);
+
+    void getProjectString(String projectName, AsyncCallback<String> async);
+
+    void deleteProjectByName(String name, AsyncCallback<Void> async);
 }

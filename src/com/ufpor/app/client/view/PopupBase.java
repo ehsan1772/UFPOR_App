@@ -56,6 +56,11 @@ public class PopupBase extends Composite {
         addNewIfcSpace();
     }
 
+    @UiHandler("delete")
+    public void handleClick2(ClickEvent e) {
+        addNewIfcSpace();
+    }
+
 
     private void addNewIfcSpace() {
         IfcClientSpace space = spaceBuilder.getSpace();
@@ -69,7 +74,7 @@ public class PopupBase extends Composite {
             @Override
             public void onSuccess(Void result) {
                 Window.alert(spaceBuilder.getSpace().getName() + "Is saved");
-                ((HomeView) host).refreshSpaces();
+           //     ((HomeView) host).refreshSpaces();
             }
         });
     }

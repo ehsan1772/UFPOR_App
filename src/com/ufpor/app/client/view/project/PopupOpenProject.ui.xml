@@ -66,6 +66,9 @@
 				<div class="{style.save}">
 					<g:Button text="Cancel" ui:field="cancel" />
 				</div>
+                <div class="{style.save}">
+                    <g:Button text="Delete" ui:field="delete" />
+                </div>
 			</div>
 		</div>
 	</g:HTMLPanel>

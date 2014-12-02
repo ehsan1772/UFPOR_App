@@ -4,10 +4,13 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Widget;
 import com.ufpor.app.client.App;
 import com.ufpor.app.client.LoginInfo;
-import com.ufpor.app.client.eventbus.MenuEvent;
+import com.ufpor.app.client.eventbus.ServerResultEvent;
+import com.ufpor.app.client.service.EnvironmentService;
+import com.ufpor.app.client.view.HomeView;
 import com.ufpor.app.client.view.PopupBase;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
 
@@ -33,14 +36,46 @@ public class PopupOpenProject extends PopupBase {
 
     }
 
+    @UiHandler("delete")
+    public void handleClick2(ClickEvent e) {
+        String selectedProject = openProjectPresenter.getSelectedProjectName();
+        EnvironmentService.App.getInstance().deleteProjectByName(selectedProject, new AsyncCallback<Void>() {
+            @Override
+            public void onFailure(Throwable caught) {
+
+            }
+
+            @Override
+            public void onSuccess(Void result) {
+                openProjectPresenter.refresh();
+            }
+        });
+    }
+
     @UiHandler("save")
     public void handleClick1(ClickEvent e) {
         String selectedProject = openProjectPresenter.getSelectedProjectName();
 
-        MenuEvent event = new MenuEvent(MenuEvent.Event.OPEN_FILE);
-        event.setValue(selectedProject);
-        App.getInjector().getSimpleEventBus().fireEvent(event);
+//        MenuEvent event = new MenuEvent(MenuEvent.Event.OPEN_FILE);
+//        event.setValue(selectedProject);
+//        App.getInjector().getSimpleEventBus().fireEvent(event);
+        HomeView.projectName = selectedProject;
         host.closePopupBase();
+
+        EnvironmentService.App.getInstance().getProjectString(selectedProject, new AsyncCallback<String>() {
+            @Override
+            public void onFailure(Throwable caught) {
+
+            }
+
+            @Override
+            public void onSuccess(String result) {
+                ServerResultEvent event = new ServerResultEvent(result);
+                App.getInjector().getSimpleEventBus().fireEvent(event);
+                host.closePopupBase();
+            }
+        });
+
 //        EnvironmentService.App.getInstance().addProject(project, new AsyncCallback<List<String>>() {
 //            @Override
 //            public void onFailure(Throwable caught) {

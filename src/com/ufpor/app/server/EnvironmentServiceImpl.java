@@ -172,6 +172,7 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
 
         } catch (Exception exception) {
             LOG.log(Level.SEVERE, exception.getMessage());
+            exception.printStackTrace();
         }
         finally {
             pm2.close();
@@ -223,6 +224,48 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         return ifcFile2;
     }
 
+    private String getProjectIfcString(String name) {
+        PersistenceManager pm2 = getPersistenceManager();
+        List<IfcDecProject> projects = null;
+        IfcDecProject finalOutCome = null;
+        ArrayList<IfcDecUnit> units = null;
+        IfcDecUnit unit = null;
+        String ifcFile2 = null;
+        ArrayList<IfcDecConstraint> constratints = null;
+        try {
+            Query q = pm2.newQuery(IfcDecProject.class, "nameText == name && user == u");
+            q.declareParameters("java.lang.String name, com.google.appengine.api.users.User u");
+            projects = (List<IfcDecProject>) q.execute(name, getUser());
+
+            finalOutCome = projects.get(projects.size() - 1);
+            finalOutCome.prepareDataForClient(null);
+            finalOutCome.prepareDataForClientIfcDecContext(null);
+            IfcDecElementQuantity defin = (IfcDecElementQuantity) finalOutCome.getIsDefinedBy().get(0);
+            //max area
+
+            IfcDecUnitAssignment assignment = finalOutCome.getUnitsInContext();
+
+            Constants costant2 = Constants.getInstance();
+            costant2.reset();
+            ArrayList<String> finalResult2 = new ArrayList<String>();
+            String header2 = Constants.getHeader(finalOutCome);
+            LOG.log(Level.INFO, "Header is: \n" + header2);
+
+            costant2.getProject(finalOutCome, finalResult2, this);
+            ifcFile2 = Constants.getIfcFile(header2, finalResult2, this);
+            LOG.log(Level.INFO, "The file is:\n " + ifcFile2);
+
+        } catch (Exception exception) {
+            LOG.log(Level.SEVERE, exception.getMessage());
+            exception.printStackTrace();
+        }
+        finally {
+            pm2.close();
+        }
+
+        return ifcFile2;
+    }
+
     private void addSpaceTypeToTheProject(Key spaceType) {
         PersistenceManager pm2 = getPersistenceManager();
         try {
@@ -230,7 +273,7 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
             q.declareParameters("com.google.appengine.api.users.User u");
             List<IfcDecProject> projects = (List<IfcDecProject>) q.execute(getUser());
             IfcDecProject finalOutCome = projects.get(projects.size() - 1);
-            finalOutCome.removeAllTheSpaces();
+       //     finalOutCome.removeAllTheSpaces();
             finalOutCome.addSpaceType(spaceType);
 
         } catch (Exception exception) {
@@ -322,15 +365,26 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
     @Override
     public List<IfcClientSpaceType> getSpaceTypes(String projectName) {
         PersistenceManager pm2 = getPersistenceManager();
+        List<IfcClientSpaceType> results = new ArrayList<IfcClientSpaceType>();
         try {
-            Query q = pm2.newQuery(IfcDecSpaceType.class, "nameText == name");
-            q.declareParameters("String name, ");
-            List<IfcDecProject> projects = (List<IfcDecProject>) q.execute(getUser());
-            List<String> result = new ArrayList<String>();
-            for (IfcDecProject project : projects) {
-                result.add(project.getName());
+            Query q = pm2.newQuery(IfcDecProject.class, "nameText == name && user == u");
+            q.declareParameters("java.lang.String name, com.google.appengine.api.users.User u");
+            List<IfcDecProject> projects = (List<IfcDecProject>) q.execute( projectName, getUser());
+
+            Set<Key> spaceKeys = projects.get(projects.size() - 1).getSpaceTypes();
+
+
+            Query spaceTypeQuery = pm2.newQuery(IfcDecSpaceType.class, "key == spaceKey");
+            spaceTypeQuery.declareParameters("com.google.appengine.api.datastore.Key spaceKey");
+
+            for (Key key : spaceKeys) {
+                IfcDecSpaceType spaceType = ((List<IfcDecSpaceType>) spaceTypeQuery.execute(key)).get(0);
+                spaceType.prepareDataForClient(null);
+                spaceType.prepareDataForClientIfcDecContext(null);
+                results.add(IfcDecSpaceType.getClientSpace(spaceType));
             }
-            return result;
+
+            return results;
 
         } catch (Exception exception) {
             LOG.log(Level.SEVERE, exception.getMessage());
@@ -340,6 +394,30 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
             pm2.close();
         }
         return null;
+    }
+
+    @Override
+    public String getProjectString(String projectName) {
+        return getProjectIfcString(projectName);
+    }
+
+
+    @Override
+    public void deleteProjectByName(String name) {
+        PersistenceManager pm2 = getPersistenceManager();
+        try {
+            Query q = pm2.newQuery(IfcDecProject.class, "nameText == name && user == u");
+            q.declareParameters("java.lang.String name, com.google.appengine.api.users.User u");
+            q.deletePersistentAll(name, getUser());
+
+
+        } catch (Exception exception) {
+            LOG.log(Level.SEVERE, exception.getMessage());
+            exception.printStackTrace();
+        }
+        finally {
+            pm2.close();
+        }
     }
 
 
