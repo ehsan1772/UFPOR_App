@@ -21,6 +21,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Tree;
 import com.google.gwt.user.client.ui.TreeItem;
 import com.google.gwt.user.client.ui.Widget;
+import com.ufpor.app.client.App;
 
 public class EnvironmentTreeItem extends Composite {
     private static EnvironmentTreeItem dragging = null;
@@ -185,8 +186,14 @@ public class EnvironmentTreeItem extends Composite {
                           dragTarget.setState(true);
                       }
                       dragging = null;
+
                   }
+                  //TODO fix this! it doesn't need to refresh the space type, it just needs to prevent deleting items from the list aftre dropping them
+                  App.getInjector().getHomeView().loadSpaceTypes(HomeView.projectName);
               }
+
+
+
           }, DropEvent.getType());
       }
 
