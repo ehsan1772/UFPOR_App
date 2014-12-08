@@ -36,4 +36,7 @@
     <!-- Specify the paths for translatable code                    -->
     <source path='client' />
     <source path='shared' />
+
+    <!-- ADDING SUPER DEV MODE -->
+    <add-linker name="xsiframe"/>
 </module>
