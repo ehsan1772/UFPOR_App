@@ -12,6 +12,7 @@ import com.ufpor.app.client.LoginInfo;
 import com.ufpor.app.client.eventbus.ServerResultEvent;
 import com.ufpor.app.client.presenter.SpaceTypePresenter;
 import com.ufpor.app.client.service.EnvironmentService;
+import com.ufpor.app.client.view.HomeView;
 import com.ufpor.app.client.view.PopupBase;
 import com.ufpor.app.shared.ifcclient.type.IfcClientSpaceType;
 
@@ -44,7 +45,7 @@ public class PopupSpaceType extends PopupBase  {
 
     @UiHandler("save")
     public void handleClick1(ClickEvent e) {
-        EnvironmentService.App.getInstance().addSpaceType(spaceTypePresenter.getSpaceType(), new AsyncCallback<List<String>>() {
+        EnvironmentService.App.getInstance().addSpaceType(spaceTypePresenter.getSpaceType(), HomeView.projectName, new AsyncCallback<List<String>>() {
             @Override
             public void onFailure(Throwable caught) {
                 int i = 0;

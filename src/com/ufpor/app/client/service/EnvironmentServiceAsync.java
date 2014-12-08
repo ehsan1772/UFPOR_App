@@ -24,7 +24,7 @@ public interface EnvironmentServiceAsync {
 
     void addProject(IfcClientProject project, AsyncCallback<List<String>> async);
 
-    void addSpaceType(IfcClientSpaceType spaceType, AsyncCallback<List<String>> async);
+    void addSpaceType(IfcClientSpaceType spaceType, String projectName, AsyncCallback<List<String>> async);
 
     void getProjectsNames(AsyncCallback<List<String>> async);
 
