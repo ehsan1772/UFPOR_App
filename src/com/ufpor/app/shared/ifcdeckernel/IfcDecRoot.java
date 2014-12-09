@@ -5,6 +5,7 @@ import com.google.appengine.api.datastore.PostLoadContext;
 import com.google.appengine.api.datastore.PrePut;
 import com.google.appengine.api.datastore.PutContext;
 import com.google.appengine.api.users.User;
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
@@ -18,7 +19,7 @@ import java.io.Serializable;
 
 @PersistenceCapable
 @Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
-public abstract class IfcDecRoot extends GAEObject implements Serializable {
+public abstract class IfcDecRoot extends GAEObject implements Serializable, IfcFileObject {
     @Persistent
     private IfcDecGloballyUniqueId globalId;
     @Persistent

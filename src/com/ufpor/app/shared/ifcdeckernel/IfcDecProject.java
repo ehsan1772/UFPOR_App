@@ -131,4 +131,8 @@ public class IfcDecProject extends IfcDecContext {
         spatialStructureRoot = new ArrayList<IfcDecSpatialElement>();
         spatialStructureRoot.addAll(spatialStructureRoot_Space);
     }
+
+    public String getHeader() {
+        return null;
+    }
 }
