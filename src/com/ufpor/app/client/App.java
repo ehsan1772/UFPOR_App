@@ -99,6 +99,7 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
         popup.setWidget(popUpGeneral);
 
         popup.center();
+
     }
 
     private void startOpenProject() {
