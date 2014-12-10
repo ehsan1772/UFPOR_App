@@ -27,13 +27,9 @@ public abstract class IfcDecRoot extends GAEObject implements Serializable, IfcF
 
     @Persistent
     private String descriptionText;
-
-    public String getName() {
-        return nameText;
-    }
-
     @Persistent
     private String nameText;
+    private int ifcPhysicalNumber;
 
     protected IfcDecRoot(String GUID, User user) {
         super(user);
@@ -41,6 +37,14 @@ public abstract class IfcDecRoot extends GAEObject implements Serializable, IfcF
     }
 
     protected IfcDecRoot() {
+    }
+
+    public String getName() {
+        return nameText;
+    }
+
+    public void setName(String name) {
+        this.nameText = name;
     }
 
     public IfcDecGloballyUniqueId getGlobalId() {
@@ -55,11 +59,6 @@ public abstract class IfcDecRoot extends GAEObject implements Serializable, IfcF
 
         this.ownerHistory = ownerHistory;
     }
-
-    public void setName(String name) {
-        this.nameText = name;
-    }
-
 
     public String getDescription() {
         return descriptionText;
@@ -77,6 +76,16 @@ public abstract class IfcDecRoot extends GAEObject implements Serializable, IfcF
     @PrePut(kinds = {"IfcDecProject"})
     public void prepareDataForStoreIfcDecContext(PutContext context) {
 
+    }
+
+    @Override
+    public int getNumber() {
+        return ifcPhysicalNumber;
+    }
+
+    @Override
+    public void setNumber(int number) {
+        ifcPhysicalNumber = number;
     }
 
 }

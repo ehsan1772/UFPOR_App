@@ -7,6 +7,8 @@ import com.google.appengine.api.datastore.PutContext;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.ufpor.app.server.GuidCompressor;
+import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcclient.*;
 import com.ufpor.app.shared.ifcclient.select.IfcClientPropertySetDefinitionSelect;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
@@ -133,6 +135,17 @@ public class IfcDecProject extends IfcDecContext {
     }
 
     public String getHeader() {
+        return null;
+    }
+
+
+    @Override
+    public ArrayList<IfcFileObject> getRelatedObjects() {
+        return null;
+    }
+
+    @Override
+    public String getObjectString(IfcFileManagerI fileManager) {
         return null;
     }
 }

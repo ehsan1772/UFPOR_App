@@ -35,6 +35,7 @@ public class IfcFileManager implements IfcFileManagerI {
         }
         Integer number = getNextNumber();
         objectsBiMap.put(number, ifcObject);
+        ifcObject.setNumber(number);
         return number;
     }
 
