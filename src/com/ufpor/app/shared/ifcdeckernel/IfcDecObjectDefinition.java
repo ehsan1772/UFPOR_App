@@ -2,7 +2,6 @@ package com.ufpor.app.shared.ifcdeckernel;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.users.User;
-import com.ufpor.app.shared.ifcclient.IfcClientProject;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
@@ -27,8 +26,4 @@ public abstract class IfcDecObjectDefinition extends IfcDecRoot implements IfcDe
     protected IfcDecObjectDefinition() {
     }
 
-    public static int getInstance3(IfcClientProject proj) {
-        int i  = 0;
-        return i;
-    }
 }

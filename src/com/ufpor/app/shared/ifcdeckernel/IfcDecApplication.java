@@ -1,15 +1,19 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
+import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
+
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by Ehsan Barekati on 10/30/14.
  */
 
 @PersistenceCapable
-public class IfcDecApplication implements Serializable {
+public class IfcDecApplication implements Serializable, IfcFileObject {
     @Persistent
     private IfcDecOrganization applicationDeveloper;
     @Persistent
@@ -18,6 +22,7 @@ public class IfcDecApplication implements Serializable {
     private IfcDecLabel applicationFullName;
     @Persistent
     private IfcDecIdentifier applicationIdentifier;
+    private int number;
 
     /**
      *
@@ -50,5 +55,27 @@ public class IfcDecApplication implements Serializable {
 
     public IfcDecIdentifier getApplicationIdentifier() {
         return applicationIdentifier;
+    }
+
+    @Override
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public int getNumber() {
+        return number;
+    }
+
+    @Override
+    public ArrayList<IfcFileObject> getRelatedObjects() {
+        ArrayList<IfcFileObject> results = new ArrayList<>();
+        results.add(applicationDeveloper);
+        return results;
+    }
+
+    @Override
+    public String getObjectString(IfcFileManagerI fileManager) {
+        return null;
     }
 }

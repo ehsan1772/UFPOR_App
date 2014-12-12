@@ -1,5 +1,6 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
+import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertyDefinition;
 import com.ufpor.app.shared.ifckernel.IfcObjectDefinition;
 
@@ -14,7 +15,7 @@ import java.util.logging.Logger;
 public class IfcDecRelDeclares<T> extends IfcDecRelationship {
     public final static String TAG = IfcDecRelDeclares.class.getSimpleName();
     private static Logger logger = Logger.getLogger(TAG);
-    private IfcDecObjectDefinition relatingObject;
+    private com.ufpor.app.shared.ifcdeckernel.IfcDecObjectDefinition relatingObject;
     private List<T> relatedObjects;
 
 
@@ -24,12 +25,12 @@ public class IfcDecRelDeclares<T> extends IfcDecRelationship {
         }
     }
 
-    public IfcDecRelDeclares(IfcDecObjectDefinition relatingObject, Class clazz) {
+    public IfcDecRelDeclares(com.ufpor.app.shared.ifcdeckernel.IfcDecObjectDefinition relatingObject, Class clazz) {
         this.relatingObject = relatingObject;
         relatedObjects = new ArrayList<T>();
     }
 
-    public IfcDecRelDeclares(IfcDecObjectDefinition relatingObject, List<T> relatedObjects, Class clazz) {
+    public IfcDecRelDeclares(com.ufpor.app.shared.ifcdeckernel.IfcDecObjectDefinition relatingObject, List<T> relatedObjects, Class clazz) {
         this.relatingObject = relatingObject;
         if (!relatedObjects.contains(relatingObject)) {
             this.relatedObjects = relatedObjects;
@@ -56,5 +57,10 @@ public class IfcDecRelDeclares<T> extends IfcDecRelationship {
         }
         logger.log(Level.SEVERE, "IfcDefinitionSelect provides the option to either select an object or type object IfcObjectDefinition, or a property set template or property set, IfcPropertyDefinition.");
         return false;
+    }
+
+    @Override
+    public String getObjectString(IfcFileManagerI fileManager) {
+        return null;
     }
 }

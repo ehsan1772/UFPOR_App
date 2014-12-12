@@ -3,6 +3,8 @@ package com.ufpor.app.shared.ifcdeckernel.decproduct;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.ufpor.app.server.GuidCompressor;
+import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecElementCompositionEnum;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecLengthMeasure;
@@ -10,6 +12,7 @@ import com.ufpor.app.shared.ifcdeckernel.IfcDecLengthMeasure;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
+import java.util.ArrayList;
 
 /**
  * Created by Ehsan Barekati on 10/31/14.
@@ -76,4 +79,13 @@ public class IfcDecSpace extends IfcDecSpatialStructureElement {
         this.elevationWithFlooring = elevationWithFlooring;
     }
 
+    @Override
+    public ArrayList<IfcFileObject> getRelatedObjects() {
+        return null;
+    }
+
+    @Override
+    public String getObjectString(IfcFileManagerI fileManager) {
+        return null;
+    }
 }

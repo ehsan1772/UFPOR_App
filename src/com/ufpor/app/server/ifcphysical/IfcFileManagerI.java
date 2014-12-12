@@ -1,10 +1,11 @@
 package com.ufpor.app.server.ifcphysical;
 
 import com.google.gwt.thirdparty.guava.common.collect.BiMap;
-import com.ufpor.app.shared.ifcdeckernel.IfcDecObject;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecProject;
 
 import java.util.ArrayList;
+
+;
 
 /**
  * This interface should be implemented as a singleton to manage all the
@@ -32,7 +33,15 @@ public interface IfcFileManagerI {
      * @param object
      * @return the number of an object
      */
-    Integer getNumber(IfcDecObject object);
+    String getNumber(IfcFileObject object);
+
+
+    /**
+     *
+     * @param objects
+     * @return a string that represents all the object numbers
+     */
+    String getNumberString(ArrayList<IfcFileObject> objects);
 
     /**
      *

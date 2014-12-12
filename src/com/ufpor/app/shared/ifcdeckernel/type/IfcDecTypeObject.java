@@ -4,6 +4,8 @@ import com.google.appengine.api.datastore.PostLoad;
 import com.google.appengine.api.datastore.PostLoadContext;
 import com.google.appengine.api.datastore.PrePut;
 import com.google.appengine.api.datastore.PutContext;
+import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecObject;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecObjectDefinition;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecElementQuantity;
@@ -79,7 +81,7 @@ public class IfcDecTypeObject extends IfcDecObjectDefinition {
         this.hasProperties_QuantitySet = hasProperties_QuantitySet;
     }
 
-    public ArrayList<IfcDecObject> getRelatedObjects() {
+    public ArrayList<IfcDecObject> getRelatedTypeObjects() {
         return relatedObjects;
     }
 
@@ -118,5 +120,15 @@ public class IfcDecTypeObject extends IfcDecObjectDefinition {
             set.onPostLoad();
             hasProperties.add(set);
         }
+    }
+
+    @Override
+    public ArrayList<IfcFileObject> getRelatedObjects() {
+        return null;
+    }
+
+    @Override
+    public String getObjectString(IfcFileManagerI fileManager) {
+        return null;
     }
 }

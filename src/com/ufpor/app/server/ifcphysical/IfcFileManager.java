@@ -2,7 +2,6 @@ package com.ufpor.app.server.ifcphysical;
 
 import com.google.gwt.thirdparty.guava.common.collect.BiMap;
 import com.google.gwt.thirdparty.guava.common.collect.HashBiMap;
-import com.ufpor.app.shared.ifcdeckernel.IfcDecObject;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecProject;
 
 import java.util.ArrayList;
@@ -45,9 +44,27 @@ public class IfcFileManager implements IfcFileManagerI {
     }
 
     @Override
-    public Integer getNumber(IfcDecObject object) {
-        return objectsBiMap.inverse().get(object);
+    public String getNumber(IfcFileObject object) {
+        return "#" + objectsBiMap.inverse().get(object);
 
+    }
+
+    @Override
+    public String getNumberString(ArrayList<IfcFileObject> objects) {
+        StringBuilder result = new StringBuilder(objects.size() * 4);
+        result.append("(");
+
+        for (IfcFileObject object : objects) {
+            result.append("#");
+            result.append(objectsBiMap.inverse().get(object));
+            if (objects.indexOf(object) != objects.size() - 1) {
+                result.append(", ");
+            }
+        }
+
+        result.append(")");
+
+        return result.toString();
     }
 
     @Override

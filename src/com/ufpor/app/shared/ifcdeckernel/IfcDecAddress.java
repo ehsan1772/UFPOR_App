@@ -1,15 +1,20 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecText;
 
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * Created by Ehsan Barekati on 10/30/14.
  */
-public abstract class IfcDecAddress {
+public abstract class IfcDecAddress implements Serializable, IfcFileObject {
     public final static String TAG = IfcDecAddress.class.getSimpleName();
+
+    private IfcDecAddress() {
+    }
 
     public void setUserDefinedPurpose(IfcDecLabel userDefinedPurpose) {
         this.userDefinedPurpose = userDefinedPurpose;

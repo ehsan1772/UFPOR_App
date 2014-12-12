@@ -18,6 +18,7 @@ import com.ufpor.app.client.view.project.PopupOpenProject;
  * Entry point classes define <code>onModuleLoad()</code>
  */
 public class App implements EntryPoint, PopupBase.PopupBaseHost {
+  //  public static UFPORGinjector injector;
     public final static UFPORGinjector injector = GWT.create(UFPORGinjector.class);
     private VerticalPanel loginPanel;
     private Label loginLabel;
@@ -122,7 +123,8 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
 
 
     private void loadApplication(LoginInfo loginInfo) {
-        Composite view = injector.getHomeView();
+      //  Composite view = injector.getHomeView();
+        Composite view = null;
         RootLayoutPanel.get().add(view);
     }
 

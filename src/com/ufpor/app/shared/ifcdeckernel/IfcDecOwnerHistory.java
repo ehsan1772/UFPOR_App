@@ -1,18 +1,21 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
 import com.google.appengine.api.datastore.Key;
+import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by Ehsan Barekati on 10/30/14.
  */
 @PersistenceCapable
-public class IfcDecOwnerHistory implements Serializable {
+public class IfcDecOwnerHistory implements Serializable, IfcFileObject {
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Key key;
@@ -24,6 +27,7 @@ public class IfcDecOwnerHistory implements Serializable {
     private IfcDecPersonAndOrganization lastModifyingUser;
     private IfcDecApplication lastModifyingApplicaiton;
     private IfcDecTimeStamp creationDate;
+    private int number;
 
     public IfcDecOwnerHistory(IfcDecPersonAndOrganization owningUser, IfcDecApplication owningApplication) {
         this.owningUser = owningUser;
@@ -85,5 +89,39 @@ public class IfcDecOwnerHistory implements Serializable {
 
     public IfcDecTimeStamp getCreationDate() {
         return creationDate;
+    }
+
+    @Override
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public int getNumber() {
+        return number;
+    }
+
+    /**
+     *     private IfcDecPersonAndOrganization owningUser;
+     private IfcDecApplication owningApplication;
+     private IfcDecStateEnum state;
+     private IfcDecChangeActionEnum changeAction;
+     private IfcDecTimeStamp lastModifiedDate;
+     private IfcDecPersonAndOrganization lastModifyingUser;
+     private IfcDecApplication lastModifyingApplicaiton;
+     private IfcDecTimeStamp creationDate;
+     * @return
+     */
+
+    @Override
+    public ArrayList<IfcFileObject> getRelatedObjects() {
+        ArrayList<IfcFileObject> result = new ArrayList<>();
+        result.add(owningApplication);
+        return null;
+    }
+
+    @Override
+    public String getObjectString(IfcFileManagerI fileManager) {
+        return null;
     }
 }

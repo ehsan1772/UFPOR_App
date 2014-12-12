@@ -2,6 +2,8 @@ package com.ufpor.app.shared.ifcdeckernel.property;
 
 import com.ufpor.app.server.GuidCompressor;
 import com.ufpor.app.server.ifcphysical.Constants;
+import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcclient.IfcClientElementQuantity;
 import com.ufpor.app.shared.ifcclient.IfcClientPropertySetDefinition;
 import com.ufpor.app.shared.ifcclient.property.IfcClientPhysicalQuantity;
@@ -133,6 +135,15 @@ public class IfcDecElementQuantity extends IfcDecQuantitySet {
     }
 
 
+    @Override
+    public ArrayList<IfcFileObject> getRelatedObjects() {
+        return null;
+    }
+
+    @Override
+    public String getObjectString(IfcFileManagerI fileManager) {
+        return null;
+    }
 }
 
 

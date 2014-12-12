@@ -1,25 +1,37 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
 import com.google.appengine.api.users.User;
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
 
 import java.util.*;
 
 /**
  * Created by Ehsan Barekati on 10/30/14.
  */
-public abstract class IfcDecRelationship<T> extends IfcDecRoot implements List<T> {
+public abstract class IfcDecRelationship<T extends IfcFileObject> extends IfcDecRoot implements List<T> {
     //a delegate
     private ArrayList<T> list;
-    public IfcDecRelationship(String GUID, User user) {
+    private T owner;
+
+    public IfcDecRelationship(String GUID, User user, T owner) {
         super(GUID, user);
-        initialize();
+        initialize(owner);
     }
 
     public IfcDecRelationship() {
-        initialize();
+        initialize(null);
     }
 
-    private void initialize() {
+    public T getOwner() {
+        return owner;
+    }
+
+    public ArrayList<T> getList() {
+        return list;
+    }
+
+    private void initialize(T owner) {
+        this.owner = owner;
         list = new ArrayList<T>();
     }
 
@@ -136,5 +148,16 @@ public abstract class IfcDecRelationship<T> extends IfcDecRoot implements List<T
     @Override
     public List<T> subList(int fromIndex, int toIndex) {
         return list.subList(fromIndex, toIndex);
+    }
+
+
+    @Override
+    public ArrayList<IfcFileObject> getRelatedObjects() {
+        ArrayList<T> list = getList();
+        ArrayList<IfcFileObject> results = new ArrayList<>();
+        for (T object : list) {
+            results.add(object);
+        }
+        return results;
     }
 }

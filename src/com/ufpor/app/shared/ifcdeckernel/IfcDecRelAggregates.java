@@ -1,5 +1,7 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
+import com.ufpor.app.server.ifcphysical.Constants;
+import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
 import com.ufpor.app.shared.ifckernel.IfcObjectDefinition;
 
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ import java.util.logging.Logger;
  */
 public class IfcDecRelAggregates extends IfcDecRelDecomposes {
     public final static String TAG = IfcDecRelAggregates.class.getSimpleName();
-    private static Logger logger = Logger.getLogger(TAG);
+    private static transient Logger logger = Logger.getLogger(TAG);
     private IfcObjectDefinition relatingObject;
     private List<IfcObjectDefinition> relatedObjects;
 
@@ -46,4 +48,26 @@ public class IfcDecRelAggregates extends IfcDecRelDecomposes {
 
     }
 
+    @Override
+    public String getObjectString(IfcFileManagerI fileManager) {
+        //IfcRoot
+        String globalId = getGlobalId().getValue();
+        String ownerHistory = "*";
+        String name = getName();
+        String description = getDescription();
+
+        //IfcRelAggregates
+        String relatingObject = String.valueOf(fileManager.getNumber(getOwner()));
+        String relatedObjects = fileManager.getNumberString(getList());
+
+        String result = String.format(Constants.IFCRELAGGREGATES,
+                globalId,
+                ownerHistory,
+                name,
+                description,
+                relatingObject,
+                relatedObjects);
+
+        return result;
+    }
 }

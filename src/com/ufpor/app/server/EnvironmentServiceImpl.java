@@ -9,6 +9,7 @@ import com.ufpor.app.client.NotLoggedInException;
 import com.ufpor.app.client.service.EnvironmentService;
 import com.ufpor.app.client.view.EnvironmentDM;
 import com.ufpor.app.server.ifcphysical.Constants;
+import com.ufpor.app.server.ifcphysical.IfcFileManager;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
 import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
 import com.ufpor.app.shared.ifcclient.type.IfcClientSpaceType;
@@ -266,6 +267,39 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         return ifcFile2;
     }
 
+    private String getProjectIfcString2(String name) {
+        PersistenceManager pm2 = getPersistenceManager();
+        List<IfcDecProject> projects = null;
+        IfcDecProject finalOutCome = null;
+        ArrayList<IfcDecUnit> units = null;
+        IfcDecUnit unit = null;
+        String ifcFile2 = null;
+        ArrayList<IfcDecConstraint> constratints = null;
+        try {
+            Query q = pm2.newQuery(IfcDecProject.class, "nameText == name && user == u");
+            q.declareParameters("java.lang.String name, com.google.appengine.api.users.User u");
+            projects = (List<IfcDecProject>) q.execute(name, getUser());
+
+            finalOutCome = projects.get(projects.size() - 1);
+            finalOutCome.prepareDataForClient(null);
+            finalOutCome.prepareDataForClientIfcDecContext(null);
+
+            IfcFileManager.getInstance().setProject(finalOutCome);
+            IfcFileManager.getInstance().GenerateTheFile();
+            ifcFile2 = IfcFileManager.getInstance().getStepFile();
+
+
+        } catch (Exception exception) {
+            LOG.log(Level.SEVERE, exception.getMessage());
+            exception.printStackTrace();
+        }
+        finally {
+            pm2.close();
+        }
+
+        return ifcFile2;
+    }
+
     private void addSpaceTypeToTheProject(Key spaceType, String projectName) {
         PersistenceManager pm2 = getPersistenceManager();
         try {
@@ -438,7 +472,7 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         return spaceTypeResult;
     }
 
-    public ArrayList<IfcDecSpaceType> getSpaceTypeByKey(Set<Key> keys) throws NotLoggedInException {
+    public static ArrayList<IfcDecSpaceType> getSpaceTypeByKey(Set<Key> keys) throws NotLoggedInException {
         PersistenceManager pm2 = getPersistenceManager();
         ArrayList<IfcDecSpaceType> spaceTypeResults = new ArrayList<IfcDecSpaceType>();
         try {
@@ -470,7 +504,7 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         return userService.getCurrentUser();
     }
 
-    private PersistenceManager getPersistenceManager() {
+    private static PersistenceManager getPersistenceManager() {
         return PMF.getPersistenceManager();
     }
 

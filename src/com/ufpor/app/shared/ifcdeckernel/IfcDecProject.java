@@ -6,7 +6,10 @@ import com.google.appengine.api.datastore.PrePut;
 import com.google.appengine.api.datastore.PutContext;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
+import com.ufpor.app.client.NotLoggedInException;
+import com.ufpor.app.server.EnvironmentServiceImpl;
 import com.ufpor.app.server.GuidCompressor;
+import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
 import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcclient.*;
@@ -17,6 +20,7 @@ import com.ufpor.app.shared.ifcdeckernel.property.IfcDecDimensionalExponents;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecElementQuantity;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySet;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecSIUnit;
+import com.ufpor.app.shared.ifcdeckernel.type.IfcDecSpaceType;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.NotPersistent;
@@ -141,11 +145,60 @@ public class IfcDecProject extends IfcDecContext {
 
     @Override
     public ArrayList<IfcFileObject> getRelatedObjects() {
-        return null;
+        ArrayList<IfcFileObject> results = new ArrayList<>();
+        results.add(getUnitsInContext());
+        results.addAll(getIsDefinedBy());
+
+        ArrayList<IfcDecSpaceType> spaceTypes = null;
+        try {
+            spaceTypes = EnvironmentServiceImpl.getSpaceTypeByKey(getSpaceTypes());
+        } catch (NotLoggedInException e) {
+            e.printStackTrace();
+        }
+
+        results.addAll(spaceTypes);
+        return results;
     }
 
     @Override
     public String getObjectString(IfcFileManagerI fileManager) {
-        return null;
+        //ROOT
+        String GUI = getGlobalId().getValue();
+        String ownerHistory = getOwnerHistory() == null ? "$" : fileManager.getNumber(getOwnerHistory());
+        String name = (getName() == null || getName().isEmpty()) ? "$" : getName();
+        String description = (getDescription() == null || getDescription().isEmpty()) ? "$" : getDescription();
+
+        //IfcContext
+        String objectType = (getObjectType() == null || getObjectType().getValue() == null || getObjectType().getValue().isEmpty()) ? "$" : getObjectType().getValue();
+        String longName = (getLongName() == null || getLongName().getValue() == null || getLongName().getValue().isEmpty()) ? "$" : getLongName().getValue();
+        String phase = (getPhase() == null || getPhase().getValue() == null || getPhase().getValue().isEmpty()) ? "$" : getPhase().getValue();
+        String representationContexts = "$";
+        String unitsInContext = fileManager.getNumber(getUnitsInContext()) == null ? "$" : fileManager.getNumber(getUnitsInContext());
+
+        //adding properties and their constraints
+   //     addIsDefinedBy(getIsDefinedBy(), number, file);
+
+        //adding space types
+//        if (project.getSpaceTypes() != null && project.getSpaceTypes().size() != 0) {
+//            addSpaceTypesIfcString(project.getSpaceTypes(), project, service);
+//        }
+
+
+
+        String ifcProject = String.format(Constants.PROJECT,
+                GUI,
+                ownerHistory,
+                name,
+                description,
+                objectType,
+                longName,
+                phase,
+                representationContexts,
+                unitsInContext);
+
+        return ifcProject;
+
+//        file.add("#" + number + "= " + ifcProject);
+//        return "#" + number;
     }
 }

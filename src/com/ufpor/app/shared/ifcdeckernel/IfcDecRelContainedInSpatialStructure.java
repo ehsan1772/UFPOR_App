@@ -1,5 +1,8 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
+import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
+import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecProduct;
+import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpatialElement;
 import com.ufpor.app.shared.ifckernel.product.IfcProduct;
 import com.ufpor.app.shared.ifckernel.product.IfcSpatialElement;
 
@@ -15,32 +18,32 @@ public class IfcDecRelContainedInSpatialStructure extends IfcDecRelConnects {
     public final static String TAG = IfcDecRelContainedInSpatialStructure.class.getSimpleName();
     protected final static String ERROR1 = "The relationship object shall not be used to include other spatial structure elements into a spatial structure element. The hierarchy of the spatial structure is defined using IfcRelAggregates";
     private static Logger logger = Logger.getLogger(TAG);
-    private IfcSpatialElement relatingStructure;
-    private Set<IfcProduct> relatedElements;
+    private IfcDecSpatialElement relatingStructure;
+    private Set<IfcDecProduct> relatedElements;
 
     public IfcDecRelContainedInSpatialStructure() {
-       relatedElements = new HashSet<IfcProduct>();
+       relatedElements = new HashSet<IfcDecProduct>();
     }
 
-    public IfcDecRelContainedInSpatialStructure(IfcSpatialElement relatingObject) {
+    public IfcDecRelContainedInSpatialStructure(IfcDecSpatialElement relatingObject) {
         this.relatingStructure = relatingObject;
-        relatedElements = new HashSet<IfcProduct>();
+        relatedElements = new HashSet<IfcDecProduct>();
     }
 
-    public IfcDecRelContainedInSpatialStructure(IfcSpatialElement relatingObject, Set<IfcProduct> relatedObjects) {
+    public IfcDecRelContainedInSpatialStructure(IfcDecSpatialElement relatingObject, Set<IfcDecProduct> relatedObjects) {
         this.relatingStructure = relatingObject;
-        for (IfcProduct product : relatedObjects) {
-            if(!(product instanceof IfcSpatialElement)) {
+        for (IfcDecProduct product : relatedObjects) {
+            if(!(product instanceof IfcDecSpatialElement)) {
                 relatedElements.add(product);
             } else {
-                logger.log(Level.SEVERE, ERROR1 + ((IfcSpatialElement) product).getLongName());
+                logger.log(Level.SEVERE, ERROR1 + ((IfcDecSpatialElement) product).getLongName());
             }
         }
 
     }
 
-    public boolean addRelatedObject(IfcProduct relatedObject) {
-        if (!(relatedObject instanceof IfcSpatialElement)) {
+    public boolean addRelatedObject(IfcDecProduct relatedObject) {
+        if (!(relatedObject instanceof IfcDecSpatialElement)) {
             relatedElements.add(relatedObject);
             return true;
         } else {
@@ -50,4 +53,8 @@ public class IfcDecRelContainedInSpatialStructure extends IfcDecRelConnects {
 
     }
 
+    @Override
+    public String getObjectString(IfcFileManagerI fileManager) {
+        return null;
+    }
 }

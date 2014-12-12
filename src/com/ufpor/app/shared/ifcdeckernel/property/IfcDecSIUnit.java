@@ -1,11 +1,14 @@
 package com.ufpor.app.shared.ifcdeckernel.property;
 
 import com.ufpor.app.server.ifcphysical.Constants;
+import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcclient.IfcClientDimensionalExponents;
 import com.ufpor.app.shared.ifcclient.IfcClientNamedUnit;
 import com.ufpor.app.shared.ifcclient.IfcClientSIUnit;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by Ehsan Barekati on 11/15/14.
@@ -15,6 +18,7 @@ public class IfcDecSIUnit extends IfcDecNamedUnit implements Serializable {
     private IfcClientSIUnit.IfcSIPrefix prefix;
 
     private IfcClientSIUnit.IfcSIUnitName name;
+    private int number;
 
     public IfcClientSIUnit.IfcSIPrefix getPrefix() {
         return prefix;
@@ -139,4 +143,33 @@ public class IfcDecSIUnit extends IfcDecNamedUnit implements Serializable {
         return new IfcClientSIUnit(server.getUnitType(), ex,server.getName());
     }
 
+    @Override
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public int getNumber() {
+        return number;
+    }
+
+    @Override
+    public ArrayList<IfcFileObject> getRelatedObjects() {
+        return null;
+    }
+
+    @Override
+    public String getObjectString(IfcFileManagerI fileManager) {
+        String unitType = "*";
+        String prefix =  "." + getUnitType().name();
+        String name = getPrefix() == null ? "$" : "." + getPrefix().name();
+        String dimensions =  "." + getName().name();
+
+        String ifcUnit = String.format(Constants.IFCSIUNIT,
+                unitType,
+                prefix,
+                name,
+                dimensions);
+        return ifcUnit;
+    }
 }

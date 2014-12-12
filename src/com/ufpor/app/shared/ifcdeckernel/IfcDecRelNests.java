@@ -1,5 +1,7 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
+import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -44,4 +46,8 @@ public class IfcDecRelNests extends IfcDecRelDecomposes {
 
     }
 
+    @Override
+    public String getObjectString(IfcFileManagerI fileManager) {
+        return null;
+    }
 }
