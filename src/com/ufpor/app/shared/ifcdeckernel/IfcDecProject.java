@@ -139,7 +139,14 @@ public class IfcDecProject extends IfcDecContext {
     }
 
     public String getHeader() {
-        return null;
+        String fileDescription = getLongName().getValue();
+        String fileName = getName();
+        String currentDate = Constants.getCurrentDate();
+        String author = getUser().getNickname();
+        String organization = getUser().getEmail();
+        String authorization = getUser().getAuthDomain();
+
+        return String.format(Constants.HEADER, fileDescription, fileName, currentDate, author, organization, authorization);
     }
 
 
@@ -150,13 +157,15 @@ public class IfcDecProject extends IfcDecContext {
         results.addAll(getIsDefinedBy());
 
         ArrayList<IfcDecSpaceType> spaceTypes = null;
-        try {
-            spaceTypes = EnvironmentServiceImpl.getSpaceTypeByKey(getSpaceTypes());
-        } catch (NotLoggedInException e) {
-            e.printStackTrace();
+        if (getSpaceTypes() != null && getSpaceTypes().size() > 0) {
+            try {
+                spaceTypes = EnvironmentServiceImpl.getSpaceTypeByKey(getSpaceTypes());
+                results.addAll(spaceTypes);
+            } catch (NotLoggedInException e) {
+                e.printStackTrace();
+            }
         }
 
-        results.addAll(spaceTypes);
         return results;
     }
 

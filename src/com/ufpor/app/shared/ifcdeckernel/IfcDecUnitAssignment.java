@@ -1,5 +1,6 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
+import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
 import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcclient.IfcClientUnit;
@@ -62,6 +63,7 @@ public class IfcDecUnitAssignment implements Serializable, IfcFileObject {
 
     @Override
     public String getObjectString(IfcFileManagerI fileManager) {
-        return null;
+        String objects = fileManager.getNumberString(new ArrayList<IfcFileObject>(units));
+        return String.format(Constants.IFCUNITASSIGNMENT, objects);
     }
 }

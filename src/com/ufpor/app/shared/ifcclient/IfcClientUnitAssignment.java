@@ -22,6 +22,14 @@ public class IfcClientUnitAssignment implements Serializable {
     }
 
     public void addUnit(IfcClientUnit unit) {
+        for (IfcClientUnit u : units) {
+            if (u instanceof IfcClientSIUnit &&
+                    unit instanceof IfcClientSIUnit &&
+                    ((IfcClientSIUnit) u).getName().equals(((IfcClientSIUnit) unit).getName())) {
+                units.remove(u);
+
+            }
+        }
         units.add(unit);
     }
 }

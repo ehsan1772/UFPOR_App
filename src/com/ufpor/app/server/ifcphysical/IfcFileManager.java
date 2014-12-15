@@ -21,6 +21,7 @@ public class IfcFileManager implements IfcFileManagerI {
     private IfcFileManager() {
         objectsBiMap = HashBiMap.create();
         counter = 0;
+        fileWriter = new IfcFileWriter();
     }
 
     public static IfcFileManager getInstance() {
@@ -80,6 +81,7 @@ public class IfcFileManager implements IfcFileManagerI {
 
     @Override
     public void setProject(IfcDecProject project) {
+        reset();
         this.project = project;
     }
 
@@ -121,7 +123,7 @@ public class IfcFileManager implements IfcFileManagerI {
         fileWriter.addHeader(project.getHeader());
 
         for (IfcFileObject object : objectsBiMap.values()) {
-            fileWriter.addObject(object.getObjectString(this));
+            fileWriter.addObject(object.getObjectString(this), getNumber(object));
         }
 
     }
@@ -134,8 +136,10 @@ public class IfcFileManager implements IfcFileManagerI {
     private ArrayList<IfcFileObject> getAllObjects(IfcFileObject object) {
         ArrayList<IfcFileObject> results = new ArrayList<>();
         results.add(object);
-        for (IfcFileObject childObject : object.getRelatedObjects()) {
-            results.addAll(getAllObjects(childObject));
+        if (object.getRelatedObjects() != null) {
+            for (IfcFileObject childObject : object.getRelatedObjects()) {
+                results.addAll(getAllObjects(childObject));
+            }
         }
         return results;
     }

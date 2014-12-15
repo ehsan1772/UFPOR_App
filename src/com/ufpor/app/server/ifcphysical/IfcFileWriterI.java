@@ -20,7 +20,7 @@ public interface IfcFileWriterI {
      * @param ifcObject
      * @param number the number correspondent to the object
      */
-    void addObject(String ifcObject, int number);
+    void addObject(String ifcObject, String number);
 
     String getStepFile();
 

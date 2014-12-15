@@ -250,7 +250,7 @@ public class SpinnerPopUpView extends Composite {
     }
 
     public String getThirdListBoxLText() {
-        return thirdListBoxL.getItemText(secondListBoxL.getSelectedIndex());
+        return thirdListBoxL.getItemText(thirdListBoxL.getSelectedIndex());
     }
 
     public String getFirstListBoxRText() {

@@ -45,7 +45,7 @@ public class Constants {
             "END-ISO-10303-21;";
 
     public final static String PROJECT = "IFCPROJECT ('%1s', %2s, %3s, %4s, %5s, %6s, %7s, %8s, %9s);";
-    public final static String IFCUNITASSIGNMENT = "IFCUNITASSIGNMENT((%1s));";
+    public final static String IFCUNITASSIGNMENT = "IFCUNITASSIGNMENT(%1s);";
     public final static String IFCSIUNIT = "IFCSIUNIT(%1s, %2s, %3s, %4s);";
     public final static String IFCPROPERTYSINGLEVALUE = "IFCPROPERTYSINGLEVALUE(%1s, %2s, %3s, %4s);";
     public final static String IFCELEMENTQUANTITY = "IFCELEMENTQUANTITY(%1s, %2s, %3s, %4s, %5s, %6s);";
@@ -413,7 +413,7 @@ public class Constants {
         return null;
     }
 
-    private static String getCurrentDate() {
+    public static String getCurrentDate() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd'T'HH:mm:ss");
         Date date = new Date();
         return dateFormat.format(date);

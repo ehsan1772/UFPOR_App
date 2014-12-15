@@ -130,6 +130,8 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
             pm.close();
         }
 
+        String res = getProjectIfcString2(pr.getName());
+
 
         ArrayList<String> finalResult = new ArrayList<String>();
         String header = Constants.getHeader(pr.getLongName().getValue(), pr.getName(), pr.getUser().getNickname(),pr.getUser().getEmail(), pr.getUser().getAuthDomain());
@@ -284,6 +286,8 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
             finalOutCome.prepareDataForClient(null);
             finalOutCome.prepareDataForClientIfcDecContext(null);
 
+            String id = finalOutCome.getGlobalId().getValue();
+
             IfcFileManager.getInstance().setProject(finalOutCome);
             IfcFileManager.getInstance().GenerateTheFile();
             ifcFile2 = IfcFileManager.getInstance().getStepFile();
@@ -432,7 +436,7 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
 
     @Override
     public String getProjectString(String projectName) {
-        return getProjectIfcString(projectName);
+        return getProjectIfcString2(projectName);
     }
 
 
@@ -473,6 +477,9 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
     }
 
     public static ArrayList<IfcDecSpaceType> getSpaceTypeByKey(Set<Key> keys) throws NotLoggedInException {
+        if (keys == null || keys.size() == 0) {
+            return null;
+        }
         PersistenceManager pm2 = getPersistenceManager();
         ArrayList<IfcDecSpaceType> spaceTypeResults = new ArrayList<IfcDecSpaceType>();
         try {

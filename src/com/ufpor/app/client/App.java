@@ -123,8 +123,7 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
 
 
     private void loadApplication(LoginInfo loginInfo) {
-      //  Composite view = injector.getHomeView();
-        Composite view = null;
+        Composite view = injector.getHomeView();
         RootLayoutPanel.get().add(view);
     }
 

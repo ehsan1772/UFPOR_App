@@ -1,16 +1,12 @@
 package com.ufpor.app.client.service;
 
-import com.google.appengine.api.datastore.Key;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.ufpor.app.client.view.EnvironmentDM;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
 import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
 import com.ufpor.app.shared.ifcclient.type.IfcClientSpaceType;
-import com.ufpor.app.shared.ifcdeckernel.type.IfcDecSpaceType;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by ovenbits on 10/8/14.
@@ -38,5 +34,4 @@ public interface EnvironmentServiceAsync {
 
     void deleteProjectByName(String name, AsyncCallback<Void> async);
 
-    void getSpaceTypeByKey(Set<Key> keys, AsyncCallback<ArrayList<IfcDecSpaceType>> async);
 }
