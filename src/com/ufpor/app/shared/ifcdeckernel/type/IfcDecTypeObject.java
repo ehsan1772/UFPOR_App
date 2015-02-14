@@ -113,18 +113,18 @@ public class IfcDecTypeObject extends IfcDecObjectDefinition {
         super.prepareDataForClient(context);
         hasProperties = new ArrayList<IfcDecPropertySetDefinition>();
         for (IfcDecPropertySet set : hasProperties_PropertySet) {
-            set.onPostLoad();
+            set.onPostLoad(this);
             hasProperties.add(set);
         }
         for (IfcDecElementQuantity set : hasProperties_QuantitySet) {
-            set.onPostLoad();
+            set.onPostLoad(this);
             hasProperties.add(set);
         }
     }
 
     @Override
     public ArrayList<IfcFileObject> getRelatedObjects() {
-        return null;
+        return new ArrayList<IfcFileObject>(hasProperties);
     }
 
     @Override

@@ -25,7 +25,8 @@ public class IfcClientUnitAssignment implements Serializable {
         for (IfcClientUnit u : units) {
             if (u instanceof IfcClientSIUnit &&
                     unit instanceof IfcClientSIUnit &&
-                    ((IfcClientSIUnit) u).getName().equals(((IfcClientSIUnit) unit).getName())) {
+                    (((IfcClientSIUnit) u).getName().equals(((IfcClientSIUnit) unit).getName()) ||
+                            ((IfcClientSIUnit) u).getUnitType().equals(((IfcClientSIUnit) unit).getUnitType()))) {
                 units.remove(u);
 
             }

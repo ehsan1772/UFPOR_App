@@ -1,6 +1,8 @@
 package com.ufpor.app.shared.ifcdeckernel.property;
 
 import com.ufpor.app.server.ifcphysical.Constants;
+import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcclient.*;
 import com.ufpor.app.shared.ifcclient.constraint.IfcClientObjective;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecObjective;
@@ -9,6 +11,7 @@ import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.NotPersistent;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
+import java.util.ArrayList;
 
 /**
  * Created by Ehsan Barekati on 11/15/14.
@@ -183,5 +186,15 @@ public class IfcDecPropertySingleValue extends IfcDecSimpleProperty {
         String unit = (getUnit() == null) ? "*" : Constants.getInstance().getUnit(this.getUnit(), null);
 
         return String.format(Constants.IFCPROPERTYSINGLEVALUE, "'" + name + "'", "'" + description + "'", nominalValue, unit);
+    }
+
+    @Override
+    public ArrayList<IfcFileObject> getRelatedObjects() {
+        return null;
+    }
+
+    @Override
+    public String getObjectString(IfcFileManagerI fileManager) {
+        return getIfcString();
     }
 }

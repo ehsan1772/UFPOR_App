@@ -1,5 +1,6 @@
 package com.ufpor.app.shared.ifcdeckernel.property.constraint;
 
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcclient.constraint.IfcConstraintEnum;
 import com.ufpor.app.shared.ifcdeckernel.actor.IfcDecActorSelect;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecDateTime;
@@ -9,7 +10,7 @@ import java.io.Serializable;
 /**
  * Created by Ehsan Barekati on 11/18/14.
  */
-public abstract class IfcDecConstraint implements Serializable {
+public abstract class IfcDecConstraint implements Serializable, IfcFileObject {
     private String name;
     private String description;
     private IfcConstraintEnum constraintGrade;
@@ -18,6 +19,7 @@ public abstract class IfcDecConstraint implements Serializable {
     private transient IfcDecActorSelect creatingActor;
     private IfcDecDateTime creatingTime;
     private String userDefinedGrade;
+    private int number;
 
     public IfcDecConstraint(String name, IfcConstraintEnum constraintGrade) {
         this.name = name;
@@ -25,6 +27,16 @@ public abstract class IfcDecConstraint implements Serializable {
     }
 
     protected IfcDecConstraint() {
+    }
+
+    @Override
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public int getNumber() {
+        return number;
     }
 
     public String getName() {

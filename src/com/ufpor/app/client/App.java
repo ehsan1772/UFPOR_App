@@ -2,6 +2,8 @@ package com.ufpor.app.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
@@ -41,6 +43,8 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
 
     @Override
     public void onModuleLoad() {
+        Window.alert(GWT.getModuleBaseURL());
+        Resources.INSTANCE.css().ensureInjected();
         loginInfo = injector.getLoginInfo();
         // Check login status using login service.
         LoginServiceAsync loginService = LoginService.App.getInstance();
@@ -143,5 +147,14 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
     @Override
     public void closePopupBase() {
         popup.removeFromParent();
+    }
+
+    public interface Resources extends ClientBundle {
+
+        public static final Resources INSTANCE = GWT.create(Resources.class);
+
+        @Source("app.css")
+        @CssResource.NotStrict
+        CssResource css();
     }
 }

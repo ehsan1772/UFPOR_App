@@ -7,6 +7,7 @@ import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcclient.IfcClientProperty;
 import com.ufpor.app.shared.ifcclient.IfcClientPropertySet;
 import com.ufpor.app.shared.ifcclient.IfcClientPropertySingleValue;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecContext;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.NotPersistent;
@@ -30,7 +31,7 @@ public class IfcDecPropertySet extends IfcDecPropertySetDefinition {
         properties = new ArrayList<IfcDecProperty>();
     }
 
-    public static IfcDecPropertySet getInstance(IfcClientPropertySet client) {
+    public static IfcDecPropertySet getInstance(IfcClientPropertySet client, IfcFileObject... relatedObject) {
         ArrayList<IfcDecProperty> properties = new ArrayList<IfcDecProperty>();
         for (IfcClientProperty prop : client.getProperties()) {
             if (prop instanceof IfcClientPropertySingleValue) {
@@ -40,6 +41,8 @@ public class IfcDecPropertySet extends IfcDecPropertySetDefinition {
         }
         IfcDecPropertySet result = new IfcDecPropertySet();
         result.setProperties(properties);
+
+        result.addRelatedObjectsProp(relatedObject);
         return result;
     }
 
@@ -78,7 +81,7 @@ public class IfcDecPropertySet extends IfcDecPropertySetDefinition {
 
     }
 
-    public void onPostLoad() {
+    public void onPostLoad(IfcFileObject ifcDecContext) {
         if (properties_SingleValue != null) {
             properties = new ArrayList<IfcDecProperty>();
             for (IfcDecPropertySingleValue singleValue : properties_SingleValue) {
@@ -86,7 +89,7 @@ public class IfcDecPropertySet extends IfcDecPropertySetDefinition {
                 properties.add(singleValue);
             }
         }
-
+        addRelatedObjectsProp(ifcDecContext);
     }
 
     public String getIfcString(String properties) {
@@ -101,11 +104,21 @@ public class IfcDecPropertySet extends IfcDecPropertySetDefinition {
 
     @Override
     public ArrayList<IfcFileObject> getRelatedObjects() {
-        return null;
+        ArrayList<IfcFileObject> result = new ArrayList<IfcFileObject>(properties);
+
+        result.add(getRelatedObjectsProp());
+
+        return result;
     }
 
     @Override
     public String getObjectString(IfcFileManagerI fileManager) {
-        return null;
+        String guid = GuidCompressor.getNewIfcGloballyUniqueId();
+        String ownerHistory = "*";
+        String name = (getName() == null || getName().isEmpty()) ? "*" : getName();
+        String description = (getDescription() == null || getDescription().isEmpty()) ? "*" : getDescription();
+        String hasProperties = fileManager.getNumberString(new ArrayList<IfcFileObject>(properties));
+
+        return String.format(Constants.IFCPROPERTYSET, guid, ownerHistory, name, description, hasProperties);
     }
 }

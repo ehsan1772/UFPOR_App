@@ -1,13 +1,15 @@
 package com.ufpor.app.shared.ifcdeckernel.property;
 
 import com.ufpor.app.server.ifcphysical.Constants;
-import com.ufpor.app.shared.ifcclient.IfcClientQuantitySet;
+import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcclient.constraint.IfcBenchmarkEnum;
 import com.ufpor.app.shared.ifcclient.constraint.IfcConstraintEnum;
-import com.ufpor.app.shared.ifcclient.property.IfcClientPhysicalQuantity;
 import com.ufpor.app.shared.ifcclient.property.IfcClientQuantityArea;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecMetric;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecObjective;
+
+import java.util.ArrayList;
 
 /**
  * Created by Ehsan Barekati on 11/23/14.
@@ -23,37 +25,6 @@ public class IfcDecQuantityArea extends IfcDecPhysicalSimpleQuantity {
     }
 
     public IfcDecQuantityArea() {
-    }
-
-    @Override
-    public void setMaxValue(Object value) {
-        IfcDecMetric maxMetric = new IfcDecMetric("MAX_VALUE", IfcConstraintEnum.HARD);
-        maxMetric.setBenchMark(IfcBenchmarkEnum.LESSTHANOREQUALTO);
-        maxMetric.setDataValue(new IfcDecReal((Double) value));
-        constraints.getBenchmarkValues().add(maxMetric);
-    }
-
-    @Override
-    public void setMinValue(Object value) {
-        IfcDecMetric minMetric = new IfcDecMetric("MIN_VALUE", IfcConstraintEnum.HARD);
-        minMetric.setBenchMark(IfcBenchmarkEnum.GREATERTHANOREQUALTO);
-        minMetric.setDataValue(new IfcDecReal((Double) value));
-        constraints.getBenchmarkValues().add(minMetric);
-    }
-
-    @Override
-    public void onPostLoad() {
-        getConstraints().onPostLoad();
-    }
-
-    @Override
-    public String getIfcString() {
-        String name = getName();
-        String description = (getDescription() != null && !getDescription().isEmpty()) ? getDescription() : "*";
-        String unit = "*";
-        String areaValue = String.valueOf(getAreaValue());
-        String formula = (getFormula() != null && !getFormula().isEmpty()) ? getFormula() : "*";
-        return String.format(Constants.IFCQUANTITYAREA, name, description, unit, areaValue, formula);
     }
 
     public static IfcDecQuantityArea getInstance(IfcClientQuantityArea client) {
@@ -93,6 +64,37 @@ public class IfcDecQuantityArea extends IfcDecPhysicalSimpleQuantity {
 
     }
 
+    @Override
+    public void setMaxValue(Object value) {
+        IfcDecMetric maxMetric = new IfcDecMetric("MAX_VALUE", IfcConstraintEnum.HARD);
+        maxMetric.setBenchMark(IfcBenchmarkEnum.LESSTHANOREQUALTO);
+        maxMetric.setDataValue(new IfcDecReal((Double) value));
+        constraints.getBenchmarkValues().add(maxMetric);
+    }
+
+    @Override
+    public void setMinValue(Object value) {
+        IfcDecMetric minMetric = new IfcDecMetric("MIN_VALUE", IfcConstraintEnum.HARD);
+        minMetric.setBenchMark(IfcBenchmarkEnum.GREATERTHANOREQUALTO);
+        minMetric.setDataValue(new IfcDecReal((Double) value));
+        constraints.getBenchmarkValues().add(minMetric);
+    }
+
+    @Override
+    public void onPostLoad() {
+        getConstraints().onPostLoad();
+    }
+
+    @Override
+    public String getIfcString() {
+        String name = getName();
+        String description = (getDescription() != null && !getDescription().isEmpty()) ? getDescription() : "*";
+        String unit = "*";
+        String areaValue = String.valueOf(getAreaValue());
+        String formula = (getFormula() != null && !getFormula().isEmpty()) ? getFormula() : "*";
+        return String.format(Constants.IFCQUANTITYAREA, name, description, unit, areaValue, formula);
+    }
+
     public double getAreaValue() {
         return areaValue;
     }
@@ -109,7 +111,17 @@ public class IfcDecQuantityArea extends IfcDecPhysicalSimpleQuantity {
         this.formula = formula;
     }
 
+    @Override
+    public ArrayList<IfcFileObject> getRelatedObjects() {
+        ArrayList<IfcFileObject> result = new ArrayList<IfcFileObject>();
+        result.add(constraints);
+        return result;
+    }
 
+    @Override
+    public String getObjectString(IfcFileManagerI fileManager) {
+        return getIfcString();
+    }
 
 
     public enum Type {GrossFloorArea, NetFloorArea, GrossWallArea, NetWallArea, GrossCeilingArea, NetCeilingArea}

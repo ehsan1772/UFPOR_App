@@ -18,6 +18,8 @@ import java.util.Set;
 @PersistenceCapable
 @Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
 public abstract class IfcDecContext extends IfcDecObjectDefinition {
+//    @NotPersistent
+//    protected ArrayList<IfcDecPropertySetDefinitionSelect> isDefinedBy;
     @NotPersistent
     protected ArrayList<IfcDecPropertySetDefinitionSelect> isDefinedBy;
 
@@ -88,7 +90,6 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
     }
 
     public ArrayList<IfcDecPropertySetDefinitionSelect> getIsDefinedBy() {
-
         return isDefinedBy;
     }
 
@@ -190,11 +191,11 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
         super.prepareDataForClient(context);
         isDefinedBy = new ArrayList<IfcDecPropertySetDefinitionSelect>();
         for (IfcDecPropertySet set : isDefinedBy_PropertySet) {
-            set.onPostLoad();
+            set.onPostLoad(this);
             isDefinedBy.add(set);
         }
         for (IfcDecElementQuantity set : isDefinedBy_QuantitySet) {
-            set.onPostLoad();
+            set.onPostLoad(this);
             isDefinedBy.add(set);
         }
         objectType = new IfcDecLabel(objectTypeString);

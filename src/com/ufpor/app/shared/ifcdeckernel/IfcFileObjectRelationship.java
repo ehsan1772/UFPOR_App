@@ -3,23 +3,40 @@ package com.ufpor.app.shared.ifcdeckernel;
 import com.google.appengine.api.users.User;
 import com.ufpor.app.server.ifcphysical.IfcFileObject;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * Created by Ehsan Barekati on 10/30/14.
  */
-public abstract class IfcDecRelationship<T extends IfcFileObject> extends IfcDecRoot implements List<T> {
-    //a delegate
+public abstract class IfcFileObjectRelationship<T extends IfcFileObject> implements List<T>, IfcFileObject, Serializable {
+    private int number;
+    //should be set to false to avoid stack overflow if the objects are already reported elsewhere
+    private boolean reportRelatedObject;
     private ArrayList<T> list;
     private T owner;
 
-    public IfcDecRelationship(String GUID, User user, T owner) {
-        super(GUID, user);
+    public IfcFileObjectRelationship(String GUID, User user, T owner) {
         initialize(owner);
     }
 
-    public IfcDecRelationship() {
+    public IfcFileObjectRelationship() {
         initialize(null);
+    }
+
+    public IfcFileObjectRelationship(T owner) {
+        initialize(owner);
+    }
+
+    //a delegate
+    @Override
+    public int getNumber() {
+        return number;
+    }
+
+    @Override
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public T getOwner() {
@@ -28,6 +45,10 @@ public abstract class IfcDecRelationship<T extends IfcFileObject> extends IfcDec
 
     public ArrayList<T> getList() {
         return list;
+    }
+
+    public void setList(ArrayList<T> list) {
+        this.list = list;
     }
 
     private void initialize(T owner) {
@@ -153,13 +174,23 @@ public abstract class IfcDecRelationship<T extends IfcFileObject> extends IfcDec
 
     @Override
     public ArrayList<IfcFileObject> getRelatedObjects() {
+        if (reportRelatedObject) {
+            ArrayList<T> list = getList();
+            ArrayList<IfcFileObject> results = new ArrayList<>();
+            for (T object : list) {
+                results.add(object);
+            }
+            return results;
+        } else {
+            return null;
+        }
+    }
 
-//        ArrayList<T> list = getList();
-//        ArrayList<IfcFileObject> results = new ArrayList<>();
-//        for (T object : list) {
-//            results.add(object);
-//        }
-//        return results;
-        return null;
+    public boolean isReportRelatedObject() {
+        return reportRelatedObject;
+    }
+
+    public void setReportRelatedObject(boolean reportRelatedObject) {
+        this.reportRelatedObject = reportRelatedObject;
     }
 }

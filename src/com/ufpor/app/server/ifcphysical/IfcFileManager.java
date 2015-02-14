@@ -138,7 +138,7 @@ public class IfcFileManager implements IfcFileManagerI {
         results.add(object);
         if (object.getRelatedObjects() != null) {
             for (IfcFileObject childObject : object.getRelatedObjects()) {
-                results.addAll(getAllObjects(childObject));
+                    results.addAll(getAllObjects(childObject));
             }
         }
         return results;

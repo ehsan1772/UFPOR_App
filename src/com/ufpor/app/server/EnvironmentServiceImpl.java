@@ -374,6 +374,8 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
 
         ArrayList<String> reult = new ArrayList<String>();
         reult.add(getProjectIfcString(projectName));
+
+        getProjectIfcString2(projectName);
         return reult;
     }
 

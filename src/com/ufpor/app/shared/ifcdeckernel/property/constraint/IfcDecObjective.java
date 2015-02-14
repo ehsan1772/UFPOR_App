@@ -1,11 +1,15 @@
 package com.ufpor.app.shared.ifcdeckernel.property.constraint;
 
 import com.ufpor.app.server.ifcphysical.Constants;
+import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcclient.IfcClientObject;
 import com.ufpor.app.shared.ifcclient.constraint.IfcClientConstraint;
 import com.ufpor.app.shared.ifcclient.constraint.IfcClientMetric;
 import com.ufpor.app.shared.ifcclient.constraint.IfcClientObjective;
 import com.ufpor.app.shared.ifcclient.constraint.IfcConstraintEnum;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecResourceConstraintRelationship;
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPhysicalSimpleQuantity;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -14,7 +18,10 @@ import java.util.HashSet;
  * Created by Ehsan Barekati on 11/25/14.
  */
 public class IfcDecObjective extends IfcDecConstraint {
-    private ArrayList<IfcDecConstraint> benchmarkValues = new ArrayList<IfcDecConstraint>();
+    //  private ArrayList<IfcDecConstraint> benchmarkValues = new ArrayList<IfcDecConstraint>();
+    private IfcDecResourceConstraintRelationship<IfcFileObject> relatedResourceObjects;
+  //  private ArrayList<IfcDecConstraint> benchmarkValues = new ArrayList<IfcDecConstraint>();
+    private ArrayList<IfcDecConstraint> benchmarkValues = new ArrayList<>();
     private IfcClientObjective.IfcLogicalOperatorEnum logicalAggregator;
     private IfcClientObjective.IfcObjectiveEnum objectiveQualifier;
     private String userDefinedQualifier;
@@ -25,6 +32,7 @@ public class IfcDecObjective extends IfcDecConstraint {
     public IfcDecObjective(String name, IfcConstraintEnum constraintGrade, IfcClientObjective.IfcObjectiveEnum objectiveQualifier) {
         super(name, constraintGrade);
         this.objectiveQualifier = objectiveQualifier;
+        relatedResourceObjects = new IfcDecResourceConstraintRelationship<>((IfcFileObject) this);
     }
 
     public ArrayList<IfcDecConstraint> getBenchmarkValues() {
@@ -161,5 +169,37 @@ public class IfcDecObjective extends IfcDecConstraint {
         result.setBenchmarkValues(benchMarks);
 
         return result;
+    }
+
+    @Override
+    public ArrayList<IfcFileObject> getRelatedObjects() {
+        ArrayList<IfcFileObject> result = new ArrayList<>();
+        result.add(relatedResourceObjects);
+        result.addAll(benchmarkValues);
+        return result;
+    }
+
+    @Override
+    public String getObjectString(IfcFileManagerI fileManager) {
+        String name = getName();
+        String description = (getDescription() != null && !getDescription().isEmpty()) ? getDescription() : "*";
+        String grade = getConstraintGrade().name();
+        String source = (getConstraintSource() != null && !getConstraintSource().isEmpty()) ? getConstraintSource() : "*";
+        String actor = "*";
+        String time = "*";
+        String userGrade = (getUserDefinedGrade() != null && !getUserDefinedGrade().isEmpty()) ? getUserDefinedGrade() : "*";
+        String benchmarkValues = fileManager.getNumberString(new ArrayList<IfcFileObject>(getBenchmarkValues()));
+        String logicalAggregation = getLogicalAggregator().name();
+        String objectiveQualifier = getObjectiveQualifier().name();
+        String userQualifier = (getUserDefinedQualifier() != null && !getUserDefinedQualifier().isEmpty()) ? getUserDefinedQualifier() : "*";
+
+        return String.format(Constants.IFCOBJECTIVE, name,description, grade, source, actor, time, userGrade, benchmarkValues, logicalAggregation, objectiveQualifier, userQualifier);
+    }
+
+    public void addResourceObject(IfcFileObject fileObject) {
+        relatedResourceObjects.add(fileObject);
+        ArrayList result =  relatedResourceObjects.getList();
+        int size = result.size();
+        return;
     }
 }

@@ -8,8 +8,20 @@ import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecObjective;
  * Created by Ehsan Barekati on 11/23/14.
  */
 public abstract class IfcDecPhysicalSimpleQuantity extends IfcDecPhysicalQuantity {
+    //this is the IfcResourceConstraintRelationship
+    protected IfcDecObjective constraints;
     //optional
     private IfcDecNamedUnit unit;
+
+    protected IfcDecPhysicalSimpleQuantity(String name) {
+        super(name);
+        constraints = new IfcDecObjective(name + "_CONSTRAINT", IfcConstraintEnum.HARD, IfcClientObjective.IfcObjectiveEnum.REQUIREMENT);
+        constraints.addResourceObject(this);
+    }
+
+    protected IfcDecPhysicalSimpleQuantity() {
+        //  constraints = new IfcDecObjective();
+    }
 
     public IfcDecObjective getConstraints() {
         return constraints;
@@ -17,10 +29,8 @@ public abstract class IfcDecPhysicalSimpleQuantity extends IfcDecPhysicalQuantit
 
     public void setConstraints(IfcDecObjective constraints) {
         this.constraints = constraints;
+        this.constraints.addResourceObject(this);
     }
-
-    //this is the IfcResourceConstraintRelationship
-    protected IfcDecObjective constraints;
 
     public IfcDecNamedUnit getUnit() {
         return unit;
@@ -30,17 +40,10 @@ public abstract class IfcDecPhysicalSimpleQuantity extends IfcDecPhysicalQuantit
         this.unit = unit;
     }
 
-    protected IfcDecPhysicalSimpleQuantity(String name) {
-        super(name);
-        constraints = new IfcDecObjective(name+"_CONSTRAINT", IfcConstraintEnum.HARD, IfcClientObjective.IfcObjectiveEnum.REQUIREMENT);
-    }
-
-    protected IfcDecPhysicalSimpleQuantity() {
-      //  constraints = new IfcDecObjective();
-    }
-
     public abstract void setMaxValue(Object value);
+
     public abstract void setMinValue(Object value);
+
     public abstract void onPostLoad();
 
 }

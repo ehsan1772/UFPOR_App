@@ -5,6 +5,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 import com.ufpor.app.server.GuidCompressor;
 import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcclient.IfcClientElementQuantity;
 import com.ufpor.app.shared.ifcclient.IfcClientPropertySet;
 import com.ufpor.app.shared.ifcclient.IfcClientPropertySetDefinition;
@@ -16,6 +17,7 @@ import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySetDefinition;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
+import java.util.ArrayList;
 
 /**
  * Created by Ehsan Barekati on 11/24/14.
@@ -126,6 +128,7 @@ public class IfcDecSpaceType extends IfcDecSpatialStructureElementType {
 
     @Override
     public String getObjectString(IfcFileManagerI fileManager) {
-        return null;
+        String properties = fileManager.getNumberString(new ArrayList<IfcFileObject>(getHasProperties()));
+        return getIfcString(properties);
     }
 }

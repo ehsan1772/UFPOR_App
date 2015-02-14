@@ -1,5 +1,7 @@
 /** Add css rules here for your application. */
 
+
+
 td.reqCell {
     padding: 1%;
 }
@@ -45,7 +47,17 @@ button.header {
 }
 
 
-body, td, a, div, .p {
-    font-family: arial, sans-serif
+body, td, div, .p {
+    font-family: 'Questrial', sans-serif;
+}
+
+a, a:visited {
+    font-family: 'Questrial', sans-serif;
+    background-color: #D56031;
+}
+
+.gwt-MenuBar-horizontal {
+    background: none;
+    border: none;
 }
 

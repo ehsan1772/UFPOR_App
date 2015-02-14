@@ -1,12 +1,16 @@
 package com.ufpor.app.shared.ifcdeckernel.property;
 
 import com.ufpor.app.server.ifcphysical.Constants;
+import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcclient.constraint.IfcBenchmarkEnum;
 import com.ufpor.app.shared.ifcclient.constraint.IfcConstraintEnum;
 import com.ufpor.app.shared.ifcclient.property.IfcClientPhysicalQuantity;
 import com.ufpor.app.shared.ifcclient.property.IfcClientQuantityLength;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecMetric;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecObjective;
+
+import java.util.ArrayList;
 
 /**
  * Created by Ehsan Barekati on 11/23/14.
@@ -99,7 +103,17 @@ public class IfcDecQuantityLength extends IfcDecPhysicalSimpleQuantity {
         this.formula = formula;
     }
 
+    @Override
+    public ArrayList<IfcFileObject> getRelatedObjects() {
+        ArrayList<IfcFileObject> result = new ArrayList<>();
+        result.add(constraints);
+        return result;
+    }
 
+    @Override
+    public String getObjectString(IfcFileManagerI fileManager) {
+        return getIfcString();
+    }
 
 
     //public enum Type {GrossFloorArea, NetFloorArea, GrossWallArea, NetWallArea, GrossCeilingArea, NetCeilingArea}

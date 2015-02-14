@@ -1,6 +1,8 @@
 package com.ufpor.app.shared.ifcdeckernel.property.constraint;
 
 import com.ufpor.app.server.ifcphysical.Constants;
+import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcclient.IfcClientDateTime;
 import com.ufpor.app.shared.ifcclient.IfcClientInteger;
 import com.ufpor.app.shared.ifcclient.IfcClientReal;
@@ -12,6 +14,7 @@ import com.ufpor.app.shared.ifcclient.constraint.IfcConstraintEnum;
 import com.ufpor.app.shared.ifcdeckernel.property.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by Ehsan Barekati on 11/18/14.
@@ -129,4 +132,13 @@ public class IfcDecMetric extends IfcDecConstraint implements Serializable {
 
     }
 
+    @Override
+    public ArrayList<IfcFileObject> getRelatedObjects() {
+        return null;
+    }
+
+    @Override
+    public String getObjectString(IfcFileManagerI fileManager) {
+        return getIfcString();
+    }
 }

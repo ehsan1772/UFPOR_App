@@ -2,6 +2,7 @@ package com.ufpor.app.client.view;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
@@ -21,6 +22,7 @@ import com.ufpor.app.client.service.EnvironmentServiceAsync;
 import com.ufpor.app.client.view.project.PopupSpaceType;
 import com.ufpor.app.shared.ifcclient.*;
 import com.ufpor.app.shared.ifcclient.type.IfcClientSpaceType;
+import com.google.gwt.dom.client.Element;
 
 import java.util.List;
 import java.util.logging.Level;
@@ -76,7 +78,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
     public HomeView(LoginInfo loginInfo) {
         initWidget(ourUiBinder.createAndBindUi(this));
         this.loginInfo = loginInfo;
-        greeting.setText("Hello " + loginInfo.getNickname());
+        greeting.setText("Hello   " + loginInfo.getNickname());
         signOut.setHref(loginInfo.getLoginUrl());
         eastPanel.selectTab(0);
         App.injector.getSimpleEventBus().addHandler(ServerResultEvent.TYPE, mServerResultHandler);
@@ -123,7 +125,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
 
                 center.add(treeContainer);
 
-                tabPanel1.add(MenuBuilder.getMenu());
+                addMenu();
 
                 populateTree(treeContainer);
 
@@ -134,6 +136,17 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
 
             }
         });
+    }
+
+    private void addMenu() {
+        tabPanel1.add(MenuBuilder.getMenu());
+
+        //finding the div that contains the menu, it's the last child
+        Element menuParent = (Element) tabPanel1.getElement().getChild(tabPanel1.getElement().getChildCount() -1 );
+
+        //tweaking the style to position it at the bottom
+        menuParent.getStyle().setPosition(Style.Position.ABSOLUTE);
+        menuParent.getStyle().setBottom(0, Style.Unit.PX);
     }
 
     private void addResultPanel() {
@@ -251,7 +264,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
 
     interface MyStyle extends CssResource {
         String header();
-
+        String menu();
         String treeNode();
 
     }

@@ -9,9 +9,9 @@
     <!-- Inherit the default GWT style sheet.  You can change       -->
     <!-- the theme of your GWT application by uncommenting          -->
     <!-- any one of the following lines.                            -->
-     <inherits name='com.google.gwt.user.theme.clean.Clean' />
+    <inherits name='com.google.gwt.user.theme.clean.Clean'/>
     <!-- <inherits name='com.google.gwt.user.theme.standard.Standard'/> -->
-     <!--<inherits name='com.google.gwt.user.theme.chrome.Chrome'/>-->
+    <!--<inherits name='com.google.gwt.user.theme.chrome.Chrome'/>-->
     <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
 
 
@@ -34,9 +34,14 @@
 
 
     <!-- Specify the paths for translatable code                    -->
-    <source path='client' />
-    <source path='shared' />
+    <source path='client'/>
+    <source path='shared'/>
 
     <!-- ADDING SUPER DEV MODE -->
     <add-linker name="xsiframe"/>
+
+    <!--
+    <set-configuration-property name="CssResource.enableGss" value="true"/>
+    <set-configuration-property name="CssResource.obfuscationPrefix" value="empty"/>
+    -->
 </module>

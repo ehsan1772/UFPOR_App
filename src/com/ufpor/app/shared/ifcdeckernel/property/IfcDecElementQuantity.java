@@ -5,16 +5,17 @@ import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
 import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcclient.IfcClientElementQuantity;
-import com.ufpor.app.shared.ifcclient.IfcClientPropertySetDefinition;
 import com.ufpor.app.shared.ifcclient.property.IfcClientPhysicalQuantity;
 import com.ufpor.app.shared.ifcclient.property.IfcClientQuantityArea;
 import com.ufpor.app.shared.ifcclient.property.IfcClientQuantityLength;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecContext;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.NotPersistent;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Ehsan Barekati on 11/23/14.
@@ -56,10 +57,12 @@ public class IfcDecElementQuantity extends IfcDecQuantitySet {
     @Persistent
     private String methodOfMeasurement;
 
-    public static IfcDecElementQuantity getInstance(IfcClientElementQuantity client) {
+    public static IfcDecElementQuantity getInstance(IfcClientElementQuantity client, IfcFileObject... relatedObject) {
         IfcDecElementQuantity result = new IfcDecElementQuantity();
         result.setDescription(client.getDescription() != null ? client.getDescription() : null);
         result.setName(client.getName() != null ? client.getName() : null);
+        result.addRelatedObjectsProp(relatedObject);
+
         result.setMethodOfMeasurement(client.getMethodOfMeasurement());
         for (IfcClientPhysicalQuantity quantity : client.getQuantities()) {
             if (quantity instanceof IfcClientQuantityArea) {
@@ -105,7 +108,7 @@ public class IfcDecElementQuantity extends IfcDecQuantitySet {
         }
     }
 
-    public void onPostLoad() {
+    public void onPostLoad(IfcFileObject ifcDecContext) {
         getQuantities_area();
         getQuantities_length();
         for (IfcDecQuantityArea area : quantities_area) {
@@ -116,6 +119,7 @@ public class IfcDecElementQuantity extends IfcDecQuantitySet {
             area.onPostLoad();
             quantities.add(area);
         }
+        addRelatedObjectsProp(ifcDecContext);
     }
 
     public String getIfcString(String quantitiesChain) {
@@ -137,12 +141,31 @@ public class IfcDecElementQuantity extends IfcDecQuantitySet {
 
     @Override
     public ArrayList<IfcFileObject> getRelatedObjects() {
-        return null;
+        ArrayList<IfcFileObject> result = new ArrayList<IfcFileObject>();
+
+        for ( IfcDecPhysicalQuantity q : quantities) {
+            result.add(q);
+        }
+
+        result.add(getRelatedObjectsProp());
+
+        return result;
     }
 
     @Override
     public String getObjectString(IfcFileManagerI fileManager) {
-        return null;
+        String guid = GuidCompressor.getNewIfcGloballyUniqueId();
+        String ownerHistory = "*";
+        String name = (getName() == null || getName().isEmpty()) ? "*" : getName();
+        String description = (getDescription() == null || getDescription().isEmpty()) ? "*" : getDescription();
+
+        String methodOfMeasurement = "*";
+
+        String quant = fileManager.getNumberString(new ArrayList<IfcFileObject>(quantities));
+
+
+        //adding IFCELEMENTQUANTITY
+        return String.format(Constants.IFCELEMENTQUANTITY, guid, ownerHistory, name, description, methodOfMeasurement, quant);
     }
 }
 
