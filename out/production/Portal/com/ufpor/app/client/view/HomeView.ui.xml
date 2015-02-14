@@ -105,6 +105,10 @@
         <g:north size='100'>
             <g:HTMLPanel styleName="{style.northPanel}" ui:field="tabPanel1">
 
+                <g:Image ui:field="logo"/>
+
+                <h2 style = "float: left; padding: 20px">Sample Project</h2>
+
                 <div class='{style.loginDiv}'>
                     <g:Label ui:field="greeting"/>
 

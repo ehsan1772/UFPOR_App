@@ -2,9 +2,11 @@ package com.ufpor.app.client.view;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.resources.client.CssResource;
+import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -22,7 +24,6 @@ import com.ufpor.app.client.service.EnvironmentServiceAsync;
 import com.ufpor.app.client.view.project.PopupSpaceType;
 import com.ufpor.app.shared.ifcclient.*;
 import com.ufpor.app.shared.ifcclient.type.IfcClientSpaceType;
-import com.google.gwt.dom.client.Element;
 
 import java.util.List;
 import java.util.logging.Level;
@@ -41,8 +42,10 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
     Anchor signOut;
     @UiField
     Label greeting;
-//    @UiField
+    //    @UiField
     HTML southLabel;
+    @UiField
+    Image logo;
     @UiField
     SplitLayoutPanel mainPanel;
     @UiField
@@ -72,7 +75,26 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
     private int count = 0;
     private Logger logger = Logger.getLogger(HomeView.class.getSimpleName());
     private ScrollPanel resultContainer;
-
+    private ServerResultEvent.ServerResultEventHandler mServerResultHandler = new ServerResultEvent.ServerResultEventHandler() {
+        @Override
+        public void onServerResultEvent(ServerResultEvent event) {
+            // southLabel.setText(event.getResult());
+            if (southLabel != null) {
+                resultContainer.remove(southLabel);
+            }
+            southLabel = new HTML(new SafeHtmlBuilder().appendEscapedLines(event.getResult()).toSafeHtml());
+            resultContainer.add(southLabel);
+            loadSpaceTypes(projectName);
+        }
+    };
+    private MenuEvent.MenuEventHandler mMenuEventHandler = new MenuEvent.MenuEventHandler() {
+        @Override
+        public void onMenuEvent(MenuEvent event) {
+            if (event.getEvent() == MenuEvent.Event.OPEN_FILE) {
+                loadSpaceTypes((String) event.getValue());
+            }
+        }
+    };
 
     @Inject
     public HomeView(LoginInfo loginInfo) {
@@ -81,32 +103,12 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
         greeting.setText("Hello   " + loginInfo.getNickname());
         signOut.setHref(loginInfo.getLoginUrl());
         eastPanel.selectTab(0);
+        logo.setResource(App.Resources.INSTANCE.submitButtonIcon());
+
         App.injector.getSimpleEventBus().addHandler(ServerResultEvent.TYPE, mServerResultHandler);
         App.injector.getSimpleEventBus().addHandler(MenuEvent.TYPE, mMenuEventHandler);
 
     }
-
-    private ServerResultEvent.ServerResultEventHandler mServerResultHandler = new ServerResultEvent.ServerResultEventHandler() {
-        @Override
-        public void onServerResultEvent(ServerResultEvent event) {
-           // southLabel.setText(event.getResult());
-            if (southLabel != null ) {
-                resultContainer.remove(southLabel);
-            }
-            southLabel = new HTML(new SafeHtmlBuilder().appendEscapedLines(event.getResult()).toSafeHtml());
-            resultContainer.add(southLabel);
-            loadSpaceTypes(projectName);
-        }
-    };
-
-    private  MenuEvent.MenuEventHandler mMenuEventHandler = new MenuEvent.MenuEventHandler() {
-        @Override
-        public void onMenuEvent(MenuEvent event) {
-            if (event.getEvent() == MenuEvent.Event.OPEN_FILE) {
-                loadSpaceTypes((String) event.getValue());
-            }
-        }
-    };
 
     @Override
     protected void onLoad() {
@@ -129,7 +131,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
 
                 populateTree(treeContainer);
 
-             //   refreshSpaces();
+                //   refreshSpaces();
 
 
                 addResultPanel();
@@ -142,7 +144,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
         tabPanel1.add(MenuBuilder.getMenu());
 
         //finding the div that contains the menu, it's the last child
-        Element menuParent = (Element) tabPanel1.getElement().getChild(tabPanel1.getElement().getChildCount() -1 );
+        Element menuParent = (Element) tabPanel1.getElement().getChild(tabPanel1.getElement().getChildCount() - 1);
 
         //tweaking the style to position it at the bottom
         menuParent.getStyle().setPosition(Style.Position.ABSOLUTE);
@@ -219,16 +221,16 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
                 for (IfcClientSpaceType env : result) {
                     EnvironmentTreeItem b = new EnvironmentTreeItem(true, true);
                     b.setName(env.getName());
-                    for (IfcClientPropertySetDefinition propset :env.getProperties()) {
+                    for (IfcClientPropertySetDefinition propset : env.getProperties()) {
                         if (propset instanceof IfcClientPropertySet) {
-                          //  if (propset.getName().equals("Pset_SpaceCommon")) {
-                                for (IfcClientProperty nextProp : ((IfcClientPropertySet) propset).getProperties()) {
-                                    if (nextProp.getName().equals("GrossPlannedArea")) {
-                                        String area = ((IfcClientText) ((IfcClientPropertySingleValue) nextProp).getNominalValue()).getValue();
-                                        b.setArea(area);
-                                    }
+                            //  if (propset.getName().equals("Pset_SpaceCommon")) {
+                            for (IfcClientProperty nextProp : ((IfcClientPropertySet) propset).getProperties()) {
+                                if (nextProp.getName().equals("GrossPlannedArea")) {
+                                    String area = ((IfcClientText) ((IfcClientPropertySingleValue) nextProp).getNominalValue()).getValue();
+                                    b.setArea(area);
                                 }
-                          //  }
+                            }
+                            //  }
                         }
                     }
                     envContainer.add(b);
@@ -264,7 +266,9 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
 
     interface MyStyle extends CssResource {
         String header();
+
         String menu();
+
         String treeNode();
 
     }
