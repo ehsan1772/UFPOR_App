@@ -82,9 +82,50 @@ public class MenuBuilder {
             }
         });
 
+        // Create the insert menu
+        MenuBar insertMenu = new MenuBar(true);
+        //  editMenu.setAnimationEnabled(true);
+
+        insertMenu.addItem("Undo", new Command() {
+            @Override
+            public void execute() {
+                showSelectedMenuItem("Undo");
+            }
+        });
+        insertMenu.addItem("Redo", new Command() {
+            @Override
+            public void execute() {
+                showSelectedMenuItem("Redo");
+            }
+        });
+        insertMenu.addItem("Cut", new Command() {
+            @Override
+            public void execute() {
+                showSelectedMenuItem("Cut");
+            }
+        });
+        insertMenu.addItem("Copy", new Command() {
+            @Override
+            public void execute() {
+                showSelectedMenuItem("Copy");
+            }
+        });
+        insertMenu.addItem("Paste", new Command() {
+            @Override
+            public void execute() {
+                showSelectedMenuItem("Paste");
+            }
+        });
+
         menu.addItem(new MenuItem("File", fileMenu));
         menu.addSeparator();
         menu.addItem(new MenuItem("Edit", editMenu));
+        menu.addSeparator();
+        menu.addItem(new MenuItem("Insert", insertMenu));
+        menu.addSeparator();
+        menu.addItem(new MenuItem("Format", editMenu));
+        menu.addSeparator();
+        menu.addItem(new MenuItem("Help", editMenu));
 
         return menu;
     }

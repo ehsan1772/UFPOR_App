@@ -1,6 +1,8 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
 
+    <ui:with field='ress' type='com.ufpor.app.client.App.Resources'></ui:with>
+
     <ui:style type='com.ufpor.app.client.view.HomeView.MyStyle'>
         .eastPanel {
             background-color: #F60;
@@ -13,7 +15,7 @@
 
         .northPanel {
             background-color: #D4DCDF;
-            position:relative
+            position: relative
         }
 
         .southPanel {
@@ -27,7 +29,7 @@
         }
 
         .envPanel {
-            background-color: #FFC;
+            background-color: white;
             height: 100%;
         }
 
@@ -39,8 +41,9 @@
         }
 
         .header2 {
-            background-color: #FFC;
-            float: left;
+            background-color: white;
+            margin-left: auto;
+            margin-right: auto;
             height: 50px;
             width: 90%;
         }
@@ -94,20 +97,28 @@
         .menu {
             width: 100%;
             height: 30px;
-            position:absolute;
-            bottom:0px;
+            position: absolute;
+            bottom: 0px;
         }
 
+        .image {
+            float: left;
+            padding: 10px;
+        }
 
+        .searchButton {
+            gwt-image: "searchButtonIcon";
+        }
     </ui:style>
+
 
     <g:SplitLayoutPanel ui:field="mainPanel">
         <g:north size='100'>
             <g:HTMLPanel styleName="{style.northPanel}" ui:field="tabPanel1">
 
-                <g:Image ui:field="logo"/>
+                <g:Image width= "auto" height="50px" styleName="{style.image}" ui:field="logo"/>
 
-                <h2 style = "float: left; padding: 20px">Sample Project</h2>
+                <h1 ui:field="projectNameHeader" style = "margin: 10px; float: left; padding: 20px 10px">Sample Project</h1>
 
                 <div class='{style.loginDiv}'>
                     <g:Label ui:field="greeting"/>
@@ -148,7 +159,9 @@
                     <g:HTMLPanel width="100%" height="100%">
                         <div class='{style.envPanel}'>
                             <div class='{style.header2}'>
-                                <g:Button text="Add New" ui:field="button"/>
+                                <g:TextBox ui:field="searchTerm"/>
+                                <g:Image styleName='{style.searchButton}' ui:field="searchButton"/>
+                                <g:Button styleName='{style.searchButton}' ui:field="button"/>
                             </div>
 
                             <g:ScrollPanel styleName="{style.environments}">

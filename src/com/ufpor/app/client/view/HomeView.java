@@ -3,10 +3,10 @@ package com.ufpor.app.client.view;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.HeadingElement;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.resources.client.CssResource;
-import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -33,15 +33,19 @@ import java.util.logging.Logger;
  * Created by ovenbits on 10/9/14.
  */
 public class HomeView extends Composite implements PopupBase.PopupBaseHost {
-    //TODO fix this!
-    public static String projectName;
+
+
     private static HomeViewUiBinder ourUiBinder = GWT.create(HomeViewUiBinder.class);
     private final EnvironmentServiceAsync environmentService = GWT.create(EnvironmentService.class);
 
     @UiField
+    App.Resources res;
+    @UiField
     Anchor signOut;
     @UiField
     Label greeting;
+    @UiField
+    public HeadingElement projectNameHeader;
     //    @UiField
     HTML southLabel;
     @UiField
@@ -57,7 +61,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
     //	@UiField
     ScrollPanel treeContainer;
     @UiField
-    Button button;
+    Image searchButton;
     @UiField
     HTMLPanel envContainer;
     @UiField
@@ -75,6 +79,8 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
     private int count = 0;
     private Logger logger = Logger.getLogger(HomeView.class.getSimpleName());
     private ScrollPanel resultContainer;
+    //TODO fix this!
+    public static String projectName;
     private ServerResultEvent.ServerResultEventHandler mServerResultHandler = new ServerResultEvent.ServerResultEventHandler() {
         @Override
         public void onServerResultEvent(ServerResultEvent event) {
@@ -138,6 +144,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
 
             }
         });
+
     }
 
     private void addMenu() {

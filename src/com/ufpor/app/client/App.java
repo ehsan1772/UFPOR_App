@@ -43,7 +43,7 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
 
     @Override
     public void onModuleLoad() {
-      //  Resources.INSTANCE.css().ensureInjected();
+     //   Resources.INSTANCE.ensureInjected();
         loginInfo = injector.getLoginInfo();
         // Check login status using login service.
         LoginServiceAsync loginService = LoginService.App.getInstance();
@@ -151,15 +151,17 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
     public interface Resources extends ClientBundle {
 
         public static final Resources INSTANCE = GWT.create(Resources.class);
-
-//        @Source("app.css")
-//        @CssResource.NotStrict
-//        CssResource css();
-
-
-
-        @Source("com/ufpor/app/public/cowboys.png")
+        @Source("com/ufpor/app/public/image/logo.png")
         ImageResource submitButtonIcon();
+
+        @Source("com/ufpor/app/public/image/download.png")
+        ImageResource downloadButtonIcon();
+
+        @Source("com/ufpor/app/public/image/add.png")
+        ImageResource addButtonIcon();
+
+        @Source("com/ufpor/app/public/image/search.png")
+        ImageResource searchButtonIcon();
     }
 
 
