@@ -129,7 +129,9 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
                 treeContainer = new ScrollPanel();
                 treeContainer.setWidth(String.valueOf(w) + "px");
                 treeContainer.setHeight(String.valueOf(h) + "px");
-                treeContainer.getElement().getStyle().setProperty("backgroundColor", "#FFC");
+              //  treeContainer.getElement().getStyle().setProperty("backgroundColor", "#FFC");
+
+                treeContainer.setStyleName(style.treeContainer());
 
                 center.add(treeContainer);
 
@@ -246,22 +248,22 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
         });
     }
 
-    @UiHandler("button")
-    void onButtonClick(ClickEvent event) {
-        int width = (Window.getClientWidth() / 2);
-        popup.setWidth(width + "px");
-
-        int height = (Window.getClientHeight() / 2);
-        popup.setHeight(height + "px");
-
-        popup.setGlassEnabled(true);
-
-
-        popUpSpace.setHost(this);
-        popup.setWidget(popUpSpace);
-
-        popup.center();
-    }
+//    @UiHandler("button")
+//    void onButtonClick(ClickEvent event) {
+//        int width = (Window.getClientWidth() / 2);
+//        popup.setWidth(width + "px");
+//
+//        int height = (Window.getClientHeight() / 2);
+//        popup.setHeight(height + "px");
+//
+//        popup.setGlassEnabled(true);
+//
+//
+//        popUpSpace.setHost(this);
+//        popup.setWidget(popUpSpace);
+//
+//        popup.center();
+//    }
 
     public void removePopUp() {
 
@@ -277,6 +279,8 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
         String menu();
 
         String treeNode();
+
+        String treeContainer();
 
     }
 }

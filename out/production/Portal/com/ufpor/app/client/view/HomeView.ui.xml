@@ -1,7 +1,7 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
 
-    <ui:with field='ress' type='com.ufpor.app.client.App.Resources'></ui:with>
+    <ui:with field='res' type='com.ufpor.app.client.App.Resources'></ui:with>
 
     <ui:style type='com.ufpor.app.client.view.HomeView.MyStyle'>
         .eastPanel {
@@ -103,11 +103,23 @@
 
         .image {
             float: left;
-            padding: 10px;
+            padding: 3px;
         }
 
         .searchButton {
-            gwt-image: "searchButtonIcon";
+            width: 20px;
+            height: 20px;
+            padding: 5px;
+            border:1px solid white;
+            border-radius: 5px;
+
+        }
+
+        .searchButton:active {
+
+            border:1px solid #99C;
+            border-radius: 5px;
+
         }
     </ui:style>
 
@@ -116,9 +128,10 @@
         <g:north size='100'>
             <g:HTMLPanel styleName="{style.northPanel}" ui:field="tabPanel1">
 
-                <g:Image width= "auto" height="50px" styleName="{style.image}" ui:field="logo"/>
+                <g:Image width="auto" height="50px" styleName="{style.image}" ui:field="logo"/>
 
-                <h1 ui:field="projectNameHeader" style = "margin: 10px; float: left; padding: 20px 10px">Sample Project</h1>
+                <h1 ui:field="projectNameHeader" style="margin: 10px; float: left; padding: 20px 10px">Sample Project
+                </h1>
 
                 <div class='{style.loginDiv}'>
                     <g:Label ui:field="greeting"/>
@@ -160,8 +173,8 @@
                         <div class='{style.envPanel}'>
                             <div class='{style.header2}'>
                                 <g:TextBox ui:field="searchTerm"/>
-                                <g:Image styleName='{style.searchButton}' ui:field="searchButton"/>
-                                <g:Button styleName='{style.searchButton}' ui:field="button"/>
+                                <g:Image resource='{res.searchButtonIcon}' styleName='{style.searchButton}' ui:field="searchButton"/>
+                                <g:Image styleName='{style.searchButton}' ui:field="button"/>
                             </div>
 
                             <g:ScrollPanel styleName="{style.environments}">

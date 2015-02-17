@@ -31,12 +31,10 @@
           <file leaf-file-name="HomeView.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.35168195" vertical-offset="2325" max-vertical-offset="4185">
-                  <caret line="186" column="26" selection-start-line="186" selection-start-column="26" selection-end-line="186" selection-end-column="26" />
+                <state vertical-scroll-proportion="0.31506848" vertical-offset="1473" max-vertical-offset="4200">
+                  <caret line="118" column="13" selection-start-line="118" selection-start-column="13" selection-end-line="118" selection-end-column="13" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#2614#3118#0" expanded="true" />
-                    <element signature="e#3117#3118#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -45,7 +43,7 @@
           <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/App.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="792" max-vertical-offset="1800">
+                <state vertical-scroll-proportion="0.0" vertical-offset="1665" max-vertical-offset="1845">
                   <caret line="163" column="38" selection-start-line="163" selection-start-column="22" selection-end-line="163" selection-end-column="38" />
                   <folding>
                     <element signature="method#startNewProject#0;class#App#0" expanded="false" />
@@ -58,7 +56,7 @@
           <file leaf-file-name="MenuBuilder.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/MenuBuilder.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1140">
+                <state vertical-scroll-proportion="0.0" vertical-offset="1410" max-vertical-offset="1725">
                   <caret line="121" column="53" selection-start-line="121" selection-start-column="53" selection-end-line="121" selection-end-column="53" />
                   <folding />
                 </state>
@@ -68,9 +66,11 @@
           <file leaf-file-name="UFPORModule.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/dependency/UFPORModule.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
+                <state vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="390">
                   <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-                  <folding />
+                  <folding>
+                    <element signature="imports" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -78,8 +78,8 @@
           <file leaf-file-name="app2.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/public/css/app2.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="387" max-vertical-offset="1035">
-                  <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="171" max-vertical-offset="1620">
+                  <caret line="97" column="28" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
                   <folding />
                 </state>
               </provider>
@@ -102,27 +102,34 @@
           <file leaf-file-name="HomeView.ui.xml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.ui.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.5810397" vertical-offset="1905" max-vertical-offset="3330">
-                  <caret line="165" column="19" selection-start-line="165" selection-start-column="19" selection-end-line="165" selection-end-column="19" />
+                <state vertical-scroll-proportion="0.67105263" vertical-offset="2796" max-vertical-offset="3810">
+                  <caret line="225" column="44" selection-start-line="225" selection-start-column="44" selection-end-line="225" selection-end-column="44" />
                   <folding>
-                    <marker date="1424109974000" expanded="true" signature="284:357" placeholder="{...}" />
-                    <marker date="1424109974000" expanded="true" signature="378:425" placeholder="{...}" />
-                    <marker date="1424109974000" expanded="true" signature="447:528" placeholder="{...}" />
-                    <marker date="1424109974000" expanded="true" signature="550:597" placeholder="{...}" />
-                    <marker date="1424109974000" expanded="true" signature="620:721" placeholder="{...}" />
-                    <marker date="1424109974000" expanded="true" signature="741:815" placeholder="{...}" />
-                    <marker date="1424109974000" expanded="true" signature="833:956" placeholder="{...}" />
-                    <marker date="1424109974000" expanded="true" signature="975:1136" placeholder="{...}" />
-                    <marker date="1424109974000" expanded="true" signature="1156:1282" placeholder="{...}" />
-                    <marker date="1424109974000" expanded="true" signature="1306:1429" placeholder="{...}" />
-                    <marker date="1424109974000" expanded="true" signature="1449:1607" placeholder="{...}" />
-                    <marker date="1424109974000" expanded="true" signature="1449:1608" placeholder="{...}" />
-                    <marker date="1424109974000" expanded="true" signature="1624:1814" placeholder="{...}" />
-                    <marker date="1424109974000" expanded="true" signature="1837:2195" placeholder="{...}" />
-                    <marker date="1424109974000" expanded="true" signature="2211:2330" placeholder="{...}" />
-                    <marker date="1424109974000" expanded="true" signature="2347:2409" placeholder="{...}" />
-                    <marker date="1424109974000" expanded="true" signature="2433:2590" placeholder="{...}" />
-                    <marker date="1424109974000" expanded="true" signature="2621:2701" placeholder="{...}" />
+                    <element signature="n#div#0;n#div#0;n#g:HTMLPanel#0;n#g:Tab#0;n#g:DecoratedTabPanel#0;n#g:east#0;n#g:SplitLayoutPanel#0;n#ui:UiBinder#0;n#!!top" expanded="false" />
+                    <marker date="1424190247000" expanded="true" signature="284:357" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="382:637" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="658:705" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="727:808" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="830:877" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="900:1001" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="1021:1095" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="1113:1236" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="1255:1445" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="1465:1591" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="1615:1935" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="1955:2113" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="1955:2114" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="2130:2320" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="2343:2701" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="2717:2836" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="2853:2915" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="2936:3197" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="3221:3410" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="3440:3484" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="3515:3562" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="3585:3739" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="3768:3812" placeholder="{...}" />
+                    <marker date="1424190247000" expanded="true" signature="3842:3883" placeholder="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -131,7 +138,7 @@
           <file leaf-file-name="HeaderPanel.java" pinned="false" current-in-tab="false">
             <entry file="jar://$USER_HOME$/Development/gwt-2.7.0/gwt-user.jar!/com/google/gwt/user/client/ui/HeaderPanel.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-90.55556" vertical-offset="0" max-vertical-offset="4515">
+                <state vertical-scroll-proportion="0.0" vertical-offset="2445" max-vertical-offset="4515">
                   <caret line="202" column="16" selection-start-line="202" selection-start-column="7" selection-end-line="202" selection-end-column="16" />
                   <folding />
                 </state>
@@ -197,8 +204,8 @@
         <option value="$PROJECT_DIR$/src/com/ufpor/app/app.gwt.xml" />
         <option value="$PROJECT_DIR$/web/app.css" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/client/view/MenuBuilder.java" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/public/css/app2.css" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/client/App.java" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/public/css/app2.css" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.java" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.ui.xml" />
       </list>
@@ -215,8 +222,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="2560" />
-    <option name="height" value="1413" />
+    <option name="width" value="1920" />
+    <option name="height" value="1053" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -245,6 +252,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -327,9 +335,56 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GWT_UFPOR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="image" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Portal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GWT_UFPOR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -618,7 +673,7 @@
         </option>
       </method>
     </configuration>
-    <configuration default="false" name="app JavaScript" type="JavascriptDebugType" factoryName="JavaScript Debug" engineId="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" uri="http://10.0.1.39:8888/app.html">
+    <configuration default="false" name="app JavaScript" type="JavascriptDebugType" factoryName="JavaScript Debug" engineId="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" uri="http://192.168.1.8:8888/app.html">
       <RunnerSettings RunnerId="JavascriptDebugRunner" />
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
       <method />
@@ -658,7 +713,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="2560" height="1413" extended-state="6" />
+    <frame x="0" y="23" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -667,10 +722,10 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32674298" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2580645" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2591051" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32674298" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21574564" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30984455" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2726327" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -681,7 +736,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13264495" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13258786" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35957608" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21246007" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -692,16 +747,16 @@
     <layout-to-restore>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284974" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32882413" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18530351" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26951092" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15548456" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26951092" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32778355" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -1005,7 +1060,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1388889" vertical-offset="0" max-vertical-offset="648">
           <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1013,7 +1067,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7453704" vertical-offset="3492" max-vertical-offset="4140">
           <caret line="283" column="30" selection-start-line="283" selection-start-column="30" selection-end-line="283" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1021,7 +1074,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32407406" vertical-offset="0" max-vertical-offset="648">
           <caret line="35" column="17" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1029,7 +1081,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.587963" vertical-offset="144" max-vertical-offset="2100">
           <caret line="52" column="22" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1059,7 +1110,7 @@
     </entry>
     <entry file="jar://$USER_HOME$/Development/gwt-2.7.0/gwt-user.jar!/com/google/gwt/user/client/ui/HeaderPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-90.55556" vertical-offset="0" max-vertical-offset="4515">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2445" max-vertical-offset="4515">
           <caret line="202" column="16" selection-start-line="202" selection-start-column="7" selection-end-line="202" selection-end-column="16" />
           <folding />
         </state>
@@ -1085,15 +1136,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
           <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/public/css/app2.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="387" max-vertical-offset="1035">
-          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1101,7 +1146,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="264" max-vertical-offset="1755">
           <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1121,41 +1165,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/public/css/app2.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="171" max-vertical-offset="1620">
+          <caret line="97" column="28" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.ui.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5810397" vertical-offset="1905" max-vertical-offset="3330">
-          <caret line="165" column="19" selection-start-line="165" selection-start-column="19" selection-end-line="165" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.67105263" vertical-offset="2796" max-vertical-offset="3810">
+          <caret line="225" column="44" selection-start-line="225" selection-start-column="44" selection-end-line="225" selection-end-column="44" />
           <folding>
-            <marker date="1424109974000" expanded="true" signature="284:357" placeholder="{...}" />
-            <marker date="1424109974000" expanded="true" signature="378:425" placeholder="{...}" />
-            <marker date="1424109974000" expanded="true" signature="447:528" placeholder="{...}" />
-            <marker date="1424109974000" expanded="true" signature="550:597" placeholder="{...}" />
-            <marker date="1424109974000" expanded="true" signature="620:721" placeholder="{...}" />
-            <marker date="1424109974000" expanded="true" signature="741:815" placeholder="{...}" />
-            <marker date="1424109974000" expanded="true" signature="833:956" placeholder="{...}" />
-            <marker date="1424109974000" expanded="true" signature="975:1136" placeholder="{...}" />
-            <marker date="1424109974000" expanded="true" signature="1156:1282" placeholder="{...}" />
-            <marker date="1424109974000" expanded="true" signature="1306:1429" placeholder="{...}" />
-            <marker date="1424109974000" expanded="true" signature="1449:1607" placeholder="{...}" />
-            <marker date="1424109974000" expanded="true" signature="1449:1608" placeholder="{...}" />
-            <marker date="1424109974000" expanded="true" signature="1624:1814" placeholder="{...}" />
-            <marker date="1424109974000" expanded="true" signature="1837:2195" placeholder="{...}" />
-            <marker date="1424109974000" expanded="true" signature="2211:2330" placeholder="{...}" />
-            <marker date="1424109974000" expanded="true" signature="2347:2409" placeholder="{...}" />
-            <marker date="1424109974000" expanded="true" signature="2433:2590" placeholder="{...}" />
-            <marker date="1424109974000" expanded="true" signature="2621:2701" placeholder="{...}" />
+            <element signature="n#div#0;n#div#0;n#g:HTMLPanel#0;n#g:Tab#0;n#g:DecoratedTabPanel#0;n#g:east#0;n#g:SplitLayoutPanel#0;n#ui:UiBinder#0;n#!!top" expanded="false" />
+            <marker date="1424190247000" expanded="true" signature="284:357" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="382:637" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="658:705" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="727:808" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="830:877" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="900:1001" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="1021:1095" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="1113:1236" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="1255:1445" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="1465:1591" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="1615:1935" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="1955:2113" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="1955:2114" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="2130:2320" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="2343:2701" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="2717:2836" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="2853:2915" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="2936:3197" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="3221:3410" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="3440:3484" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="3515:3562" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="3585:3739" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="3768:3812" placeholder="{...}" />
+            <marker date="1424190247000" expanded="true" signature="3842:3883" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35168195" vertical-offset="2325" max-vertical-offset="4185">
-          <caret line="186" column="26" selection-start-line="186" selection-start-column="26" selection-end-line="186" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.31506848" vertical-offset="1473" max-vertical-offset="4200">
+          <caret line="118" column="13" selection-start-line="118" selection-start-column="13" selection-end-line="118" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2614#3118#0" expanded="true" />
-            <element signature="e#3117#3118#0" expanded="true" />
           </folding>
         </state>
       </provider>
