@@ -14,6 +14,19 @@ h1 {
     text-align: center;
 }
 
+hr {
+    width: 100%;
+    height: 8px;
+    background: #949494;
+    display: block;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: auto;
+    -webkit-margin-end: auto;
+    border-style: inset;
+    border-width: 0px;
+}
+
 
 .sendButton {
     display: block;
@@ -60,4 +73,29 @@ a, a:visited {
     background: none;
     border: none;
 }
+
+.gwt-TextBox {
+    padding: 2px 4px;
+    border: 1px solid #ccc;
+    border-top: 1px solid #999;
+    font-size: small;
+    font-family: Arial Unicode MS, Arial, sans-serif;
+}
+
+.gwt-SplitLayoutPanel-VDragger {
+    cursor: row-resize;
+}
+
+.gwt-SplitLayoutPanel-HDragger {
+    cursor: col-resize;
+}
+
+.gwt-TabPanelBottom {
+    border-color: #ccc;
+    border-style: solid;
+    border-width: 0px 0px 0px;
+    overflow: hidden;
+    padding: 6px 0px;
+}
+
 

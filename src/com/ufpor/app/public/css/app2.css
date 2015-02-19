@@ -83,20 +83,19 @@ a, a:visited {
 }
 
 .gwt-SplitLayoutPanel-VDragger {
-    background: #949494 url(images/thumb_horz.png) center center no-repeat;
     cursor: row-resize;
 }
 
 .gwt-SplitLayoutPanel-HDragger {
-    background: #949494 url(images/thumb_vertical.png) center center no-repeat;
     cursor: col-resize;
 }
 
 .gwt-TabPanelBottom {
     border-color: #ccc;
     border-style: solid;
-    border-width: 0px 1px 1px;
+    border-width: 0px 0px 0px;
     overflow: hidden;
     padding: 6px 0px;
 }
+
 

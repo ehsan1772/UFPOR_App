@@ -59,8 +59,6 @@ public class PopupGeneral extends PopupBase  {
                 App.getInjector().getSimpleEventBus().fireEvent(event);
                 HomeView.projectName = project.getName();
                 host.closePopupBase();
-
-        //        setTestSpaceTpeValues();
             }
         });
 

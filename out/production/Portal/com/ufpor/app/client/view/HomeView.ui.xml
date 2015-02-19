@@ -9,6 +9,13 @@
             height: 100%;
         }
 
+        .treeContainer {
+            background-color: #F3F2EF;
+            -moz-box-shadow: inset 5px 5px 20px rgba(0, 0, 0, 0.45);
+            -webkit-box-shadow: inset 5px 5px 20px rgba(0, 0, 0, 0.45);
+            box-shadow: inset 5px 5px 20px rgba(0, 0, 0, 0.45);
+        }
+
         .westPanel {
             background-color: #EEE;
         }
@@ -44,8 +51,9 @@
             background-color: white;
             margin-left: auto;
             margin-right: auto;
-            height: 50px;
-            width: 90%;
+            margin-top: 5px;
+            height: 40px;
+            width: 95%;
         }
 
         .treeNode {
@@ -56,10 +64,13 @@
         }
 
         .environments {
-            background-color: #39F;
+            background-color: #E7EBEC;
             float: left;
-            width: 95%;
+            width: 100%;
             height: 550px;
+            -moz-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.68);
+            -webkit-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.68);
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.68);
         }
 
         .loginDiv {
@@ -106,20 +117,48 @@
             padding: 3px;
         }
 
-        .searchButton {
-            width: 20px;
-            height: 20px;
-            padding: 5px;
-            border:1px solid white;
-            border-radius: 5px;
+        .searchBox {
+            float: left;
+            height: 28px;
+            padding: 4px 4px;
+            border: 1px solid #ccc;
+            border-top: 1px solid #999;
+            font-size: small;
+            font-family: Arial Unicode MS, Arial, sans-serif;
 
         }
 
+        .searchButton {
+            width: 20px;
+            height: 18px;
+            padding: 4px;
+            border: 1px solid #ccc;
+            border-top: 1px solid #999;
+            float: left;
+        }
+
+        .searchButton:hover {
+            background: #e0e0e0;
+        }
+
         .searchButton:active {
+            border: 1px solid #999;
+        }
 
-            border:1px solid #99C;
-            border-radius: 5px;
+        .imageButton {
+            width: 28px;
+            height: 28px;
+            margin: 0px 0px 0px 5px;
+            background: #ccc;
+            float: left;
+        }
 
+        .imageButton:hover {
+            background: #e0e0e0;
+        }
+
+        .imageButton:active {
+            background: #999;
         }
     </ui:style>
 
@@ -172,18 +211,22 @@
                     <g:HTMLPanel width="100%" height="100%">
                         <div class='{style.envPanel}'>
                             <div class='{style.header2}'>
-                                <g:TextBox ui:field="searchTerm"/>
-                                <g:Image resource='{res.searchButtonIcon}' styleName='{style.searchButton}' ui:field="searchButton"/>
+                                <g:TextBox styleName='{style.searchBox}' ui:field="searchTerm"/>
+                                <g:Image resource='{res.searchButtonIcon}' styleName='{style.searchButton}'
+                                         ui:field="searchButton"/>
+                                <g:Image resource='{res.addButtonIcon}' styleName='{style.imageButton}'
+                                         ui:field="addButton"/>
+                                <g:Image resource='{res.downloadButtonIcon}' styleName='{style.imageButton}'
+                                         ui:field="downloadButton"/>
+                                <!--
                                 <g:Image styleName='{style.searchButton}' ui:field="button"/>
+                                -->
                             </div>
-
+                            <hr/>
                             <g:ScrollPanel styleName="{style.environments}">
                                 <g:HTMLPanel ui:field="envContainer">
-
-
                                 </g:HTMLPanel>
                             </g:ScrollPanel>
-
                         </div>
                     </g:HTMLPanel>
                 </g:Tab>
@@ -201,16 +244,26 @@
             </g:DecoratedTabPanel>
 
         </g:east>
-        <g:south size="150">
+        <g:south size="160"  height="100%">
             <!--
             <g:FlowPanel styleName="{style.southPanel}">
                 <g:Label ui:field="southLabel">This is the SOUTH panel</g:Label>
             </g:FlowPanel>
             -->
-            <g:HTMLPanel width="100%" height="100%" ui:field="south">
-                <!-- <g:ScrollPanel styleName="{style.centerPanel}" ui:field="treeContainer">
-                    </g:ScrollPanel> -->
-            </g:HTMLPanel>
+            <g:DecoratedTabPanel width="100%" height="100%" ui:field="southPanel">
+                <g:Tab text="IFC" height="100%">
+                    <g:HTMLPanel width="100%" height="100%" ui:field="south">
+                        <!-- <g:ScrollPanel styleName="{style.centerPanel}" ui:field="treeContainer">
+                            </g:ScrollPanel> -->
+                    </g:HTMLPanel>
+                </g:Tab>
+                <g:Tab text="Properties">
+                    <g:FlowPanel styleName="{style.centerPanel}">
+                        <g:Label>This is the second panel</g:Label>
+                    </g:FlowPanel>
+                </g:Tab>
+
+            </g:DecoratedTabPanel>
         </g:south>
     </g:SplitLayoutPanel>
 

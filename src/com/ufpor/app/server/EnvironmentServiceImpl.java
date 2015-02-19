@@ -417,6 +417,10 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
             Query spaceTypeQuery = pm2.newQuery(IfcDecSpaceType.class, "key == spaceKey");
             spaceTypeQuery.declareParameters("com.google.appengine.api.datastore.Key spaceKey");
 
+            if (spaceKeys == null) {
+                return null;
+            }
+
             for (Key key : spaceKeys) {
                 IfcDecSpaceType spaceType = ((List<IfcDecSpaceType>) spaceTypeQuery.execute(key)).get(0);
                 spaceType.prepareDataForClient(null);

@@ -5,13 +5,11 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.HeadingElement;
 import com.google.gwt.dom.client.Style;
-import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.resources.client.CssResource;
+import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.google.inject.Inject;
@@ -35,19 +33,20 @@ import java.util.logging.Logger;
 public class HomeView extends Composite implements PopupBase.PopupBaseHost {
 
 
+    //TODO fix this!
+    public static String projectName;
     private static HomeViewUiBinder ourUiBinder = GWT.create(HomeViewUiBinder.class);
     private final EnvironmentServiceAsync environmentService = GWT.create(EnvironmentService.class);
-
+    @UiField
+    public HeadingElement projectNameHeader;
     @UiField
     App.Resources res;
     @UiField
     Anchor signOut;
     @UiField
     Label greeting;
-    @UiField
-    public HeadingElement projectNameHeader;
     //    @UiField
-    HTML southLabel;
+    //  HTML southLabel;
     @UiField
     Image logo;
     @UiField
@@ -57,7 +56,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
     @UiField
     HTMLPanel center;
     @UiField
-    HTMLPanel south;
+    ScrollPanel ifcPanel;
     //	@UiField
     ScrollPanel treeContainer;
     @UiField
@@ -68,7 +67,8 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
     DecoratedTabPanel eastPanel;
     @UiField
     MyStyle style;
-
+    @UiField
+    DecoratedTabPanel southPanel;
     private LoginInfo loginInfo;
     @Inject
     private PopupPanel popup;
@@ -79,20 +79,39 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
     private int count = 0;
     private Logger logger = Logger.getLogger(HomeView.class.getSimpleName());
     private ScrollPanel resultContainer;
-    //TODO fix this!
-    public static String projectName;
     private ServerResultEvent.ServerResultEventHandler mServerResultHandler = new ServerResultEvent.ServerResultEventHandler() {
         @Override
         public void onServerResultEvent(ServerResultEvent event) {
-            // southLabel.setText(event.getResult());
-            if (southLabel != null) {
-                resultContainer.remove(southLabel);
-            }
-            southLabel = new HTML(new SafeHtmlBuilder().appendEscapedLines(event.getResult()).toSafeHtml());
-            resultContainer.add(southLabel);
+
+            int height = RootLayoutPanel.get().getOffsetHeight() - ifcPanel.getAbsoluteTop();
+            ifcPanel.getElement().getStyle().setHeight(height, Style.Unit.PX);
+
             loadSpaceTypes(projectName);
         }
     };
+
+    protected native int getBoundingClientRectTop(Element elem) /*-{
+        // getBoundingClientRect() throws a JS exception if the elem is not attached
+        // to the document, so we wrap it in a try/catch block
+        try {
+            return elem.getBoundingClientRect().top;
+        } catch (e) {
+            // if not attached return 0
+            return 0;
+        }
+    }-*/;
+
+    protected native int getBoundingClientRectBottom(Element elem) /*-{
+        // getBoundingClientRect() throws a JS exception if the elem is not attached
+        // to the document, so we wrap it in a try/catch block
+        try {
+            return elem.getBoundingClientRect().bottom;
+        } catch (e) {
+            // if not attached return 0
+            return 0;
+        }
+    }-*/;
+
     private MenuEvent.MenuEventHandler mMenuEventHandler = new MenuEvent.MenuEventHandler() {
         @Override
         public void onMenuEvent(MenuEvent event) {
@@ -109,6 +128,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
         greeting.setText("Hello   " + loginInfo.getNickname());
         signOut.setHref(loginInfo.getLoginUrl());
         eastPanel.selectTab(0);
+        southPanel.selectTab(0);
         logo.setResource(App.Resources.INSTANCE.submitButtonIcon());
 
         App.injector.getSimpleEventBus().addHandler(ServerResultEvent.TYPE, mServerResultHandler);
@@ -129,7 +149,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
                 treeContainer = new ScrollPanel();
                 treeContainer.setWidth(String.valueOf(w) + "px");
                 treeContainer.setHeight(String.valueOf(h) + "px");
-              //  treeContainer.getElement().getStyle().setProperty("backgroundColor", "#FFC");
+                //  treeContainer.getElement().getStyle().setProperty("backgroundColor", "#FFC");
 
                 treeContainer.setStyleName(style.treeContainer());
 
@@ -142,7 +162,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
                 //   refreshSpaces();
 
 
-                addResultPanel();
+                //      addResultPanel(nu);
 
             }
         });
@@ -160,9 +180,9 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
         menuParent.getStyle().setBottom(0, Style.Unit.PX);
     }
 
-    private void addResultPanel() {
-        int h = south.getElement().getOffsetHeight();
-        int w = south.getElement().getOffsetWidth();
+    private void addResultPanel(HTML southLabel) {
+        int h = ifcPanel.getElement().getOffsetHeight();
+        int w = ifcPanel.getElement().getOffsetWidth();
 
         logger.log(Level.INFO, "South Width is " + w + " and South Height is " + h);
 
@@ -171,9 +191,10 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
         resultContainer.setHeight(String.valueOf(h) + "px");
         resultContainer.getElement().getStyle().setProperty("backgroundColor", "#99C");
 
-        south.add(resultContainer);
 
+        ifcPanel.add(resultContainer);
 
+        resultContainer.add(southLabel);
     }
 
     @Override
