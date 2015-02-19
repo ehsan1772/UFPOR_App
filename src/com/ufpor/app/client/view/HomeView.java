@@ -85,7 +85,6 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
 
             int height = RootLayoutPanel.get().getOffsetHeight() - ifcPanel.getAbsoluteTop();
             ifcPanel.getElement().getStyle().setHeight(height, Style.Unit.PX);
-
             loadSpaceTypes(projectName);
         }
     };
