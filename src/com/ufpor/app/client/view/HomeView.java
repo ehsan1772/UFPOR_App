@@ -6,7 +6,6 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.HeadingElement;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.resources.client.CssResource;
-import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -19,6 +18,7 @@ import com.ufpor.app.client.eventbus.MenuEvent;
 import com.ufpor.app.client.eventbus.ServerResultEvent;
 import com.ufpor.app.client.service.EnvironmentService;
 import com.ufpor.app.client.service.EnvironmentServiceAsync;
+import com.ufpor.app.client.view.custom.ResizingSplitLayoutPanel;
 import com.ufpor.app.client.view.project.PopupSpaceType;
 import com.ufpor.app.shared.ifcclient.*;
 import com.ufpor.app.shared.ifcclient.type.IfcClientSpaceType;
@@ -30,7 +30,7 @@ import java.util.logging.Logger;
 /**
  * Created by ovenbits on 10/9/14.
  */
-public class HomeView extends Composite implements PopupBase.PopupBaseHost {
+public class HomeView extends Composite implements PopupBase.PopupBaseHost, ResizingSplitLayoutPanel.ResizeListener {
 
 
     //TODO fix this!
@@ -49,8 +49,8 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
     //  HTML southLabel;
     @UiField
     Image logo;
-    @UiField
-    SplitLayoutPanel mainPanel;
+    @UiField (provided = true)
+    ResizingSplitLayoutPanel mainPanel;
     @UiField
     HTMLPanel tabPanel1;
     @UiField
@@ -82,34 +82,28 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
     private ServerResultEvent.ServerResultEventHandler mServerResultHandler = new ServerResultEvent.ServerResultEventHandler() {
         @Override
         public void onServerResultEvent(ServerResultEvent event) {
-
-            int height = RootLayoutPanel.get().getOffsetHeight() - ifcPanel.getAbsoluteTop();
-            ifcPanel.getElement().getStyle().setHeight(height, Style.Unit.PX);
+            resizeScrollPanel();
+            GWT.log(event.getResult());
+            HTML southLabel = new HTML(new SafeHtmlBuilder().appendEscapedLines(event.getResult()).toSafeHtml());
+            ifcPanel.add(southLabel);
             loadSpaceTypes(projectName);
         }
     };
 
-    protected native int getBoundingClientRectTop(Element elem) /*-{
-        // getBoundingClientRect() throws a JS exception if the elem is not attached
-        // to the document, so we wrap it in a try/catch block
-        try {
-            return elem.getBoundingClientRect().top;
-        } catch (e) {
-            // if not attached return 0
-            return 0;
-        }
-    }-*/;
+    /**
+     * resizing the scrollable panels to always use the right height
+     */
+    private void resizeScrollPanel() {
+        int height = RootLayoutPanel.get().getOffsetHeight() - ifcPanel.getAbsoluteTop();
+        ifcPanel.getElement().getStyle().setHeight(height, Style.Unit.PX);
 
-    protected native int getBoundingClientRectBottom(Element elem) /*-{
-        // getBoundingClientRect() throws a JS exception if the elem is not attached
-        // to the document, so we wrap it in a try/catch block
-        try {
-            return elem.getBoundingClientRect().bottom;
-        } catch (e) {
-            // if not attached return 0
-            return 0;
+
+        if (treeContainer != null) {
+            int h = southPanel.getAbsoluteTop() - center.getAbsoluteTop();
+            treeContainer.setHeight(String.valueOf(h) + "px");
         }
-    }-*/;
+    }
+    
 
     private MenuEvent.MenuEventHandler mMenuEventHandler = new MenuEvent.MenuEventHandler() {
         @Override
@@ -122,6 +116,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
 
     @Inject
     public HomeView(LoginInfo loginInfo) {
+        mainPanel = new ResizingSplitLayoutPanel();
         initWidget(ourUiBinder.createAndBindUi(this));
         this.loginInfo = loginInfo;
         greeting.setText("Hello   " + loginInfo.getNickname());
@@ -132,6 +127,8 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
 
         App.injector.getSimpleEventBus().addHandler(ServerResultEvent.TYPE, mServerResultHandler);
         App.injector.getSimpleEventBus().addHandler(MenuEvent.TYPE, mMenuEventHandler);
+
+        mainPanel.setResizeListener(this);
 
     }
 
@@ -289,8 +286,13 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost {
 
     }
 
+    @Override
+    public void onResize() {
+        resizeScrollPanel();
+    }
 
-    interface HomeViewUiBinder extends UiBinder<SplitLayoutPanel, HomeView> {
+
+    interface HomeViewUiBinder extends UiBinder<ResizingSplitLayoutPanel, HomeView> {
     }
 
     interface MyStyle extends CssResource {
