@@ -69,6 +69,8 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
     MyStyle style;
     @UiField
     DecoratedTabPanel southPanel;
+    @UiField
+    Image addButton;
     private LoginInfo loginInfo;
     @Inject
     private PopupPanel popup;
@@ -103,7 +105,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
             treeContainer.setHeight(String.valueOf(h) + "px");
         }
     }
-    
+
 
     private MenuEvent.MenuEventHandler mMenuEventHandler = new MenuEvent.MenuEventHandler() {
         @Override
