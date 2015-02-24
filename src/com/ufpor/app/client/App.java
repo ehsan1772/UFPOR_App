@@ -8,6 +8,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.google.inject.Inject;
+import com.sun.javafx.font.FontResource;
 import com.ufpor.app.client.dependency.UFPORGinjector;
 import com.ufpor.app.client.eventbus.MenuEvent;
 import com.ufpor.app.client.service.LoginService;
@@ -154,6 +155,9 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
         @Source("com/ufpor/app/public/image/logo.png")
         ImageResource submitButtonIcon();
 
+        @Source("com/ufpor/app/public/image/close.png")
+        ImageResource closeButtonIcon();
+
         @Source("com/ufpor/app/public/image/download.png")
         ImageResource downloadButtonIcon();
 
@@ -162,6 +166,31 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
 
         @Source("com/ufpor/app/public/image/search.png")
         ImageResource searchButtonIcon();
+
+        @Source("com/ufpor/app/public/image/ok.png")
+        ImageResource okButtonIcon();
+
+        @Source("com/ufpor/app/public/image/copy.png")
+        ImageResource copyButtonIcon();
+
+        @Source("com/ufpor/app/public/image/delete.png")
+        ImageResource deleteButtonIcon();
+
+        @Source("com/ufpor/app/public/image/badge.png")
+        ImageResource badgeButtonIcon();
+
+        @Source("com/ufpor/app/public/image/edit.png")
+        ImageResource editButtonIcon();
+
+        @Source("com/ufpor/app/public/image/less.png")
+        ImageResource lessIcon();
+
+        @Source("com/ufpor/app/public/image/less.png")
+        ImageResource equalIcon();
+
+        @Source("com/ufpor/app/public/image/more.png")
+        ImageResource moreIcon();
+
     }
 
 

@@ -5,10 +5,13 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.HeadingElement;
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.google.inject.Inject;
@@ -87,6 +90,11 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
             resizeScrollPanel();
             GWT.log(event.getResult());
             HTML southLabel = new HTML(new SafeHtmlBuilder().appendEscapedLines(event.getResult()).toSafeHtml());
+
+            //removing the old text
+            if (ifcPanel.getElement().getChildCount() > 0) {
+                ifcPanel.getElement().removeAllChildren();
+            }
             ifcPanel.add(southLabel);
             loadSpaceTypes(projectName);
         }
@@ -203,11 +211,13 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
     private void populateTree(ScrollPanel panel) {
         Tree t = new Tree();
 
-        EnvironmentTreeItem b = new EnvironmentTreeItem(true, true);
+//        EnvironmentTreeItem b = new EnvironmentTreeItem(true, true);
+//
+//        b.setName("Tree");
+//        TreeItem root = new TreeItem(b);
+        SpaceTreeItem c = new SpaceTreeItem();
 
-        b.setName("Tree");
-
-        TreeItem root = new TreeItem(b);
+        TreeItem root = new TreeItem(c);
         t.addItem(root);
         panel.add(t);
 
@@ -267,22 +277,22 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
         });
     }
 
-//    @UiHandler("button")
-//    void onButtonClick(ClickEvent event) {
-//        int width = (Window.getClientWidth() / 2);
-//        popup.setWidth(width + "px");
-//
-//        int height = (Window.getClientHeight() / 2);
-//        popup.setHeight(height + "px");
-//
-//        popup.setGlassEnabled(true);
-//
-//
-//        popUpSpace.setHost(this);
-//        popup.setWidget(popUpSpace);
-//
-//        popup.center();
-//    }
+    @UiHandler("addButton")
+    void onButtonClick(ClickEvent event) {
+        int width = (Window.getClientWidth() / 2);
+        popup.setWidth(width + "px");
+
+        int height = (Window.getClientHeight() / 2);
+        popup.setHeight(height + "px");
+
+        popup.setGlassEnabled(true);
+
+
+        popUpSpace.setHost(this);
+        popup.setWidget(popUpSpace);
+
+        popup.center();
+    }
 
     public void removePopUp() {
 

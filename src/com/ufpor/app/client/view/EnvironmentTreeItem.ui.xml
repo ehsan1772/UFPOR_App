@@ -1,68 +1,100 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
-	<ui:style>
-	.important {
-		font-weight: bold;
-	}
-	
-	.main {
-		width: 200px;
-		height: 100px;
-		border: 1px solid black;
-		margin: 5px;
-		background-color: #E6E687;
-		transition: width .1s
-	}
-	
-	.main:hover {
-		width: 205px;
-	}
-	
-	.left {
-		width: 60%;
-		height: 100%;
-		float: left;
-	}
-	
-	.right {
-		width: 40%;
-		height: 100%;
-		float: left;
-		background-color: #EBEBD5;
-	}
-	
-	.envName {
-		margin-left: 10px;
-		margin-top: 45px;
-		font-size: 15px;
-		color: #36362C;
-		font-weight: bold;
-	}
-	
-	.envArea {
-		margin-left: 5px;
-		margin-top: 45px;
-		font-size: 15px;
-		font-style: italic;
-		color: gray;
-	}
-	</ui:style>
-	<g:FocusPanel ui:field="panel">
-		<g:HTMLPanel>
-			<div class='{style.main}'>
-				<div class='{style.left}'>
-					<g:Label styleName='{style.envName}' ui:field="name"> Space 1
-					</g:Label>
-				</div>
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    <ui:with field='res' type='com.ufpor.app.client.App.Resources'/>
 
-				<div class='{style.right}'>
-					<g:Label styleName='{style.envArea}' ui:field="area"> 1200 sqft
-					</g:Label>
-				</div>
+    <ui:style>
+        .important {
+            font-weight: bold;
+        }
 
+        .main {
+            width: 200px;
+            height: 75px;
+            border: 3px solid #999998;
+            border-radius: 10px;
+            margin: 5px;
+            background-color: #D4DCDF;
+            transition: width .1s;
+            position: relative;
+        }
 
-			</div>
-		</g:HTMLPanel>
-	</g:FocusPanel>
+        <!--
+        .main:hover {
+            width: 205px;
+        }
+        -->
+
+        .divider {
+            width: 200px;
+            height: 3px;
+            background-color: #999998;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .left {
+            margin-top: 10px;
+            margin-left: 5px;
+            width: 90%;
+            height: 40%;
+        }
+
+        .right {
+            margin-top: 10px;
+            margin-left: 5px;
+            width: 90%;
+            height: 30%;
+        }
+
+        .envName {
+
+            font-size: 15px;
+            color: #36362C;
+            font-weight: bold;
+            float: left;
+        }
+
+        .envArea {
+
+            font-size: 15px;
+            font-style: italic;
+            color: gray;
+            float: left;
+        }
+
+        .cancelImageButton {
+            width: 20px;
+            height: 20px;
+            background: none;
+            float: right;
+
+        }
+
+        .cancelImageButton:hover {
+            transform: scale(1.1);
+        }
+    </ui:style>
+    <g:FocusPanel ui:field="panel" width="200px">
+        <g:HTMLPanel width="200px">
+            <div class='{style.main}'>
+                <div class='{style.left}'>
+                    <g:Label styleName='{style.envName}' ui:field="name">Space 1
+                    </g:Label>
+
+                    <g:Image resource='{res.badgeButtonIcon}' styleName='{style.cancelImageButton}'/>
+                </div>
+
+                <div class='{style.divider}'/>
+
+                <div class='{style.right}'>
+                    <g:Label styleName='{style.envArea}' ui:field="area">1200 sqft
+                    </g:Label>
+
+                    <g:Image resource='{res.editButtonIcon}' styleName='{style.cancelImageButton}'/>
+                </div>
+            </div>
+        </g:HTMLPanel>
+    </g:FocusPanel>
 </ui:UiBinder> 

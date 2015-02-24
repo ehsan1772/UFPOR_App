@@ -1,0 +1,121 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <ui:with field='res' type='com.ufpor.app.client.App.Resources'/>
+    <ui:style>
+
+        .main {
+            height: 40px;
+            width: 450px;
+        }
+
+        .capacityImage {
+
+        }
+
+        .note {
+            font-family: 'Coming Soon', cursive;;
+
+        }
+
+        .titleContainer {
+            width: 120px;
+            float: left;
+            height: 100%;
+            background: #D75131;
+            border-top-left-radius:20px;
+            border-top-right-radius:0px;
+            border-bottom-right-radius:0px;
+            border-bottom-left-radius:20px;
+            position: relative;
+        }
+
+        .contentContainer {
+            background: none;
+            border-color: #999998;;
+            border-top-left-radius:0px;
+            border-top-right-radius:20px;
+            border-bottom-right-radius:20px;
+            border-bottom-left-radius:0px;
+            position: relative;
+            width: 240px;
+            float: left;
+            height: 100%;
+        }
+
+        .imageContainer {
+            background: none;
+            width: 50px;
+            float: left;
+            height: 100%;
+        }
+
+        .noteContainer {
+            float: left;
+            height: 100%;
+        }
+
+        .divider {
+            width: 200px;
+            height: 3px;
+            background-color: #999998;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .image {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .title {
+            font-family: 'Ubuntu', sans-serif;
+            padding-left: 10px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+        }
+
+        .net {
+            position: absolute;
+            top: 25%;
+            transform: translateY(-50%);
+            color: #999998;
+        }
+
+        .gross {
+            position: absolute;
+            top: 75%;
+            transform: translateY(-50%);
+            color: #999998;
+        }
+    </ui:style>
+    <g:HTMLPanel styleName="{style.main}">
+        <div class="style.titleContainer">
+            <g:TextBox ui:field="title" styleName="{style.title}"/>
+
+        </div>
+
+        <div class="style.contentContainer">
+
+            <g:TextBox ui:field="netArea" styleName="{style.net}"/>
+            <div class="divider"/>
+            <g:TextBox ui:field="grossArea" styleName="{style.gross}"/>
+
+        </div>
+
+        <div class="style.noteContainer">
+            <g:Image ui:field="capacity" styleName="{style.capacityImage}"/>
+        </div>
+
+        <div class="style.noteContainer">
+            <g:TextBox ui:field="note" styleName="{style.note}"/>
+        </div>
+
+
+    </g:HTMLPanel>
+</ui:UiBinder>

@@ -7,10 +7,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.TabLayoutPanel;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.*;
 import com.google.inject.Inject;
 import com.ufpor.app.client.App;
 import com.ufpor.app.client.LoginInfo;
@@ -33,9 +30,15 @@ public class PopupBase extends Composite {
     @UiField
     public TabLayoutPanel panel;
     @UiField
-    public Button save;
+    public Image save;
+//    @UiField
+//    public Image cancel;
     @UiField
-    public Button cancel;
+    public Label title;
+    @UiField
+    public Image closeButton;
+    @UiField
+    public Image delete;
 
     @Inject
     private EnvironmentGeneral envGeneral;
@@ -56,9 +59,14 @@ public class PopupBase extends Composite {
         addNewIfcSpace();
     }
 
+//    @UiHandler("delete")
+//    public void handleClick2(ClickEvent e) {
+//        addNewIfcSpace();
+//    }
+
     @UiHandler("delete")
     public void handleClick2(ClickEvent e) {
-        addNewIfcSpace();
+
     }
 
 
@@ -79,8 +87,13 @@ public class PopupBase extends Composite {
         });
     }
 
-    @UiHandler("cancel")
-    public void handleClick(ClickEvent e) {
+//    @UiHandler("cancel")
+//    public void handleClick(ClickEvent e) {
+//        host.closePopupBase();
+//    }
+
+    @UiHandler("closeButton")
+    public void closeHandleClick(ClickEvent e) {
         host.closePopupBase();
     }
 

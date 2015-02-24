@@ -1,5 +1,6 @@
 package com.ufpor.app.shared.ifcdeckernel.type;
 
+import com.google.appengine.api.datastore.PostLoadContext;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.ufpor.app.server.GuidCompressor;
@@ -130,5 +131,12 @@ public class IfcDecSpaceType extends IfcDecSpatialStructureElementType {
     public String getObjectString(IfcFileManagerI fileManager) {
         String properties = fileManager.getNumberString(new ArrayList<IfcFileObject>(getHasProperties()));
         return getIfcString(properties);
+    }
+
+    @Override
+    public void prepareDataForClientIfcDecContext(PostLoadContext context) {
+        super.prepareDataForClientIfcDecContext(context);
+        predefinedType = getPredefinedType();
+
     }
 }

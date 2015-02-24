@@ -1,6 +1,19 @@
 /** Add css rules here for your application. */
 
 
+/**
+
+available font faces :
+
+font-family: 'Questrial', sans-serif;
+font-family: 'Ubuntu', sans-serif;
+font-family: 'Shadows Into Light', cursive;
+font-family: 'Oswald', sans-serif;
+font-family: 'Amatic SC', cursive;
+font-family: 'Coming Soon', cursive;
+font-family: 'Architects Daughter', cursive;
+
+*/
 
 td.reqCell {
     padding: 1%;
@@ -62,6 +75,7 @@ button.header {
 
 body, td, div, .p {
     font-family: 'Questrial', sans-serif;
+    background: none;
 }
 
 a, a:visited {
@@ -100,4 +114,22 @@ a, a:visited {
     padding: 6px 0px;
 }
 
+.gwt-PopupPanel {
+    border: 3px solid #111218;
+    padding: 0px;
+    background: white;
+}
+
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelContentContainer {
+    background: white;
+    border-color: #ccc;
+    border-style: solid;
+    border-width: 0px 1px 1px;
+}
+
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelTabs {
+    background: none;
+    padding-top: 6px;
+    padding-left: 5px;
+}
 

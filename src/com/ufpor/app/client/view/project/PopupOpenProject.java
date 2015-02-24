@@ -3,8 +3,10 @@ package com.ufpor.app.client.view.project;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Widget;
 import com.ufpor.app.client.App;
 import com.ufpor.app.client.LoginInfo;
@@ -23,6 +25,10 @@ public class PopupOpenProject extends PopupBase {
     private HalfPopUpView projectView1;
     private IfcClientProject project;
     private OpenProjectPresenter openProjectPresenter;
+    @UiField
+    Image copyButton;
+    @UiField
+    Image delete;
 
     public PopupOpenProject(LoginInfo loginInfo) {
         super(loginInfo);
