@@ -70,6 +70,7 @@ public class EnvironmentTreeItem extends Composite {
     private void initDrag()
     {
         getElement().setDraggable(Element.DRAGGABLE_TRUE);
+
         panel.addDragStartHandler(new DragStartHandler()
         {
             @Override
@@ -79,6 +80,8 @@ public class EnvironmentTreeItem extends Composite {
                 dragging = EnvironmentTreeItem.this;
                 // Must set for FireFox
                 event.setData("text", "hi there");
+
+
 
                // Copy the label image for the drag icon
                // 10,10 indicates the pointer offset, not the image size.
@@ -99,6 +102,7 @@ public class EnvironmentTreeItem extends Composite {
       
       private void initDrop()
       {
+
           addDomHandler(new DragOverHandler()
           {
               @Override

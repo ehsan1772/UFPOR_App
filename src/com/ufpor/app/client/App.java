@@ -8,7 +8,6 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.google.inject.Inject;
-import com.sun.javafx.font.FontResource;
 import com.ufpor.app.client.dependency.UFPORGinjector;
 import com.ufpor.app.client.eventbus.MenuEvent;
 import com.ufpor.app.client.service.LoginService;
@@ -16,6 +15,9 @@ import com.ufpor.app.client.service.LoginServiceAsync;
 import com.ufpor.app.client.view.PopupBase;
 import com.ufpor.app.client.view.project.PopupGeneral;
 import com.ufpor.app.client.view.project.PopupOpenProject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>
@@ -33,6 +35,9 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
     private PopupBase popUpBase;
     @Inject
     private PopupGeneral popUpGeneral;
+
+    //a memory cache
+    private static Map<String, Object> cache;
 
 
     private void initializeTheLoginPanel() {
@@ -83,6 +88,16 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
             }
         });
 
+        cache = new HashMap<>();
+
+    }
+
+    public static Object getCache(String key) {
+        return cache.get(key);
+    }
+
+    public static void addToCache(String key, Object object) {
+        cache.put(key, object);
     }
 
     private void openProject(String value) {

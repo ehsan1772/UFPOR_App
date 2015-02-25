@@ -8,7 +8,6 @@
             width: 750px;
         }
 
-
         .note {
             font-family: 'Coming Soon', cursive;
             color: #999998;
@@ -70,6 +69,47 @@
             transform: translateY(50%);
         }
 
+        .countContainer {
+            width: 220px;
+            height: 20px;
+            position: absolute;
+            top: 26px;
+            transform: translateY(-50%);
+            visibility: hidden;
+        }
+
+        .countDivider {
+            width: 200px;
+            height: 3px;
+            background-color: #999998;
+            position: absolute;
+            top: 51%;
+            transform: translateY(-50%);
+        }
+
+        .countCircle {
+            width: 20px;
+            height: 20px;
+            border: 3px solid #999998;
+            border-radius: 20px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 200px;
+        }
+
+        .count {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+            background: none;
+            border: none;
+            text-align: center;
+            color: #999998;
+        }
+
         .capacityImage {
             width: 20px;
             height: 20px;
@@ -107,28 +147,39 @@
             transform: translateY(-50%);
             color: #999998;
         }
+
+
     </ui:style>
-    <g:HTMLPanel styleName="{style.main}">
-        <div class='{style.titleContainer}'>
-            <g:TextBox ui:field="title" styleName="{style.title}"/>
+    <g:FocusPanel styleName="{style.main}">
+        <g:HTMLPanel styleName="{style.main}">
+            <div class='{style.titleContainer}'>
+                <g:TextBox ui:field="title" styleName="{style.title}"/>
 
-        </div>
-        <div class='{style.contentContainer}'>
+            </div>
+            <div class='{style.contentContainer}'>
 
-            <g:TextBox ui:field="netArea" styleName="{style.net}"/>
-            <div class='{style.divider}'/>
-            <g:TextBox ui:field="grossArea" styleName="{style.gross}"/>
+                <g:TextBox ui:field="netArea" styleName="{style.net}"/>
+                <div class='{style.divider}'/>
 
-        </div>
+                <div ui:field="countContainer" class='{style.countContainer}'>
+                    <div class='{style.countDivider}'/>
+                    <div class='{style.countCircle}'>
+                        <g:TextBox text="3" ui:field="count" styleName="{style.count}"/>
+                    </div>
+                </div>
+                <g:TextBox ui:field="grossArea" styleName="{style.gross}"/>
 
-        <div class='{style.imageContainer}'>
-            <g:Image ui:field="capacity" styleName="{style.capacityImage}"/>
-        </div>
+            </div>
 
-        <div class='{style.noteContainer}'>
-            <g:TextBox ui:field="note" styleName="{style.note}"/>
-        </div>
+            <div class='{style.imageContainer}'>
+                <g:Image ui:field="capacity" styleName="{style.capacityImage}"/>
+            </div>
+
+            <div class='{style.noteContainer}'>
+                <g:TextBox ui:field="note" styleName="{style.note}"/>
+            </div>
 
 
-    </g:HTMLPanel>
+        </g:HTMLPanel>
+    </g:FocusPanel>
 </ui:UiBinder>

@@ -36,6 +36,7 @@ import java.util.logging.Logger;
 public class HomeView extends Composite implements PopupBase.PopupBaseHost, ResizingSplitLayoutPanel.ResizeListener {
 
 
+    public static final String SPACE_TYPE = "space_type";
     //TODO fix this!
     public static String projectName;
     private static HomeViewUiBinder ourUiBinder = GWT.create(HomeViewUiBinder.class);
@@ -255,7 +256,9 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
 
             @Override
             public void onSuccess(List<IfcClientSpaceType> result) {
+                App.addToCache(SPACE_TYPE, result);
                 envContainer.clear();
+
                 for (IfcClientSpaceType env : result) {
                     EnvironmentTreeItem b = new EnvironmentTreeItem(true, true);
                     b.setName(env.getName());
