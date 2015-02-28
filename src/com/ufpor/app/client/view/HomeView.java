@@ -26,6 +26,7 @@ import com.ufpor.app.client.view.project.PopupSpaceType;
 import com.ufpor.app.shared.ifcclient.*;
 import com.ufpor.app.shared.ifcclient.type.IfcClientSpaceType;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -106,12 +107,14 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
      */
     private void resizeScrollPanel() {
         int height = RootLayoutPanel.get().getOffsetHeight() - ifcPanel.getAbsoluteTop();
+
         ifcPanel.getElement().getStyle().setHeight(height, Style.Unit.PX);
 
 
         if (treeContainer != null) {
             int h = southPanel.getAbsoluteTop() - center.getAbsoluteTop();
-            treeContainer.setHeight(String.valueOf(h) + "px");
+            //setting the padding
+            treeContainer.setHeight(String.valueOf(h - 40) + "px");
         }
     }
 
@@ -151,14 +154,18 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
                 int h = center.getElement().getOffsetHeight();
                 int w = center.getElement().getOffsetWidth();
 
+
                 logger.log(Level.INFO, "Width is " + w + " and Height is " + h);
 
                 treeContainer = new ScrollPanel();
-                treeContainer.setWidth(String.valueOf(w) + "px");
-                treeContainer.setHeight(String.valueOf(h) + "px");
-                //  treeContainer.getElement().getStyle().setProperty("backgroundColor", "#FFC");
+                //subtracting the padding from the size
+                treeContainer.setWidth(String.valueOf(w - 40) + "px");
+                treeContainer.setHeight(String.valueOf(h - 40) + "px");
 
                 treeContainer.setStyleName(style.treeContainer());
+
+                //setting the padding
+                treeContainer.getElement().getStyle().setPadding(20, Style.Unit.PX);
 
                 center.add(treeContainer);
 
@@ -191,7 +198,6 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
         int h = ifcPanel.getElement().getOffsetHeight();
         int w = ifcPanel.getElement().getOffsetWidth();
 
-        logger.log(Level.INFO, "South Width is " + w + " and South Height is " + h);
 
         resultContainer = new ScrollPanel();
         resultContainer.setWidth(String.valueOf(w) + "px");
@@ -210,7 +216,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
     }
 
     private void populateTree(ScrollPanel panel) {
-        Tree t = new Tree();
+        Tree t = new Tree(App.Resources.INSTANCE);
 
 //        EnvironmentTreeItem b = new EnvironmentTreeItem(true, true);
 //
@@ -256,11 +262,13 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
 
             @Override
             public void onSuccess(List<IfcClientSpaceType> result) {
-                App.addToCache(SPACE_TYPE, result);
+
                 envContainer.clear();
+                ArrayList<EnvironmentTreeItem> cacheList = new ArrayList<EnvironmentTreeItem>();
 
                 for (IfcClientSpaceType env : result) {
-                    EnvironmentTreeItem b = new EnvironmentTreeItem(true, true);
+                    EnvironmentTreeItem b = new EnvironmentTreeItem(true, true, env);
+                    cacheList.add(b);
                     b.setName(env.getName());
                     for (IfcClientPropertySetDefinition propset : env.getProperties()) {
                         if (propset instanceof IfcClientPropertySet) {
@@ -276,6 +284,8 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
                     }
                     envContainer.add(b);
                 }
+
+                App.addToCache(SPACE_TYPE, cacheList);
             }
         });
     }

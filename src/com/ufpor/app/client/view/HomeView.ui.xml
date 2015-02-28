@@ -173,6 +173,10 @@
             bottom: 0px;
             overflow: auto;
         }
+
+        .center {
+
+        }
     </ui:style>
 
 
@@ -211,7 +215,7 @@
 
         </c:north>
         <c:center width="100%" height="100%">
-            <g:HTMLPanel width="100%" height="100%" ui:field="center"/>
+            <g:HTMLPanel width="100%" height="100%" ui:field="center" styleName="{style.center}"/>
         </c:center>
         <c:east size='300' height="100%">
 

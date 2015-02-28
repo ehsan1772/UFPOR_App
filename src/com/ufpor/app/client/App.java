@@ -164,7 +164,7 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
         popup.removeFromParent();
     }
 
-    public interface Resources extends ClientBundle {
+    public interface Resources extends ClientBundle, Tree.Resources {
 
         public static final Resources INSTANCE = GWT.create(Resources.class);
         @Source("com/ufpor/app/public/image/logo.png")
@@ -206,6 +206,17 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
         @Source("com/ufpor/app/public/image/more.png")
         ImageResource moreIcon();
 
+        @Override
+        @Source("com/ufpor/app/public/image/plus.png")
+        ImageResource treeClosed();
+
+        @Override
+        @Source("com/ufpor/app/public/image/plus.png")
+        ImageResource treeLeaf();
+
+        @Override
+        @Source("com/ufpor/app/public/image/minus.png")
+        ImageResource treeOpen();
     }
 
 

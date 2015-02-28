@@ -22,13 +22,15 @@ import com.google.gwt.user.client.ui.Tree;
 import com.google.gwt.user.client.ui.TreeItem;
 import com.google.gwt.user.client.ui.Widget;
 import com.ufpor.app.client.App;
+import com.ufpor.app.shared.ifcclient.type.IfcClientSpaceType;
 
 public class EnvironmentTreeItem extends Composite {
     private static EnvironmentTreeItem dragging = null;
     public static Widget dropping;
     final boolean droppable;
-    
-	@UiField
+    private final IfcClientSpaceType spaceType;
+
+    @UiField
 	protected Label name;
 	
 	@UiField
@@ -40,11 +42,16 @@ public class EnvironmentTreeItem extends Composite {
 	private static EnvironmentTreeItemUiBinder uiBinder = GWT
 			.create(EnvironmentTreeItemUiBinder.class);
 
-	interface EnvironmentTreeItemUiBinder extends
+    public IfcClientSpaceType getSpaceType() {
+        return spaceType;
+    }
+
+    interface EnvironmentTreeItemUiBinder extends
 			UiBinder<Widget, EnvironmentTreeItem> {
 	}
 
-	public EnvironmentTreeItem(boolean draggable, boolean droppable) {
+	public EnvironmentTreeItem(boolean draggable, boolean droppable, IfcClientSpaceType env) {
+        spaceType = env;
 		initWidget(uiBinder.createAndBindUi(this));
 		
 		if (draggable)
@@ -79,7 +86,13 @@ public class EnvironmentTreeItem extends Composite {
                 // Remember what's being dragged
                 dragging = EnvironmentTreeItem.this;
                 // Must set for FireFox
-                event.setData("text", "hi there");
+
+                ArrayList<EnvironmentTreeItem> cacheList  = (ArrayList<EnvironmentTreeItem>) App.getCache(HomeView.SPACE_TYPE);
+
+                GWT.log("CacheListSize = " + cacheList.size());
+                GWT.log("index = " + String.valueOf(cacheList.indexOf(EnvironmentTreeItem.this)));
+
+                event.setData("index", String.valueOf(cacheList.indexOf(EnvironmentTreeItem.this)));
 
 
 
