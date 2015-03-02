@@ -1,346 +1,461 @@
 function app(){
-  var $intern_0 = '', $intern_36 = '" for "gwt:onLoadErrorFn"', $intern_34 = '" for "gwt:onPropertyErrorFn"', $intern_21 = '"><\/script>', $intern_10 = '#', $intern_60 = '.cache.html', $intern_12 = '/', $intern_24 = '//', $intern_54 = '5D38D97C524C2F2A7FC322C8AABFF048', $intern_55 = '7A826EB358FFDD6C2398D53A794BD327', $intern_56 = '95E4585CB1279202CAF2ED2A81006BEA', $intern_57 = '98B87AF8DF120AAE825435F0E2675CEB', $intern_58 = '9D95AB056402D5CC2022A4FADDA247EB', $intern_59 = ':', $intern_28 = '::', $intern_62 = '<script defer="defer">app.onInjectionDone(\'app\')<\/script>', $intern_20 = '<script id="', $intern_31 = '=', $intern_11 = '?', $intern_33 = 'Bad handler "', $intern_61 = 'DOMContentLoaded', $intern_22 = 'SCRIPT', $intern_19 = '__gwt_marker_app', $intern_1 = 'app', $intern_17 = 'app.nocache.js', $intern_27 = 'app::', $intern_23 = 'base', $intern_15 = 'baseUrl', $intern_4 = 'begin', $intern_3 = 'bootstrap', $intern_14 = 'clear.cache.gif', $intern_30 = 'content', $intern_9 = 'end', $intern_48 = 'gecko', $intern_49 = 'gecko1_8', $intern_5 = 'gwt.codesvr=', $intern_6 = 'gwt.hosted=', $intern_7 = 'gwt.hybrid', $intern_35 = 'gwt:onLoadErrorFn', $intern_32 = 'gwt:onPropertyErrorFn', $intern_29 = 'gwt:property', $intern_52 = 'hosted.html?app', $intern_45 = 'ie10', $intern_47 = 'ie8', $intern_46 = 'ie9', $intern_37 = 'iframe', $intern_13 = 'img', $intern_38 = "javascript:''", $intern_51 = 'loadExternalRefs', $intern_25 = 'meta', $intern_40 = 'moduleRequested', $intern_8 = 'moduleStartup', $intern_44 = 'msie', $intern_26 = 'name', $intern_39 = 'position:absolute;width:0;height:0;border:none', $intern_43 = 'safari', $intern_16 = 'script', $intern_53 = 'selectingPermutation', $intern_2 = 'startup', $intern_18 = 'undefined', $intern_50 = 'unknown', $intern_41 = 'user.agent', $intern_42 = 'webkit';
-  var $wnd = window, $doc = document, $stats = $wnd.__gwtStatsEvent?function(a){
-    return $wnd.__gwtStatsEvent(a);
-  }
-  :null, $sessionId = $wnd.__gwtStatsSessionId?$wnd.__gwtStatsSessionId:null, scriptsDone, loadDone, bodyDone, base = $intern_0, metaProps = {}, values = [], providers = [], answers = [], softPermutationId = 0, onLoadErrorFunc, propertyErrorFunc;
-  $stats && $stats({moduleName:$intern_1, sessionId:$sessionId, subSystem:$intern_2, evtGroup:$intern_3, millis:(new Date).getTime(), type:$intern_4});
-  if (!$wnd.__gwt_stylesLoaded) {
-    $wnd.__gwt_stylesLoaded = {};
-  }
-  if (!$wnd.__gwt_scriptsLoaded) {
-    $wnd.__gwt_scriptsLoaded = {};
-  }
+  var $intern_0 = 'bootstrap', $intern_1 = 'begin', $intern_2 = 'gwt.codesvr.app=', $intern_3 = 'gwt.codesvr=', $intern_4 = 'app', $intern_5 = 'startup', $intern_6 = 'DUMMY', $intern_7 = 0, $intern_8 = 1, $intern_9 = 'iframe', $intern_10 = 'javascript:""', $intern_11 = 'position:absolute; width:0; height:0; border:none; left: -1000px;', $intern_12 = ' top: -1000px;', $intern_13 = 'CSS1Compat', $intern_14 = '<!doctype html>', $intern_15 = '', $intern_16 = '<html><head><\/head><body><\/body><\/html>', $intern_17 = 'undefined', $intern_18 = 'DOMContentLoaded', $intern_19 = 50, $intern_20 = 'script', $intern_21 = 'javascript', $intern_22 = 'Failed to load ', $intern_23 = 'moduleStartup', $intern_24 = 'scriptTagAdded', $intern_25 = 'moduleRequested', $intern_26 = 'meta', $intern_27 = 'name', $intern_28 = 'app::', $intern_29 = '::', $intern_30 = 'gwt:property', $intern_31 = 'content', $intern_32 = '=', $intern_33 = 'gwt:onPropertyErrorFn', $intern_34 = 'Bad handler "', $intern_35 = '" for "gwt:onPropertyErrorFn"', $intern_36 = 'gwt:onLoadErrorFn', $intern_37 = '" for "gwt:onLoadErrorFn"', $intern_38 = '#', $intern_39 = '?', $intern_40 = '/', $intern_41 = 'img', $intern_42 = 'clear.cache.gif', $intern_43 = 'baseUrl', $intern_44 = 'app.nocache.js', $intern_45 = 'base', $intern_46 = '//', $intern_47 = 'user.agent', $intern_48 = 'webkit', $intern_49 = 'safari', $intern_50 = 'msie', $intern_51 = 10, $intern_52 = 11, $intern_53 = 'ie10', $intern_54 = 9, $intern_55 = 'ie9', $intern_56 = 8, $intern_57 = 'ie8', $intern_58 = 'gecko', $intern_59 = 'gecko1_8', $intern_60 = 2, $intern_61 = 3, $intern_62 = 4, $intern_63 = 'selectingPermutation', $intern_64 = 'app.devmode.js', $intern_65 = '4E8DB0E7209ED3B42D6D1BBCB567CE26', $intern_66 = '54ABDE1D046FB403911B1C281C9D597C', $intern_67 = '5EF2251CFFCF602FD8C144D267B98CE9', $intern_68 = '7B0BED5CB2117B832F0BE992DC1B2215', $intern_69 = 'E7D3605B90BEC93EC8CD1C616236E404', $intern_70 = ':', $intern_71 = '.cache.js', $intern_72 = 'link', $intern_73 = 'rel', $intern_74 = 'stylesheet', $intern_75 = 'href', $intern_76 = 'head', $intern_77 = 'loadExternalRefs', $intern_78 = 'gwt/clean/clean.css', $intern_79 = 'css/app2.css', $intern_80 = 'end', $intern_81 = 'http:', $intern_82 = 'file:', $intern_83 = '_gwt_dummy_', $intern_84 = '__gwtDevModeHook:app', $intern_85 = 'Ignoring non-whitelisted Dev Mode URL: ', $intern_86 = ':moduleBase';
+  var $wnd = window;
+  var $doc = document;
+  sendStats($intern_0, $intern_1);
   function isHostedMode(){
-    var result = false;
-    try {
-      var query = $wnd.location.search;
-      return (query.indexOf($intern_5) != -1 || (query.indexOf($intern_6) != -1 || $wnd.external && $wnd.external.gwtOnLoad)) && query.indexOf($intern_7) == -1;
-    }
-     catch (e) {
-    }
-    isHostedMode = function(){
-      return result;
-    }
-    ;
-    return result;
+    var query = $wnd.location.search;
+    return query.indexOf($intern_2) != -1 || query.indexOf($intern_3) != -1;
   }
 
-  function maybeStartModule(){
-    if (scriptsDone && loadDone) {
-      var iframe = $doc.getElementById($intern_1);
-      var frameWnd = iframe.contentWindow;
-      if (isHostedMode()) {
-        frameWnd.__gwt_getProperty = function(name_0){
-          return computePropValue(name_0);
+  function sendStats(evtGroupString, typeString){
+    if ($wnd.__gwtStatsEvent) {
+      $wnd.__gwtStatsEvent({moduleName:$intern_4, sessionId:$wnd.__gwtStatsSessionId, subSystem:$intern_5, evtGroup:evtGroupString, millis:(new Date).getTime(), type:typeString});
+    }
+  }
+
+  app.__sendStats = sendStats;
+  app.__moduleName = $intern_4;
+  app.__errFn = null;
+  app.__moduleBase = $intern_6;
+  app.__softPermutationId = $intern_7;
+  app.__computePropValue = null;
+  app.__getPropMap = null;
+  app.__installRunAsyncCode = function(){
+  }
+  ;
+  app.__gwtStartLoadingFragment = function(){
+    return null;
+  }
+  ;
+  app.__gwt_isKnownPropertyValue = function(){
+    return false;
+  }
+  ;
+  app.__gwt_getMetaProperty = function(){
+    return null;
+  }
+  ;
+  var __propertyErrorFunction = null;
+  var activeModules = $wnd.__gwt_activeModules = $wnd.__gwt_activeModules || {};
+  activeModules[$intern_4] = {moduleName:$intern_4};
+  app.__moduleStartupDone = function(permProps){
+    var oldBindings = activeModules[$intern_4].bindings;
+    activeModules[$intern_4].bindings = function(){
+      var props = oldBindings?oldBindings():{};
+      var embeddedProps = permProps[app.__softPermutationId];
+      for (var i = $intern_7; i < embeddedProps.length; i++) {
+        var pair = embeddedProps[i];
+        props[pair[$intern_7]] = pair[$intern_8];
+      }
+      return props;
+    }
+    ;
+  }
+  ;
+  var frameDoc;
+  function getInstallLocationDoc(){
+    setupInstallLocation();
+    return frameDoc;
+  }
+
+  function setupInstallLocation(){
+    if (frameDoc) {
+      return;
+    }
+    var scriptFrame = $doc.createElement($intern_9);
+    scriptFrame.src = $intern_10;
+    scriptFrame.id = $intern_4;
+    scriptFrame.style.cssText = $intern_11 + $intern_12;
+    scriptFrame.tabIndex = -1;
+    $doc.body.appendChild(scriptFrame);
+    frameDoc = scriptFrame.contentDocument;
+    if (!frameDoc) {
+      frameDoc = scriptFrame.contentWindow.document;
+    }
+    frameDoc.open();
+    var doctype = document.compatMode == $intern_13?$intern_14:$intern_15;
+    frameDoc.write(doctype + $intern_16);
+    frameDoc.close();
+  }
+
+  function installScript(filename){
+    function setupWaitForBodyLoad(callback){
+      function isBodyLoaded(){
+        if (typeof $doc.readyState == $intern_17) {
+          return typeof $doc.body != $intern_17 && $doc.body != null;
+        }
+        return /loaded|complete/.test($doc.readyState);
+      }
+
+      var bodyDone = isBodyLoaded();
+      if (bodyDone) {
+        callback();
+        return;
+      }
+      function onBodyDone(){
+        if (!bodyDone) {
+          bodyDone = true;
+          callback();
+          if ($doc.removeEventListener) {
+            $doc.removeEventListener($intern_18, onBodyDone, false);
+          }
+          if (onBodyDoneTimerId) {
+            clearInterval(onBodyDoneTimerId);
+          }
+        }
+      }
+
+      if ($doc.addEventListener) {
+        $doc.addEventListener($intern_18, onBodyDone, false);
+      }
+      var onBodyDoneTimerId = setInterval(function(){
+        if (isBodyLoaded()) {
+          onBodyDone();
+        }
+      }
+      , $intern_19);
+    }
+
+    function installCode(code_0){
+      var doc = getInstallLocationDoc();
+      var docbody = doc.body;
+      var script = doc.createElement($intern_20);
+      script.language = $intern_21;
+      script.src = code_0;
+      if (app.__errFn) {
+        script.onerror = function(){
+          app.__errFn($intern_4, new Error($intern_22 + code_0));
         }
         ;
       }
-      app = null;
-      frameWnd.gwtOnLoad(onLoadErrorFunc, $intern_1, base, softPermutationId);
-      $stats && $stats({moduleName:$intern_1, sessionId:$sessionId, subSystem:$intern_2, evtGroup:$intern_8, millis:(new Date).getTime(), type:$intern_9});
+      docbody.appendChild(script);
+      sendStats($intern_23, $intern_24);
     }
+
+    sendStats($intern_23, $intern_25);
+    setupWaitForBodyLoad(function(){
+      installCode(filename);
+    }
+    );
+  }
+
+  app.__startLoadingFragment = function(fragmentFile){
+    return computeUrlForResource(fragmentFile);
+  }
+  ;
+  app.__installRunAsyncCode = function(code_0){
+    var doc = getInstallLocationDoc();
+    var docbody = doc.body;
+    var script = doc.createElement($intern_20);
+    script.language = $intern_21;
+    script.text = code_0;
+    docbody.appendChild(script);
+  }
+  ;
+  function processMetas(){
+    var metaProps = {};
+    var propertyErrorFunc;
+    var onLoadErrorFunc;
+    var metas = $doc.getElementsByTagName($intern_26);
+    for (var i = $intern_7, n = metas.length; i < n; ++i) {
+      var meta = metas[i], name_0 = meta.getAttribute($intern_27), content;
+      if (name_0) {
+        name_0 = name_0.replace($intern_28, $intern_15);
+        if (name_0.indexOf($intern_29) >= $intern_7) {
+          continue;
+        }
+        if (name_0 == $intern_30) {
+          content = meta.getAttribute($intern_31);
+          if (content) {
+            var value_0, eq = content.indexOf($intern_32);
+            if (eq >= $intern_7) {
+              name_0 = content.substring($intern_7, eq);
+              value_0 = content.substring(eq + $intern_8);
+            }
+             else {
+              name_0 = content;
+              value_0 = $intern_15;
+            }
+            metaProps[name_0] = value_0;
+          }
+        }
+         else if (name_0 == $intern_33) {
+          content = meta.getAttribute($intern_31);
+          if (content) {
+            try {
+              propertyErrorFunc = eval(content);
+            }
+             catch (e) {
+              alert($intern_34 + content + $intern_35);
+            }
+          }
+        }
+         else if (name_0 == $intern_36) {
+          content = meta.getAttribute($intern_31);
+          if (content) {
+            try {
+              onLoadErrorFunc = eval(content);
+            }
+             catch (e) {
+              alert($intern_34 + content + $intern_37);
+            }
+          }
+        }
+      }
+    }
+    __gwt_getMetaProperty = function(name_0){
+      var value_0 = metaProps[name_0];
+      return value_0 == null?null:value_0;
+    }
+    ;
+    __propertyErrorFunction = propertyErrorFunc;
+    app.__errFn = onLoadErrorFunc;
   }
 
   function computeScriptBase(){
     function getDirectoryOfFile(path){
-      var hashIndex = path.lastIndexOf($intern_10);
+      var hashIndex = path.lastIndexOf($intern_38);
       if (hashIndex == -1) {
         hashIndex = path.length;
       }
-      var queryIndex = path.indexOf($intern_11);
+      var queryIndex = path.indexOf($intern_39);
       if (queryIndex == -1) {
         queryIndex = path.length;
       }
-      var slashIndex = path.lastIndexOf($intern_12, Math.min(queryIndex, hashIndex));
-      return slashIndex >= 0?path.substring(0, slashIndex + 1):$intern_0;
+      var slashIndex = path.lastIndexOf($intern_40, Math.min(queryIndex, hashIndex));
+      return slashIndex >= $intern_7?path.substring($intern_7, slashIndex + $intern_8):$intern_15;
     }
 
     function ensureAbsoluteUrl(url_0){
       if (url_0.match(/^\w+:\/\//)) {
       }
        else {
-        var img = $doc.createElement($intern_13);
-        img.src = url_0 + $intern_14;
+        var img = $doc.createElement($intern_41);
+        img.src = url_0 + $intern_42;
         url_0 = getDirectoryOfFile(img.src);
       }
       return url_0;
     }
 
     function tryMetaTag(){
-      var metaVal = __gwt_getMetaProperty($intern_15);
+      var metaVal = __gwt_getMetaProperty($intern_43);
       if (metaVal != null) {
         return metaVal;
       }
-      return $intern_0;
+      return $intern_15;
     }
 
     function tryNocacheJsTag(){
-      var scriptTags = $doc.getElementsByTagName($intern_16);
-      for (var i = 0; i < scriptTags.length; ++i) {
-        if (scriptTags[i].src.indexOf($intern_17) != -1) {
+      var scriptTags = $doc.getElementsByTagName($intern_20);
+      for (var i = $intern_7; i < scriptTags.length; ++i) {
+        if (scriptTags[i].src.indexOf($intern_44) != -1) {
           return getDirectoryOfFile(scriptTags[i].src);
         }
       }
-      return $intern_0;
-    }
-
-    function tryMarkerScript(){
-      var thisScript;
-      if (typeof isBodyLoaded == $intern_18 || !isBodyLoaded()) {
-        var markerId = $intern_19;
-        var markerScript;
-        $doc.write($intern_20 + markerId + $intern_21);
-        markerScript = $doc.getElementById(markerId);
-        thisScript = markerScript && markerScript.previousSibling;
-        while (thisScript && thisScript.tagName != $intern_22) {
-          thisScript = thisScript.previousSibling;
-        }
-        if (markerScript) {
-          markerScript.parentNode.removeChild(markerScript);
-        }
-        if (thisScript && thisScript.src) {
-          return getDirectoryOfFile(thisScript.src);
-        }
-      }
-      return $intern_0;
+      return $intern_15;
     }
 
     function tryBaseTag(){
-      var baseElements = $doc.getElementsByTagName($intern_23);
-      if (baseElements.length > 0) {
-        return baseElements[baseElements.length - 1].href;
+      var baseElements = $doc.getElementsByTagName($intern_45);
+      if (baseElements.length > $intern_7) {
+        return baseElements[baseElements.length - $intern_8].href;
       }
-      return $intern_0;
+      return $intern_15;
     }
 
     function isLocationOk(){
       var loc = $doc.location;
-      return loc.href == loc.protocol + $intern_24 + loc.host + loc.pathname + loc.search + loc.hash;
+      return loc.href == loc.protocol + $intern_46 + loc.host + loc.pathname + loc.search + loc.hash;
     }
 
     var tempBase = tryMetaTag();
-    if (tempBase == $intern_0) {
+    if (tempBase == $intern_15) {
       tempBase = tryNocacheJsTag();
     }
-    if (tempBase == $intern_0) {
-      tempBase = tryMarkerScript();
-    }
-    if (tempBase == $intern_0) {
+    if (tempBase == $intern_15) {
       tempBase = tryBaseTag();
     }
-    if (tempBase == $intern_0 && isLocationOk()) {
+    if (tempBase == $intern_15 && isLocationOk()) {
       tempBase = getDirectoryOfFile($doc.location.href);
     }
     tempBase = ensureAbsoluteUrl(tempBase);
-    base = tempBase;
     return tempBase;
   }
 
-  function processMetas(){
-    var metas = document.getElementsByTagName($intern_25);
-    for (var i = 0, n = metas.length; i < n; ++i) {
-      var meta = metas[i], name_0 = meta.getAttribute($intern_26), content;
-      if (name_0) {
-        name_0 = name_0.replace($intern_27, $intern_0);
-        if (name_0.indexOf($intern_28) >= 0) {
-          continue;
-        }
-        if (name_0 == $intern_29) {
-          content = meta.getAttribute($intern_30);
-          if (content) {
-            var value_0, eq = content.indexOf($intern_31);
-            if (eq >= 0) {
-              name_0 = content.substring(0, eq);
-              value_0 = content.substring(eq + 1);
-            }
-             else {
-              name_0 = content;
-              value_0 = $intern_0;
-            }
-            metaProps[name_0] = value_0;
-          }
-        }
-         else if (name_0 == $intern_32) {
-          content = meta.getAttribute($intern_30);
-          if (content) {
-            try {
-              propertyErrorFunc = eval(content);
-            }
-             catch (e) {
-              alert($intern_33 + content + $intern_34);
-            }
-          }
-        }
-         else if (name_0 == $intern_35) {
-          content = meta.getAttribute($intern_30);
-          if (content) {
-            try {
-              onLoadErrorFunc = eval(content);
-            }
-             catch (e) {
-              alert($intern_33 + content + $intern_36);
-            }
-          }
-        }
+  function computeUrlForResource(resource){
+    if (resource.match(/^\//)) {
+      return resource;
+    }
+    if (resource.match(/^[a-zA-Z]+:\/\//)) {
+      return resource;
+    }
+    return app.__moduleBase + resource;
+  }
+
+  function getCompiledCodeFilename(){
+    var answers = [];
+    var softPermutationId = $intern_7;
+    function unflattenKeylistIntoAnswers(propValArray, value_0){
+      var answer = answers;
+      for (var i = $intern_7, n = propValArray.length - $intern_8; i < n; ++i) {
+        answer = answer[propValArray[i]] || (answer[propValArray[i]] = []);
       }
+      answer[propValArray[n]] = value_0;
     }
-  }
 
-  function __gwt_getMetaProperty(name_0){
-    var value_0 = metaProps[name_0];
-    return value_0 == null?null:value_0;
-  }
+    var values = [];
+    var providers = [];
+    function computePropValue(propName){
+      var value_0 = providers[propName](), allowedValuesMap = values[propName];
+      if (value_0 in allowedValuesMap) {
+        return value_0;
+      }
+      var allowedValuesList = [];
+      for (var k in allowedValuesMap) {
+        allowedValuesList[allowedValuesMap[k]] = k;
+      }
+      if (__propertyErrorFunction) {
+        __propertyErrorFunction(propName, allowedValuesList, value_0);
+      }
+      throw null;
+    }
 
-  function unflattenKeylistIntoAnswers(propValArray, value_0){
-    var answer = answers;
-    for (var i = 0, n = propValArray.length - 1; i < n; ++i) {
-      answer = answer[propValArray[i]] || (answer[propValArray[i]] = []);
-    }
-    answer[propValArray[n]] = value_0;
-  }
-
-  function computePropValue(propName){
-    var value_0 = providers[propName](), allowedValuesMap = values[propName];
-    if (value_0 in allowedValuesMap) {
-      return value_0;
-    }
-    var allowedValuesList = [];
-    for (var k in allowedValuesMap) {
-      allowedValuesList[allowedValuesMap[k]] = k;
-    }
-    if (propertyErrorFunc) {
-      propertyErrorFunc(propName, allowedValuesList, value_0);
-    }
-    throw null;
-  }
-
-  var frameInjected;
-  function maybeInjectFrame(){
-    if (!frameInjected) {
-      frameInjected = true;
-      var iframe = $doc.createElement($intern_37);
-      iframe.src = $intern_38;
-      iframe.id = $intern_1;
-      iframe.style.cssText = $intern_39;
-      iframe.tabIndex = -1;
-      $doc.body.appendChild(iframe);
-      $stats && $stats({moduleName:$intern_1, sessionId:$sessionId, subSystem:$intern_2, evtGroup:$intern_8, millis:(new Date).getTime(), type:$intern_40});
-      iframe.contentWindow.location.replace(base + initialHtml);
-    }
-  }
-
-  providers[$intern_41] = function(){
-    var ua = navigator.userAgent.toLowerCase();
-    var makeVersion = function(result){
-      return parseInt(result[1]) * 1000 + parseInt(result[2]);
+    providers[$intern_47] = function(){
+      var ua = navigator.userAgent.toLowerCase();
+      var docMode = $doc.documentMode;
+      if (function(){
+        return ua.indexOf($intern_48) != -1;
+      }
+      ())
+        return $intern_49;
+      if (function(){
+        return ua.indexOf($intern_50) != -1 && (docMode >= $intern_51 && docMode < $intern_52);
+      }
+      ())
+        return $intern_53;
+      if (function(){
+        return ua.indexOf($intern_50) != -1 && (docMode >= $intern_54 && docMode < $intern_52);
+      }
+      ())
+        return $intern_55;
+      if (function(){
+        return ua.indexOf($intern_50) != -1 && (docMode >= $intern_56 && docMode < $intern_52);
+      }
+      ())
+        return $intern_57;
+      if (function(){
+        return ua.indexOf($intern_58) != -1 || docMode >= $intern_52;
+      }
+      ())
+        return $intern_59;
+      return $intern_15;
     }
     ;
-    if (function(){
-      return ua.indexOf($intern_42) != -1;
+    values[$intern_47] = {gecko1_8:$intern_7, ie10:$intern_8, ie8:$intern_60, ie9:$intern_61, safari:$intern_62};
+    __gwt_isKnownPropertyValue = function(propName, propValue){
+      return propValue in values[propName];
     }
-    ())
-      return $intern_43;
-    if (function(){
-      return ua.indexOf($intern_44) != -1 && $doc.documentMode >= 10;
-    }
-    ())
-      return $intern_45;
-    if (function(){
-      return ua.indexOf($intern_44) != -1 && $doc.documentMode >= 9;
-    }
-    ())
-      return $intern_46;
-    if (function(){
-      return ua.indexOf($intern_44) != -1 && $doc.documentMode >= 8;
-    }
-    ())
-      return $intern_47;
-    if (function(){
-      return ua.indexOf($intern_48) != -1;
-    }
-    ())
-      return $intern_49;
-    return $intern_50;
-  }
-  ;
-  values[$intern_41] = {gecko1_8:0, ie10:1, ie8:2, ie9:3, safari:4};
-  app.onScriptLoad = function(){
-    if (frameInjected) {
-      loadDone = true;
-      maybeStartModule();
-    }
-  }
-  ;
-  app.onInjectionDone = function(){
-    scriptsDone = true;
-    $stats && $stats({moduleName:$intern_1, sessionId:$sessionId, subSystem:$intern_2, evtGroup:$intern_51, millis:(new Date).getTime(), type:$intern_9});
-    maybeStartModule();
-  }
-  ;
-  processMetas();
-  computeScriptBase();
-  var strongName;
-  var initialHtml;
-  if (isHostedMode()) {
-    if ($wnd.external && ($wnd.external.initModule && $wnd.external.initModule($intern_1))) {
-      $wnd.location.reload();
-      return;
-    }
-    initialHtml = $intern_52;
-    strongName = $intern_0;
-  }
-  $stats && $stats({moduleName:$intern_1, sessionId:$sessionId, subSystem:$intern_2, evtGroup:$intern_3, millis:(new Date).getTime(), type:$intern_53});
-  if (!isHostedMode()) {
-    try {
-      unflattenKeylistIntoAnswers([$intern_49], $intern_54);
-      unflattenKeylistIntoAnswers([$intern_45], $intern_55);
-      unflattenKeylistIntoAnswers([$intern_47], $intern_56);
-      unflattenKeylistIntoAnswers([$intern_43], $intern_57);
-      unflattenKeylistIntoAnswers([$intern_46], $intern_58);
-      strongName = answers[computePropValue($intern_41)];
-      var idx = strongName.indexOf($intern_59);
-      if (idx != -1) {
-        softPermutationId = Number(strongName.substring(idx + 1));
-        strongName = strongName.substring(0, idx);
+    ;
+    app.__getPropMap = function(){
+      var result = {};
+      for (var key in values) {
+        if (values.hasOwnProperty(key)) {
+          result[key] = computePropValue(key);
+        }
       }
-      initialHtml = strongName + $intern_60;
+      return result;
+    }
+    ;
+    app.__computePropValue = computePropValue;
+    $wnd.__gwt_activeModules[$intern_4].bindings = app.__getPropMap;
+    sendStats($intern_0, $intern_63);
+    if (isHostedMode()) {
+      return computeUrlForResource($intern_64);
+    }
+    var strongName;
+    try {
+      unflattenKeylistIntoAnswers([$intern_55], $intern_65);
+      unflattenKeylistIntoAnswers([$intern_53], $intern_66);
+      unflattenKeylistIntoAnswers([$intern_59], $intern_67);
+      unflattenKeylistIntoAnswers([$intern_57], $intern_68);
+      unflattenKeylistIntoAnswers([$intern_49], $intern_69);
+      strongName = answers[computePropValue($intern_47)];
+      var idx = strongName.indexOf($intern_70);
+      if (idx != -1) {
+        softPermutationId = parseInt(strongName.substring(idx + $intern_8), $intern_51);
+        strongName = strongName.substring($intern_7, idx);
+      }
     }
      catch (e) {
-      return;
     }
-  }
-  var onBodyDoneTimerId;
-  function onBodyDone(){
-    if (!bodyDone) {
-      bodyDone = true;
-      maybeStartModule();
-      if ($doc.removeEventListener) {
-        $doc.removeEventListener($intern_61, onBodyDone, false);
-      }
-      if (onBodyDoneTimerId) {
-        clearInterval(onBodyDoneTimerId);
-      }
-    }
+    app.__softPermutationId = softPermutationId;
+    return computeUrlForResource(strongName + $intern_71);
   }
 
-  if ($doc.addEventListener) {
-    $doc.addEventListener($intern_61, function(){
-      maybeInjectFrame();
-      onBodyDone();
+  function loadExternalStylesheets(){
+    if (!$wnd.__gwt_stylesLoaded) {
+      $wnd.__gwt_stylesLoaded = {};
     }
-    , false);
+    function installOneStylesheet(stylesheetUrl){
+      if (!__gwt_stylesLoaded[stylesheetUrl]) {
+        var l = $doc.createElement($intern_72);
+        l.setAttribute($intern_73, $intern_74);
+        l.setAttribute($intern_75, computeUrlForResource(stylesheetUrl));
+        $doc.getElementsByTagName($intern_76)[$intern_7].appendChild(l);
+        __gwt_stylesLoaded[stylesheetUrl] = true;
+      }
+    }
+
+    sendStats($intern_77, $intern_1);
+    installOneStylesheet($intern_78);
+    installOneStylesheet($intern_79);
+    sendStats($intern_77, $intern_80);
   }
-  var onBodyDoneTimerId = setInterval(function(){
-    if (/loaded|complete/.test($doc.readyState)) {
-      maybeInjectFrame();
-      onBodyDone();
+
+  processMetas();
+  app.__moduleBase = computeScriptBase();
+  activeModules[$intern_4].moduleBase = app.__moduleBase;
+  var filename = getCompiledCodeFilename();
+  if ($wnd) {
+    var devModePermitted = !!($wnd.location.protocol == $intern_81 || $wnd.location.protocol == $intern_82);
+    $wnd.__gwt_activeModules[$intern_4].canRedirect = devModePermitted;
+    function supportsSessionStorage(){
+      var key = $intern_83;
+      try {
+        $wnd.sessionStorage.setItem(key, key);
+        $wnd.sessionStorage.removeItem(key);
+        return true;
+      }
+       catch (e) {
+        return false;
+      }
+    }
+
+    if (devModePermitted && supportsSessionStorage()) {
+      var devModeKey = $intern_84;
+      var devModeUrl = $wnd.sessionStorage[devModeKey];
+      if (!/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?\/.*$/.test(devModeUrl)) {
+        if (devModeUrl && (window.console && console.log)) {
+          console.log($intern_85 + devModeUrl);
+        }
+        devModeUrl = $intern_15;
+      }
+      if (devModeUrl && !$wnd[devModeKey]) {
+        $wnd[devModeKey] = true;
+        $wnd[devModeKey + $intern_86] = computeScriptBase();
+        var devModeScript = $doc.createElement($intern_20);
+        devModeScript.src = devModeUrl;
+        var head = $doc.getElementsByTagName($intern_76)[$intern_7];
+        head.insertBefore(devModeScript, head.firstElementChild || head.children[$intern_7]);
+        return false;
+      }
     }
   }
-  , 50);
-  $stats && $stats({moduleName:$intern_1, sessionId:$sessionId, subSystem:$intern_2, evtGroup:$intern_3, millis:(new Date).getTime(), type:$intern_9});
-  $stats && $stats({moduleName:$intern_1, sessionId:$sessionId, subSystem:$intern_2, evtGroup:$intern_51, millis:(new Date).getTime(), type:$intern_4});
-  $doc.write($intern_62);
+  loadExternalStylesheets();
+  sendStats($intern_0, $intern_80);
+  installScript(filename);
+  return true;
 }
 
-app();
+app.succeeded = app();

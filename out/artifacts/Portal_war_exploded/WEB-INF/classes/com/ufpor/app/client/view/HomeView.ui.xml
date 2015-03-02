@@ -1,0 +1,274 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:c='urn:import:com.ufpor.app.client.view.custom'
+        >
+
+    <ui:with field='res' type='com.ufpor.app.client.App.Resources'/>
+
+    <ui:style type='com.ufpor.app.client.view.HomeView.MyStyle'>
+        .eastPanel {
+            background-color: #F60;
+            height: 100%;
+        }
+
+        .treeContainer {
+            background-color: #F3F2EF;
+            -moz-box-shadow: inset 5px 5px 20px rgba(0, 0, 0, 0.45);
+            -webkit-box-shadow: inset 5px 5px 20px rgba(0, 0, 0, 0.45);
+            box-shadow: inset 5px 5px 20px rgba(0, 0, 0, 0.45);
+        }
+
+        .westPanel {
+            background-color: #EEE;
+        }
+
+        .northPanel {
+            background-color: #D4DCDF;
+            position: relative
+        }
+
+        .southPanel {
+            background-color: #99C;
+        }
+
+        .centerPanel {
+            background-color: #F3F2EE;
+            width: 100%;
+            height: 100%;
+        }
+
+        .envPanel {
+            background-color: white;
+            height: 100%;
+        }
+
+        .header {
+            background-color: #FFC;
+            float: left;
+            height: 400px;
+            width: 90%;
+        }
+
+        .header2 {
+            background-color: white;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 5px;
+            height: 40px;
+            width: 95%;
+        }
+
+        .treeNode {
+            background-color: #99C;
+            float: left;
+            height: 400px;
+            width: 100px;;
+        }
+
+        .environments {
+            background-color: #E7EBEC;
+            float: left;
+            width: 100%;
+            height: 550px;
+            -moz-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.68);
+            -webkit-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.68);
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.68);
+        }
+
+        .loginDiv {
+            background-color: #D4DCDF;
+            float: right;
+            height: 100%;
+            width: 200px;
+            padding-top: 20px;
+        }
+
+        .test {
+            font-family: 'Questrial', sans-serif;
+            background-color: #D56031;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+
+        }
+
+        .app-Button1 {
+            margin: 0px 10px;
+            padding: 5px 7px;
+            text-decoration: none;
+            cursor: pointer;
+            cursor: hand;
+            border: 0px;
+            font-size: small;
+            color: white;
+            font-family: 'Questrial', sans-serif;
+            background: #31A3D8;
+            border-radius: 5px;
+
+        }
+
+        .menu {
+            width: 100%;
+            height: 30px;
+            position: absolute;
+            bottom: 0px;
+        }
+
+        .image {
+            float: left;
+            padding: 3px;
+        }
+
+        .searchBox {
+            float: left;
+            height: 28px;
+            padding: 4px 4px;
+            border: 1px solid #ccc;
+            border-top: 1px solid #999;
+            font-size: small;
+            font-family: Arial Unicode MS, Arial, sans-serif;
+
+        }
+
+        .searchButton {
+            width: 20px;
+            height: 18px;
+            padding: 4px;
+            border: 1px solid #ccc;
+            border-top: 1px solid #999;
+            float: left;
+        }
+
+        .searchButton:hover {
+            background: #e0e0e0;
+        }
+
+        .searchButton:active {
+            border: 1px solid #999;
+        }
+
+        .imageButton {
+            width: 28px;
+            height: 28px;
+            margin: 0px 0px 0px 5px;
+            background: #ccc;
+            float: left;
+        }
+
+        .imageButton:hover {
+            background: #e0e0e0;
+        }
+
+        .imageButton:active {
+            background: #999;
+        }
+
+        .scroll {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            overflow: auto;
+        }
+    </ui:style>
+
+
+    <c:ResizingSplitLayoutPanel ui:field="mainPanel">
+        <c:north size='100'>
+            <g:HTMLPanel styleName="{style.northPanel}" ui:field="tabPanel1">
+
+                <g:Image width="auto" height="50px" styleName="{style.image}" ui:field="logo"/>
+
+                <h1 ui:field="projectNameHeader" style="margin: 10px; float: left; padding: 20px 10px">Sample Project
+                </h1>
+
+                <div class='{style.loginDiv}'>
+                    <g:Label ui:field="greeting"/>
+
+                    <div style="margin-top: 10px; float: left;">
+                        <g:Anchor styleName="{style.test}" ui:field="signOut">
+                            Sign Out
+                        </g:Anchor>
+                    </div>
+
+                    <div style="margin-top: 5px; float: left;">
+                        <g:Button styleName="{style.app-Button1}">
+                            Share
+                        </g:Button>
+                    </div>
+
+                </div>
+
+                <div style=" width: 100%; height: 30px; position:absolute; bottom:30px; " id="m-container">
+
+                </div>
+
+
+            </g:HTMLPanel>
+
+        </c:north>
+        <c:center width="100%" height="100%">
+            <g:HTMLPanel width="100%" height="100%" ui:field="center"/>
+        </c:center>
+        <c:east size='300' height="100%">
+
+            <g:DecoratedTabPanel width="100%" height="100%"
+                                 ui:field="eastPanel">
+                <g:Tab text="Environment" height="100%">
+                    <g:HTMLPanel width="100%" height="100%">
+                        <div class='{style.envPanel}'>
+                            <div class='{style.header2}'>
+                                <g:TextBox styleName='{style.searchBox}' ui:field="searchTerm"/>
+                                <g:Image resource='{res.searchButtonIcon}' styleName='{style.searchButton}'
+                                         ui:field="searchButton"/>
+                                <g:Image resource='{res.addButtonIcon}' styleName='{style.imageButton}'
+                                         ui:field="addButton"/>
+                                <g:Image resource='{res.downloadButtonIcon}' styleName='{style.imageButton}'
+                                         ui:field="downloadButton"/>
+                            </div>
+                            <hr/>
+                            <g:ScrollPanel styleName="{style.environments}">
+                                <g:HTMLPanel ui:field="envContainer">
+                                </g:HTMLPanel>
+                            </g:ScrollPanel>
+                        </div>
+                    </g:HTMLPanel>
+                </g:Tab>
+                <g:Tab text="People">
+                    <g:FlowPanel styleName="{style.centerPanel}">
+                        <g:Label>This is the second panel</g:Label>
+                    </g:FlowPanel>
+                </g:Tab>
+                <g:Tab text="Activity">
+                    <g:FlowPanel styleName="{style.centerPanel}">
+                        <g:Label>This is the third panel</g:Label>
+                    </g:FlowPanel>
+                </g:Tab>
+
+            </g:DecoratedTabPanel>
+
+        </c:east>
+        <c:south size="160"  height="100%">
+            <!--
+            <g:FlowPanel styleName="{style.southPanel}">
+                <g:Label ui:field="southLabel">This is the SOUTH panel</g:Label>
+            </g:FlowPanel>
+            -->
+            <g:DecoratedTabPanel width="100%" height="100%" ui:field="southPanel">
+                <g:Tab text="IFC" height="100%">
+                    <g:ScrollPanel ui:field="ifcPanel" styleName="{style.scroll}"/>
+                </g:Tab>
+                <g:Tab text="Properties">
+                    <g:FlowPanel >
+                        <g:Label>This is the second panel</g:Label>
+                    </g:FlowPanel>
+                </g:Tab>
+
+            </g:DecoratedTabPanel>
+        </c:south>
+    </c:ResizingSplitLayoutPanel>
+
+</ui:UiBinder>

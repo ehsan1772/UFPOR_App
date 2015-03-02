@@ -5,10 +5,36 @@
          version="3.1">
     <servlet>
         <servlet-name>com.ufpor.app.app appService</servlet-name>
-        <servlet-class>com.ufpor.app.server.appServiceImpl</servlet-class>
+        <servlet-class>com.ufpor.app.server.AppServiceImpl</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>com.ufpor.app.app LoginService</servlet-name>
+        <servlet-class>com.ufpor.app.server.LoginServiceImpl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>com.ufpor.app.app EnvironmentService</servlet-name>
+        <servlet-class>com.ufpor.app.server.EnvironmentServiceImpl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>com.ufpor.app.app IfcGUID</servlet-name>
+        <servlet-class>com.ufpor.app.server.IfcGUIDImpl</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>com.ufpor.app.app appService</servlet-name>
         <url-pattern>/app/appService</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>com.ufpor.app.app LoginService</servlet-name>
+        <url-pattern>/app/LoginService</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>com.ufpor.app.app EnvironmentService</servlet-name>
+        <url-pattern>/app/EnvironmentService</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>com.ufpor.app.app IfcGUID</servlet-name>
+        <url-pattern>/app/IfcGUID</url-pattern>
     </servlet-mapping>
 </web-app>

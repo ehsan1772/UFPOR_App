@@ -1,0 +1,186 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <ui:with field='res' type='com.ufpor.app.client.App.Resources'/>
+    <ui:style>
+
+        .main {
+            height: 40px;
+            width: 750px;
+            position: relative;
+        }
+
+        .note {
+            font-family: 'Coming Soon', cursive;
+            color: #999998;
+            width: 240px;
+            border: none;
+            background: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-20%);
+        }
+
+        .titleContainer {
+            width: 120px;
+            border: 3px solid rgba(153, 153, 152, 0);
+            float: left;
+            height: 100%;
+            background: #D75131;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+            border-bottom-left-radius: 15px;
+
+        }
+
+        .contentContainer {
+            background: none;
+            border: 3px solid #999998;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+            border-bottom-left-radius: 0px;
+            margin-left: 3px;
+            width: 240px;
+            float: left;
+            height: 100%;
+        }
+
+        .imageContainer {
+            background: none;
+            width: 20px;
+            float: left;
+            height: 100%;
+            margin-left: 10px;
+        }
+
+        .noteContainer {
+            width: 240px;
+            float: left;
+            height: 100%;
+            margin-left: 10px;
+        }
+
+        .divider {
+            width: 240px;
+            height: 3px;
+            background-color: #999998;
+            position: absolute;
+            top: 50%;
+            transform: translateY(50%);
+        }
+
+        .countContainer {
+            width: 220px;
+            height: 20px;
+            position: absolute;
+            top: 26px;
+            transform: translateY(-50%);
+            visibility: hidden;
+        }
+
+        .countDivider {
+            width: 200px;
+            height: 3px;
+            background-color: #999998;
+            position: absolute;
+            top: 51%;
+            transform: translateY(-50%);
+        }
+
+        .countCircle {
+            width: 20px;
+            height: 20px;
+            border: 3px solid #999998;
+            border-radius: 20px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 200px;
+        }
+
+        .count {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+            background: none;
+            border: none;
+            text-align: center;
+            color: #999998;
+        }
+
+        .capacityImage {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-40%);
+        }
+
+        .title {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 1em;
+            border: none;
+            background: none;
+            padding-left: 10px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+        }
+
+        .net {
+            border: none;
+            background: none;
+            position: absolute;
+            top: 25%;
+            transform: translateY(-50%);
+            color: #999998;
+        }
+
+        .gross {
+            border: none;
+            background: none;
+            position: absolute;
+            top: 75%;
+            transform: translateY(-50%);
+            color: #999998;
+        }
+
+
+    </ui:style>
+    <g:FocusPanel styleName="{style.main}">
+        <g:HTMLPanel styleName="{style.main}">
+            <div class='{style.titleContainer}'>
+                <g:TextBox ui:field="title" styleName="{style.title}"/>
+
+            </div>
+            <div class='{style.contentContainer}'>
+
+                <g:TextBox ui:field="netArea" styleName="{style.net}"/>
+                <div class='{style.divider}'/>
+
+                <div ui:field="countContainer" class='{style.countContainer}'>
+                    <div class='{style.countDivider}'/>
+                    <div class='{style.countCircle}'>
+                        <g:TextBox text="3" ui:field="count" styleName="{style.count}"/>
+                    </div>
+                </div>
+                <g:TextBox ui:field="grossArea" styleName="{style.gross}"/>
+
+            </div>
+
+            <div class='{style.imageContainer}'>
+                <g:Image ui:field="capacity" styleName="{style.capacityImage}"/>
+            </div>
+
+            <div class='{style.noteContainer}'>
+                <g:TextBox ui:field="note" styleName="{style.note}"/>
+            </div>
+
+
+        </g:HTMLPanel>
+    </g:FocusPanel>
+</ui:UiBinder>

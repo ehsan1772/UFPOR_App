@@ -1,0 +1,184 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	.main {
+		width: 100%;
+		height: 100%;
+		padding: .5em;
+	}
+	
+	.leftPanel,.rightPanel {
+		width: 44%;
+		padding: 1em;
+		height: 80%;
+		float: left;
+		border: 1px solid black;
+	}
+	
+	.leftPanel {
+		margin-right: 1em;
+	}
+	
+	.rightPanel {
+		
+	}
+	
+	.singleRow {
+		width: 100%;
+		height: 17%;
+	}
+	
+	.textBoxContainer {
+		float: left;
+		height: 90%;
+		width: 50%;
+	}
+	
+	.labelContainer {
+		float: left;
+		height: 100%;
+		width: 40%;
+	}
+	
+	.suffixContainer {
+		float: left;
+		height: 100%;
+		width: 10%;
+	}
+	
+	.label {
+		float: left;
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	
+	.suffix {
+		float: left;
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 20%;
+	}
+	
+	.textBox {
+		padding: 0px;
+		position: relative;
+		float: left;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 80%;
+		height: 18px;
+	}
+	
+	.bigRow {
+		width: 90%;
+		height: 35%;
+	}
+	
+	.bigTextBox {
+		padding: 0px;
+		width: 90%;
+		height: 90%;
+	}
+	</ui:style>
+	<g:HTMLPanel ui:field="root">
+
+		<div class='{style.main}'>
+			<div class='{style.leftPanel}'>
+				<div class='{style.singleRow}'>
+					<div class='{style.labelContainer}'>
+						<g:Label addStyleNames='{style.label}' ui:field="firstTextBoxTitleL"/>
+					</div>
+					<div class='{style.textBoxContainer}'>
+                        <g:ListBox addStyleNames='{style.textBox}' ui:field="firstListBoxL"/>
+					</div>
+					<div class='{style.suffixContainer}'>
+                        <g:Label addStyleNames='{style.suffix}' ui:field="firstTextBoxEndingL" />
+					</div>
+				</div>
+				<div class='{style.singleRow}'>
+					<div class='{style.labelContainer}'>
+						<g:Label addStyleNames='{style.label}' ui:field="secondTextBoxTitleL" />
+					</div>
+					<div class='{style.textBoxContainer}'>
+						<g:ListBox addStyleNames='{style.textBox}' ui:field="secondListBoxL"/>
+
+					</div>
+					<div class='{style.suffixContainer}'>
+						<g:Label addStyleNames='{style.suffix}' ui:field="secondTextBoxEndingL" />
+					</div>
+				</div>
+				<div class='{style.singleRow}'>
+					<div class='{style.labelContainer}'>
+						<g:Label addStyleNames='{style.label}' ui:field="thirdTextBoxTitleL" />
+					</div>
+					<div class='{style.textBoxContainer}'>
+						<g:ListBox addStyleNames='{style.textBox}' ui:field="thirdListBoxL"/>
+
+					</div>
+					<div class='{style.suffixContainer}'>
+						<g:Label addStyleNames='{style.suffix}' ui:field="thirdTextBoxEndingL" />
+					</div>
+				</div>
+				<div class='{style.singleRow}'>
+					<div class='{style.labelContainer}'>
+						<g:Label addStyleNames='{style.label}' ui:field="longTextBoxTitleL" />
+					</div>
+				</div>
+				<div class='{style.bigRow}'>
+					<g:TextArea addStyleNames='{style.bigTextBox}' ui:field="longTextBoxL"/>
+				</div>
+
+			</div>
+			<div class='{style.rightPanel}'>
+
+                <div class='{style.singleRow}'>
+                    <div class='{style.labelContainer}'>
+                        <g:Label addStyleNames='{style.label}' ui:field="firstTextBoxTitleR"/>
+                    </div>
+                    <div class='{style.textBoxContainer}'>
+                        <g:ListBox addStyleNames='{style.textBox}' ui:field="firstListBoxR"/>
+                    </div>
+                    <div class='{style.suffixContainer}'>
+                        <g:Label addStyleNames='{style.suffix}' ui:field="firstTextBoxEndingR" />
+                    </div>
+                </div>
+                <div class='{style.singleRow}'>
+                    <div class='{style.labelContainer}'>
+                        <g:Label addStyleNames='{style.label}' ui:field="secondTextBoxTitleR" />
+                    </div>
+                    <div class='{style.textBoxContainer}'>
+                        <g:ListBox addStyleNames='{style.textBox}' ui:field="secondListBoxR"/>
+
+                    </div>
+                    <div class='{style.suffixContainer}'>
+                        <g:Label addStyleNames='{style.suffix}' ui:field="secondTextBoxEndingR" />
+                    </div>
+                </div>
+                <div class='{style.singleRow}'>
+                    <div class='{style.labelContainer}'>
+                        <g:Label addStyleNames='{style.label}' ui:field="thirdTextBoxTitleR" />
+                    </div>
+                    <div class='{style.textBoxContainer}'>
+                        <g:ListBox addStyleNames='{style.textBox}' ui:field="thirdListBoxR"/>
+
+                    </div>
+                    <div class='{style.suffixContainer}'>
+                        <g:Label addStyleNames='{style.suffix}' ui:field="thirdTextBoxEndingR" />
+                    </div>
+                </div>
+                <div class='{style.singleRow}'>
+                    <div class='{style.labelContainer}'>
+                        <g:Label addStyleNames='{style.label}' ui:field="longTextBoxTitleR" />
+                    </div>
+                </div>
+                <div class='{style.bigRow}'>
+                    <g:TextArea addStyleNames='{style.bigTextBox}' ui:field="longTextBoxR"/>
+                </div>
+            </div>
+		</div>
+
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -111,8 +111,18 @@
     </fileset>
   </path>
   
-  <path id="library.gwt-user.classpath">
-    <pathelement location="${basedir}/../../Development/gwt-2.6.1/gwt-user.jar"/>
+  <path id="library.com.google.guava:guava-gwt:18.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/guava/guava-gwt/18.0/guava-gwt-18.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/guava/guava/18.0/guava-18.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/gwt/gwt-dev/2.6.1/gwt-dev-2.6.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/gwt/gwt-user/2.6.1/gwt-user-2.6.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/json/json/20090211/json-20090211.jar"/>
+  </path>
+  
+  <path id="library.gwt-user_(2).classpath">
+    <pathelement location="${basedir}/../../Development/gwt-2.7.0/gwt-user.jar"/>
   </path>
   
   <path id="library.v2.classpath">

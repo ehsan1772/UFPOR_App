@@ -6,7 +6,7 @@
   <property name="module.jdk.bin.portal" value="${project.jdk.bin}"/>
   <property name="module.jdk.classpath.portal" value="${project.jdk.classpath}"/>
   
-  <property name="compiler.args.portal" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  <property name="compiler.args.portal" value="-encoding UTF-8 -source 1.7 ${compiler.args}"/>
   
   <property name="portal.output.dir" value="${module.portal.basedir}/out/production/Portal"/>
   <property name="portal.testoutput.dir" value="${module.portal.basedir}/out/test/Portal"/>
@@ -17,35 +17,39 @@
   
   <path id="portal.module.production.classpath">
     <path refid="${module.jdk.classpath.portal}"/>
-    <path refid="library.gwt-user.classpath"/>
     <path refid="library.appengine_dev_1.9.12.classpath"/>
     <path refid="library.appengine_api.classpath"/>
     <path refid="library.v2.classpath"/>
+    <path refid="library.gwt-user_(2).classpath"/>
+    <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
   </path>
   
   <path id="portal.runtime.production.module.classpath">
     <pathelement location="${portal.output.dir}"/>
-    <path refid="library.gwt-user.classpath"/>
     <path refid="library.appengine_api.classpath"/>
     <path refid="library.v2.classpath"/>
+    <path refid="library.gwt-user_(2).classpath"/>
+    <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
   </path>
   
   <path id="portal.module.classpath">
     <path refid="${module.jdk.classpath.portal}"/>
     <pathelement location="${portal.output.dir}"/>
-    <path refid="library.gwt-user.classpath"/>
     <path refid="library.appengine_dev_1.9.12.classpath"/>
     <path refid="library.appengine_api.classpath"/>
     <path refid="library.v2.classpath"/>
+    <path refid="library.gwt-user_(2).classpath"/>
+    <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
   </path>
   
   <path id="portal.runtime.module.classpath">
     <pathelement location="${portal.testoutput.dir}"/>
     <pathelement location="${portal.output.dir}"/>
-    <path refid="library.gwt-user.classpath"/>
     <path refid="library.appengine_dev_1.9.12.classpath"/>
     <path refid="library.appengine_api.classpath"/>
     <path refid="library.v2.classpath"/>
+    <path refid="library.gwt-user_(2).classpath"/>
+    <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
   </path>
   
   
