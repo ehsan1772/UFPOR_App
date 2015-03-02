@@ -11,6 +11,8 @@
     <property name="portal.output.dir" value="${module.portal.basedir}/out/production/Portal"/>
     <property name="portal.testoutput.dir" value="${module.portal.basedir}/out/test/Portal"/>
 
+    <echo message="Using Java version (added by Ehsan): ${ant.java.version}."/>
+
     <patternset id="ignored.files">
         <exclude name="**/CVS/**"/>
         <exclude name="**/SCCS/**"/>
@@ -53,7 +55,6 @@
         <exclude name="**/?*.clj"/>
     </patternset>
 
-    <echo message="Using Java version (added by Ehsan): ${ant.java.version}."/>
 
     <path id="portal.module.bootclasspath">
         <!-- Paths to be included in compilation bootclasspath -->
