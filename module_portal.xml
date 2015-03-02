@@ -53,6 +53,8 @@
         <exclude name="**/?*.clj"/>
     </patternset>
 
+    <echo message="Using Java version (added by Ehsan): ${ant.java.version}."/>
+
     <path id="portal.module.bootclasspath">
         <!-- Paths to be included in compilation bootclasspath -->
     </path>
