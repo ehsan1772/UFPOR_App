@@ -4,6 +4,7 @@
     <ui:style>
 
         .main {
+            margin: 5px;
             height: 40px;
             width: 750px;
             position: relative;

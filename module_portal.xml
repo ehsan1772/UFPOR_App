@@ -1,175 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="module_portal" default="compile.module.portal">
-    <dirname property="module.portal.basedir" file="${ant.file.module_portal}"/>
-
-    <property name="module.jdk.home.portal" value="${project.jdk.home}"/>
-    <property name="module.jdk.bin.portal" value="${project.jdk.bin}"/>
-    <property name="module.jdk.classpath.portal" value="${project.jdk.classpath}"/>
-
-    <property name="compiler.args.portal" value="-encoding UTF-8 -source 1.7 ${compiler.args}"/>
-
-    <property name="portal.output.dir" value="${module.portal.basedir}/out/production/Portal"/>
-    <property name="portal.testoutput.dir" value="${module.portal.basedir}/out/test/Portal"/>
-
-    <echo message="Using Java version (added by Ehsan): ${ant.java.version}."/>
-
-    <patternset id="ignored.files">
-        <exclude name="**/CVS/**"/>
-        <exclude name="**/SCCS/**"/>
-        <exclude name="**/RCS/**"/>
-        <exclude name="**/rcs/**"/>
-        <exclude name="**/.DS_Store/**"/>
-        <exclude name="**/.svn/**"/>
-        <exclude name="**/.pyc/**"/>
-        <exclude name="**/.pyo/**"/>
-        <exclude name="**/*.pyc/**"/>
-        <exclude name="**/*.pyo/**"/>
-        <exclude name="**/.git/**"/>
-        <exclude name="**/*.hprof/**"/>
-        <exclude name="**/_svn/**"/>
-        <exclude name="**/.hg/**"/>
-        <exclude name="**/*.lib/**"/>
-        <exclude name="**/*~/**"/>
-        <exclude name="**/__pycache__/**"/>
-        <exclude name="**/.bundle/**"/>
-        <exclude name="**/*.rbc/**"/>
-    </patternset>
-    <patternset id="library.patterns">
-        <include name="*.war"/>
-        <include name="*.ear"/>
-        <include name="*.apk"/>
-        <include name="*.zip"/>
-        <include name="*.swc"/>
-        <include name="*.ane"/>
-        <include name="*.egg"/>
-        <include name="*.jar"/>
-    </patternset>
-    <patternset id="compiler.resources">
-        <exclude name="**/?*.java"/>
-        <exclude name="**/?*.form"/>
-        <exclude name="**/?*.class"/>
-        <exclude name="**/?*.groovy"/>
-        <exclude name="**/?*.scala"/>
-        <exclude name="**/?*.flex"/>
-        <exclude name="**/?*.kt"/>
-        <exclude name="**/?*.clj"/>
-    </patternset>
-
-
-    <path id="portal.module.bootclasspath">
-        <!-- Paths to be included in compilation bootclasspath -->
-    </path>
-
-    <path id="portal.module.production.classpath">
-        <path refid="${module.jdk.classpath.portal}"/>
-        <path refid="library.appengine_dev_1.9.12.classpath"/>
-        <path refid="library.appengine_api.classpath"/>
-        <path refid="library.v2.classpath"/>
-        <path refid="library.gwt-user_(2).classpath"/>
-        <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
-    </path>
-
-    <path id="portal.runtime.production.module.classpath">
-        <pathelement location="${portal.output.dir}"/>
-        <path refid="library.appengine_api.classpath"/>
-        <path refid="library.v2.classpath"/>
-        <path refid="library.gwt-user_(2).classpath"/>
-        <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
-    </path>
-
-    <path id="portal.module.classpath">
-        <path refid="${module.jdk.classpath.portal}"/>
-        <pathelement location="${portal.output.dir}"/>
-        <path refid="library.appengine_dev_1.9.12.classpath"/>
-        <path refid="library.appengine_api.classpath"/>
-        <path refid="library.v2.classpath"/>
-        <path refid="library.gwt-user_(2).classpath"/>
-        <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
-    </path>
-
-    <path id="portal.runtime.module.classpath">
-        <pathelement location="${portal.testoutput.dir}"/>
-        <pathelement location="${portal.output.dir}"/>
-        <path refid="library.appengine_dev_1.9.12.classpath"/>
-        <path refid="library.appengine_api.classpath"/>
-        <path refid="library.v2.classpath"/>
-        <path refid="library.gwt-user_(2).classpath"/>
-        <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
-    </path>
-
-
-    <patternset id="excluded.from.module.portal">
-        <patternset refid="ignored.files"/>
-    </patternset>
-
-    <patternset id="excluded.from.compilation.portal">
-        <patternset refid="excluded.from.module.portal"/>
-    </patternset>
-
-    <path id="portal.module.sourcepath">
-        <dirset dir="${module.portal.basedir}">
-            <include name="src"/>
-        </dirset>
-    </path>
-
-
-    <target name="compile.module.portal" depends="compile.module.portal.production,compile.module.portal.tests"
-            description="Compile module Portal"/>
-
-    <target name="compile.module.portal.production" depends="register.custom.compilers"
-            description="Compile module Portal; production classes">
-        <mkdir dir="${portal.output.dir}"/>
-        <javac2 destdir="${portal.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}"
-                memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.portal}/javac">
-            <compilerarg line="${compiler.args.portal}"/>
-            <bootclasspath refid="portal.module.bootclasspath"/>
-            <classpath refid="portal.module.production.classpath"/>
-            <src refid="portal.module.sourcepath"/>
-            <patternset refid="excluded.from.compilation.portal"/>
-        </javac2>
-
-        <copy todir="${portal.output.dir}">
-            <fileset dir="${module.portal.basedir}/src">
-                <patternset refid="compiler.resources"/>
-                <type type="file"/>
-            </fileset>
-        </copy>
-    </target>
-
-    <target name="compile.module.portal.tests" depends="register.custom.compilers,compile.module.portal.production"
-            description="compile module Portal; test classes" unless="skip.tests"/>
-
-    <target name="clean.module.portal" description="cleanup module">
-        <delete dir="${portal.output.dir}"/>
-        <delete dir="${portal.testoutput.dir}"/>
-    </target>
-
-    <property name="gwt.compiler.output.portal" value="${module.portal.basedir}/GWTCompilerOutput_portal"/>
-
-    <!-- Run GWT compiler for GWT module ${gwt.module.name} -->
-    <target name="run.gwt.compiler.portal" description="Run GWT compiler">
-        <java fork="true" jvm="${module.jdk.bin.portal}/java" classname="com.google.gwt.dev.Compiler">
-            <jvmarg line="-Xmx1024m"/>
-            <classpath>
-                <pathelement location="${gwt.sdk.home.portal}/gwt-dev.jar"/>
-                <path refid="portal.module.sourcepath"/>
-                <path refid="portal.module.classpath"/>
-            </classpath>
-            <arg value="-logLevel"/>
-            <arg value="WARN"/>
-            <arg value="-war"/>
-            <arg value="${gwt.compiler.output.portal}"/>
-            <arg value="-style"/>
-            <arg value="DETAILED"/>
-            <arg value="${gwt.module.name}"/>
-        </java>
-    </target>
-
-    <target name="compile.gwt.portal" depends="compile.module.portal"
-            description="Compile all GWT modules in module Portal">
-        <property name="gwt.sdk.home.portal" value="${gwt.sdk.home}"/>
-        <antcall target="run.gwt.compiler.portal">
-            <param name="gwt.module.name" value="com.ufpor.app.app"/>
-        </antcall>
-    </target>
+  <dirname property="module.portal.basedir" file="${ant.file.module_portal}"/>
+  
+  <property name="module.jdk.home.portal" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.portal" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.portal" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.portal" value="-encoding UTF-8 -source 1.7 -target 1.7 ${compiler.args}"/>
+  
+  <property name="portal.output.dir" value="${module.portal.basedir}/out/production/Portal"/>
+  <property name="portal.testoutput.dir" value="${module.portal.basedir}/out/test/Portal"/>
+  
+  <path id="portal.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="portal.module.production.classpath">
+    <path refid="${module.jdk.classpath.portal}"/>
+    <path refid="library.appengine_dev_1.9.12.classpath"/>
+    <path refid="library.appengine_api.classpath"/>
+    <path refid="library.v2.classpath"/>
+    <path refid="library.gwt-user_(2).classpath"/>
+    <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
+  </path>
+  
+  <path id="portal.runtime.production.module.classpath">
+    <pathelement location="${portal.output.dir}"/>
+    <path refid="library.appengine_api.classpath"/>
+    <path refid="library.v2.classpath"/>
+    <path refid="library.gwt-user_(2).classpath"/>
+    <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
+  </path>
+  
+  <path id="portal.module.classpath">
+    <path refid="${module.jdk.classpath.portal}"/>
+    <pathelement location="${portal.output.dir}"/>
+    <path refid="library.appengine_dev_1.9.12.classpath"/>
+    <path refid="library.appengine_api.classpath"/>
+    <path refid="library.v2.classpath"/>
+    <path refid="library.gwt-user_(2).classpath"/>
+    <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
+  </path>
+  
+  <path id="portal.runtime.module.classpath">
+    <pathelement location="${portal.testoutput.dir}"/>
+    <pathelement location="${portal.output.dir}"/>
+    <path refid="library.appengine_dev_1.9.12.classpath"/>
+    <path refid="library.appengine_api.classpath"/>
+    <path refid="library.v2.classpath"/>
+    <path refid="library.gwt-user_(2).classpath"/>
+    <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.portal">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.portal">
+    <patternset refid="excluded.from.module.portal"/>
+  </patternset>
+  
+  <path id="portal.module.sourcepath">
+    <dirset dir="${module.portal.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.portal" depends="compile.module.portal.production,compile.module.portal.tests" description="Compile module Portal"/>
+  
+  <target name="compile.module.portal.production" depends="register.custom.compilers" description="Compile module Portal; production classes">
+    <mkdir dir="${portal.output.dir}"/>
+    <javac2 destdir="${portal.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.portal}/javac">
+      <compilerarg line="${compiler.args.portal}"/>
+      <bootclasspath refid="portal.module.bootclasspath"/>
+      <classpath refid="portal.module.production.classpath"/>
+      <src refid="portal.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.portal"/>
+    </javac2>
+    
+    <copy todir="${portal.output.dir}">
+      <fileset dir="${module.portal.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.portal.tests" depends="register.custom.compilers,compile.module.portal.production" description="compile module Portal; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.portal" description="cleanup module">
+    <delete dir="${portal.output.dir}"/>
+    <delete dir="${portal.testoutput.dir}"/>
+  </target>
+  
+  <property name="gwt.compiler.output.portal" value="${module.portal.basedir}/GWTCompilerOutput_portal"/>
+  
+  <!-- Run GWT compiler for GWT module ${gwt.module.name} -->
+  <target name="run.gwt.compiler.portal" description="Run GWT compiler">
+    <java fork="true" jvm="${module.jdk.bin.portal}/java" classname="com.google.gwt.dev.Compiler">
+      <jvmarg line="-Xmx1024m"/>
+      <classpath>
+        <pathelement location="${gwt.sdk.home.portal}/gwt-dev.jar"/>
+        <path refid="portal.module.sourcepath"/>
+        <path refid="portal.module.classpath"/>
+      </classpath>
+      <arg value="-logLevel"/>
+      <arg value="WARN"/>
+      <arg value="-war"/>
+      <arg value="${gwt.compiler.output.portal}"/>
+      <arg value="-style"/>
+      <arg value="DETAILED"/>
+      <arg value="${gwt.module.name}"/>
+    </java>
+  </target>
+  
+  <target name="compile.gwt.portal" depends="compile.module.portal" description="Compile all GWT modules in module Portal">
+    <property name="gwt.sdk.home.portal" value="${gwt.sdk.home}"/>
+    <antcall target="run.gwt.compiler.portal">
+      <param name="gwt.module.name" value="com.ufpor.app.app"/>
+    </antcall>
+  </target>
 </project>
