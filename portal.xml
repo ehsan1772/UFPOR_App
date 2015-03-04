@@ -121,12 +121,34 @@
     <pathelement location="${path.variable.maven_repository}/org/json/json/20090211/json-20090211.jar"/>
   </path>
   
+  <path id="library.gwt-user.classpath">
+    <pathelement location="${basedir}/../../Development/gwt-2.6.1/gwt-user.jar"/>
+  </path>
+  
   <path id="library.gwt-user_(2).classpath">
     <pathelement location="${basedir}/../../Development/gwt-2.7.0/gwt-user.jar"/>
   </path>
   
   <path id="library.v2.classpath">
     <fileset dir="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/datanucleus/v2">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  
+  <!-- Global Libraries -->
+  
+  <path id="library.appengine_api.classpath">
+    <fileset dir="/Users/ovenbits/Development/GWT Libraries/gin-2.1.2">
+      <patternset refid="library.patterns"/>
+    </fileset>
+    <fileset dir="/Users/ovenbits/Development/appengine-java-sdk-1.9.12/lib/opt/user/appengine-endpoints/v1">
+      <patternset refid="library.patterns"/>
+    </fileset>
+    <fileset dir="/Users/ovenbits/Development/appengine-java-sdk-1.9.12/lib/opt/user/jsr107/v1">
+      <patternset refid="library.patterns"/>
+    </fileset>
+    <fileset dir="/Users/ovenbits/Development/appengine-java-sdk-1.9.12/lib/user">
       <patternset refid="library.patterns"/>
     </fileset>
   </path>
@@ -193,6 +215,14 @@
     </copy>
     <mkdir dir="${artifact.output.portal:war_exploded}/WEB-INF/lib"/>
     <copy file="${basedir}/../../Development/gwt-2.6.1/gwt-servlet.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/gwt-servlet.jar"/>
+    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/datanucleus/v2/asm-4.0.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/asm-4.0.jar"/>
+    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/datanucleus/v2/jta-1.1.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/jta-1.1.jar"/>
+    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/datanucleus/v2/jdo-api-3.0.1.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/jdo-api-3.0.1.jar"/>
+    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/datanucleus/v2/datanucleus-core-3.1.3.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/datanucleus-core-3.1.3.jar"/>
+    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/datanucleus/v2/datanucleus-api-jdo-3.1.3.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/datanucleus-api-jdo-3.1.3.jar"/>
+    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/datanucleus/v2/datanucleus-api-jpa-3.1.3.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/datanucleus-api-jpa-3.1.3.jar"/>
+    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/datanucleus/v2/geronimo-jpa_2.0_spec-1.0.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/geronimo-jpa_2.0_spec-1.0.jar"/>
+    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/datanucleus/v2/datanucleus-appengine-2.1.2.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/datanucleus-appengine-2.1.2.jar"/>
     <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/user/libservice.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/libservice.jar"/>
     <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/user/jsr107cache-1.1.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/jsr107cache-1.1.jar"/>
     <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/user/appengine-api-labs-1.9.12.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/appengine-api-labs-1.9.12.jar"/>
@@ -207,14 +237,20 @@
     <copy file="${basedir}/../../Development/GWT Libraries/gin-2.1.2/aopalliance.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/aopalliance.jar"/>
     <copy file="${basedir}/../../Development/GWT Libraries/gin-2.1.2/javax.inject.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/javax.inject.jar"/>
     <copy file="${basedir}/../../Development/GWT Libraries/gin-2.1.2/guice-assistedinject-3.0.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/guice-assistedinject-3.0.jar"/>
-    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/datanucleus/v2/asm-4.0.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/asm-4.0.jar"/>
-    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/datanucleus/v2/jta-1.1.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/jta-1.1.jar"/>
-    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/datanucleus/v2/jdo-api-3.0.1.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/jdo-api-3.0.1.jar"/>
-    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/datanucleus/v2/datanucleus-core-3.1.3.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/datanucleus-core-3.1.3.jar"/>
-    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/datanucleus/v2/datanucleus-api-jdo-3.1.3.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/datanucleus-api-jdo-3.1.3.jar"/>
-    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/datanucleus/v2/datanucleus-api-jpa-3.1.3.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/datanucleus-api-jpa-3.1.3.jar"/>
-    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/datanucleus/v2/geronimo-jpa_2.0_spec-1.0.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/geronimo-jpa_2.0_spec-1.0.jar"/>
-    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/datanucleus/v2/datanucleus-appengine-2.1.2.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/datanucleus-appengine-2.1.2.jar"/>
+    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/user/libservice.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/libservice.jar"/>
+    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/user/jsr107cache-1.1.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/jsr107cache-1.1.jar"/>
+    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/user/appengine-api-labs-1.9.12.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/appengine-api-labs-1.9.12.jar"/>
+    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/user/appengine-api-1.0-sdk-1.9.12.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/appengine-api-1.0-sdk-1.9.12.jar"/>
+    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/user/appengine-jsr107cache-1.9.12.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/appengine-jsr107cache-1.9.12.jar"/>
+    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/appengine-endpoints/v1/appengine-endpoints.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/appengine-endpoints.jar"/>
+    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/appengine-endpoints/v1/appengine-endpoints-deps.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/appengine-endpoints-deps.jar"/>
+    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/jsr107/v1/jsr107cache-1.1.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/jsr107cache-1.1.jar"/>
+    <copy file="${basedir}/../../Development/appengine-java-sdk-1.9.12/lib/opt/user/jsr107/v1/appengine-jsr107cache-1.9.12.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/appengine-jsr107cache-1.9.12.jar"/>
+    <copy file="${basedir}/../../Development/GWT Libraries/gin-2.1.2/gin-2.1.2.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/gin-2.1.2.jar"/>
+    <copy file="${basedir}/../../Development/GWT Libraries/gin-2.1.2/guice-3.0.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/guice-3.0.jar"/>
+    <copy file="${basedir}/../../Development/GWT Libraries/gin-2.1.2/aopalliance.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/aopalliance.jar"/>
+    <copy file="${basedir}/../../Development/GWT Libraries/gin-2.1.2/javax.inject.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/javax.inject.jar"/>
+    <copy file="${basedir}/../../Development/GWT Libraries/gin-2.1.2/guice-assistedinject-3.0.jar" tofile="${artifact.output.portal:war_exploded}/WEB-INF/lib/guice-assistedinject-3.0.jar"/>
     <copy todir="${artifact.output.portal:war_exploded}">
       <fileset dir="${gwt.compiler.output.portal}"/>
     </copy>

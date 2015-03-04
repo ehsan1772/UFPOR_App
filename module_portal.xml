@@ -18,38 +18,42 @@
   <path id="portal.module.production.classpath">
     <path refid="${module.jdk.classpath.portal}"/>
     <path refid="library.appengine_dev_1.9.12.classpath"/>
-    <path refid="library.appengine_api.classpath"/>
     <path refid="library.v2.classpath"/>
     <path refid="library.gwt-user_(2).classpath"/>
     <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
+    <path refid="library.appengine_api.classpath"/>
+    <path refid="library.gwt-user.classpath"/>
   </path>
   
   <path id="portal.runtime.production.module.classpath">
     <pathelement location="${portal.output.dir}"/>
-    <path refid="library.appengine_api.classpath"/>
     <path refid="library.v2.classpath"/>
     <path refid="library.gwt-user_(2).classpath"/>
     <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
+    <path refid="library.appengine_api.classpath"/>
+    <path refid="library.gwt-user.classpath"/>
   </path>
   
   <path id="portal.module.classpath">
     <path refid="${module.jdk.classpath.portal}"/>
     <pathelement location="${portal.output.dir}"/>
     <path refid="library.appengine_dev_1.9.12.classpath"/>
-    <path refid="library.appengine_api.classpath"/>
     <path refid="library.v2.classpath"/>
     <path refid="library.gwt-user_(2).classpath"/>
     <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
+    <path refid="library.appengine_api.classpath"/>
+    <path refid="library.gwt-user.classpath"/>
   </path>
   
   <path id="portal.runtime.module.classpath">
     <pathelement location="${portal.testoutput.dir}"/>
     <pathelement location="${portal.output.dir}"/>
     <path refid="library.appengine_dev_1.9.12.classpath"/>
-    <path refid="library.appengine_api.classpath"/>
     <path refid="library.v2.classpath"/>
     <path refid="library.gwt-user_(2).classpath"/>
     <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
+    <path refid="library.appengine_api.classpath"/>
+    <path refid="library.gwt-user.classpath"/>
   </path>
   
   
