@@ -136,8 +136,8 @@
           <file leaf-file-name="app.gwt.xml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/out/artifacts/Portal_war_exploded/WEB-INF/classes/com/ufpor/app/app.gwt.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.7983871" vertical-offset="0" max-vertical-offset="855">
-                  <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
+                <state vertical-scroll-proportion="0.45967743" vertical-offset="0" max-vertical-offset="855">
+                  <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -169,10 +169,10 @@
                 <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="29115">
                   <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding>
-                    <marker date="1425527701000" expanded="true" signature="115836:115924" placeholder="..." />
-                    <marker date="1425527701000" expanded="true" signature="115836:115909" placeholder="..." />
-                    <marker date="1425527701000" expanded="true" signature="115836:115896" placeholder="..." />
-                    <marker date="1425527701000" expanded="true" signature="115836:115878" placeholder="..." />
+                    <marker date="1425529082000" expanded="true" signature="115853:115916" placeholder="..." />
+                    <marker date="1425529082000" expanded="true" signature="115853:115901" placeholder="..." />
+                    <marker date="1425529082000" expanded="true" signature="115853:115888" placeholder="..." />
+                    <marker date="1425529082000" expanded="true" signature="115853:115870" placeholder="..." />
                   </folding>
                 </state>
               </provider>
@@ -202,11 +202,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="web.xml" pinned="false" current-in-tab="true">
+          <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.75" vertical-offset="0" max-vertical-offset="620">
-                  <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
+                  <caret line="15" column="62" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
                   <folding />
                 </state>
               </provider>
@@ -275,37 +275,37 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="HomeView.ui.xml" pinned="false" current-in-tab="false">
+          <file leaf-file-name="HomeView.ui.xml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.ui.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="2626" max-vertical-offset="4245">
-                  <caret line="203" column="35" selection-start-line="203" selection-start-column="35" selection-end-line="203" selection-end-column="35" />
+                <state vertical-scroll-proportion="0.31290323" vertical-offset="2626" max-vertical-offset="4245">
+                  <caret line="188" column="119" selection-start-line="188" selection-start-column="119" selection-end-line="188" selection-end-column="119" />
                   <folding>
-                    <marker date="1425526685000" expanded="true" signature="351:424" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="449:704" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="725:772" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="794:875" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="897:944" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="967:1068" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="1088:1162" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="1180:1303" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="1322:1512" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="1532:1658" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="1682:2002" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="2022:2181" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="2197:2387" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="2410:2768" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="2784:2903" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="2920:2982" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="3003:3264" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="3288:3477" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="3507:3551" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="3582:3629" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="3652:3806" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="3835:3879" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="3909:3950" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="3968:4184" placeholder="{...}" />
-                    <marker date="1425526685000" expanded="true" signature="4202:4214" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="351:424" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="449:704" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="725:772" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="794:875" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="897:944" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="967:1068" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="1088:1162" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="1180:1303" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="1322:1512" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="1532:1658" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="1682:2002" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="2022:2181" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="2197:2387" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="2410:2768" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="2784:2903" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="2920:2982" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="3003:3264" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="3288:3477" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="3507:3551" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="3582:3629" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="3652:3806" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="3835:3879" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="3909:3950" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="3968:4184" placeholder="{...}" />
+                    <marker date="1425529123000" expanded="true" signature="4202:4214" placeholder="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -472,10 +472,10 @@
         <option value="$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.java" />
         <option value="$PROJECT_DIR$/module_portal.xml" />
         <option value="$PROJECT_DIR$/Portal.iml" />
-        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.ui.xml" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/com/ufpor/app/app.gwt.xml" />
         <option value="$PROJECT_DIR$/out/artifacts/Portal_war_exploded/WEB-INF/classes/com/ufpor/app/app.gwt.xml" />
+        <option value="$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.ui.xml" />
       </list>
     </option>
   </component>
@@ -892,7 +892,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="dynamic.classpath" value="false" />
@@ -1222,7 +1222,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1057" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1244,7 +1244,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920128" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3284974" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3284974" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25026625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3564767" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1583,10 +1583,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="25020">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1425527701000" expanded="true" signature="115836:115924" placeholder="..." />
-            <marker date="1425527701000" expanded="true" signature="115836:115909" placeholder="..." />
-            <marker date="1425527701000" expanded="true" signature="115836:115896" placeholder="..." />
-            <marker date="1425527701000" expanded="true" signature="115836:115878" placeholder="..." />
+            <marker date="1425529082000" expanded="true" signature="115853:115916" placeholder="..." />
+            <marker date="1425529082000" expanded="true" signature="115853:115901" placeholder="..." />
+            <marker date="1425529082000" expanded="true" signature="115853:115888" placeholder="..." />
+            <marker date="1425529082000" expanded="true" signature="115853:115870" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1744,40 +1744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.ui.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2626" max-vertical-offset="4245">
-          <caret line="203" column="35" selection-start-line="203" selection-start-column="35" selection-end-line="203" selection-end-column="35" />
-          <folding>
-            <marker date="1425526685000" expanded="true" signature="351:424" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="449:704" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="725:772" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="794:875" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="897:944" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="967:1068" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="1088:1162" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="1180:1303" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="1322:1512" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="1532:1658" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="1682:2002" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="2022:2181" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="2197:2387" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="2410:2768" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="2784:2903" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="2920:2982" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="3003:3264" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="3288:3477" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="3507:3551" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="3582:3629" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="3652:3806" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="3835:3879" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="3909:3950" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="3968:4184" placeholder="{...}" />
-            <marker date="1425526685000" expanded="true" signature="4202:4214" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/portal.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.072231136" vertical-offset="0" max-vertical-offset="623">
@@ -1828,17 +1794,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75" vertical-offset="0" max-vertical-offset="620">
-          <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
+          <caret line="15" column="62" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/out/artifacts/Portal_war_exploded/WEB-INF/classes/com/ufpor/app/app.gwt.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7983871" vertical-offset="0" max-vertical-offset="855">
-          <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.45967743" vertical-offset="0" max-vertical-offset="855">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ufpor/app/client/view/HomeView.ui.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31290323" vertical-offset="2626" max-vertical-offset="4245">
+          <caret line="188" column="119" selection-start-line="188" selection-start-column="119" selection-end-line="188" selection-end-column="119" />
+          <folding>
+            <marker date="1425529123000" expanded="true" signature="351:424" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="449:704" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="725:772" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="794:875" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="897:944" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="967:1068" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="1088:1162" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="1180:1303" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="1322:1512" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="1532:1658" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="1682:2002" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="2022:2181" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="2197:2387" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="2410:2768" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="2784:2903" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="2920:2982" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="3003:3264" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="3288:3477" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="3507:3551" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="3582:3629" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="3652:3806" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="3835:3879" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="3909:3950" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="3968:4184" placeholder="{...}" />
+            <marker date="1425529123000" expanded="true" signature="4202:4214" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
