@@ -193,12 +193,32 @@
   
   <target name="init.artifacts">
     <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.portal" value="${basedir}/out/artifacts/portal"/>
+    <property name="artifact.output.portal:war" value="${basedir}/out/artifacts/Portal_war"/>
     <property name="artifact.output.portal:war_exploded" value="${basedir}/out/artifacts/Portal_war_exploded"/>
     <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.portal.war" value="${artifacts.temp.dir}/portal.war"/>
+    <property name="temp.jar.path.Portal_war.war" value="${artifacts.temp.dir}/Portal_war.war"/>
   </target>
   
   <target name="clean.artifact.portal:war_exploded" description="clean Portal:war exploded artifact output">
     <delete dir="${artifact.output.portal:war_exploded}"/>
+  </target>
+  
+  <target name="artifact.portal" depends="init.artifacts" description="Build &#39;portal&#39; artifact">
+    <property name="artifact.temp.output.portal" value="${artifacts.temp.dir}/portal"/>
+    <mkdir dir="${artifact.temp.output.portal}"/>
+    <zip destfile="${temp.jar.path.portal.war}"/>
+    <copy file="${temp.jar.path.portal.war}" tofile="${artifact.temp.output.portal}/portal.war"/>
+  </target>
+  
+  <target name="artifact.portal:war" depends="init.artifacts, artifact.portal:war_exploded" description="Build &#39;Portal:war&#39; artifact">
+    <property name="artifact.temp.output.portal:war" value="${artifacts.temp.dir}/Portal_war"/>
+    <mkdir dir="${artifact.temp.output.portal:war}"/>
+    <zip destfile="${temp.jar.path.Portal_war.war}">
+      <zipfileset dir="${artifact.output.portal:war_exploded}"/>
+    </zip>
+    <copy file="${temp.jar.path.Portal_war.war}" tofile="${artifact.temp.output.portal:war}/Portal_war.war"/>
   </target>
   
   <target name="artifact.portal:war_exploded" depends="init.artifacts, compile.module.portal" description="Build &#39;Portal:war exploded&#39; artifact">
@@ -256,7 +276,15 @@
     </copy>
   </target>
   
-  <target name="build.all.artifacts" depends="artifact.portal:war_exploded" description="Build all artifacts">
+  <target name="build.all.artifacts" depends="artifact.portal, artifact.portal:war, artifact.portal:war_exploded" description="Build all artifacts">
+    <mkdir dir="${artifact.output.portal}"/>
+    <copy todir="${artifact.output.portal}">
+      <fileset dir="${artifact.temp.output.portal}"/>
+    </copy>
+    <mkdir dir="${artifact.output.portal:war}"/>
+    <copy todir="${artifact.output.portal:war}">
+      <fileset dir="${artifact.temp.output.portal:war}"/>
+    </copy>
     
     <!-- Delete temporary files -->
     <delete dir="${artifacts.temp.dir}"/>

@@ -56,18 +56,14 @@
     <path refid="library.gwt-user.classpath"/>
   </path>
   
-
-    <!--
+  
   <patternset id="excluded.from.module.portal">
     <patternset refid="ignored.files"/>
   </patternset>
-
   
   <patternset id="excluded.from.compilation.portal">
     <patternset refid="excluded.from.module.portal"/>
   </patternset>
-
-    -->
   
   <path id="portal.module.sourcepath">
     <dirset dir="${module.portal.basedir}">
