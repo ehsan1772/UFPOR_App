@@ -134,7 +134,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
         initWidget(ourUiBinder.createAndBindUi(this));
         this.loginInfo = loginInfo;
         greeting.setText("Hello   " + loginInfo.getNickname());
-        signOut.setHref(loginInfo.getLoginUrl());
+        signOut.setHref(loginInfo.getLogoutUrl());
         eastPanel.selectTab(0);
         southPanel.selectTab(0);
         logo.setResource(App.Resources.INSTANCE.submitButtonIcon());

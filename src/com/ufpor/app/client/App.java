@@ -13,6 +13,7 @@ import com.ufpor.app.client.eventbus.MenuEvent;
 import com.ufpor.app.client.service.LoginService;
 import com.ufpor.app.client.service.LoginServiceAsync;
 import com.ufpor.app.client.view.PopupBase;
+import com.ufpor.app.client.view.Welcome;
 import com.ufpor.app.client.view.project.PopupGeneral;
 import com.ufpor.app.client.view.project.PopupOpenProject;
 
@@ -64,8 +65,12 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
                 if (loginInfo.isLoggedIn()) {
                     loadApplication(loginInfo);
                 } else {
-                    initializeTheLoginPanel();
-                    loadLogin();
+//                    initializeTheLoginPanel();
+//                    loadLogin();
+                    Welcome welcome = new Welcome(loginInfo.getLoginUrl());
+                    RootPanel.get().clear();
+                    RootPanel.get().add(welcome);
+
                 }
             }
         });
