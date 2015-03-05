@@ -186,7 +186,7 @@
 
                 <g:Image width="auto" height="50px" styleName="{style.image}" ui:field="logo"/>
 
-                <h1 ui:field="projectNameHeader" style="margin: 10px; float: left; padding: 20px 10px">Sample Project18
+                <h1 ui:field="projectNameHeader" style="margin: 10px; float: left; padding: 20px 10px">Sample Project19
                 </h1>
 
                 <div class='{style.loginDiv}'>
