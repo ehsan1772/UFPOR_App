@@ -15,6 +15,7 @@ public class OpenProjectPresenter {
 
     public OpenProjectPresenter() {
         view = new SingleTable();
+
         refresh();
 
     }

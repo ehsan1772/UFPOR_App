@@ -360,6 +360,10 @@ public class Constants {
             unitNumbers.add(getUnit(unit, file));
         }
 
+        if (unitNumbers.isEmpty()) {
+            return null;
+        }
+
         String link = "";
         do {
             link = link.concat(unitNumbers.poll());
@@ -432,6 +436,7 @@ public class Constants {
         if (instance == null) {
             instance = new Constants();
         }
+        instance.reset();
         return instance;
     }
 

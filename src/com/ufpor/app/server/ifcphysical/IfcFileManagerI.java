@@ -1,6 +1,7 @@
 package com.ufpor.app.server.ifcphysical;
 
-import com.google.gwt.thirdparty.guava.common.collect.BiMap;
+
+import com.google.appengine.repackaged.com.google.common.collect.BiMap;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecProject;
 
 import java.util.ArrayList;

@@ -133,3 +133,13 @@ a, a:visited {
     padding-left: 5px;
 }
 
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelContent {
+    overflow: hidden;
+    padding: 0px;
+}
+
+select {
+    font-family: Arial Unicode MS, Arial, sans-serif;
+    font-size: smaller;
+}
+

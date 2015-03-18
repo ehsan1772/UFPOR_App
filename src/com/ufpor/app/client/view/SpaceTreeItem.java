@@ -96,9 +96,6 @@ public class SpaceTreeItem extends Composite {
 
             treeItem.addItem(newSpace);
             treeItem.setState(true);
-
-
-
         }
     };
 

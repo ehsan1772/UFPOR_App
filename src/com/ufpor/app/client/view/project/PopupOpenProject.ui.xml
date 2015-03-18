@@ -27,29 +27,6 @@
             background-color: #31333a;
         }
 
-        .centerPanel {
-            background-color: #ABCED4;
-            height: 100%;
-        }
-
-        .leftPanel,.rightPanel {
-            width: 50%;
-            height: 100%;
-            float: left;
-        }
-
-        .save {
-            width: 80px;
-            height: 30px;
-            float: right;
-            margin: 10px;
-        }
-
-        .gwt-TabLayoutPanel {
-            min-height: 500px;
-            background-color: #5A8A9E;
-        }
-
         .title {
             position: absolute;
             top: 20px;

@@ -25,6 +25,8 @@ public class IfcClientProject extends IfcClientContext {
      */
     protected ArrayList<IfcClientSpatialElement> spatialStructureRoot;
     private IfcClientQuantityArea netAreaQuantity;
+    private double minArea;
+    private double maxArea;
 
     public IfcClientProject() {
         isDefinedBy = new ArrayList<IfcClientPropertySetDefinitionSelect>();
@@ -66,14 +68,25 @@ public class IfcClientProject extends IfcClientContext {
     public void setMinArea(double minValue) {
       //  generalQuantities.setMin(minValue, IfcClientElementQuantity.ConstraintType.GrossFloorArea_Min);
         netAreaQuantity.setMinValue(minValue);
+        minArea = minValue;
     }
 
     public void setMaxArea(double maxValue) {
        // generalQuantities.setMax(maxValue, IfcClientElementQuantity.ConstraintType.GrossFloorArea_Max);
         netAreaQuantity.setMaxValue(maxValue);
+        maxArea = maxValue;
     }
+
 
     public void addSpatialStructureRoot(IfcClientSpatialElement root) {
         spatialStructureRoot.add(root);
+    }
+
+    public double getMinArea() {
+        return minArea;
+    }
+
+    public double getMaxArea() {
+        return maxArea;
     }
 }

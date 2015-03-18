@@ -249,7 +249,6 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
             IfcDecUnitAssignment assignment = finalOutCome.getUnitsInContext();
 
             Constants costant2 = Constants.getInstance();
-            costant2.reset();
             ArrayList<String> finalResult2 = new ArrayList<String>();
             String header2 = Constants.getHeader(finalOutCome);
             LOG.log(Level.INFO, "Header is: \n" + header2);
@@ -410,6 +409,10 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
             Query q = pm2.newQuery(IfcDecProject.class, "nameText == name && user == u");
             q.declareParameters("java.lang.String name, com.google.appengine.api.users.User u");
             List<IfcDecProject> projects = (List<IfcDecProject>) q.execute( projectName, getUser());
+
+            if (projects.size() == 0) {
+                return null;
+            }
 
             Set<Key> spaceKeys = projects.get(projects.size() - 1).getSpaceTypes();
 

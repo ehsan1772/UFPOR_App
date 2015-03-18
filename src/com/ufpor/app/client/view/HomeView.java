@@ -7,6 +7,7 @@ import com.google.gwt.dom.client.HeadingElement;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.resources.client.CssResource;
+import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -18,6 +19,7 @@ import com.google.inject.Inject;
 import com.ufpor.app.client.App;
 import com.ufpor.app.client.LoginInfo;
 import com.ufpor.app.client.eventbus.MenuEvent;
+import com.ufpor.app.client.eventbus.ProjectCreatedEvent;
 import com.ufpor.app.client.eventbus.ServerResultEvent;
 import com.ufpor.app.client.service.EnvironmentService;
 import com.ufpor.app.client.service.EnvironmentServiceAsync;
@@ -36,7 +38,7 @@ import java.util.logging.Logger;
  */
 public class HomeView extends Composite implements PopupBase.PopupBaseHost, ResizingSplitLayoutPanel.ResizeListener {
 
-
+    public static HomeView instance;
     public static final String SPACE_TYPE = "space_type";
     //TODO fix this!
     public static String projectName;
@@ -76,6 +78,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
     DecoratedTabPanel southPanel;
     @UiField
     Image addButton;
+    private HTML ifcFileHtml;
     private LoginInfo loginInfo;
     @Inject
     private PopupPanel popup;
@@ -90,14 +93,26 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
         @Override
         public void onServerResultEvent(ServerResultEvent event) {
             resizeScrollPanel();
-            GWT.log(event.getResult());
-            HTML southLabel = new HTML(new SafeHtmlBuilder().appendEscapedLines(event.getResult()).toSafeHtml());
+            GWT.log("Here goes the result:" + event.getResult());
+         //   ifcPanel.remove(ifcFileHtml);
+         //   ifcFileHtml = new HTML(new SafeHtmlBuilder().appendEscapedLines(event.getResult()).toSafeHtml());
+
+            SafeHtml content = new SafeHtmlBuilder().appendEscapedLines(event.getResult()).toSafeHtml();
 
             //removing the old text
-            if (ifcPanel.getElement().getChildCount() > 0) {
-                ifcPanel.getElement().removeAllChildren();
-            }
-            ifcPanel.add(southLabel);
+//            if (ifcPanel.getElement().getChildCount() > 0) {
+//                ifcPanel.getElement().removeAllChildren();
+//            }
+
+         //   GWT.log("Here is the html content " +southLabel.getHTML());
+         //   ifcPanel.add(ifcFileHtml);
+
+            ifcFileHtml.setHTML(content);
+
+
+
+         //   ifcPanel.add(new HTML("ISO-10303-21;<br>HEADER;<br>FILE_DESCRIPTION (<br>        ('long name'),<br>        '2;1');<br>FILE_NAME (<br>        'two.ifc',<br>        '2015/03/18T08:35:46',<br>        ('test@example.com'),<br>        ('test@example.com'),<br>        'UFPOR APP 0.0.1',<br>        'UFPOR DEMO beta',<br>        'gmail.com');<br>FILE_SCHEMA (('IFC4RC4'));<br>ENDSEC;<br>DATA;<br>#13= IFCPROJECT ('3$blSXKSfEG805zIk$zyrt',  $, two,    $,     $, long name,       $,        $,       #14);<br>#14= IFCUNITASSIGNMENT(#15,#16,#17);<br>#15= IFCSIUNIT(*, .AREAUNIT,   $, .SQUARE_METRE);<br>#16= IFCSIUNIT(*, .VOLUMEUNIT,   $, .CUBIC_METRE);<br>#17= IFCSIUNIT(*, .LENGTHUNIT,   $, .METRE);<br>#18= IFCQUANTITYAREA(NetFloorArea,  *,   *,  0.0,     *);<br>#19= IFCMETRIC ('MAX_VALUE', null, HARD, null,     *,      *,       *, LESSTHANOREQUALTO,      null,     2000.0,           *);<br>#20= IFCMETRIC ('MIN_VALUE', null, HARD, null,     *,      *,       *, GREATERTHANOREQUALTO,      null,     1000.0,           *);<br>#21= IFCOBJECTIVE ('null',  *, HARD,    *,     *,      *,       *,  (19,20), LOGICALAND, REQUIREMENT,           *);<br>#22= IFCRESOURCECONSTRAINTRELATIONSHIP(*,  *,  21,   18);<br>#23= IFCELEMENTQUANTITY(3keBxne$D3OfejUUlko$q7,  *,   *,    *,     *,   (18));<br>#24= IFCRELDEFINESBYPROPERTIES(0OJ5H6RWbB6AWAE2HxWqA$,  *,   *,    *,  (13),     23);<br>ENDSEC;<br>END-ISO-10303-21;"));
+
             loadSpaceTypes(projectName);
         }
     };
@@ -141,8 +156,13 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
 
         App.injector.getSimpleEventBus().addHandler(ServerResultEvent.TYPE, mServerResultHandler);
         App.injector.getSimpleEventBus().addHandler(MenuEvent.TYPE, mMenuEventHandler);
+        App.injector.getSimpleEventBus().addHandler(ProjectCreatedEvent.TYPE, mProjectCreatedHandler);
 
         mainPanel.setResizeListener(this);
+
+        ifcFileHtml = new HTML("IFC File");
+        ifcPanel.add(ifcFileHtml);
+        instance = this;
 
     }
 
@@ -171,7 +191,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
 
                 addMenu();
 
-                populateTree(treeContainer);
+                //populateTree(treeContainer);
 
                 //   refreshSpaces();
 
@@ -182,6 +202,16 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
         });
 
     }
+
+    ProjectCreatedEvent.ProjectCreatedEventHandler mProjectCreatedHandler = new ProjectCreatedEvent.ProjectCreatedEventHandler() {
+        @Override
+        public void onProjectCreatedEvent(ProjectCreatedEvent event) {
+            IfcClientProject project = event.getProject();
+
+            populateTree(treeContainer, project);
+            projectNameHeader.setTitle(project.getName());
+        }
+    };
 
     private void addMenu() {
         tabPanel1.add(MenuBuilder.getMenu());
@@ -217,17 +247,22 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
 
     private void populateTree(ScrollPanel panel) {
         Tree t = new Tree(App.Resources.INSTANCE);
-
-//        EnvironmentTreeItem b = new EnvironmentTreeItem(true, true);
-//
-//        b.setName("Tree");
-//        TreeItem root = new TreeItem(b);
         SpaceTreeItem c = new SpaceTreeItem();
 
         TreeItem root = new TreeItem(c);
         t.addItem(root);
         panel.add(t);
+    }
 
+    private void populateTree(ScrollPanel panel, IfcClientProject project) {
+        Tree t = new Tree(App.Resources.INSTANCE);
+
+        SpaceTreeItem c = new SpaceTreeItem();
+        c.setName(project.getName());
+        c.setNetArea((project.getMaxArea() + project.getMinArea()) / 2);
+        TreeItem root = new TreeItem(c);
+        t.addItem(root);
+        panel.add(t);
     }
 
 //    public void refreshSpaces() {
@@ -314,6 +349,12 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
     @Override
     public void onResize() {
         resizeScrollPanel();
+    }
+
+    public void setProjectName(String selectedProject) {
+        projectName = selectedProject;
+       // projectNameHeader.setTitle(selectedProject);
+        projectNameHeader.setInnerText(selectedProject);
     }
 
 

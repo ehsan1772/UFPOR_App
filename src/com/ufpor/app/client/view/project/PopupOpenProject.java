@@ -32,6 +32,7 @@ public class PopupOpenProject extends PopupBase {
 
     public PopupOpenProject(LoginInfo loginInfo) {
         super(loginInfo);
+        setTitle("Open Project");
     }
 
     @Override
@@ -66,6 +67,7 @@ public class PopupOpenProject extends PopupBase {
 //        event.setValue(selectedProject);
 //        App.getInjector().getSimpleEventBus().fireEvent(event);
         HomeView.projectName = selectedProject;
+        HomeView.instance.setProjectName(selectedProject);
         host.closePopupBase();
 
         EnvironmentService.App.getInstance().getProjectString(selectedProject, new AsyncCallback<String>() {

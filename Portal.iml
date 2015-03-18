@@ -40,8 +40,8 @@
     <orderEntry type="library" scope="PROVIDED" name="AppEngine Dev 1.9.12" level="application_server_libraries" />
     <orderEntry type="library" name="v2" level="project" />
     <orderEntry type="library" name="gwt-user (2)" level="project" />
-    <orderEntry type="library" name="com.google.guava:guava-gwt:18.0" level="project" />
     <orderEntry type="library" name="AppEngine API" level="project" />
     <orderEntry type="library" name="gwt-user" level="project" />
+    <orderEntry type="library" name="com.google.guava:guava-gwt:18.0" level="project" />
   </component>
 </module>

@@ -105,14 +105,6 @@ public class ProjectPresenter implements ProjectPresenterI, FullPopUpView.Presen
         projectView1.getThirdTextBoxL().addKeyUpHandler(minAreaChanged);
         projectView1.getLongTextBoxL().addKeyUpHandler(longNameChanged);
 
-        int number = (int) (Math.random() * 100000);
-
-        String name = "Test " + number;
-
-        ((TextBox) projectView1.getFirstTextBoxL()).setText("Test " + number);
-        ((TextBox) projectView1.getSecondTextBoxL()).setText("1200");
-        ((TextBox) projectView1.getThirdTextBoxL()).setText("1000");
-        ((TextArea) projectView1.getLongTextBoxL()).setText("Test Long " + number);
 
         projectView2.setFirstTextBoxTitleL("Length Unit");
         projectView2.setSecondTextBoxTitleL("Area Unit");
@@ -135,9 +127,22 @@ public class ProjectPresenter implements ProjectPresenterI, FullPopUpView.Presen
         projectView2.getSecondListBoxL().setSelectedIndex(vals.indexOf(IfcClientSIUnit.IfcSIUnitName.SQUARE_METRE.name()));
         projectView2.getThirdListBoxL().setSelectedIndex(vals.indexOf(IfcClientSIUnit.IfcSIUnitName.CUBIC_METRE.name()));
 
-        setTestValues(project, name);
+        IfcClientSIUnit.IfcSIUnitName unitName1 = IfcClientSIUnit.IfcSIUnitName.valueOf(projectView2.getFirstListBoxLText());
+        IfcClientSIUnit lengthUnit = new IfcClientSIUnit(IfcClientNamedUnit.IfcUnitEnum.LENGTHUNIT, null, unitName1);
+        project.getUnitsInContext().addUnit(lengthUnit);
+
+
+        IfcClientSIUnit.IfcSIUnitName unitName2 = IfcClientSIUnit.IfcSIUnitName.valueOf(projectView2.getSecondListBoxLText());
+        IfcClientSIUnit areaUnit = new IfcClientSIUnit(IfcClientNamedUnit.IfcUnitEnum.AREAUNIT, null, unitName2);
+        project.getUnitsInContext().addUnit(areaUnit);
+
+        IfcClientSIUnit.IfcSIUnitName unitName3 = IfcClientSIUnit.IfcSIUnitName.valueOf(projectView2.getThirdListBoxLText());
+        IfcClientSIUnit volumeUnit = new IfcClientSIUnit(IfcClientNamedUnit.IfcUnitEnum.VOLUMEUNIT, null, unitName3);
+        project.getUnitsInContext().addUnit(volumeUnit);
+       // setTestValues(project);
 
     }
+
 
     @Override
     public void setProjectName(String name) {
@@ -191,24 +196,21 @@ public class ProjectPresenter implements ProjectPresenterI, FullPopUpView.Presen
         int i = 3;
     }
 
-    public void setTestValues(IfcClientProject project, String name) {
+    public void setTestValues(IfcClientProject project) {
+        int number = (int) (Math.random() * 100000);
+
+        String name = "Test " + number;
+
+        ((TextBox) projectView1.getFirstTextBoxL()).setText("Test " + number);
+        ((TextBox) projectView1.getSecondTextBoxL()).setText("1200");
+        ((TextBox) projectView1.getThirdTextBoxL()).setText("1000");
+        ((TextArea) projectView1.getLongTextBoxL()).setText("Test Long " + number);
+
         project.setName(name);
         project.setMaxArea(1200);
         project.setMinArea(1000);
         project.setLongName(new IfcClientLabel(name + "Long"));
 
-        IfcClientSIUnit.IfcSIUnitName unitName1 = IfcClientSIUnit.IfcSIUnitName.valueOf(projectView2.getFirstListBoxLText());
-        IfcClientSIUnit lengthUnit = new IfcClientSIUnit(IfcClientNamedUnit.IfcUnitEnum.LENGTHUNIT, null, unitName1);
-        project.getUnitsInContext().addUnit(lengthUnit);
-
-
-        IfcClientSIUnit.IfcSIUnitName unitName2 = IfcClientSIUnit.IfcSIUnitName.valueOf(projectView2.getSecondListBoxLText());
-        IfcClientSIUnit areaUnit = new IfcClientSIUnit(IfcClientNamedUnit.IfcUnitEnum.AREAUNIT, null, unitName2);
-        project.getUnitsInContext().addUnit(areaUnit);
-
-        IfcClientSIUnit.IfcSIUnitName unitName3 = IfcClientSIUnit.IfcSIUnitName.valueOf(projectView2.getThirdListBoxLText());
-        IfcClientSIUnit volumeUnit = new IfcClientSIUnit(IfcClientNamedUnit.IfcUnitEnum.VOLUMEUNIT, null, unitName3);
-        project.getUnitsInContext().addUnit(volumeUnit);
     }
 
 

@@ -8,6 +8,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Widget;
 import com.ufpor.app.client.App;
 import com.ufpor.app.client.LoginInfo;
+import com.ufpor.app.client.eventbus.ProjectCreatedEvent;
 import com.ufpor.app.client.eventbus.ServerResultEvent;
 import com.ufpor.app.client.presenter.ProjectPresenter;
 import com.ufpor.app.client.service.EnvironmentService;
@@ -31,6 +32,9 @@ public class PopupGeneral extends PopupBase  {
 
     public PopupGeneral(LoginInfo loginInfo) {
         super(loginInfo);
+        setTitle("New Project");
+        copyButton.setVisible(false);
+        delete.setVisible(false);
     }
 
     @Override
@@ -50,13 +54,18 @@ public class PopupGeneral extends PopupBase  {
         EnvironmentService.App.getInstance().addProject(project, new AsyncCallback<List<String>>() {
             @Override
             public void onFailure(Throwable caught) {
-
+                host.closePopupBase();
             }
 
             @Override
             public void onSuccess(List<String> result) {
                 ServerResultEvent event = new ServerResultEvent(result.get(0));
+                ProjectCreatedEvent event2 = new ProjectCreatedEvent(project);
+
                 App.getInjector().getSimpleEventBus().fireEvent(event);
+                App.getInjector().getSimpleEventBus().fireEvent(event2);
+
+
                 HomeView.projectName = project.getName();
                 host.closePopupBase();
             }

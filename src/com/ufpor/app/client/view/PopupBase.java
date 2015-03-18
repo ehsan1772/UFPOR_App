@@ -31,14 +31,14 @@ public class PopupBase extends Composite {
     public TabLayoutPanel panel;
     @UiField
     public Image save;
-//    @UiField
-//    public Image cancel;
     @UiField
     public Label title;
     @UiField
     public Image closeButton;
     @UiField
     public Image delete;
+    @UiField
+    public Image copyButton;
 
     @Inject
     private EnvironmentGeneral envGeneral;
@@ -141,6 +141,10 @@ public class PopupBase extends Composite {
 
     public static interface PopupBaseHost {
         public void closePopupBase();
+    }
+
+    public void setTitle(String title) {
+        this.title.setText(title);
     }
 
 }
