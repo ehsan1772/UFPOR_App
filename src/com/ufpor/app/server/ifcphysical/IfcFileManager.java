@@ -90,6 +90,7 @@ public class IfcFileManager implements IfcFileManagerI {
     public void reset() {
         objectsBiMap = HashBiMap.create();
         counter = 0;
+        fileWriter = new IfcFileWriter();
     }
 
     @Override

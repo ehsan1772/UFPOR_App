@@ -8,15 +8,16 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.ufpor.app.client.NotLoggedInException;
 import com.ufpor.app.client.service.EnvironmentService;
 import com.ufpor.app.client.view.EnvironmentDM;
-import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.server.ifcphysical.IfcFileManager;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
 import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
 import com.ufpor.app.shared.ifcclient.type.IfcClientSpaceType;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecProject;
-import com.ufpor.app.shared.ifcdeckernel.IfcDecUnitAssignment;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
-import com.ufpor.app.shared.ifcdeckernel.property.*;
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecProperty;
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySet;
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySetDefinition;
+import com.ufpor.app.shared.ifcdeckernel.property.IfcDecUnit;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecConstraint;
 import com.ufpor.app.shared.ifcdeckernel.type.IfcDecSpaceType;
 
@@ -110,19 +111,18 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
     }
 
     @Override
-    public List<String> addProject(IfcClientProject project) throws NotLoggedInException {
+    public List<String> addProject(IfcClientProject ifcClientProject) throws NotLoggedInException {
         checkLoggedIn();
 
-        IfcDecProject pr = IfcDecProject.getInstance(project);
+        IfcDecProject project = IfcDecProject.getInstance(ifcClientProject);
 
-        String ifcFile;
-        Key key;
+        String ifcFile = null;
 
-        pr.prepareDataForStore(null);
-        pr.prepareDataForStoreIfcDecContext(null);
+        project.prepareDataForStore(null);
+        project.prepareDataForStoreIfcDecContext(null);
         PersistenceManager pm = getPersistenceManager();
         try {
-            pm.makePersistent(pr);
+            pm.makePersistent(project);
         } catch (Exception exception) {
             LOG.log(Level.SEVERE, exception.getMessage());
         }
@@ -130,63 +130,13 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
             pm.close();
         }
 
-        String res = getProjectIfcString2(pr.getName());
-
-
-        ArrayList<String> finalResult = new ArrayList<String>();
-        String header = Constants.getHeader(pr.getLongName().getValue(), pr.getName(), pr.getUser().getNickname(),pr.getUser().getEmail(), pr.getUser().getAuthDomain());
-        LOG.log(Level.INFO, "Header is: " + header);
-
-
-        Constants costant = Constants.getInstance();
-        costant.getProject(pr, finalResult, this);
-
-        ifcFile = Constants.getIfcFile(header, finalResult, this);
-        LOG.log(Level.INFO, "The file is:\n " + ifcFile);
-
-        PersistenceManager pm2 = getPersistenceManager();
-        List<IfcDecProject> projects = null;
-        IfcDecProject finalOutCome = null;
-        ArrayList<IfcDecUnit> units = null;
-        IfcDecUnit unit = null;
-        ArrayList<IfcDecConstraint> constratints = null;
-        try {
-            Query q = pm2.newQuery(IfcDecProject.class, "user == u");
-            q.declareParameters("com.google.appengine.api.users.User u");
-            projects = (List<IfcDecProject>) q.execute(getUser());
-            finalOutCome = projects.get(projects.size() - 1);
-            finalOutCome.prepareDataForClient(null);
-            finalOutCome.prepareDataForClientIfcDecContext(null);
-            IfcDecElementQuantity defin = (IfcDecElementQuantity) finalOutCome.getIsDefinedBy().get(0);
-            //max area
-
-            IfcDecUnitAssignment assignment = finalOutCome.getUnitsInContext();
-
-            key = finalOutCome.getKey();
-            Constants costant2 = Constants.getInstance();
-            costant2.reset();
-            ArrayList<String> finalResult2 = new ArrayList<String>();
-            String header2 = Constants.getHeader(finalOutCome);
-            LOG.log(Level.INFO, "Header is: \n" + header2);
-
-            costant2.getProject(finalOutCome, finalResult2, this);
-            String ifcFile2 = Constants.getIfcFile(header2, finalResult2, this);
-            LOG.log(Level.INFO, "The file is:\n " + ifcFile2);
-
-        } catch (Exception exception) {
-            LOG.log(Level.SEVERE, exception.getMessage());
-            exception.printStackTrace();
-        }
-        finally {
-            pm2.close();
-        }
-
         ArrayList<String> retunrvalue = new ArrayList<String>();
-        retunrvalue.add(ifcFile);
+        retunrvalue.add(getProjectIfcString2(project.getName()));
         return retunrvalue;
     }
 
-//    private String getProjectIfcString() {
+//this is the old method!! without using the ifc file manager
+//    private String getProjectIfcString(String name) {
 //        PersistenceManager pm2 = getPersistenceManager();
 //        List<IfcDecProject> projects = null;
 //        IfcDecProject finalOutCome = null;
@@ -195,9 +145,10 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
 //        String ifcFile2 = null;
 //        ArrayList<IfcDecConstraint> constratints = null;
 //        try {
-//            Query q = pm2.newQuery(IfcDecProject.class, "user == u");
-//            q.declareParameters("com.google.appengine.api.users.User u");
-//            projects = (List<IfcDecProject>) q.execute(getUser());
+//            Query q = pm2.newQuery(IfcDecProject.class, "nameText == name && user == u");
+//            q.declareParameters("java.lang.String name, com.google.appengine.api.users.User u");
+//            projects = (List<IfcDecProject>) q.execute(name, getUser());
+//
 //            finalOutCome = projects.get(projects.size() - 1);
 //            finalOutCome.prepareDataForClient(null);
 //            finalOutCome.prepareDataForClientIfcDecContext(null);
@@ -207,13 +158,12 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
 //            IfcDecUnitAssignment assignment = finalOutCome.getUnitsInContext();
 //
 //            Constants costant2 = Constants.getInstance();
-//            costant2.reset();
 //            ArrayList<String> finalResult2 = new ArrayList<String>();
 //            String header2 = Constants.getHeader(finalOutCome);
 //            LOG.log(Level.INFO, "Header is: \n" + header2);
 //
 //            costant2.getProject(finalOutCome, finalResult2, this);
-//            ifcFile2 = Constants.getIfcFile(header2, finalResult2, this);
+//            ifcFile2 = Constants.getIfcFile(header2, finalResult2);
 //            LOG.log(Level.INFO, "The file is:\n " + ifcFile2);
 //
 //        } catch (Exception exception) {
@@ -226,47 +176,6 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
 //
 //        return ifcFile2;
 //    }
-
-    private String getProjectIfcString(String name) {
-        PersistenceManager pm2 = getPersistenceManager();
-        List<IfcDecProject> projects = null;
-        IfcDecProject finalOutCome = null;
-        ArrayList<IfcDecUnit> units = null;
-        IfcDecUnit unit = null;
-        String ifcFile2 = null;
-        ArrayList<IfcDecConstraint> constratints = null;
-        try {
-            Query q = pm2.newQuery(IfcDecProject.class, "nameText == name && user == u");
-            q.declareParameters("java.lang.String name, com.google.appengine.api.users.User u");
-            projects = (List<IfcDecProject>) q.execute(name, getUser());
-
-            finalOutCome = projects.get(projects.size() - 1);
-            finalOutCome.prepareDataForClient(null);
-            finalOutCome.prepareDataForClientIfcDecContext(null);
-            IfcDecElementQuantity defin = (IfcDecElementQuantity) finalOutCome.getIsDefinedBy().get(0);
-            //max area
-
-            IfcDecUnitAssignment assignment = finalOutCome.getUnitsInContext();
-
-            Constants costant2 = Constants.getInstance();
-            ArrayList<String> finalResult2 = new ArrayList<String>();
-            String header2 = Constants.getHeader(finalOutCome);
-            LOG.log(Level.INFO, "Header is: \n" + header2);
-
-            costant2.getProject(finalOutCome, finalResult2, this);
-            ifcFile2 = Constants.getIfcFile(header2, finalResult2, this);
-            LOG.log(Level.INFO, "The file is:\n " + ifcFile2);
-
-        } catch (Exception exception) {
-            LOG.log(Level.SEVERE, exception.getMessage());
-            exception.printStackTrace();
-        }
-        finally {
-            pm2.close();
-        }
-
-        return ifcFile2;
-    }
 
     private String getProjectIfcString2(String name) {
         PersistenceManager pm2 = getPersistenceManager();
@@ -372,7 +281,7 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         }
 
         ArrayList<String> reult = new ArrayList<String>();
-        reult.add(getProjectIfcString(projectName));
+        reult.add(getProjectIfcString2(projectName));
 
         getProjectIfcString2(projectName);
         return reult;

@@ -62,7 +62,14 @@ public class Constants {
     private final static IFCComparator COMPARATOR = new IFCComparator();
     private ArrayList<String> mFile;
 
-    public static String getIfcFile(String header, ArrayList<String> lines, EnvironmentServiceImpl service) {
+    /**
+     * gets an collection of IFC items and an ifc header and combines them all into one string
+     *
+     * @param header the ifc header
+     * @param lines all the lines in the ifc file
+     * @return A string representing the ifc file
+     */
+    public static String getIfcFile(String header, ArrayList<String> lines) {
         Collections.sort(lines, COMPARATOR);
         String result = header;
         for (String line : lines) {
@@ -82,7 +89,7 @@ public class Constants {
 
     public void reset() {
         this.mItemCounter = 0;
-        this.mFile = new ArrayList<String>();
+        this.mFile = new ArrayList<>();
     }
 
     public static String getHeader(IfcDecProject project) {
