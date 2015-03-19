@@ -14,9 +14,6 @@ import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
 import com.ufpor.app.shared.ifcclient.type.IfcClientSpaceType;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecProject;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
-import com.ufpor.app.shared.ifcdeckernel.property.IfcDecProperty;
-import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySet;
-import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySetDefinition;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecUnit;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecConstraint;
 import com.ufpor.app.shared.ifcdeckernel.type.IfcDecSpaceType;
@@ -252,33 +249,33 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
 
         addSpaceTypeToTheProject(decSpaceType.getKey(), projectName);
 
-        List<IfcDecSpaceType> spaceTypes = null;
-        IfcDecSpaceType spaceTypeResult = null;
-        PersistenceManager pm2 = getPersistenceManager();
-        try {
-
-            Query q = pm2.newQuery(IfcDecSpaceType.class);
-            spaceTypes = (List<IfcDecSpaceType>) q.execute();
-            spaceTypeResult = spaceTypes.get(spaceTypes.size() - 1);
-            spaceTypeResult.prepareDataForClientIfcDecContext(null);
-
-            IfcDecPropertySetDefinition prop = spaceTypeResult.getHasProperties().get(0);
-            if (prop instanceof IfcDecPropertySet) {
-                ArrayList<IfcDecProperty> pr = ((IfcDecPropertySet) prop).getProperties();
-               // String n1 = pr.get(0).getName();
-                String n2 = pr.get(1).getIfcString();
-                String n3 = pr.get(2).getIfcString();
-                String n4 = pr.get(3).getIfcString();
-                int i = 0;
-            }
-
-        } catch (Exception exception) {
-            LOG.log(Level.SEVERE, exception.getMessage());
-            exception.printStackTrace();
-        }
-        finally {
-            pm2.close();
-        }
+//        List<IfcDecSpaceType> spaceTypes = null;
+//        IfcDecSpaceType spaceTypeResult = null;
+//        PersistenceManager pm2 = getPersistenceManager();
+//        try {
+//
+//            Query q = pm2.newQuery(IfcDecSpaceType.class);
+//            spaceTypes = (List<IfcDecSpaceType>) q.execute();
+//            spaceTypeResult = spaceTypes.get(spaceTypes.size() - 1);
+//            spaceTypeResult.prepareDataForClientIfcDecContext(null);
+//
+//            IfcDecPropertySetDefinition prop = spaceTypeResult.getHasProperties().get(0);
+//            if (prop instanceof IfcDecPropertySet) {
+//                ArrayList<IfcDecProperty> pr = ((IfcDecPropertySet) prop).getProperties();
+//               // String n1 = pr.get(0).getName();
+//                String n2 = pr.get(1).getIfcString();
+//                String n3 = pr.get(2).getIfcString();
+//                String n4 = pr.get(3).getIfcString();
+//                int i = 0;
+//            }
+//
+//        } catch (Exception exception) {
+//            LOG.log(Level.SEVERE, exception.getMessage());
+//            exception.printStackTrace();
+//        }
+//        finally {
+//            pm2.close();
+//        }
 
         ArrayList<String> reult = new ArrayList<String>();
         reult.add(getProjectIfcString2(projectName));
