@@ -30,6 +30,8 @@
 
     <!--Adding GIN (dependency injection system).                   -->
     <inherits name="com.google.gwt.inject.Inject"/>
+    <inherits name="com.google.gwt.junit.JUnit"/>
+    <!--    <inherits name="com.google.gwt.junit.JUnit"/>   -->
 
     <!-- Specify the app servlets.                   -->
     <servlet path="/EnvironmentService" class="com.ufpor.app.server.EnvironmentServiceImpl"/>
