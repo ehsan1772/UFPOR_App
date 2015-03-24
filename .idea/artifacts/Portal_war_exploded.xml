@@ -12,7 +12,6 @@
           <element id="file-copy" path="$USER_HOME$/Development/gwt-2.6.1/gwt-servlet.jar" />
           <element id="library" level="project" name="v2" />
           <element id="library" level="project" name="AppEngine API" />
-          <element id="library" level="application" name="junit-4.12" />
           <element id="library" level="project" name="javassist-3.15.0.GA" />
           <element id="library" level="project" name="fest-assert-core-2.0m10" />
           <element id="library" level="project" name="slf4j-1.7" />
