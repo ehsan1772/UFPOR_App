@@ -38,7 +38,7 @@ public interface EnvironmentService extends RemoteService {
 
     public List<EnvironmentDM> getEnvironments() throws NotLoggedInException;
 
-    public List<String> addProject(IfcClientProject project) throws NotLoggedInException;
+    public List<String> addProject(IfcClientProject project, boolean isTest) throws NotLoggedInException;
 
     public List<String> addSpaceType(IfcClientSpaceType spaceType, String projectName) throws NotLoggedInException;
 

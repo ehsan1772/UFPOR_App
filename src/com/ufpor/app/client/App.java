@@ -12,6 +12,7 @@ import com.ufpor.app.client.dependency.UFPORGinjector;
 import com.ufpor.app.client.eventbus.MenuEvent;
 import com.ufpor.app.client.service.LoginService;
 import com.ufpor.app.client.service.LoginServiceAsync;
+import com.ufpor.app.client.view.HomeView;
 import com.ufpor.app.client.view.PopupBase;
 import com.ufpor.app.client.view.Welcome;
 import com.ufpor.app.client.view.project.PopupGeneral;
@@ -24,22 +25,43 @@ import java.util.Map;
  * Entry point classes define <code>onModuleLoad()</code>
  */
 public class App implements EntryPoint, PopupBase.PopupBaseHost {
-  //  public static UFPORGinjector injector;
+    //  public static UFPORGinjector injector;
     public final static UFPORGinjector injector = GWT.create(UFPORGinjector.class);
+    //a memory cache
+    private static Map<String, Object> cache;
     private VerticalPanel loginPanel;
     private Label loginLabel;
     private Anchor signInLink;
     private LoginInfo loginInfo;
+    public static App app;
+
+    public PopupPanel getPopup() {
+        return popup;
+    }
+
     @Inject
     private PopupPanel popup;
     @Inject
     private PopupBase popUpBase;
     @Inject
     private PopupGeneral popUpGeneral;
+    private HomeView mHomeView;
 
-    //a memory cache
-    private static Map<String, Object> cache;
+    public static Object getCache(String key) {
+        return cache.get(key);
+    }
 
+    public static void addToCache(String key, Object object) {
+        cache.put(key, object);
+    }
+
+    public static UFPORGinjector getInjector() {
+        return injector;
+    }
+
+    public HomeView getmHomeView() {
+        return mHomeView;
+    }
 
     private void initializeTheLoginPanel() {
         loginPanel = new VerticalPanel();
@@ -50,7 +72,8 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
 
     @Override
     public void onModuleLoad() {
-     //   Resources.INSTANCE.ensureInjected();
+        app = this;
+        //   Resources.INSTANCE.ensureInjected();
         loginInfo = injector.getLoginInfo();
         // Check login status using login service.
         LoginServiceAsync loginService = LoginService.App.getInstance();
@@ -97,14 +120,6 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
 
     }
 
-    public static Object getCache(String key) {
-        return cache.get(key);
-    }
-
-    public static void addToCache(String key, Object object) {
-        cache.put(key, object);
-    }
-
     private void openProject(String value) {
 
     }
@@ -145,10 +160,9 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
         popup.center();
     }
 
-
     private void loadApplication(LoginInfo loginInfo) {
-        Composite view = injector.getHomeView();
-        RootLayoutPanel.get().add(view);
+        mHomeView = injector.getHomeView();
+        RootLayoutPanel.get().add(mHomeView);
     }
 
     private void loadLogin() {
@@ -160,10 +174,6 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
         RootPanel.get().add(loginPanel);
     }
 
-    public static UFPORGinjector getInjector() {
-        return injector;
-    }
-
     @Override
     public void closePopupBase() {
         popup.removeFromParent();
@@ -172,6 +182,7 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
     public interface Resources extends ClientBundle, Tree.Resources {
 
         public static final Resources INSTANCE = GWT.create(Resources.class);
+
         @Source("com/ufpor/app/public/image/logo.png")
         ImageResource submitButtonIcon();
 
@@ -223,7 +234,6 @@ public class App implements EntryPoint, PopupBase.PopupBaseHost {
         @Source("com/ufpor/app/public/image/minus.png")
         ImageResource treeOpen();
     }
-
 
 
 }

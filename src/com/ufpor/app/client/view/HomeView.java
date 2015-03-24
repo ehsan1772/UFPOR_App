@@ -38,8 +38,8 @@ import java.util.logging.Logger;
  */
 public class HomeView extends Composite implements PopupBase.PopupBaseHost, ResizingSplitLayoutPanel.ResizeListener {
 
-    public static HomeView instance;
     public static final String SPACE_TYPE = "space_type";
+    public static HomeView instance;
     //TODO fix this!
     public static String projectName;
     private static HomeViewUiBinder ourUiBinder = GWT.create(HomeViewUiBinder.class);
@@ -56,7 +56,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
     //  HTML southLabel;
     @UiField
     Image logo;
-    @UiField (provided = true)
+    @UiField(provided = true)
     ResizingSplitLayoutPanel mainPanel;
     @UiField
     HTMLPanel tabPanel1;
@@ -78,6 +78,15 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
     DecoratedTabPanel southPanel;
     @UiField
     Image addButton;
+    ProjectCreatedEvent.ProjectCreatedEventHandler mProjectCreatedHandler = new ProjectCreatedEvent.ProjectCreatedEventHandler() {
+        @Override
+        public void onProjectCreatedEvent(ProjectCreatedEvent event) {
+            IfcClientProject project = event.getProject();
+
+            populateTree(treeContainer, project);
+            projectNameHeader.setTitle(project.getName());
+        }
+    };
     private HTML ifcFileHtml;
     private LoginInfo loginInfo;
     @Inject
@@ -94,8 +103,8 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
         public void onServerResultEvent(ServerResultEvent event) {
             resizeScrollPanel();
             GWT.log("Here goes the result:" + event.getResult());
-         //   ifcPanel.remove(ifcFileHtml);
-         //   ifcFileHtml = new HTML(new SafeHtmlBuilder().appendEscapedLines(event.getResult()).toSafeHtml());
+            //   ifcPanel.remove(ifcFileHtml);
+            //   ifcFileHtml = new HTML(new SafeHtmlBuilder().appendEscapedLines(event.getResult()).toSafeHtml());
 
             SafeHtml content = new SafeHtmlBuilder().appendEscapedLines(event.getResult()).toSafeHtml();
 
@@ -104,36 +113,23 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
 //                ifcPanel.getElement().removeAllChildren();
 //            }
 
-         //   GWT.log("Here is the html content " +southLabel.getHTML());
-         //   ifcPanel.add(ifcFileHtml);
+            //   GWT.log("Here is the html content " +southLabel.getHTML());
+            //   ifcPanel.add(ifcFileHtml);
 
             ifcFileHtml.setHTML(content);
 
 
-
-         //   ifcPanel.add(new HTML("ISO-10303-21;<br>HEADER;<br>FILE_DESCRIPTION (<br>        ('long name'),<br>        '2;1');<br>FILE_NAME (<br>        'two.ifc',<br>        '2015/03/18T08:35:46',<br>        ('test@example.com'),<br>        ('test@example.com'),<br>        'UFPOR APP 0.0.1',<br>        'UFPOR DEMO beta',<br>        'gmail.com');<br>FILE_SCHEMA (('IFC4RC4'));<br>ENDSEC;<br>DATA;<br>#13= IFCPROJECT ('3$blSXKSfEG805zIk$zyrt',  $, two,    $,     $, long name,       $,        $,       #14);<br>#14= IFCUNITASSIGNMENT(#15,#16,#17);<br>#15= IFCSIUNIT(*, .AREAUNIT,   $, .SQUARE_METRE);<br>#16= IFCSIUNIT(*, .VOLUMEUNIT,   $, .CUBIC_METRE);<br>#17= IFCSIUNIT(*, .LENGTHUNIT,   $, .METRE);<br>#18= IFCQUANTITYAREA(NetFloorArea,  *,   *,  0.0,     *);<br>#19= IFCMETRIC ('MAX_VALUE', null, HARD, null,     *,      *,       *, LESSTHANOREQUALTO,      null,     2000.0,           *);<br>#20= IFCMETRIC ('MIN_VALUE', null, HARD, null,     *,      *,       *, GREATERTHANOREQUALTO,      null,     1000.0,           *);<br>#21= IFCOBJECTIVE ('null',  *, HARD,    *,     *,      *,       *,  (19,20), LOGICALAND, REQUIREMENT,           *);<br>#22= IFCRESOURCECONSTRAINTRELATIONSHIP(*,  *,  21,   18);<br>#23= IFCELEMENTQUANTITY(3keBxne$D3OfejUUlko$q7,  *,   *,    *,     *,   (18));<br>#24= IFCRELDEFINESBYPROPERTIES(0OJ5H6RWbB6AWAE2HxWqA$,  *,   *,    *,  (13),     23);<br>ENDSEC;<br>END-ISO-10303-21;"));
+            //   ifcPanel.add(new HTML("ISO-10303-21;<br>HEADER;<br>FILE_DESCRIPTION (<br>        ('long name'),<br>        '2;1');<br>FILE_NAME (<br>        'two.ifc',<br>        '2015/03/18T08:35:46',<br>        ('test@example.com'),<br>        ('test@example.com'),<br>        'UFPOR APP 0.0.1',<br>        'UFPOR DEMO beta',<br>        'gmail.com');<br>FILE_SCHEMA (('IFC4RC4'));<br>ENDSEC;<br>DATA;<br>#13= IFCPROJECT ('3$blSXKSfEG805zIk$zyrt',  $, two,    $,     $, long name,       $,        $,       #14);<br>#14= IFCUNITASSIGNMENT(#15,#16,#17);<br>#15= IFCSIUNIT(*, .AREAUNIT,   $, .SQUARE_METRE);<br>#16= IFCSIUNIT(*, .VOLUMEUNIT,   $, .CUBIC_METRE);<br>#17= IFCSIUNIT(*, .LENGTHUNIT,   $, .METRE);<br>#18= IFCQUANTITYAREA(NetFloorArea,  *,   *,  0.0,     *);<br>#19= IFCMETRIC ('MAX_VALUE', null, HARD, null,     *,      *,       *, LESSTHANOREQUALTO,      null,     2000.0,           *);<br>#20= IFCMETRIC ('MIN_VALUE', null, HARD, null,     *,      *,       *, GREATERTHANOREQUALTO,      null,     1000.0,           *);<br>#21= IFCOBJECTIVE ('null',  *, HARD,    *,     *,      *,       *,  (19,20), LOGICALAND, REQUIREMENT,           *);<br>#22= IFCRESOURCECONSTRAINTRELATIONSHIP(*,  *,  21,   18);<br>#23= IFCELEMENTQUANTITY(3keBxne$D3OfejUUlko$q7,  *,   *,    *,     *,   (18));<br>#24= IFCRELDEFINESBYPROPERTIES(0OJ5H6RWbB6AWAE2HxWqA$,  *,   *,    *,  (13),     23);<br>ENDSEC;<br>END-ISO-10303-21;"));
 
             loadSpaceTypes(projectName);
         }
     };
 
-    /**
-     * resizing the scrollable panels to always use the right height
-     */
-    private void resizeScrollPanel() {
-        int height = RootLayoutPanel.get().getOffsetHeight() - ifcPanel.getAbsoluteTop();
-
-        ifcPanel.getElement().getStyle().setHeight(height, Style.Unit.PX);
-
-
-        if (treeContainer != null) {
-            int h = southPanel.getAbsoluteTop() - center.getAbsoluteTop();
-            //setting the padding
-            treeContainer.setHeight(String.valueOf(h - 40) + "px");
-        }
+    public MenuBar getMenu() {
+        return mMenue;
     }
 
-
+    private MenuBar mMenue;
     private MenuEvent.MenuEventHandler mMenuEventHandler = new MenuEvent.MenuEventHandler() {
         @Override
         public void onMenuEvent(MenuEvent event) {
@@ -164,6 +160,22 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
         ifcPanel.add(ifcFileHtml);
         instance = this;
 
+    }
+
+    /**
+     * resizing the scrollable panels to always use the right height
+     */
+    private void resizeScrollPanel() {
+        int height = RootLayoutPanel.get().getOffsetHeight() - ifcPanel.getAbsoluteTop();
+
+        ifcPanel.getElement().getStyle().setHeight(height, Style.Unit.PX);
+
+
+        if (treeContainer != null) {
+            int h = southPanel.getAbsoluteTop() - center.getAbsoluteTop();
+            //setting the padding
+            treeContainer.setHeight(String.valueOf(h - 40) + "px");
+        }
     }
 
     @Override
@@ -203,18 +215,9 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
 
     }
 
-    ProjectCreatedEvent.ProjectCreatedEventHandler mProjectCreatedHandler = new ProjectCreatedEvent.ProjectCreatedEventHandler() {
-        @Override
-        public void onProjectCreatedEvent(ProjectCreatedEvent event) {
-            IfcClientProject project = event.getProject();
-
-            populateTree(treeContainer, project);
-            projectNameHeader.setTitle(project.getName());
-        }
-    };
-
     private void addMenu() {
-        tabPanel1.add(MenuBuilder.getMenu());
+        mMenue = MenuBuilder.getMenu();
+        tabPanel1.add(mMenue);
 
         //finding the div that contains the menu, it's the last child
         Element menuParent = (Element) tabPanel1.getElement().getChild(tabPanel1.getElement().getChildCount() - 1);
@@ -353,7 +356,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
 
     public void setProjectName(String selectedProject) {
         projectName = selectedProject;
-       // projectNameHeader.setTitle(selectedProject);
+        // projectNameHeader.setTitle(selectedProject);
         projectNameHeader.setInnerText(selectedProject);
     }
 

@@ -35,6 +35,9 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
     private static final Logger LOG = Logger.getLogger(EnvironmentServiceImpl.class.getName());
     private static final PersistenceManagerFactory PMF = JDOHelper.getPersistenceManagerFactory("transactions-optional");
     private static final String TAG = EnvironmentServiceImpl.class.getSimpleName();
+    private boolean isTest = false;
+    private final static User TestUser = new User("test@test.com", "test.com", "test", "com");
+
 
     @Override
     public void addEnvironment(String name, String area) throws NotLoggedInException {
@@ -108,10 +111,15 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
     }
 
     @Override
-    public List<String> addProject(IfcClientProject ifcClientProject) throws NotLoggedInException {
-        checkLoggedIn();
+    public List<String> addProject(IfcClientProject ifcClientProject, boolean isTest) throws NotLoggedInException {
+        this.isTest = isTest;
+        if (!isTest) {
+            checkLoggedIn();
+        }
 
-        IfcDecProject project = IfcDecProject.getInstance(ifcClientProject);
+        IfcDecProject project;
+
+        project = IfcDecProject.getInstance(ifcClientProject, getUser());
 
         String ifcFile = null;
 
@@ -422,8 +430,11 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
     }
 
     private User getUser() {
-        UserService userService = UserServiceFactory.getUserService();
-        return userService.getCurrentUser();
+        if (!isTest) {
+            UserService userService = UserServiceFactory.getUserService();
+            return userService.getCurrentUser();
+        }
+        return TestUser;
     }
 
     private static PersistenceManager getPersistenceManager() {
@@ -448,4 +459,5 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         }
         return (String[]) names.toArray(new String[0]);
     }
+
 }

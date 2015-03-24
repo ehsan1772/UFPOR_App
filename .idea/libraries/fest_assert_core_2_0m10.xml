@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="fest-assert-core-2.0m10">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/fest-assert-core-2.0m10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/fest-util-1.2.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

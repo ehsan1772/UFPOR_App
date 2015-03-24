@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="fest-util-1.2.2-sources">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/fest-util-1.2.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

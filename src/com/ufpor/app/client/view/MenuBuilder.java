@@ -15,23 +15,26 @@ public class MenuBuilder {
     public static MenuBar getMenu() {
 
         // Create a menu bar
-        MenuBar menu = new MenuBar();
+        UfporMenu menu = new UfporMenu();
         menu.setAutoOpen(true);
         menu.setWidth("100px");
-      //  menu.setAnimationEnabled(true);
+        //  menu.setAnimationEnabled(true);
 
         // Create the file menu
         MenuBar fileMenu = new MenuBar(true);
-      //  fileMenu.setAnimationEnabled(true);
+        //  fileMenu.setAnimationEnabled(true);
 
-        fileMenu.addItem("New", new Command() {
+        MenuItem newMenue = new MenuItem("New", new Command() {
             @Override
             public void execute() {
-             MenuEvent event = new MenuEvent(MenuEvent.Event.NEW);
-             App.getInjector().getSimpleEventBus().fireEvent(event);
+                MenuEvent event = new MenuEvent(MenuEvent.Event.NEW);
+                App.getInjector().getSimpleEventBus().fireEvent(event);
 
             }
         });
+
+        fileMenu.addItem(newMenue);
+        menu.setNewProject(newMenue);
         fileMenu.addItem("Open", new Command() {
             @Override
             public void execute() {
@@ -49,7 +52,7 @@ public class MenuBuilder {
 
         // Create the edit menu
         MenuBar editMenu = new MenuBar(true);
-      //  editMenu.setAnimationEnabled(true);
+        //  editMenu.setAnimationEnabled(true);
 
         editMenu.addItem("Undo", new Command() {
             @Override
@@ -81,6 +84,7 @@ public class MenuBuilder {
                 showSelectedMenuItem("Paste");
             }
         });
+
 
         // Create the insert menu
         MenuBar insertMenu = new MenuBar(true);
@@ -117,7 +121,10 @@ public class MenuBuilder {
             }
         });
 
-        menu.addItem(new MenuItem("File", fileMenu));
+        MenuItem file = new MenuItem("File", fileMenu);
+        menu.addItem(file);
+
+        menu.setFile(file);
         menu.addSeparator();
         menu.addItem(new MenuItem("Edit", editMenu));
         menu.addSeparator();
@@ -130,7 +137,55 @@ public class MenuBuilder {
         return menu;
     }
 
-    private static void showSelectedMenuItem(String menuItemName){
+    private static void showSelectedMenuItem(String menuItemName) {
         Window.alert("Menu item: " + menuItemName + " selected");
+    }
+
+    public static class UfporMenu extends MenuBar {
+        private MenuItem file;
+        private MenuItem newProject;
+        private MenuItem edit;
+        private MenuItem insert;
+        private MenuItem mFormat;
+
+        public MenuItem getNewProject() {
+            return newProject;
+        }
+
+        public void setNewProject(MenuItem newProject) {
+            this.newProject = newProject;
+        }
+
+        public MenuItem getmFormat() {
+            return mFormat;
+        }
+
+        public void setmFormat(MenuItem mFormat) {
+            this.mFormat = mFormat;
+        }
+
+        public MenuItem getInsert() {
+            return insert;
+        }
+
+        public void setInsert(MenuItem insert) {
+            this.insert = insert;
+        }
+
+        public MenuItem getEdit() {
+            return edit;
+        }
+
+        public void setEdit(MenuItem edit) {
+            this.edit = edit;
+        }
+
+        public MenuItem getFile() {
+            return file;
+        }
+
+        public void setFile(MenuItem file) {
+            this.file = file;
+        }
     }
 }

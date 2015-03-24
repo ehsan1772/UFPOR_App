@@ -22,7 +22,7 @@ public interface EnvironmentServiceAsync {
 
     void addIfcDecSpace(IfcClientSpace space, AsyncCallback<Void> async);
 
-    void addProject(IfcClientProject project, AsyncCallback<List<String>> async);
+    void addProject(IfcClientProject project, boolean isTest, AsyncCallback<List<String>> async);
 
     void addSpaceType(IfcClientSpaceType spaceType, String projectName, AsyncCallback<List<String>> async);
 

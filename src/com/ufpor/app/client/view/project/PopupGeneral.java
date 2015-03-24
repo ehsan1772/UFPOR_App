@@ -51,7 +51,7 @@ public class PopupGeneral extends PopupBase  {
     @UiHandler("save")
     public void handleClick1(ClickEvent e) {
 
-        EnvironmentService.App.getInstance().addProject(project, new AsyncCallback<List<String>>() {
+        EnvironmentService.App.getInstance().addProject(project, false, new AsyncCallback<List<String>>() {
             @Override
             public void onFailure(Throwable caught) {
                 host.closePopupBase();

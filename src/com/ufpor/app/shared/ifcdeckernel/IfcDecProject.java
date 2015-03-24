@@ -80,12 +80,14 @@ public class IfcDecProject extends IfcDecContext {
     }
 
 
-    public static IfcDecProject getInstance(IfcClientProject project) {
+    public static IfcDecProject getInstance(IfcClientProject project, User user) {
         //Getting GUID
         String guid = GuidCompressor.getNewIfcGloballyUniqueId();
 
         //Getting the User
-        User user = UserServiceFactory.getUserService().getCurrentUser();
+        if (user == null) {
+            user = UserServiceFactory.getUserService().getCurrentUser();
+        }
 
         IfcDecProject result = new IfcDecProject(guid, user);
 
