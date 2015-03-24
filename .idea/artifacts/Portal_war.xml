@@ -12,6 +12,15 @@
           <element id="library" level="project" name="com.google.appengine:appengine-testing:1.9.12" />
           <element id="library" level="project" name="com.google.appengine:appengine-api-labs:1.9.12" />
           <element id="library" level="project" name="com.google.appengine:appengine-api-stubs:1.9.12" />
+          <element id="file-copy" path="$USER_HOME$/Development/appengine-java-sdk-1.9.18/lib/testing/appengine-testing.jar" />
+          <element id="file-copy" path="$USER_HOME$/Development/appengine-java-sdk-1.9.18/lib/impl/google_sql.jar" />
+          <element id="file-copy" path="$USER_HOME$/Development/appengine-java-sdk-1.9.18/lib/impl/appengine-api.jar" />
+          <element id="file-copy" path="$USER_HOME$/Development/appengine-java-sdk-1.9.18/lib/impl/appengine-api-labs.jar" />
+          <element id="file-copy" path="$USER_HOME$/Development/appengine-java-sdk-1.9.18/lib/impl/appengine-api-stubs.jar" />
+          <element id="file-copy" path="$USER_HOME$/Development/appengine-java-sdk-1.9.18/lib/impl/appengine-local-runtime.jar" />
+        </element>
+        <element id="directory" name="classes">
+          <element id="library" level="application" name="appengine-java-sdk-1.9" />
         </element>
       </element>
     </root>

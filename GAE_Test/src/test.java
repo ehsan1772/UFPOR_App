@@ -19,11 +19,10 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import java.util.List;
 
-
 /**
- * Created by Ehsan Barekati on 3/19/15.
+ * Created by Ehsan Barekati on 3/24/15.
  */
-public class ProjectTestUnit extends TestCase {
+public class test extends TestCase {
     private final static User TestUser = new User("test@test.com", "test.com", "test", "com");
 
     private static final PersistenceManagerFactory PMF = JDOHelper.getPersistenceManagerFactory("transactions-optional");
@@ -48,7 +47,7 @@ public class ProjectTestUnit extends TestCase {
 
         assertNotNull(decProject);
         assertEquals(clientProject.getName(), decProject.getName());
-      //  assertEquals(clientProject.getName(), decProject.getDescription());
+        //  assertEquals(clientProject.getName(), decProject.getDescription());
 
 
 
@@ -62,12 +61,12 @@ public class ProjectTestUnit extends TestCase {
             public void onFailure(Throwable caught) {
                 caught.printStackTrace();
 
-              //  Assert.fail(caught.getMessage());
+                //  Assert.fail(caught.getMessage());
             }
 
             @Override
             public void onSuccess(List<String> result) {
-          //      Log.debug("Result is: " +  String.valueOf(result == null));
+                //      Log.debug("Result is: " +  String.valueOf(result == null));
                 String ifc = result.get(0);
                 listener.onResult(ifc);
 
@@ -91,7 +90,7 @@ public class ProjectTestUnit extends TestCase {
             return project;
         } catch (Exception exception) {
             return null;
-          //  LOG.log(Level.SEVERE, exception.getMessage());
+            //  LOG.log(Level.SEVERE, exception.getMessage());
         }
         finally {
             pm.close();
@@ -116,7 +115,7 @@ public class ProjectTestUnit extends TestCase {
         testProject.setMaxArea(400);
         testProject.setName("TestProject");
         testProject.setLongName(new IfcClientLabel("TestProject" + " Long"));
-       // testProject.setTotalGrossArea();
+        // testProject.setTotalGrossArea();
 
         IfcClientSIUnit.IfcSIUnitName unitName1 = IfcClientSIUnit.IfcSIUnitName.valueOf("METRE");
         IfcClientSIUnit lengthUnit = new IfcClientSIUnit(IfcClientNamedUnit.IfcUnitEnum.LENGTHUNIT, null, unitName1);
@@ -139,3 +138,4 @@ public class ProjectTestUnit extends TestCase {
         public void onResult(Object object);
     }
 }
+
