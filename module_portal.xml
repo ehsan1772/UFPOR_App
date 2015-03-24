@@ -20,18 +20,36 @@
     <path refid="library.appengine_dev_1.9.12.classpath"/>
     <path refid="library.v2.classpath"/>
     <path refid="library.gwt-user_(2).classpath"/>
-    <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
     <path refid="library.appengine_api.classpath"/>
     <path refid="library.gwt-user.classpath"/>
+    <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
+    <path refid="library.javassist-3.15.0.ga.classpath"/>
+    <path refid="library.slf4j-1.7.classpath"/>
+    <pathelement location="${basedir}/lib/slf4j-1.7.10/slf4j-nop-1.7.10.jar"/>
+    <path refid="library.fest-assert-core-2.0m10.classpath"/>
+    <path refid="library.fest-util-1.2.2-sources.classpath"/>
+    <path refid="library.com.googlecode.gwt-test-utils:gwt-test-utils:0.46.classpath"/>
+    <path refid="library.appengine-java-sdk-1.9.classpath"/>
+    <pathelement location="${basedir}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${basedir}/lib/junit-4.12.jar"/>
   </path>
   
   <path id="portal.runtime.production.module.classpath">
     <pathelement location="${portal.output.dir}"/>
     <path refid="library.v2.classpath"/>
     <path refid="library.gwt-user_(2).classpath"/>
-    <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
     <path refid="library.appengine_api.classpath"/>
     <path refid="library.gwt-user.classpath"/>
+    <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
+    <path refid="library.javassist-3.15.0.ga.classpath"/>
+    <path refid="library.slf4j-1.7.classpath"/>
+    <pathelement location="${basedir}/lib/slf4j-1.7.10/slf4j-nop-1.7.10.jar"/>
+    <path refid="library.fest-assert-core-2.0m10.classpath"/>
+    <path refid="library.fest-util-1.2.2-sources.classpath"/>
+    <path refid="library.com.googlecode.gwt-test-utils:gwt-test-utils:0.46.classpath"/>
+    <path refid="library.appengine-java-sdk-1.9.classpath"/>
+    <pathelement location="${basedir}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${basedir}/lib/junit-4.12.jar"/>
   </path>
   
   <path id="portal.module.classpath">
@@ -40,9 +58,18 @@
     <path refid="library.appengine_dev_1.9.12.classpath"/>
     <path refid="library.v2.classpath"/>
     <path refid="library.gwt-user_(2).classpath"/>
-    <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
     <path refid="library.appengine_api.classpath"/>
     <path refid="library.gwt-user.classpath"/>
+    <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
+    <path refid="library.javassist-3.15.0.ga.classpath"/>
+    <path refid="library.slf4j-1.7.classpath"/>
+    <pathelement location="${basedir}/lib/slf4j-1.7.10/slf4j-nop-1.7.10.jar"/>
+    <path refid="library.fest-assert-core-2.0m10.classpath"/>
+    <path refid="library.fest-util-1.2.2-sources.classpath"/>
+    <path refid="library.com.googlecode.gwt-test-utils:gwt-test-utils:0.46.classpath"/>
+    <path refid="library.appengine-java-sdk-1.9.classpath"/>
+    <pathelement location="${basedir}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${basedir}/lib/junit-4.12.jar"/>
   </path>
   
   <path id="portal.runtime.module.classpath">
@@ -51,9 +78,18 @@
     <path refid="library.appengine_dev_1.9.12.classpath"/>
     <path refid="library.v2.classpath"/>
     <path refid="library.gwt-user_(2).classpath"/>
-    <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
     <path refid="library.appengine_api.classpath"/>
     <path refid="library.gwt-user.classpath"/>
+    <path refid="library.com.google.guava:guava-gwt:18.0.classpath"/>
+    <path refid="library.javassist-3.15.0.ga.classpath"/>
+    <path refid="library.slf4j-1.7.classpath"/>
+    <pathelement location="${basedir}/lib/slf4j-1.7.10/slf4j-nop-1.7.10.jar"/>
+    <path refid="library.fest-assert-core-2.0m10.classpath"/>
+    <path refid="library.fest-util-1.2.2-sources.classpath"/>
+    <path refid="library.com.googlecode.gwt-test-utils:gwt-test-utils:0.46.classpath"/>
+    <path refid="library.appengine-java-sdk-1.9.classpath"/>
+    <pathelement location="${basedir}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${basedir}/lib/junit-4.12.jar"/>
   </path>
   
   
@@ -68,6 +104,12 @@
   <path id="portal.module.sourcepath">
     <dirset dir="${module.portal.basedir}">
       <include name="src"/>
+    </dirset>
+  </path>
+  
+  <path id="portal.module.test.sourcepath">
+    <dirset dir="${module.portal.basedir}">
+      <include name="test"/>
     </dirset>
   </path>
   
@@ -92,7 +134,23 @@
     </copy>
   </target>
   
-  <target name="compile.module.portal.tests" depends="register.custom.compilers,compile.module.portal.production" description="compile module Portal; test classes" unless="skip.tests"/>
+  <target name="compile.module.portal.tests" depends="register.custom.compilers,compile.module.portal.production" description="compile module Portal; test classes" unless="skip.tests">
+    <mkdir dir="${portal.testoutput.dir}"/>
+    <javac2 destdir="${portal.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.portal}/javac">
+      <compilerarg line="${compiler.args.portal}"/>
+      <bootclasspath refid="portal.module.bootclasspath"/>
+      <classpath refid="portal.module.classpath"/>
+      <src refid="portal.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.portal"/>
+    </javac2>
+    
+    <copy todir="${portal.testoutput.dir}">
+      <fileset dir="${module.portal.basedir}/test">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
   
   <target name="clean.module.portal" description="cleanup module">
     <delete dir="${portal.output.dir}"/>
@@ -108,6 +166,19 @@
       <classpath>
         <pathelement location="${gwt.sdk.home.portal}/gwt-dev.jar"/>
         <path refid="portal.module.sourcepath"/>
+        <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/guestbook/src"/>
+        <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/helloorm/src"/>
+        <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/helloorm2/src"/>
+        <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/helloservers/src"/>
+        <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/helloxmpp/src"/>
+        <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/jdoexamples/src"/>
+        <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/mandelbrot/src"/>
+        <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/mediastore/src"/>
+        <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/new_project_template/src"/>
+        <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/shardedcounter/src"/>
+        <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/sticky/src"/>
+        <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/taskengine/src"/>
+        <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/taskqueueexamples/src"/>
         <path refid="portal.module.classpath"/>
       </classpath>
       <arg value="-logLevel"/>

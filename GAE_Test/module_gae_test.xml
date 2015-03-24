@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_gae_test" default="compile.module.gae_test">
+  <dirname property="module.gae_test.basedir" file="${ant.file.module_gae_test}"/>
+  
+  <property name="module.jdk.home.gae_test" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.gae_test" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.gae_test" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.gae_test" value="-encoding UTF-8 -source 1.7 -target 1.7 ${compiler.args}"/>
+  
+  <property name="gae_test.output.dir" value="${module.gae_test.basedir}/../out/production/GAE_Test"/>
+  <property name="gae_test.testoutput.dir" value="${module.gae_test.basedir}/../out/test/GAE_Test"/>
+  
+  <path id="gae_test.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="gae_test.module.production.classpath">
+    <path refid="${module.jdk.classpath.gae_test}"/>
+    <path refid="library.appengine_api.classpath"/>
+    <path refid="library.com.google.appengine:appengine-api-labs:1.9.12.classpath"/>
+    <path refid="library.com.google.appengine:appengine-api-stubs:1.9.12.classpath"/>
+    <path refid="library.com.google.appengine:appengine-testing:1.9.12.classpath"/>
+    <pathelement location="${idea.home}/lib/junit.jar"/>
+    <pathelement location="${portal.output.dir}"/>
+    <path refid="library.gwt-user_(2).classpath"/>
+    <path refid="library.v2.classpath"/>
+    <pathelement location="${basedir}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${basedir}/lib/junit-4.12.jar"/>
+    <path refid="library.appengine-java-sdk-1.9.classpath"/>
+  </path>
+  
+  <path id="gae_test.runtime.production.module.classpath">
+    <pathelement location="${gae_test.output.dir}"/>
+    <path refid="library.appengine_api.classpath"/>
+    <path refid="library.com.google.appengine:appengine-api-labs:1.9.12.classpath"/>
+    <path refid="library.com.google.appengine:appengine-api-stubs:1.9.12.classpath"/>
+    <path refid="library.com.google.appengine:appengine-testing:1.9.12.classpath"/>
+    <pathelement location="${idea.home}/lib/junit.jar"/>
+    <path refid="portal.runtime.production.module.classpath"/>
+    <path refid="library.gwt-user_(2).classpath"/>
+    <path refid="library.v2.classpath"/>
+    <pathelement location="${basedir}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${basedir}/lib/junit-4.12.jar"/>
+    <path refid="library.appengine-java-sdk-1.9.classpath"/>
+  </path>
+  
+  <path id="gae_test.module.classpath">
+    <path refid="${module.jdk.classpath.gae_test}"/>
+    <pathelement location="${gae_test.output.dir}"/>
+    <path refid="library.appengine_api.classpath"/>
+    <path refid="library.com.google.appengine:appengine-api-labs:1.9.12.classpath"/>
+    <path refid="library.com.google.appengine:appengine-api-stubs:1.9.12.classpath"/>
+    <path refid="library.com.google.appengine:appengine-testing:1.9.12.classpath"/>
+    <pathelement location="${idea.home}/lib/junit.jar"/>
+    <pathelement location="${portal.testoutput.dir}"/>
+    <pathelement location="${portal.output.dir}"/>
+    <path refid="library.gwt-user_(2).classpath"/>
+    <path refid="library.v2.classpath"/>
+    <pathelement location="${basedir}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${basedir}/lib/junit-4.12.jar"/>
+    <path refid="library.appengine-java-sdk-1.9.classpath"/>
+  </path>
+  
+  <path id="gae_test.runtime.module.classpath">
+    <pathelement location="${gae_test.testoutput.dir}"/>
+    <pathelement location="${gae_test.output.dir}"/>
+    <path refid="library.appengine_api.classpath"/>
+    <path refid="library.com.google.appengine:appengine-api-labs:1.9.12.classpath"/>
+    <path refid="library.com.google.appengine:appengine-api-stubs:1.9.12.classpath"/>
+    <path refid="library.com.google.appengine:appengine-testing:1.9.12.classpath"/>
+    <pathelement location="${idea.home}/lib/junit.jar"/>
+    <path refid="portal.runtime.module.classpath"/>
+    <path refid="library.gwt-user_(2).classpath"/>
+    <path refid="library.v2.classpath"/>
+    <pathelement location="${basedir}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${basedir}/lib/junit-4.12.jar"/>
+    <path refid="library.appengine-java-sdk-1.9.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.gae_test">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.gae_test">
+    <patternset refid="excluded.from.module.gae_test"/>
+  </patternset>
+  
+  <path id="gae_test.module.sourcepath">
+    <dirset dir="${module.gae_test.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.gae_test" depends="compile.module.gae_test.production,compile.module.gae_test.tests" description="Compile module GAE_Test"/>
+  
+  <target name="compile.module.gae_test.production" depends="register.custom.compilers,compile.module.portal" description="Compile module GAE_Test; production classes">
+    <mkdir dir="${gae_test.output.dir}"/>
+    <javac2 destdir="${gae_test.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.gae_test}/javac">
+      <compilerarg line="${compiler.args.gae_test}"/>
+      <bootclasspath refid="gae_test.module.bootclasspath"/>
+      <classpath refid="gae_test.module.production.classpath"/>
+      <src refid="gae_test.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.gae_test"/>
+    </javac2>
+    
+    <copy todir="${gae_test.output.dir}">
+      <fileset dir="${module.gae_test.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.gae_test.tests" depends="register.custom.compilers,compile.module.gae_test.production" description="compile module GAE_Test; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.gae_test" description="cleanup module">
+    <delete dir="${gae_test.output.dir}"/>
+    <delete dir="${gae_test.testoutput.dir}"/>
+  </target>
+</project>
