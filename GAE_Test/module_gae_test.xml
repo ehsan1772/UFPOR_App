@@ -77,11 +77,7 @@
     <pathelement location="${basedir}/lib/junit-4.12.jar"/>
     <path refid="library.appengine-java-sdk-1.9.classpath"/>
   </path>
-  
-  
-  <patternset id="excluded.from.module.gae_test">
-    <patternset refid="ignored.files"/>
-  </patternset>
+
   
   <patternset id="excluded.from.compilation.gae_test">
     <patternset refid="excluded.from.module.gae_test"/>
