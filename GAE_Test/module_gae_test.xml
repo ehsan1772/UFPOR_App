@@ -78,11 +78,6 @@
     <path refid="library.appengine-java-sdk-1.9.classpath"/>
   </path>
 
-  
-  <patternset id="excluded.from.compilation.gae_test">
-    <patternset refid="excluded.from.module.gae_test"/>
-  </patternset>
-  
   <path id="gae_test.module.sourcepath">
     <dirset dir="${module.gae_test.basedir}">
       <include name="src"/>
