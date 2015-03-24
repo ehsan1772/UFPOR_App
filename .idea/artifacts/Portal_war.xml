@@ -17,6 +17,7 @@
           <element id="file-copy" path="$USER_HOME$/Development/appengine-java-sdk-1.9.18/lib/impl/appengine-api-labs.jar" />
           <element id="file-copy" path="$USER_HOME$/Development/appengine-java-sdk-1.9.18/lib/impl/appengine-api-stubs.jar" />
           <element id="file-copy" path="$USER_HOME$/Development/appengine-java-sdk-1.9.18/lib/impl/appengine-local-runtime.jar" />
+          <element id="library" level="application" name="junit:junit:4.12" />
         </element>
         <element id="directory" name="classes">
           <element id="library" level="application" name="appengine-java-sdk-1.9" />
