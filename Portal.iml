@@ -61,7 +61,7 @@
     <orderEntry type="library" name="fest-assert-core-2.0m10" level="project" />
     <orderEntry type="library" name="fest-util-1.2.2-sources" level="project" />
     <orderEntry type="library" name="com.googlecode.gwt-test-utils:gwt-test-utils:0.46" level="project" />
-    <orderEntry type="library" name="appengine-java-sdk-1.9" level="application" />
+    <orderEntry type="library" name="appengine-java-sdk-1.9" level="project" />
     <orderEntry type="module-library">
       <library name="junit:junit:4.12" type="repository">
         <properties maven-id="junit:junit:4.12" />

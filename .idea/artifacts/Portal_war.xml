@@ -20,7 +20,7 @@
           <element id="library" level="application" name="junit:junit:4.12" />
         </element>
         <element id="directory" name="classes">
-          <element id="library" level="application" name="appengine-java-sdk-1.9" />
+          <element id="library" level="project" name="appengine-java-sdk-1.9" />
         </element>
       </element>
     </root>
