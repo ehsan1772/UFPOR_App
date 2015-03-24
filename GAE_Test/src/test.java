@@ -47,7 +47,7 @@ public class test extends TestCase {
 
         assertNotNull(decProject);
         assertEquals(clientProject.getName(), decProject.getName());
-        //  assertEquals(clientProject.getName(), decProject.getDescription());
+          assertEquals(clientProject.getName(), decProject.getDescription());
 
 
 
