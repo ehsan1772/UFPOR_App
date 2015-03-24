@@ -103,7 +103,7 @@ public class test extends TestCase {
             List<String> result = service.addProject(project, true);
             String ifc = result.get(0);
             listener.onResult(ifc);
-        } catch (NotLoggedInException e) {
+        } catch (NotLoggedInException e)  {
             e.printStackTrace();
         }
 

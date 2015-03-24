@@ -3,15 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-
     <servlet>
         <servlet-name>com.ufpor.app.app LoginService</servlet-name>
         <servlet-class>com.ufpor.app.server.LoginServiceImpl</servlet-class>
     </servlet>
+
     <servlet>
         <servlet-name>com.ufpor.app.app EnvironmentService</servlet-name>
         <servlet-class>com.ufpor.app.server.EnvironmentServiceImpl</servlet-class>
     </servlet>
+
     <servlet>
         <servlet-name>com.ufpor.app.app IfcGUID</servlet-name>
         <servlet-class>com.ufpor.app.server.IfcGUIDImpl</servlet-class>
@@ -21,12 +22,18 @@
         <servlet-name>com.ufpor.app.app LoginService</servlet-name>
         <url-pattern>/app/LoginService</url-pattern>
     </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>com.ufpor.app.app EnvironmentService</servlet-name>
         <url-pattern>/app/EnvironmentService</url-pattern>
     </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>com.ufpor.app.app IfcGUID</servlet-name>
         <url-pattern>/app/IfcGUID</url-pattern>
     </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>app.html</welcome-file>
+    </welcome-file-list>
 </web-app>
