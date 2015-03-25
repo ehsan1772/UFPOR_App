@@ -17,6 +17,7 @@ import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecUnit;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecConstraint;
 import com.ufpor.app.shared.ifcdeckernel.type.IfcDecSpaceType;
+import org.mortbay.log.Log;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
@@ -134,6 +135,8 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         finally {
             pm.close();
         }
+
+        Log.debug("Key is: " + project.getKey().getId());
 
         ArrayList<String> retunrvalue = new ArrayList<String>();
         retunrvalue.add(getProjectIfcString2(project.getName()));
