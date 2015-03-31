@@ -1,0 +1,92 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+    <ui:style>
+
+
+        .main {
+            width: 600px;
+            height: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 200px;
+        }
+
+        .right {
+            position: relative;
+
+            width: 200px;
+            height: 200px;
+            float: left;
+        }
+
+        .left {
+            position: relative;
+            padding: 20px;
+            width: 360px;
+            height: 160px;
+            float: left;
+        }
+
+        .button {
+            position: absolute;
+            bottom: 10px;
+            margin: 0px 20px 0px 40px;
+            padding: 10px 20px;
+            text-decoration: none;
+            cursor: pointer;
+            cursor: hand;
+            border: 0px;
+            font-size: small;
+            color: white;
+            font-family: 'Questrial', sans-serif;
+            background-color: #31A3D8;
+            border-radius: 5px;
+        }
+
+        .leftContainer {
+            position: absolute;
+            bottom: 5px;
+            width: 360px;
+            height: auto;
+        }
+
+        .image {
+            width: 200px;
+            height: 100px;
+            padding: 0px 400px 0px 0px;
+        }
+
+    </ui:style>
+    <g:HTMLPanel styleName="{style.main}">
+
+        <!--
+        <img class='{style.image}' src="https://raw.githubusercontent.com/ehsan1772/UFPOR_App/Cleaning/src/com/ufpor/app/public/image/logo.png"/>
+        -->
+
+        <div class='{style.left}'>
+
+            <div class='{style.leftContainer}'>
+
+                <h1>Howdy! Welcome to TARGET</h1>
+
+                <p>
+                    My name is Ehsan Barekati and I am the developer of Target. Target allows you to define an
+                    architectural program of requirements in IFC format. You can see how the IFC file is developed as
+                    you interact with the application. You can also download the IFC file at any time and import it into
+                    other BIM applications. Target will use your Google account to save your projects and settings.
+                    Enjoy!
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class='{style.right}'>
+            <a ui:field="button" class='{style.button}'>
+                Sign In
+            </a>
+        </div>
+
+    </g:HTMLPanel>
+</ui:UiBinder>

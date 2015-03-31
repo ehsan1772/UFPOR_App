@@ -41,7 +41,6 @@ public class SpaceCommonPropertySetBuilder extends PropertySetBuilder {
 
     public void setReferenceId(String id) {
         referenceIdValue.setNominalValue(new IfcClientText(id));
-
     }
 
 

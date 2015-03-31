@@ -16,18 +16,6 @@ import java.util.List;
  */
 @RemoteServiceRelativePath("EnvironmentService")
 public interface EnvironmentService extends RemoteService {
-    /**
-     * Utility/Convenience class.
-     * Use EnvironmentService.App.getInstance() to access static instance of EnvironmentServiceAsync
-     */
-    public static class App {
-        private static final EnvironmentServiceAsync ourInstance = (EnvironmentServiceAsync) GWT.create(EnvironmentService.class);
-
-        public static EnvironmentServiceAsync getInstance() {
-            return ourInstance;
-        }
-    }
-
     void addEnvironment(String name, String area) throws NotLoggedInException;
 
     void addIfcDecSpace(IfcClientSpace space) throws NotLoggedInException;
@@ -40,7 +28,13 @@ public interface EnvironmentService extends RemoteService {
 
     public List<String> addProject(IfcClientProject project, boolean isTest) throws NotLoggedInException;
 
+    public String addProjectForId(IfcClientProject project, boolean isTest) throws NotLoggedInException;
+
+    public String getIfcString(String projectkey, boolean isTest) throws NotLoggedInException;
+
     public List<String> addSpaceType(IfcClientSpaceType spaceType, String projectName) throws NotLoggedInException;
+
+    public String addSpaceType(IfcClientSpaceType spaceType, String projectKey, boolean isTest) throws NotLoggedInException;
 
     public List<String> getProjectsNames() throws NotLoggedInException;
 
@@ -49,5 +43,17 @@ public interface EnvironmentService extends RemoteService {
     public String getProjectString(String projectName);
 
     public void deleteProjectByName(String name);
+
+    /**
+     * Utility/Convenience class.
+     * Use EnvironmentService.App.getInstance() to access static instance of EnvironmentServiceAsync
+     */
+    public static class App {
+        private static final EnvironmentServiceAsync ourInstance = (EnvironmentServiceAsync) GWT.create(EnvironmentService.class);
+
+        public static EnvironmentServiceAsync getInstance() {
+            return ourInstance;
+        }
+    }
 
 }

@@ -1,6 +1,5 @@
 package com.ufpor.app.server.ifcphysical;
 
-import com.google.appengine.api.datastore.Key;
 import com.ufpor.app.client.NotLoggedInException;
 import com.ufpor.app.server.EnvironmentServiceImpl;
 import com.ufpor.app.server.GuidCompressor;
@@ -27,16 +26,16 @@ public class Constants {
     public final static String HEADER = "ISO-10303-21;\n" +
             "HEADER;\n" +
             "FILE_DESCRIPTION (\n" +
-            "        ('%1s'),\n" +
+            "        ('%1$s'),\n" +
             "        '2;1');\n" +
             "FILE_NAME (\n" +
-            "        '%2s.ifc',\n" +
-            "        '%3s',\n" +
-            "        ('%4s'),\n" +
-            "        ('%5s'),\n" +
+            "        '%2$s.ifc',\n" +
+            "        '%3$s',\n" +
+            "        ('%4$s'),\n" +
+            "        ('%5$s'),\n" +
             "        'UFPOR APP 0.0.1',\n" +
             "        'UFPOR DEMO beta',\n" +
-            "        '%6s');\n" +
+            "        '%6$s');\n" +
             "FILE_SCHEMA (('IFC4RC4'));\n" +
             "ENDSEC;\n" +
             "DATA;\n";
@@ -44,20 +43,20 @@ public class Constants {
     public final static String FOOTER = "ENDSEC;\n" +
             "END-ISO-10303-21;";
 
-    public final static String PROJECT = "IFCPROJECT ('%1s', %2s, %3s, %4s, %5s, %6s, %7s, %8s, %9s);";
-    public final static String IFCUNITASSIGNMENT = "IFCUNITASSIGNMENT(%1s);";
-    public final static String IFCSIUNIT = "IFCSIUNIT(%1s, %2s, %3s, %4s);";
-    public final static String IFCPROPERTYSINGLEVALUE = "IFCPROPERTYSINGLEVALUE(%1s, %2s, %3s, %4s);";
-    public final static String IFCELEMENTQUANTITY = "IFCELEMENTQUANTITY(%1s, %2s, %3s, %4s, %5s, %6s);";
-    public final static String IFCPROPERTYSET = "IFCPROPERTYSET(%1s, %2s, %3s, %4s, %5s);";
-    public final static String IFCQUANTITYAREA = "IFCQUANTITYAREA(%1s, %2s, %3s, %4s, %5s);";
-    public final static String IFCQUANTITYLENGTH = "IFCQUANTITYLENGTH(%1s, %2s, %3s, %4s, %5s);";
-    public final static String IFCRELDEFINESBYPROPERTIES =  "IFCRELDEFINESBYPROPERTIES(%1s, %2s, %3s, %4s, %5s, %6s);";
-    public final static String IFCSPACETYPE = "IFCSPACETYPE ('%1s', %2s, %3s, %4s, %5s, %6s, %7s, %8s, %9s, %10s, %11s);";
-    public final static String IFCMETRIC = "IFCMETRIC ('%1s', %2s, %3s, %4s, %5s, %6s, %7s, %8s, %9s, %10s, %11s);";
-    public final static String IFCOBJECTIVE = "IFCOBJECTIVE ('%1s', %2s, %3s, %4s, %5s, %6s, %7s, %8s, %9s, %10s, %11s);";
-    public static final String IFCRESOURCECONSTRAINTRELATIONSHIP = "IFCRESOURCECONSTRAINTRELATIONSHIP(%1s, %2s, %3s, %4s);";
-    public final static String IFCRELAGGREGATES = "IFCRELAGGREGATES(%1s, %2s, '%3s', '%4s', %5s, %6s);";
+    public final static String PROJECT = "IFCPROJECT ('%1$s', %2$s, %3$s, %4$s, %5$s, %6$s, %7$s, %8$s, %9$s);";
+    public final static String IFCUNITASSIGNMENT = "IFCUNITASSIGNMENT(%1$s);";
+    public final static String IFCSIUNIT = "IFCSIUNIT(%1$s, %2$s, %3$s, %4$s);";
+    public final static String IFCPROPERTYSINGLEVALUE = "IFCPROPERTYSINGLEVALUE(%1$s, %2$s, %3$s, %4$s);";
+    public final static String IFCELEMENTQUANTITY = "IFCELEMENTQUANTITY(%1s, %2$s, %3$s, %4$s, %5$s, %6$s);";
+    public final static String IFCPROPERTYSET = "IFCPROPERTYSET(%1$s, %2$s, %3$s, %4$s, %5$s);";
+    public final static String IFCQUANTITYAREA = "IFCQUANTITYAREA(%1$s, %2$s, %3$s, %4$s, %5$s);";
+    public final static String IFCQUANTITYLENGTH = "IFCQUANTITYLENGTH(%1$s, %2$s, %3$s, %4$s, %5$s);";
+    public final static String IFCRELDEFINESBYPROPERTIES =  "IFCRELDEFINESBYPROPERTIES(%1$s, %2$s, %3$s, %4$s, %5$s, %6$s);";
+    public final static String IFCSPACETYPE = "IFCSPACETYPE ('%1$s', %2$s, %3$s, %4$s, %5$s, %6$s, %7$s, %8$s, %9$s, %10$s, %11$s);";
+    public final static String IFCMETRIC = "IFCMETRIC ('%1$s', %2$s, %3$s, %4$s, %5$s, %6$s, %7$s, %8$s, %9$s, %10$s, %11$s);";
+    public final static String IFCOBJECTIVE = "IFCOBJECTIVE ('%1$s', %2$s, %3$s, %4$s, %5$s, %6$s, %7$s, %8$s, %9$s, %10$s, %11$s);";
+    public static final String IFCRESOURCECONSTRAINTRELATIONSHIP = "IFCRESOURCECONSTRAINTRELATIONSHIP(%1$s, %2$s, %3$s, %4$s);";
+    public final static String IFCRELAGGREGATES = "IFCRELAGGREGATES(%1$s, %2$s, '%3$s', '%4$s', %5$s, %6$s);";
 
     private final static IFCComparator COMPARATOR = new IFCComparator();
     private ArrayList<String> mFile;
@@ -156,7 +155,7 @@ public class Constants {
         return "#" + number;
     }
 
-    private void addSpaceTypesIfcString(Set<Key> spaceTypes, IfcDecProject project, EnvironmentServiceImpl service) {
+    private void addSpaceTypesIfcString(Set<String> spaceTypes, IfcDecProject project, EnvironmentServiceImpl service) {
         ArrayList<IfcDecSpaceType> spaces = null;
         try {
             spaces = service.getSpaceTypeByKey(project.getSpaceTypes());

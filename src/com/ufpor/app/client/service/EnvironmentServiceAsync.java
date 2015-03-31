@@ -1,5 +1,6 @@
 package com.ufpor.app.client.service;
 
+import com.google.appengine.api.datastore.Key;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.ufpor.app.client.view.EnvironmentDM;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
@@ -34,4 +35,9 @@ public interface EnvironmentServiceAsync {
 
     void deleteProjectByName(String name, AsyncCallback<Void> async);
 
+    void addProjectForId(IfcClientProject project, boolean isTest, AsyncCallback<String> async);
+
+    void getIfcString(String projectKey, boolean isTest, AsyncCallback<String> async);
+
+    void addSpaceType(IfcClientSpaceType spaceType, String projectKey, boolean isTest,AsyncCallback<String> async);
 }

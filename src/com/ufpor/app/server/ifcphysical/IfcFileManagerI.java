@@ -5,6 +5,7 @@ import com.google.appengine.repackaged.com.google.common.collect.BiMap;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecProject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 ;
 
@@ -42,7 +43,7 @@ public interface IfcFileManagerI {
      * @param objects
      * @return a string that represents all the object numbers
      */
-    String getNumberString(ArrayList<IfcFileObject> objects);
+    String getNumberString(List<IfcFileObject> objects);
 
     /**
      *

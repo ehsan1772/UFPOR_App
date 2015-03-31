@@ -10,7 +10,7 @@ import java.util.logging.Logger;
  */
 public class IfcRelAggregates extends IfcRelDecomposes {
     public final static String TAG = IfcRelAggregates.class.getSimpleName();
-    private static Logger logger = Logger.getLogger(TAG);
+    private static transient Logger logger = Logger.getLogger(TAG);
     private IfcObjectDefinition relatingObject;
     private List<IfcObjectDefinition> relatedObjects;
 
@@ -43,5 +43,6 @@ public class IfcRelAggregates extends IfcRelDecomposes {
         }
 
     }
+
 
 }

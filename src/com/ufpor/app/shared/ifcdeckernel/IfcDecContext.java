@@ -1,7 +1,9 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
-import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.*;
+import com.google.appengine.api.datastore.PostLoad;
+import com.google.appengine.api.datastore.PostLoadContext;
+import com.google.appengine.api.datastore.PrePut;
+import com.google.appengine.api.datastore.PutContext;
 import com.google.appengine.api.users.User;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
 import com.ufpor.app.shared.ifcdeckernel.property.*;
@@ -48,11 +50,11 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
     protected IfcDecUnitAssignment unitsInContext;
 
     @Persistent
-    private Set<com.google.appengine.api.datastore.Key> spaceTypes;
+    private Set<String> spaceTypes;
 
-    public void addSpaceType(Key key) {
+    public void addSpaceType(String key) {
         if (spaceTypes == null) {
-            spaceTypes = new HashSet<Key>();
+            spaceTypes = new HashSet<String>();
         }
         spaceTypes.add(key);
     }
@@ -73,11 +75,11 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
         return i;
     }
 
-    public Set<Key> getSpaceTypes() {
+    public Set<String> getSpaceTypes() {
         return spaceTypes;
     }
 
-    public void setSpaceTypes(Set<Key> spaceTypes) {
+    public void setSpaceTypes(Set<String> spaceTypes) {
         this.spaceTypes = spaceTypes;
     }
 

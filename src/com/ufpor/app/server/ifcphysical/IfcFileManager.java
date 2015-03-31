@@ -7,6 +7,7 @@ import com.ufpor.app.shared.ifcdeckernel.IfcDecProject;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -52,7 +53,7 @@ public class IfcFileManager implements IfcFileManagerI {
     }
 
     @Override
-    public String getNumberString(ArrayList<IfcFileObject> objects) {
+    public String getNumberString(List<IfcFileObject> objects) {
         StringBuilder result = new StringBuilder(objects.size() * 4);
         result.append("(");
 

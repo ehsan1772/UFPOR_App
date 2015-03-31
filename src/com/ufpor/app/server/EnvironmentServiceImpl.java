@@ -1,9 +1,9 @@
 package com.ufpor.app.server;
 
-import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
+import com.google.appengine.labs.repackaged.com.google.common.base.Strings;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.ufpor.app.client.NotLoggedInException;
 import com.ufpor.app.client.service.EnvironmentService;
@@ -136,11 +136,68 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
             pm.close();
         }
 
-        Log.debug("Key is: " + project.getKey().getId());
+        String key = project.getKey();
+
+        Log.debug("Key is: " + project.getKey());
 
         ArrayList<String> retunrvalue = new ArrayList<String>();
         retunrvalue.add(getProjectIfcString2(project.getName()));
         return retunrvalue;
+    }
+
+    @Override
+    public String addProjectForId(IfcClientProject ifcClientProject, boolean isTest) throws NotLoggedInException {
+        this.isTest = isTest;
+        if (!isTest) {
+            checkLoggedIn();
+        }
+
+        IfcDecProject project;
+
+        project = IfcDecProject.getInstance(ifcClientProject, getUser());
+
+        project.prepareDataForStore(null);
+        project.prepareDataForStoreIfcDecContext(null);
+        PersistenceManager pm = getPersistenceManager();
+        try {
+            pm.makePersistent(project);
+        } catch (Exception exception) {
+            LOG.log(Level.SEVERE, exception.getMessage());
+            return null;
+        }
+        finally {
+            pm.close();
+        }
+
+        String key = project.getKey();
+
+        return key;
+    }
+
+    @Override
+    public String getIfcString(String projectId, boolean isTest) throws NotLoggedInException {
+        PersistenceManager pm = getPersistenceManager();
+        IfcDecProject project;
+        String result = null;
+        try {
+            project = pm.getObjectById(IfcDecProject.class, projectId);
+
+            project.prepareDataForClient(null);
+            project.prepareDataForClientIfcDecContext(null);
+
+            String id = project.getGlobalId().getValue();
+
+            IfcFileManager.getInstance().setProject(project);
+            IfcFileManager.getInstance().GenerateTheFile();
+            result = IfcFileManager.getInstance().getStepFile();
+        } catch (Exception exception) {
+            LOG.log(Level.SEVERE, exception.getMessage());
+            exception.printStackTrace();
+        }
+        finally {
+            pm.close();
+        }
+        return result;
     }
 
 //this is the old method!! without using the ifc file manager
@@ -220,21 +277,35 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         return ifcFile2;
     }
 
-    private void addSpaceTypeToTheProject(Key spaceType, String projectName) {
-        PersistenceManager pm2 = getPersistenceManager();
+//    private void addSpaceTypeToTheProject(String spaceType, String projectName) {
+//        PersistenceManager pm2 = getPersistenceManager();
+//        try {
+//            Query q = pm2.newQuery(IfcDecProject.class, "nameText == name && user == u");
+//            q.declareParameters("java.lang.String name, com.google.appengine.api.users.User u");
+//            List<IfcDecProject> projects = (List<IfcDecProject>) q.execute( projectName, getUser());
+//            IfcDecProject finalOutCome = projects.get(projects.size() - 1);
+//       //     finalOutCome.removeAllTheSpaces();
+//            finalOutCome.addSpaceType(spaceType);
+//
+//        } catch (Exception exception) {
+//            LOG.log(Level.SEVERE, exception.getMessage());
+//        }
+//        finally {
+//            pm2.close();
+//        }
+//    }
+
+    private void addSpaceTypeToTheProject(String spaceType, String projectKey) {
+        PersistenceManager pm = getPersistenceManager();
         try {
-            Query q = pm2.newQuery(IfcDecProject.class, "nameText == name && user == u");
-            q.declareParameters("java.lang.String name, com.google.appengine.api.users.User u");
-            List<IfcDecProject> projects = (List<IfcDecProject>) q.execute( projectName, getUser());
-            IfcDecProject finalOutCome = projects.get(projects.size() - 1);
-       //     finalOutCome.removeAllTheSpaces();
-            finalOutCome.addSpaceType(spaceType);
+            IfcDecProject project = pm.getObjectById(IfcDecProject.class, projectKey);
+            project.addSpaceType(spaceType);
 
         } catch (Exception exception) {
             LOG.log(Level.SEVERE, exception.getMessage());
         }
         finally {
-            pm2.close();
+            pm.close();
         }
     }
 
@@ -296,6 +367,34 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
     }
 
     @Override
+    public String addSpaceType(IfcClientSpaceType spaceType, String projectKey, boolean isTest) throws NotLoggedInException {
+        if (!isTest) {
+            checkLoggedIn();
+        }
+
+        if (Strings.isNullOrEmpty(projectKey)) {
+            return null;
+        }
+
+        IfcDecSpaceType decSpaceType = IfcDecSpaceType.getInstance(spaceType);
+
+        decSpaceType.prepareDataForStoreIfcDecContext(null);
+        PersistenceManager pm = getPersistenceManager();
+        try {
+            pm.makePersistent(decSpaceType);
+        } catch (Exception exception) {
+            LOG.log(Level.SEVERE, exception.getMessage());
+            exception.printStackTrace();
+        }
+        finally {
+            pm.close();
+        }
+
+        addSpaceTypeToTheProject(decSpaceType.getKey(), projectKey);
+        return decSpaceType.getKey();
+    }
+
+    @Override
     public List<String> getProjectsNames() throws NotLoggedInException {
         PersistenceManager pm2 = getPersistenceManager();
         try {
@@ -331,7 +430,7 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
                 return null;
             }
 
-            Set<Key> spaceKeys = projects.get(projects.size() - 1).getSpaceTypes();
+            Set<String> spaceKeys = projects.get(projects.size() - 1).getSpaceTypes();
 
 
             Query spaceTypeQuery = pm2.newQuery(IfcDecSpaceType.class, "key == spaceKey");
@@ -341,7 +440,7 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
                 return null;
             }
 
-            for (Key key : spaceKeys) {
+            for (String key : spaceKeys) {
                 IfcDecSpaceType spaceType = ((List<IfcDecSpaceType>) spaceTypeQuery.execute(key)).get(0);
                 spaceType.prepareDataForClient(null);
                 spaceType.prepareDataForClientIfcDecContext(null);
@@ -385,11 +484,13 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
     }
 
 
-    public IfcDecSpaceType getSpaceTypeByKey(Key key) throws NotLoggedInException {
+    public IfcDecSpaceType getSpaceTypeByKey(String key) throws NotLoggedInException {
         PersistenceManager pm2 = getPersistenceManager();
         IfcDecSpaceType spaceTypeResult = null;
         try {
             spaceTypeResult = pm2.getObjectById(IfcDecSpaceType.class, key);
+            spaceTypeResult.prepareDataForClient(null);
+            spaceTypeResult.prepareDataForClientIfcDecContext(null);
 
         } catch (Exception exception) {
             LOG.log(Level.SEVERE, exception.getMessage());
@@ -402,14 +503,14 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         return spaceTypeResult;
     }
 
-    public static ArrayList<IfcDecSpaceType> getSpaceTypeByKey(Set<Key> keys) throws NotLoggedInException {
+    public static ArrayList<IfcDecSpaceType> getSpaceTypeByKey(Set<String> keys) throws NotLoggedInException {
         if (keys == null || keys.size() == 0) {
             return null;
         }
         PersistenceManager pm2 = getPersistenceManager();
         ArrayList<IfcDecSpaceType> spaceTypeResults = new ArrayList<IfcDecSpaceType>();
         try {
-            for (Key key : keys) {
+            for (String key : keys) {
                 IfcDecSpaceType spaceTypeResult = pm2.getObjectById(IfcDecSpaceType.class, key);
                 spaceTypeResult.prepareDataForClientIfcDecContext(null);
                 spaceTypeResults.add(spaceTypeResult);

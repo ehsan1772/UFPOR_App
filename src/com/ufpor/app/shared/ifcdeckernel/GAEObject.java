@@ -1,6 +1,5 @@
 package com.ufpor.app.shared.ifcdeckernel;
 
-import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.users.User;
 
 import javax.jdo.annotations.*;
@@ -14,7 +13,9 @@ import java.io.Serializable;
 public abstract class GAEObject implements Serializable {
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    protected Key key;
+    @Extension(vendorName = "datanucleus", key = "gae.encoded-pk", value = "true")
+
+    protected String key;
     @Persistent
     protected User user;
 
@@ -29,7 +30,7 @@ public abstract class GAEObject implements Serializable {
         return user;
     }
 
-    public Key getKey() {
+    public String getKey() {
         return key;
     }
 }

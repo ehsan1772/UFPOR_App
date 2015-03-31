@@ -119,7 +119,9 @@ public class IfcDecMetric extends IfcDecConstraint implements Serializable {
         String value = ((IfcDecValue) getDataValue()).getIfcString();
         String referencePath = "*";
 
-        return String.format(Constants.IFCMETRIC, name, description, grade, source, actor, creationTime, userDefined, benchMark, valueSource, value, referencePath);
+        String result = String.format(Constants.IFCMETRIC, name, description, grade, source, actor, creationTime, userDefined, benchMark, valueSource, value, referencePath);
+        return result;
+      //  return String.format(Constants.IFCMETRIC, name, description, grade, source, actor, creationTime, userDefined, benchMark, valueSource, value, referencePath);
     }
 
     @Override
