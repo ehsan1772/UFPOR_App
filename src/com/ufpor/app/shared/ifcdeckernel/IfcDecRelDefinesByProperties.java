@@ -10,7 +10,7 @@ import com.ufpor.app.server.ifcphysical.IfcFileObject;
  * Created by Ehsan Barekati on 12/16/14.
  */
 public class IfcDecRelDefinesByProperties<T extends IfcFileObject> extends IfcDecRelDefines {
-    public IfcDecRelDefinesByProperties(String GUID, User user, IfcFileObject owner) {
+    public IfcDecRelDefinesByProperties(String GUID, User user, IfcDecRoot owner) {
         super(GUID, user, owner);
     }
 

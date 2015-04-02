@@ -1,5 +1,6 @@
 package com.ufpor.app.shared.ifcdeckernel.type;
 
+import com.google.appengine.api.users.User;
 import com.ufpor.app.shared.ifcclient.type.IfcClientSpatialZoneType;
 
 import javax.jdo.annotations.Inheritance;
@@ -16,6 +17,10 @@ public class IfcDecSpatialZoneType extends IfcDecSpatialElementType {
     private IfcClientSpatialZoneType.IfcSpatialZoneType predefinedType;
     @Persistent
     private String longName;
+
+    public IfcDecSpatialZoneType(String guid, User user) {
+        super(guid, user);
+    }
 
     public IfcClientSpatialZoneType.IfcSpatialZoneType getPredefinedType() {
         return predefinedType;

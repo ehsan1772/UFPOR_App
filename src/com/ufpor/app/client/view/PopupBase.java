@@ -59,10 +59,6 @@ public class PopupBase extends Composite {
         addNewIfcSpace();
     }
 
-//    @UiHandler("delete")
-//    public void handleClick2(ClickEvent e) {
-//        addNewIfcSpace();
-//    }
 
     @UiHandler("delete")
     public void handleClick2(ClickEvent e) {
@@ -87,10 +83,6 @@ public class PopupBase extends Composite {
         });
     }
 
-//    @UiHandler("cancel")
-//    public void handleClick(ClickEvent e) {
-//        host.closePopupBase();
-//    }
 
     @UiHandler("closeButton")
     public void closeHandleClick(ClickEvent e) {
@@ -100,23 +92,6 @@ public class PopupBase extends Composite {
     @Override
     protected void initWidget(Widget widget) {
         super.initWidget(widget);
-//        envGeneral = new EnvironmentGeneral();
-//        panel.add(envGeneral, "General");
-//
-//        panel.add(new EnvironmentGrouping(), "Grouping");
-//
-//        EnvironmentGrouping adjacencies = new EnvironmentGrouping();
-//        adjacencies.setFirstTitle("Required Adjacencies");
-//        adjacencies.setSecondTitle("Avoid Adjacencies");
-//        panel.add(adjacencies, "Adjacencies");
-//
-//        EnvironmentActivity activity = new EnvironmentActivity();
-//        activity.setFirstTitle("Activities");
-//        activity.setSecondTitle("People");
-//        panel.add(activity, "Activities");
-//
-//        DataGridTest test = new DataGridTest();
-//        panel.add(test, "Requirements");
 
         spaceTypePresenter = new SpaceTypePresenter(new IfcClientSpaceType());
 
@@ -126,7 +101,6 @@ public class PopupBase extends Composite {
 
 
         panel.selectTab(0);
-   //     test.redraw();
     }
     protected void initWidgetSuper(Widget widget) {
         super.initWidget(widget);

@@ -307,6 +307,8 @@ public class SpaceTypePresenter implements SpaceTypePresenterI, FullPopUpView.Pr
     private Widget createGeneral() {
         FullPopUpView general = new FullPopUpView(this);
 
+        general.setTitle("New Space Type");
+
         //name
         general.setTextBoxTitle_L1("Name");
         general.getTextBox_L1().addKeyUpHandler(nameChanged);

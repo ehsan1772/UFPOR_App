@@ -31,7 +31,8 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
     @Persistent
     protected ArrayList<IfcDecElementQuantity> isDefinedBy_QuantitySet;
     @NotPersistent
-    protected ArrayList<IfcDecObjectDefinition> declaresObject;
+//    protected ArrayList<IfcDecObjectDefinition> declaresObject;
+    protected IfcDecRelDeclares<IfcDecObjectDefinition, IfcDecContext> declaresObject;
     @Persistent
     protected ArrayList<IfcDecPropertyDefinition> declaresProperty;
     @NotPersistent
@@ -116,7 +117,7 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
     }
 
     public void setDeclares(ArrayList<IfcDecDefinitionSelect> declares) {
-        this.declaresObject = new ArrayList<IfcDecObjectDefinition>();
+       // this.declaresObject = new IfcDecRelDeclares<IfcDecObjectDefinition, IfcDecContext>();
         this.declaresProperty = new ArrayList<IfcDecPropertyDefinition>();
         for (IfcDecDefinitionSelect declare : declares) {
             addDeclare(declare);
@@ -124,6 +125,10 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
     }
 
     public void addDeclare(IfcDecDefinitionSelect declare) {
+        if (declaresObject == null) {
+            declaresObject = IfcDecRelDeclares.getInstance(this);
+        }
+
         if (declare instanceof IfcDecObjectDefinition) {
             declaresObject.add((IfcDecObjectDefinition) declare);
         }
@@ -132,6 +137,8 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
             declaresProperty.add((IfcDecPropertyDefinition) declare);
         }
     }
+
+
 
     public IfcDecLabel getObjectType() {
         return objectType;
@@ -200,6 +207,7 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
             set.onPostLoad(this);
             isDefinedBy.add(set);
         }
+
         objectType = new IfcDecLabel(objectTypeString);
         longName = new IfcDecLabel(longNameString);
         phase = new IfcDecLabel(phaseString);

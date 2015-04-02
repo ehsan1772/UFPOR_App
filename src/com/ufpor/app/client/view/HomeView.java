@@ -101,25 +101,12 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
     private ServerResultEvent.ServerResultEventHandler mServerResultHandler = new ServerResultEvent.ServerResultEventHandler() {
         @Override
         public void onServerResultEvent(ServerResultEvent event) {
+
             resizeScrollPanel();
             GWT.log("Here goes the result:" + event.getResult());
-            //   ifcPanel.remove(ifcFileHtml);
-            //   ifcFileHtml = new HTML(new SafeHtmlBuilder().appendEscapedLines(event.getResult()).toSafeHtml());
-
             SafeHtml content = new SafeHtmlBuilder().appendEscapedLines(event.getResult()).toSafeHtml();
 
-            //removing the old text
-//            if (ifcPanel.getElement().getChildCount() > 0) {
-//                ifcPanel.getElement().removeAllChildren();
-//            }
-
-            //   GWT.log("Here is the html content " +southLabel.getHTML());
-            //   ifcPanel.add(ifcFileHtml);
-
             ifcFileHtml.setHTML(content);
-
-
-            //   ifcPanel.add(new HTML("ISO-10303-21;<br>HEADER;<br>FILE_DESCRIPTION (<br>        ('long name'),<br>        '2;1');<br>FILE_NAME (<br>        'two.ifc',<br>        '2015/03/18T08:35:46',<br>        ('test@example.com'),<br>        ('test@example.com'),<br>        'UFPOR APP 0.0.1',<br>        'UFPOR DEMO beta',<br>        'gmail.com');<br>FILE_SCHEMA (('IFC4RC4'));<br>ENDSEC;<br>DATA;<br>#13= IFCPROJECT ('3$blSXKSfEG805zIk$zyrt',  $, two,    $,     $, long name,       $,        $,       #14);<br>#14= IFCUNITASSIGNMENT(#15,#16,#17);<br>#15= IFCSIUNIT(*, .AREAUNIT,   $, .SQUARE_METRE);<br>#16= IFCSIUNIT(*, .VOLUMEUNIT,   $, .CUBIC_METRE);<br>#17= IFCSIUNIT(*, .LENGTHUNIT,   $, .METRE);<br>#18= IFCQUANTITYAREA(NetFloorArea,  *,   *,  0.0,     *);<br>#19= IFCMETRIC ('MAX_VALUE', null, HARD, null,     *,      *,       *, LESSTHANOREQUALTO,      null,     2000.0,           *);<br>#20= IFCMETRIC ('MIN_VALUE', null, HARD, null,     *,      *,       *, GREATERTHANOREQUALTO,      null,     1000.0,           *);<br>#21= IFCOBJECTIVE ('null',  *, HARD,    *,     *,      *,       *,  (19,20), LOGICALAND, REQUIREMENT,           *);<br>#22= IFCRESOURCECONSTRAINTRELATIONSHIP(*,  *,  21,   18);<br>#23= IFCELEMENTQUANTITY(3keBxne$D3OfejUUlko$q7,  *,   *,    *,     *,   (18));<br>#24= IFCRELDEFINESBYPROPERTIES(0OJ5H6RWbB6AWAE2HxWqA$,  *,   *,    *,  (13),     23);<br>ENDSEC;<br>END-ISO-10303-21;"));
 
             loadSpaceTypes(projectName);
         }
@@ -203,13 +190,6 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
 
                 addMenu();
 
-                //populateTree(treeContainer);
-
-                //   refreshSpaces();
-
-
-                //      addResultPanel(nu);
-
             }
         });
 
@@ -268,39 +248,18 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
         panel.add(t);
     }
 
-//    public void refreshSpaces() {
-//        EnvironmentService.App.getInstance().getEnvironments(new AsyncCallback<List<EnvironmentDM>>() {
-//
-//            @Override
-//            public void onSuccess(List<EnvironmentDM> result) {
-//                envContainer.clear();
-//                for (EnvironmentDM env : result) {
-//                    EnvironmentTreeItem b = new EnvironmentTreeItem(true, true);
-//                    b.setName(env.getName());
-//                    b.setArea(env.getArea());
-//                    envContainer.add(b);
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Throwable caught) {
-//                // TODO Auto-generated method stub
-//
-//            }
-//        });
-//    }
 
-    public void loadSpaceTypes(String projectName) {
+    public void loadSpaceTypes(final String projectName) {
         EnvironmentService.App.getInstance().getSpaceTypes(projectName, new AsyncCallback<List<IfcClientSpaceType>>() {
             @Override
             public void onFailure(Throwable caught) {
-
+                GWT.log("Space Type Load failed for project " + projectName);
+                caught.printStackTrace();
             }
 
             @Override
             public void onSuccess(List<IfcClientSpaceType> result) {
-
+                GWT.log(result.size() + " Space Types received for project " + projectName);
                 envContainer.clear();
                 ArrayList<EnvironmentTreeItem> cacheList = new ArrayList<EnvironmentTreeItem>();
 
@@ -310,14 +269,12 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
                     b.setName(env.getName());
                     for (IfcClientPropertySetDefinition propset : env.getProperties()) {
                         if (propset instanceof IfcClientPropertySet) {
-                            //  if (propset.getName().equals("Pset_SpaceCommon")) {
                             for (IfcClientProperty nextProp : ((IfcClientPropertySet) propset).getProperties()) {
                                 if (nextProp.getName().equals("GrossPlannedArea")) {
                                     String area = ((IfcClientText) ((IfcClientPropertySingleValue) nextProp).getNominalValue()).getValue();
                                     b.setArea(area);
                                 }
                             }
-                            //  }
                         }
                     }
                     envContainer.add(b);
@@ -345,9 +302,6 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
         popup.center();
     }
 
-    public void removePopUp() {
-
-    }
 
     @Override
     public void onResize() {
@@ -356,7 +310,6 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
 
     public void setProjectName(String selectedProject) {
         projectName = selectedProject;
-        // projectNameHeader.setTitle(selectedProject);
         projectNameHeader.setInnerText(selectedProject);
     }
 

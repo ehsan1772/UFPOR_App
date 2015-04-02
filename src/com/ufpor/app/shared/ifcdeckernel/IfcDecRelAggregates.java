@@ -2,6 +2,7 @@ package com.ufpor.app.shared.ifcdeckernel;
 
 import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifckernel.IfcObjectDefinition;
 
 import java.util.ArrayList;
@@ -15,19 +16,19 @@ import java.util.logging.Logger;
 public class IfcDecRelAggregates extends IfcDecRelDecomposes {
     public final static String TAG = IfcDecRelAggregates.class.getSimpleName();
     private static transient Logger logger = Logger.getLogger(TAG);
-    private IfcObjectDefinition relatingObject;
-    private List<IfcObjectDefinition> relatedObjects;
+    private IfcDecObjectDefinition relatingObject;
+    private List<IfcDecObjectDefinition> relatedObjects;
 
     public IfcDecRelAggregates() {
-        relatedObjects = new ArrayList<IfcObjectDefinition>();
+        relatedObjects = new ArrayList<IfcDecObjectDefinition>();
     }
 
-    public IfcDecRelAggregates(IfcObjectDefinition relatingObject) {
+    public IfcDecRelAggregates(IfcDecObjectDefinition relatingObject) {
         this.relatingObject = relatingObject;
-        relatedObjects = new ArrayList<IfcObjectDefinition>();
+        relatedObjects = new ArrayList<IfcDecObjectDefinition>();
     }
 
-    public IfcDecRelAggregates(IfcObjectDefinition relatingObject, List<IfcObjectDefinition> relatedObjects) {
+    public IfcDecRelAggregates(IfcDecObjectDefinition relatingObject, List<IfcDecObjectDefinition> relatedObjects) {
         this.relatingObject = relatingObject;
         if (!relatedObjects.contains(relatingObject)) {
             this.relatedObjects = relatedObjects;
@@ -37,7 +38,7 @@ public class IfcDecRelAggregates extends IfcDecRelDecomposes {
 
     }
 
-    public boolean addRelatedObject(IfcObjectDefinition relatedObject) {
+    public boolean addRelatedObject(IfcDecObjectDefinition relatedObject) {
         if (!relatedObjects.contains(relatingObject)) {
             relatedObjects.add(relatedObject);
             return true;
@@ -46,6 +47,11 @@ public class IfcDecRelAggregates extends IfcDecRelDecomposes {
             return false;
         }
 
+    }
+
+    @Override
+    public ArrayList<IfcFileObject> getRelatedObjects() {
+        return null;
     }
 
     @Override

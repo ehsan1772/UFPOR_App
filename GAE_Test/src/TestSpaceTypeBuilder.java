@@ -27,6 +27,14 @@ public class TestSpaceTypeBuilder {
     private static final double MIN_FINISH_CEILING_HEIGHT = 10;
     private static final double MAX_FINISH_FLOOR_HEIGHT = 12;
     private static final double MIN_FINISH_FLOOR_HEIGHT = 10;
+    private static final double MAX_GROSS_PLANNED_AREA = 2800;
+    private static final double MIN_GROSS_PLANNED_AREA = 2400;
+    private static final double MAX_NET_PLANNED_AREA = 2600;
+    private static final double MIN_NET_PLANNED_AREA = 2300;
+    private static final double MAX_GROSS_PERIMETER = 400;
+    private static final double MIN_GROSS_PERIMETER = 300;
+    private static final double MAX_NET_PERIMETER = 500;
+    private static final double MIN_NET_PERIMETER = 400;
 
     private static IfcClientSpaceType spaceType;
     private static SpaceCommonPropertySetBuilder pBuilder;
@@ -60,6 +68,19 @@ public class TestSpaceTypeBuilder {
         pBuilder.setNetPlannedArea(NET_PLANNED_AREA);
         pBuilder.setGrossPlannedArea(GROSS_PLANNED_AREA);
 
+        pBuilder.setIsExternal(false);
+        pBuilder.setGrossPlannedAreaMax(MAX_GROSS_PLANNED_AREA);
+        pBuilder.setGrossPlannedAreaMin(MIN_GROSS_PLANNED_AREA);
+        pBuilder.setIsExternalConstraint(true);
+        pBuilder.setIsHandicaAccessiblePropertyConstraint(true);
+        pBuilder.setIsPubliclyAccessible(false);
+        pBuilder.setIsPublic(true);
+        pBuilder.setIsHandicapAccessible(true);
+        pBuilder.setIsPublicConstraint(true);
+        pBuilder.setNetPlannedAreaMax(MAX_NET_PLANNED_AREA);
+        pBuilder.setNetPlannedAreaMin(MIN_NET_PLANNED_AREA);
+        pBuilder.setIsPubliclyAccessibleConstraint(true);
+
         return pBuilder.getProperties();
     }
 
@@ -89,6 +110,12 @@ public class TestSpaceTypeBuilder {
 
         constraintBuilder.setMaxFinishFloorHeight(MAX_FINISH_FLOOR_HEIGHT);
         constraintBuilder.setMinFinishFloorHeight(MIN_FINISH_FLOOR_HEIGHT);
+
+        constraintBuilder.setMaxGrossPerimeter(MAX_GROSS_PERIMETER);
+        constraintBuilder.setMinGrossPerimeter(MIN_GROSS_PERIMETER);
+
+        constraintBuilder.setMaxNetPerimeter(MAX_NET_PERIMETER);
+        constraintBuilder.setMinNetPerimeter(MIN_NET_PERIMETER);
 
 
         return constraintBuilder.getIfcClientElementQuantity();

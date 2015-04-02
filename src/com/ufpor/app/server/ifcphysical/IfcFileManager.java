@@ -19,11 +19,13 @@ public class IfcFileManager implements IfcFileManagerI {
     private Integer counter;
     private IfcDecProject project;
     private IfcFileWriterI fileWriter;
+    private ArrayList<IfcFileObject> results;
 
     private IfcFileManager() {
         objectsBiMap = HashBiMap.create();
         counter = 0;
         fileWriter = new IfcFileWriter();
+        results = new ArrayList<>();
     }
 
     public static IfcFileManager getInstance() {
@@ -116,7 +118,8 @@ public class IfcFileManager implements IfcFileManagerI {
     @Override
     public void GenerateTheFile() {
         //getting all the objects in the project
-        Set<IfcFileObject> objects = new HashSet<>(getAllObjects(project));
+        getAllObjects(project, results);
+        Set<IfcFileObject> objects = new HashSet<>(results);
 
         //adding them to the map and assigning a number to them
         for (IfcFileObject object : objects) {
@@ -136,14 +139,21 @@ public class IfcFileManager implements IfcFileManagerI {
      * @param object
      * @return
      */
-    private ArrayList<IfcFileObject> getAllObjects(IfcFileObject object) {
-        ArrayList<IfcFileObject> results = new ArrayList<>();
+    private void getAllObjects(IfcFileObject object, ArrayList<IfcFileObject> results) {
+        if (object == null || results.contains(object)) {
+            return;
+        }
+
         results.add(object);
-        if (object.getRelatedObjects() != null) {
-            for (IfcFileObject childObject : object.getRelatedObjects()) {
-                    results.addAll(getAllObjects(childObject));
+        ArrayList<IfcFileObject> relatedObjects = object.getRelatedObjects();
+        if (relatedObjects!= null) {
+            for (IfcFileObject childObject : relatedObjects) {
+                if (childObject != null && !results.contains(childObject)) {
+                    System.out.println(childObject.getClass().getSimpleName());
+                    getAllObjects(childObject, results);
+                }
             }
         }
-        return results;
+        //return results;
     }
 }

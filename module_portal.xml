@@ -166,12 +166,15 @@
       <classpath>
         <pathelement location="${gwt.sdk.home.portal}/gwt-dev.jar"/>
         <path refid="portal.module.sourcepath"/>
+
         <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/guestbook/src"/>
         <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/helloorm/src"/>
         <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/helloorm2/src"/>
         <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/helloservers/src"/>
         <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/helloxmpp/src"/>
+
         <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/jdoexamples/src"/>
+
         <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/mandelbrot/src"/>
         <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/mediastore/src"/>
         <pathelement location="${basedir}/../../Development/appengine-java-sdk-1.9.18/demos/new_project_template/src"/>

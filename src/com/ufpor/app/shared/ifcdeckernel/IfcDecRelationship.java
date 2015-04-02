@@ -8,29 +8,34 @@ import java.util.*;
 /**
  * Created by Ehsan Barekati on 10/30/14.
  */
-public abstract class IfcDecRelationship<T extends IfcFileObject> extends IfcDecRoot implements List<T> {
+public abstract class IfcDecRelationship<T extends IfcFileObject, E extends IfcDecRoot> extends IfcDecRoot implements List<T> {
     //a delegate
-    private ArrayList<T> list;
-    private T owner;
+    protected ArrayList<T> list;
+    protected E owner;
 
-    public IfcDecRelationship(String GUID, User user, T owner) {
+    public IfcDecRelationship(String GUID, User user, E owner) {
         super(GUID, user);
         initialize(owner);
+    }
+
+    public IfcDecRelationship(String GUID, User user) {
+        super(GUID, user);
+        initialize(null);
     }
 
     public IfcDecRelationship() {
         initialize(null);
     }
 
-    public T getOwner() {
+    public IfcDecRoot getOwner() {
         return owner;
     }
 
-    public ArrayList<T> getList() {
+    public List<T> getList() {
         return list;
     }
 
-    private void initialize(T owner) {
+    private void initialize(E owner) {
         this.owner = owner;
         list = new ArrayList<T>();
     }
@@ -150,16 +155,11 @@ public abstract class IfcDecRelationship<T extends IfcFileObject> extends IfcDec
         return list.subList(fromIndex, toIndex);
     }
 
-
     @Override
     public ArrayList<IfcFileObject> getRelatedObjects() {
-
-//        ArrayList<T> list = getList();
-//        ArrayList<IfcFileObject> results = new ArrayList<>();
-//        for (T object : list) {
-//            results.add(object);
-//        }
-//        return results;
-        return null;
+        ArrayList<IfcFileObject> results = new ArrayList<>();
+        results.addAll(list);
+        return  results;
     }
+
 }

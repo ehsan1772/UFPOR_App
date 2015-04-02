@@ -77,7 +77,7 @@
     <g:HTMLPanel>
         <div class="{style.main}">
             <div class="{style.top}">
-                <g:Label text="Administration" styleName='{style.title}' ui:field="title" />
+                <g:Label text="New Space Type" styleName='{style.title}' ui:field="title" />
                 <g:Image resource='{res.closeButtonIcon}' styleName='{style.cancelImageButton}'
                          ui:field="closeButton"/>
             </div>

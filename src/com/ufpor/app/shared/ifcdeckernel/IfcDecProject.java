@@ -63,6 +63,8 @@ public class IfcDecProject extends IfcDecContext {
 
     public IfcDecProject(String guid, User user) {
         super(guid, user);
+        String guid2 = GuidCompressor.getNewIfcGloballyUniqueId();
+        declaresObject = IfcDecRelDeclares.getInstance(this);
     }
 
     public IfcDecProject() {
@@ -158,15 +160,20 @@ public class IfcDecProject extends IfcDecContext {
         results.add(getUnitsInContext());
         results.addAll(getIsDefinedBy());
 
+
         ArrayList<IfcDecSpaceType> spaceTypes = null;
         if (getSpaceTypes() != null && getSpaceTypes().size() > 0) {
             try {
                 spaceTypes = EnvironmentServiceImpl.getSpaceTypeByKey(getSpaceTypes());
-                results.addAll(spaceTypes);
+                for (IfcDecSpaceType spaceType : spaceTypes) {
+                    addDeclare(spaceType);
+                }
             } catch (NotLoggedInException e) {
                 e.printStackTrace();
             }
         }
+
+        results.add(declaresObject);
 
         return results;
     }

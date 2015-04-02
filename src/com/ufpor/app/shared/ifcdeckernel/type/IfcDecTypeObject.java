@@ -4,6 +4,7 @@ import com.google.appengine.api.datastore.PostLoad;
 import com.google.appengine.api.datastore.PostLoadContext;
 import com.google.appengine.api.datastore.PrePut;
 import com.google.appengine.api.datastore.PutContext;
+import com.google.appengine.api.users.User;
 import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
 import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecObject;
@@ -40,6 +41,10 @@ public class IfcDecTypeObject extends IfcDecObjectDefinition {
 //        hasProperties = new ArrayList<IfcDecPropertySetDefinition>();
 //        hasProperties_PropertySet = new ArrayList<IfcDecPropertySet>();
 //        hasProperties_QuantitySet = new ArrayList<IfcDecElementQuantity>();
+    }
+
+    public IfcDecTypeObject(String guid, User user) {
+        super(guid, user);
     }
 
     public String getApplicableOccurance() {

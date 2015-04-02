@@ -8,7 +8,7 @@ import com.ufpor.app.shared.ifcclient.IfcClientElementQuantity;
 public class SpaceBaseQuantitiesBuilder {
     //   private ArrayList<IfcClientConstraint> constraints;
     private IfcClientElementQuantity ifcClientElementQuantity = new IfcClientElementQuantity();
-    private IfcClientQuantityLength height = new IfcClientQuantityLength();
+    private IfcClientQuantityLength height = new IfcClientQuantityLength(IfcClientQuantityLength.Type.Height);
     private IfcClientQuantityLength finishFloorHeight = new IfcClientQuantityLength(IfcClientQuantityLength.Type.FinishFloorHeight);
     private IfcClientQuantityLength finishCeilingHeight = new IfcClientQuantityLength(IfcClientQuantityLength.Type.FinishCeilingHeight);
     private IfcClientQuantityLength grossPerimeter = new IfcClientQuantityLength(IfcClientQuantityLength.Type.GrossPerimeter);

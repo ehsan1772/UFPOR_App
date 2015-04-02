@@ -57,6 +57,7 @@ public class Constants {
     public final static String IFCOBJECTIVE = "IFCOBJECTIVE ('%1$s', %2$s, %3$s, %4$s, %5$s, %6$s, %7$s, %8$s, %9$s, %10$s, %11$s);";
     public static final String IFCRESOURCECONSTRAINTRELATIONSHIP = "IFCRESOURCECONSTRAINTRELATIONSHIP(%1$s, %2$s, %3$s, %4$s);";
     public final static String IFCRELAGGREGATES = "IFCRELAGGREGATES(%1$s, %2$s, '%3$s', '%4$s', %5$s, %6$s);";
+    public final static String IFCRELDECLARES = "IFCRELDECLARES(%1$s, %2$s, '%3$s', '%4$s', %5$s, %6$s);";
 
     private final static IFCComparator COMPARATOR = new IFCComparator();
     private ArrayList<String> mFile;

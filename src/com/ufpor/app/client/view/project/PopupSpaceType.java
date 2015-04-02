@@ -41,10 +41,13 @@ public class PopupSpaceType extends PopupBase  {
         for(String title : spaceTypePresenter.getViews().keySet()) {
             panel.add(spaceTypePresenter.getViews().get(title) , title);
         }
+
+        title.setText("New Space Type");
     }
 
     @UiHandler("save")
     public void handleClick1(ClickEvent e) {
+        GWT.log("Project Name is: " + HomeView.projectName);
         EnvironmentService.App.getInstance().addSpaceType(spaceTypePresenter.getSpaceType(), HomeView.projectName, new AsyncCallback<List<String>>() {
             @Override
             public void onFailure(Throwable caught) {
@@ -53,6 +56,7 @@ public class PopupSpaceType extends PopupBase  {
 
             @Override
             public void onSuccess(List<String> result) {
+
                 ServerResultEvent event = new ServerResultEvent(result.get(0));
                 App.getInjector().getSimpleEventBus().fireEvent(event);
                 host.closePopupBase();

@@ -21,7 +21,7 @@ import java.io.Serializable;
 @Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
 public abstract class IfcDecRoot extends GAEObject implements Serializable, IfcFileObject {
     @Persistent
-    private IfcDecGloballyUniqueId globalId;
+    protected IfcDecGloballyUniqueId globalId;
     @Persistent
     private IfcDecOwnerHistory ownerHistory;
 

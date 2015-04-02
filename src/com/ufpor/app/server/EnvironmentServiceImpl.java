@@ -329,7 +329,9 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
             pm.close();
         }
 
-        addSpaceTypeToTheProject(decSpaceType.getKey(), projectName);
+        String key = getProjectKeyByName(projectName);
+
+        addSpaceTypeToTheProject(decSpaceType.getKey(), key);
 
 //        List<IfcDecSpaceType> spaceTypes = null;
 //        IfcDecSpaceType spaceTypeResult = null;
@@ -481,6 +483,29 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         finally {
             pm2.close();
         }
+    }
+
+    public String getProjectKeyByName(String projectName) {
+        PersistenceManager pm2 = getPersistenceManager();
+        try {
+            Query q = pm2.newQuery(IfcDecProject.class, "nameText == name && user == u");
+            q.declareParameters("java.lang.String name, com.google.appengine.api.users.User u");
+            List<IfcDecProject> projects = (List<IfcDecProject>) q.execute(projectName, getUser());
+
+            if (projects.size() > 0) {
+                return projects.get(0).getKey();
+            }
+
+
+        } catch (Exception exception) {
+            LOG.log(Level.SEVERE, exception.getMessage());
+            exception.printStackTrace();
+        }
+        finally {
+            pm2.close();
+        }
+
+        return null;
     }
 
 

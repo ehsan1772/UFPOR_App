@@ -32,6 +32,10 @@ public class IfcDecSpaceType extends IfcDecSpatialStructureElementType {
     private String longName;
     private String ifcString;
 
+    public IfcDecSpaceType(String guid, User user) {
+        super(guid, user);
+    }
+
     public IfcClientSpaceType.IfcSpaceTypeEnum getPredefinedType() {
         return predefinedType;
     }
@@ -51,11 +55,12 @@ public class IfcDecSpaceType extends IfcDecSpatialStructureElementType {
     public static IfcDecSpaceType getInstance(IfcClientSpaceType client) {
         //Getting GUID
         String guid = GuidCompressor.getNewIfcGloballyUniqueId();
+     //   System.out.println("GUID: " + guid);
 
         //Getting the User
         User user = UserServiceFactory.getUserService().getCurrentUser();
 
-        IfcDecSpaceType type = new IfcDecSpaceType();
+        IfcDecSpaceType type = new IfcDecSpaceType(guid, user);
 
         type.setName(client.getName());
         type.setDescription(client.getDescription());
@@ -79,7 +84,7 @@ public class IfcDecSpaceType extends IfcDecSpatialStructureElementType {
 
     public String getIfcString(String properties) {
         //ROOT
-        String guid = GuidCompressor.getNewIfcGloballyUniqueId();
+        String guid = getGlobalId().getValue();
         String ownerHistory = "*";
         String name = getName();
         String description = (getDescription() == null || getHasProperties().isEmpty()) ? "*" : getDescription() ;
@@ -137,6 +142,7 @@ public class IfcDecSpaceType extends IfcDecSpatialStructureElementType {
     public void prepareDataForClientIfcDecContext(PostLoadContext context) {
         super.prepareDataForClientIfcDecContext(context);
         predefinedType = getPredefinedType();
+        globalId =  getGlobalId();
 
     }
 }
