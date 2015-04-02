@@ -226,6 +226,7 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
     @Override
     public void closePopupBase() {
         popup.removeFromParent();
+        popUpBase.removeFromParent();
     }
 
     private void populateTree(ScrollPanel panel) {

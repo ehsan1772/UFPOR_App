@@ -6,7 +6,6 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="Portal" />
-          <element id="library" level="project" name="appengine-java-sdk-1.9" />
         </element>
         <element id="directory" name="lib">
           <element id="file-copy" path="$USER_HOME$/Development/gwt-2.6.1/gwt-servlet.jar" />
@@ -17,7 +16,6 @@
           <element id="library" level="project" name="slf4j-1.7" />
           <element id="file-copy" path="$PROJECT_DIR$/lib/slf4j-1.7.10/slf4j-nop-1.7.10.jar" />
           <element id="library" level="project" name="com.google.appengine:appengine-testing:1.9.12" />
-          <element id="library" level="project" name="com.google.appengine:appengine-api-labs:1.9.12" />
           <element id="library" level="project" name="com.google.appengine:appengine-api-stubs:1.9.12" />
           <element id="file-copy" path="$USER_HOME$/Development/appengine-java-sdk-1.9.18/lib/testing/appengine-testing.jar" />
           <element id="file-copy" path="$USER_HOME$/Development/appengine-java-sdk-1.9.18/lib/impl/google_sql.jar" />
@@ -26,6 +24,8 @@
           <element id="file-copy" path="$USER_HOME$/Development/appengine-java-sdk-1.9.18/lib/impl/appengine-api-stubs.jar" />
           <element id="file-copy" path="$USER_HOME$/Development/appengine-java-sdk-1.9.18/lib/impl/appengine-local-runtime.jar" />
           <element id="library" level="application" name="junit:junit:4.12" />
+          <element id="file-copy" path="$USER_HOME$/Development/appengine-java-sdk-1.9.12/lib/appengine-tools-api.jar" />
+          <element id="file-copy" path="$USER_HOME$/Development/appengine-java-sdk-1.9.12/lib/appengine-remote-api.jar" />
         </element>
       </element>
       <element id="gwt-compiler-output" facet="Portal/gwt/GWT" />
