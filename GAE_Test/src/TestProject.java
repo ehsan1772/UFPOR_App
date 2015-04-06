@@ -18,7 +18,7 @@ public class TestProject extends BaseTest {
 
     public void testSaveProjectNotLogedIn() {
         IfcClientProject clientProject = getNewTestProject();
-        EnvironmentServiceImpl service = getService();
+        EnvironmentServiceImpl service = getEnvironmentService();
         NotLoggedInException error = null;
         try {
             service.addProjectForId(clientProject, false);
@@ -56,7 +56,7 @@ public class TestProject extends BaseTest {
         String key = null;
 
         try {
-            key = getService().addProjectForId(clientProject, true);
+            key = getEnvironmentService().addProjectForId(clientProject, true);
         } catch (NotLoggedInException e) {
             e.printStackTrace();
         }
@@ -70,7 +70,7 @@ public class TestProject extends BaseTest {
     public String newProjectRetrieveTest(String key) {
         String ifcString = null;
         try {
-            ifcString = getService().getIfcString(key, true);
+            ifcString = getEnvironmentService().getIfcString(key, true);
         } catch (NotLoggedInException e) {
             e.printStackTrace();
         }

@@ -65,17 +65,19 @@ public class TestSpaceTypeBuilder {
         pBuilder = new SpaceCommonPropertySetBuilder();
 
         pBuilder.setReferenceId(REFERENCE_ID);
-        pBuilder.setNetPlannedArea(NET_PLANNED_AREA);
+        pBuilder.setIsPublic(true);
         pBuilder.setGrossPlannedArea(GROSS_PLANNED_AREA);
+        pBuilder.setNetPlannedArea(NET_PLANNED_AREA);
+        pBuilder.setIsPubliclyAccessible(false);
+        pBuilder.setIsHandicapAccessible(true);
 
         pBuilder.setIsExternal(false);
         pBuilder.setGrossPlannedAreaMax(MAX_GROSS_PLANNED_AREA);
         pBuilder.setGrossPlannedAreaMin(MIN_GROSS_PLANNED_AREA);
         pBuilder.setIsExternalConstraint(true);
         pBuilder.setIsHandicaAccessiblePropertyConstraint(true);
-        pBuilder.setIsPubliclyAccessible(false);
-        pBuilder.setIsPublic(true);
-        pBuilder.setIsHandicapAccessible(true);
+
+
         pBuilder.setIsPublicConstraint(true);
         pBuilder.setNetPlannedAreaMax(MAX_NET_PLANNED_AREA);
         pBuilder.setNetPlannedAreaMin(MIN_NET_PLANNED_AREA);

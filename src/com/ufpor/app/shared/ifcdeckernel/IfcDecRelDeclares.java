@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 /**
  * Created by Ehsan Barekati on 10/30/14.
  */
-public class IfcDecRelDeclares<T extends IfcFileObject, E extends IfcDecRoot> extends IfcDecRelationship<T, E> {
+public class IfcDecRelDeclares<T extends IfcDecRoot, E extends IfcDecRoot> extends IfcDecRelationship<T, E> {
     public final static String TAG = IfcDecRelDeclares.class.getSimpleName();
     private static transient Logger logger = Logger.getLogger(TAG);
     private static IfcDecRelDeclares<IfcDecObjectDefinition, IfcDecContext> instance;

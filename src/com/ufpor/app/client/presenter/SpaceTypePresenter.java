@@ -12,6 +12,7 @@ import com.ufpor.app.client.view.DataGridTest;
 import com.ufpor.app.client.view.EnvironmentActivity;
 import com.ufpor.app.client.view.EnvironmentGrouping;
 import com.ufpor.app.client.view.project.FullPopUpView;
+import com.ufpor.app.shared.datatransfer.IfcSpace;
 import com.ufpor.app.shared.ifcclient.property.SpaceBaseQuantitiesBuilder;
 import com.ufpor.app.shared.ifcclient.property.SpaceCommonPropertySetBuilder;
 import com.ufpor.app.shared.ifcclient.type.IfcClientSpaceType;
@@ -64,13 +65,24 @@ public class SpaceTypePresenter implements SpaceTypePresenterI, FullPopUpView.Pr
         }
     };
     private SpaceBaseQuantitiesBuilder constraintBuilder;
+
     private Widget constraintsWidget;
+
     private ChangeHandler typeChanged = new ChangeHandler() {
         @Override
         public void onChange(ChangeEvent event) {
             ListBox lBox = (ListBox) event.getSource();
             IfcClientSpaceType.IfcSpaceTypeEnum value = IfcClientSpaceType.IfcSpaceTypeEnum.valueOf(lBox.getItemText(lBox.getSelectedIndex()));
             spaceType.setPredefinedType(value);
+        }
+    };
+
+    private ChangeHandler hierarchyTypeChanged = new ChangeHandler() {
+        @Override
+        public void onChange(ChangeEvent event) {
+            ListBox lBox = (ListBox) event.getSource();
+            String value = IfcSpace.Type.valueOf(lBox.getItemText(lBox.getSelectedIndex())).toString();
+            spaceType.setElementType(value);
         }
     };
 
@@ -98,11 +110,6 @@ public class SpaceTypePresenter implements SpaceTypePresenterI, FullPopUpView.Pr
         ArrayList<Widget> constraintsWidgets = createConstraint();
         views.put("Area Constraints", constraintsWidgets.get(0));
         views.put("Height Constraints", constraintsWidgets.get(1));
-
-
-       // views.put("General", new EnvironmentGeneral());
-
-
 
         views.put("Grouping", new EnvironmentGrouping());
 
@@ -363,6 +370,15 @@ public class SpaceTypePresenter implements SpaceTypePresenterI, FullPopUpView.Pr
         //isPublicly accessible
         general.setList_R5(externalValues);
         general.setTextBoxTitle("Publicly Accessible?", FullPopUpView.Position.R5);
+
+        //Hierarchy
+        ArrayList<String> values = new ArrayList<>();
+        for (IfcSpace.Type type : IfcSpace.Type.values()) {
+            values.add(type.toString());
+        }
+        general.setList_R6(values);
+        general.setTextBoxTitle("Hierarchy Type?", FullPopUpView.Position.R6);
+        general.getList_R6().addChangeHandler(hierarchyTypeChanged);
 
         return general;
     }

@@ -2,6 +2,7 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.ufpor.app.server.EnvironmentServiceImpl;
+import com.ufpor.app.server.service.SpaceServiceImpl;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
@@ -16,7 +17,8 @@ public class BaseTest extends TestCase {
     protected final static User TestUser = new User("test@test.com", "test.com", "test", "com");
     protected static final PersistenceManagerFactory PMF = JDOHelper.getPersistenceManagerFactory("transactions-optional");
 
-    protected EnvironmentServiceImpl service;
+    protected EnvironmentServiceImpl environmentService;
+    protected SpaceServiceImpl spaceService;
 
     private final LocalServiceTestHelper helper = new LocalServiceTestHelper(new LocalDatastoreServiceTestConfig());
     @Before
@@ -29,11 +31,19 @@ public class BaseTest extends TestCase {
         helper.tearDown();
     }
 
-    protected EnvironmentServiceImpl getService() {
-        if (service == null) {
-            service = new EnvironmentServiceImpl();
+    protected EnvironmentServiceImpl getEnvironmentService() {
+        if (environmentService == null) {
+            environmentService = new EnvironmentServiceImpl();
         }
 
-        return service;
+        return environmentService;
+    }
+
+    protected SpaceServiceImpl getSpaceService() {
+        if (spaceService == null) {
+            spaceService = new SpaceServiceImpl();
+        }
+
+        return spaceService;
     }
 }

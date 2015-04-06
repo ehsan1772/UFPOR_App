@@ -66,6 +66,7 @@ public class IfcDecSpaceType extends IfcDecSpatialStructureElementType {
         type.setDescription(client.getDescription());
         type.setLongName(client.getLongName());
         type.setPredefinedType(client.getPredefinedType());
+        type.setElementType(client.getElementType());
 
         for (IfcClientPropertySetDefinition property : client.getProperties()) {
             IfcDecPropertySetDefinition prop = null;
@@ -113,6 +114,7 @@ public class IfcDecSpaceType extends IfcDecSpatialStructureElementType {
         clientSpace.setDescription(decSpace.getDescription());
         clientSpace.setName(decSpace.getName());
         clientSpace.setLongName(decSpace.getLongName());
+        clientSpace.setElementType(decSpace.getElementType());
 
         //properties
 

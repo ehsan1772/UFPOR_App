@@ -3,14 +3,22 @@ package com.ufpor.app.shared.ifcdeckernel;
 import com.google.appengine.api.users.User;
 import com.ufpor.app.server.ifcphysical.IfcFileObject;
 
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 import java.util.*;
 
 /**
  * Created by Ehsan Barekati on 10/30/14.
  */
-public abstract class IfcDecRelationship<T extends IfcFileObject, E extends IfcDecRoot> extends IfcDecRoot implements List<T> {
+@PersistenceCapable
+@Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
+public abstract class IfcDecRelationship<T extends IfcDecRoot, E extends IfcDecRoot> extends IfcDecRoot implements List<T> {
     //a delegate
+    @Persistent(defaultFetchGroup = "true")
     protected ArrayList<T> list;
+    @Persistent(mappedBy = "childSpaces")
     protected E owner;
 
     public IfcDecRelationship(String GUID, User user, E owner) {
@@ -24,6 +32,7 @@ public abstract class IfcDecRelationship<T extends IfcFileObject, E extends IfcD
     }
 
     public IfcDecRelationship() {
+
         initialize(null);
     }
 
@@ -34,6 +43,8 @@ public abstract class IfcDecRelationship<T extends IfcFileObject, E extends IfcD
     public List<T> getList() {
         return list;
     }
+
+
 
     private void initialize(E owner) {
         this.owner = owner;

@@ -12,12 +12,20 @@ public class TestSpaceType extends BaseTest {
 
     public void testFullTest() {
         IfcClientProject project = TestProject.getNewTestProject();
-        IfcClientSpaceType spaceType = getNewSpaceType();
+        IfcClientSpaceType spaceType = getNewSpaceType("name!", "description", "longname");
+        IfcClientSpaceType spaceType2 = getNewSpaceType("name2!", "description2", "longname2");
+        IfcClientSpaceType spaceType3 = getNewSpaceType("name3!", "description3", "longname3");
+        IfcClientSpaceType spaceType4 = getNewSpaceType("name4!", "description4", "longname4");
 
         String projectKey = newProjectSaveTest(project);
         String spaceTypeKey = saveNewSpaceTypeTest(projectKey, spaceType);
+        String spaceTypeKey2 = saveNewSpaceTypeTest(projectKey, spaceType2);
+        String spaceTypeKey3 = saveNewSpaceTypeTest(projectKey, spaceType3);
+        String spaceTypeKey4 = saveNewSpaceTypeTest(projectKey, spaceType4);
 
         IfcDecSpaceType decSpaceType = spaceTypeValuesTest(spaceTypeKey);
+
+
         valueMatchTest(decSpaceType, spaceType);
 
         ifcStringTest(projectKey);
@@ -26,19 +34,24 @@ public class TestSpaceType extends BaseTest {
     private void ifcStringTest(String projectKey) {
         String ifc = null;
         try {
-            ifc = getService().getIfcString(projectKey, true);
+            ifc = getEnvironmentService().getIfcString(projectKey, true);
         } catch (NotLoggedInException e) {
             e.printStackTrace();
         }
 
         assertNotNull(ifc);
 
-        for (int i = 1 ; i < 90 ; i++) {
-            if (ifc.contains("#" + i + "=")) {
-                System.out.print(i + " does exist!");
-            } else {
+        for (int i = 1 ; i < 1000 ; i++) {
+            if (!ifc.contains("#" + i + "=")) {
+                System.out.print(i-1 + " is the last number!");
                 break;
             }
+        }
+
+        String[] ifcs = ifc.split("\n");
+
+        for (String fc : ifcs) {
+            System.out.println(fc);
         }
 
         System.out.print(ifc);
@@ -54,12 +67,12 @@ public class TestSpaceType extends BaseTest {
         assertEquals(decSpaceType.getHasProperties().size(), spaceType.getProperties().size());
     }
 
-    public static IfcClientSpaceType getNewSpaceType() {
+    public static IfcClientSpaceType getNewSpaceType(String name, String description, String longName) {
         IfcClientSpaceType result = new IfcClientSpaceType();
-        result.setName("Type");
-        result.setLongName("Long Type");
+        result.setName(name);
+        result.setLongName(longName);
         result.setPredefinedType(IfcClientSpaceType.IfcSpaceTypeEnum.EXTERNAL);
-        result.setDescription("Description");
+        result.setDescription(description);
 
         TestSpaceTypeBuilder.attachCommonProperties(result);
         TestSpaceTypeBuilder.attachConstraints(result);
@@ -69,7 +82,7 @@ public class TestSpaceType extends BaseTest {
     public String newProjectSaveTest(IfcClientProject clientProject) {
         String key = null;
         try {
-            key = getService().addProjectForId(clientProject, true);
+            key = getEnvironmentService().addProjectForId(clientProject, true);
         } catch (NotLoggedInException e) {
             e.printStackTrace();
         }
@@ -83,7 +96,7 @@ public class TestSpaceType extends BaseTest {
     public String saveNewSpaceTypeTest(String projectKey, IfcClientSpaceType spaceType) {
         String spaceKey = null;
         System.out.print("\n  testSaveNewSpaceType()  \n");
-        EnvironmentServiceImpl service = getService();
+        EnvironmentServiceImpl service = getEnvironmentService();
         try {
             assertNotNull(projectKey);
             spaceKey = service.addSpaceType(spaceType, projectKey, true);
@@ -99,7 +112,7 @@ public class TestSpaceType extends BaseTest {
     public IfcDecSpaceType spaceTypeValuesTest(String spaceKey) {
         IfcDecSpaceType spaceType = null;
         try {
-            spaceType = getService().getSpaceTypeByKey(spaceKey);
+            spaceType = getEnvironmentService().getSpaceTypeByKey(spaceKey);
         } catch (NotLoggedInException e) {
             e.printStackTrace();
         }

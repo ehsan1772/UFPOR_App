@@ -17,6 +17,10 @@
         <servlet-name>com.ufpor.app.app IfcGUID</servlet-name>
         <servlet-class>com.ufpor.app.server.IfcGUIDImpl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>com.ufpor.app.app SpaceService</servlet-name>
+        <servlet-class>com.ufpor.app.server.service.SpaceServiceImpl</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>com.ufpor.app.app LoginService</servlet-name>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>com.ufpor.app.app IfcGUID</servlet-name>
         <url-pattern>/app/IfcGUID</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>com.ufpor.app.app SpaceService</servlet-name>
+        <url-pattern>/app/SpaceService</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>
