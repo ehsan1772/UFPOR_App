@@ -10,6 +10,7 @@ import com.ufpor.app.shared.datatransfer.IfcSpace;
 import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecElementCompositionEnum;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecLengthMeasure;
+import com.ufpor.app.shared.ifcdeckernel.relationship.IfcDecRelAggregates;
 import com.ufpor.app.shared.ifcdeckernel.type.IfcDecSpaceType;
 
 import javax.jdo.annotations.Inheritance;
@@ -28,8 +29,12 @@ public class IfcDecSpace extends IfcDecSpatialStructureElement {
     @Persistent(defaultFetchGroup = "true")
     protected IfcDecLengthMeasure elevationWithFlooring;
 
+    @Persistent(defaultFetchGroup = "true")
+    protected IfcDecRelAggregates<IfcDecSpace, IfcDecSpace> childSpaces;
+
     public IfcDecSpace(String GUID, User user) {
         super(GUID, user);
+
     }
 
     public static IfcDecSpace getInstance(IfcClientSpace clienSpace) {

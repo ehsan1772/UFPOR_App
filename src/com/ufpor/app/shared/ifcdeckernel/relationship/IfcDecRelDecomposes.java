@@ -1,6 +1,7 @@
-package com.ufpor.app.shared.ifcdeckernel;
+package com.ufpor.app.shared.ifcdeckernel.relationship;
 
 import com.google.appengine.api.users.User;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecRoot;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;

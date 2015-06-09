@@ -20,6 +20,7 @@ import com.ufpor.app.shared.ifcdeckernel.property.IfcDecDimensionalExponents;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecElementQuantity;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySet;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecSIUnit;
+import com.ufpor.app.shared.ifcdeckernel.relationship.IfcDecRelDeclares;
 import com.ufpor.app.shared.ifcdeckernel.type.IfcDecSpaceType;
 
 import javax.jdo.annotations.Inheritance;

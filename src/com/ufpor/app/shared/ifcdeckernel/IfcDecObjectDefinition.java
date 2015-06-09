@@ -5,7 +5,8 @@ import com.google.appengine.api.datastore.PostLoadContext;
 import com.google.appengine.api.datastore.PutContext;
 import com.google.appengine.api.users.User;
 import com.ufpor.app.server.GuidCompressor;
-import com.ufpor.app.server.ifcphysical.IfcFileObject;
+import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
+import com.ufpor.app.shared.ifcdeckernel.relationship.IfcDecRelAggregates;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
@@ -24,33 +25,25 @@ public abstract class IfcDecObjectDefinition extends IfcDecRoot implements IfcDe
     @Persistent
     protected ArrayList<Key> hasContext;
 
-//    @Persistent
-//    protected Set<String> childSpacesKeys;
-
     @Persistent(defaultFetchGroup = "true")
-    protected IfcDecRelAggregates<IfcDecObjectDefinition, IfcDecObjectDefinition> childSpaces;
+    protected IfcDecRelAggregates<IfcDecSpace, IfcDecSpace> childSpaces;
+
 
     protected IfcDecObjectDefinition(String GUID, User user) {
         super(GUID, user);
         //Getting GUID
         String guid = GuidCompressor.getNewIfcGloballyUniqueId();
-        childSpaces = new IfcDecRelAggregates<IfcDecObjectDefinition, IfcDecObjectDefinition>(guid, user, this);
+
+        childSpaces = new IfcDecRelAggregates();
+    }
+
+    public void addChildSpace(IfcDecSpace child) {
+        childSpaces.add(child);
     }
 
     protected IfcDecObjectDefinition() {
         //creating the space hierarchy
 
-    }
-
-    public void addChildSpace(IfcDecObjectDefinition child) {
-        childSpaces.add(child);
-    }
-
-    @Override
-    public ArrayList<IfcFileObject> getRelatedObjects() {
-        ArrayList<IfcFileObject> objects = new ArrayList<>();
-        objects.add(childSpaces);
-        return objects;
     }
 
     @Override

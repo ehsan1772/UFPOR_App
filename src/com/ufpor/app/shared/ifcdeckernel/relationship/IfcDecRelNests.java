@@ -1,6 +1,8 @@
-package com.ufpor.app.shared.ifcdeckernel;
+package com.ufpor.app.shared.ifcdeckernel.relationship;
 
 import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecObjectDefinition;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecRoot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +18,23 @@ public class IfcDecRelNests extends IfcDecRelDecomposes {
     private IfcDecObjectDefinition relatingObject;
     private List<IfcDecObjectDefinition> relatedObjects;
 
+    @Override
+    public IfcDecRoot getOwner() {
+        return null;
+    }
+
+    @Override
+    public List getList() {
+        return null;
+    }
+
     public IfcDecRelNests() {
         relatedObjects = new ArrayList<IfcDecObjectDefinition>();
+    }
+
+    @Override
+    protected void initialize(IfcDecRoot owner) {
+
     }
 
     public IfcDecRelNests(IfcDecObjectDefinition relatingObject) {
@@ -49,5 +66,20 @@ public class IfcDecRelNests extends IfcDecRelDecomposes {
     @Override
     public String getObjectString(IfcFileManagerI fileManager) {
         return null;
+    }
+
+    @Override
+    public boolean add(Object o) {
+        return false;
+    }
+
+    @Override
+    public Object set(int index, Object element) {
+        return null;
+    }
+
+    @Override
+    public void add(int index, Object element) {
+
     }
 }

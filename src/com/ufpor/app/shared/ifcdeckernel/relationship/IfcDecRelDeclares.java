@@ -1,13 +1,13 @@
-package com.ufpor.app.shared.ifcdeckernel;
+package com.ufpor.app.shared.ifcdeckernel.relationship;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.ufpor.app.server.GuidCompressor;
 import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
-import com.ufpor.app.server.ifcphysical.IfcFileObject;
-import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertyDefinition;
-import com.ufpor.app.shared.ifckernel.IfcObjectDefinition;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecContext;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecObjectDefinition;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecRoot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,17 +21,15 @@ public class IfcDecRelDeclares<T extends IfcDecRoot, E extends IfcDecRoot> exten
     public final static String TAG = IfcDecRelDeclares.class.getSimpleName();
     private static transient Logger logger = Logger.getLogger(TAG);
     private static IfcDecRelDeclares<IfcDecObjectDefinition, IfcDecContext> instance;
-//    private com.ufpor.app.shared.ifcdeckernel.IfcDecObjectDefinition relatingObject;
-//    private List<T> relatedObjects;
-
-
-//    public IfcDecRelDeclares(Class clazz) {
-//        if (isTypeSupported(clazz)) {
-//            relatedObjects = new ArrayList<T>();
-//        }
-//    }
+    private E owner;
+    private ArrayList<T> list;
 
      public IfcDecRelDeclares() {
+
+    }
+
+    @Override
+    protected void initialize(E owner) {
 
     }
 
@@ -43,6 +41,16 @@ public class IfcDecRelDeclares<T extends IfcDecRoot, E extends IfcDecRoot> exten
         owner = relatingObject;
         list = relatedObjects;
 
+    }
+
+    @Override
+    public E getOwner() {
+        return owner;
+    }
+
+    @Override
+    public List<T> getList() {
+        return list;
     }
 
     private IfcDecRelDeclares(String guid, User user) {
@@ -66,14 +74,6 @@ public class IfcDecRelDeclares<T extends IfcDecRoot, E extends IfcDecRoot> exten
         }
 
     }
-
-//    private boolean isTypeSupported(Class clazz) {
-//        if (clazz == IfcObjectDefinition.class || clazz == IfcDecPropertyDefinition.class) {
-//            return true;
-//        }
-//        logger.log(Level.SEVERE, "IfcDefinitionSelect provides the option to either select an object or type object IfcObjectDefinition, or a property set template or property set, IfcPropertyDefinition.");
-//        return false;
-//    }
 
 
     @Override

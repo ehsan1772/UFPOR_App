@@ -7,6 +7,7 @@ import com.google.appengine.api.datastore.PutContext;
 import com.google.appengine.api.users.User;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
 import com.ufpor.app.shared.ifcdeckernel.property.*;
+import com.ufpor.app.shared.ifcdeckernel.relationship.IfcDecRelDeclares;
 
 import javax.jdo.annotations.*;
 import java.util.ArrayList;

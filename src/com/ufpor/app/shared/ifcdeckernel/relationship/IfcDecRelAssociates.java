@@ -1,5 +1,6 @@
-package com.ufpor.app.shared.ifcdeckernel;
+package com.ufpor.app.shared.ifcdeckernel.relationship;
 
+import com.ufpor.app.shared.ifcdeckernel.IfcDecObjectDefinition;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertyDefinition;
 
 import java.util.logging.Level;

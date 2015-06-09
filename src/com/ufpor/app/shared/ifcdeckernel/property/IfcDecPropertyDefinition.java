@@ -4,7 +4,7 @@ import com.google.appengine.api.users.User;
 import com.ufpor.app.server.GuidCompressor;
 import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecDefinitionSelect;
-import com.ufpor.app.shared.ifcdeckernel.IfcDecRelDefinesByProperties;
+import com.ufpor.app.shared.ifcdeckernel.relationship.IfcDecRelDefinesByProperties;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecRoot;
 import com.ufpor.app.shared.ifcdeckernel.property.constraint.IfcDecConstraint;
 

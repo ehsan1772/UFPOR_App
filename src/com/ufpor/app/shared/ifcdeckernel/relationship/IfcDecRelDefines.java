@@ -1,7 +1,8 @@
-package com.ufpor.app.shared.ifcdeckernel;
+package com.ufpor.app.shared.ifcdeckernel.relationship;
 
 import com.google.appengine.api.users.User;
 import com.ufpor.app.server.ifcphysical.IfcFileObject;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecRoot;
 
 /**
  * Created by Ehsan Barekati on 12/16/14.
