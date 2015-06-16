@@ -11,8 +11,10 @@ import com.ufpor.app.shared.ifcdeckernel.IfcDecRoot;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecElementQuantity;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySet;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecPropertySetDefinition;
+import sun.swing.BakedArrayList;
 
 import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.NotPersistent;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import java.util.ArrayList;
@@ -27,6 +29,9 @@ import java.util.List;
 public class IfcDecRelDefinesByProperties<T extends IfcFileObject> extends IfcDecRelDefines {
     private IfcDecObject owner;
 
+    @NotPersistent
+    private ArrayList<T> list;
+
     private IfcDecPropertySetDefinition relatingObject;
     @Persistent(defaultFetchGroup = "true")
     private IfcDecPropertySet propertySet;
@@ -40,7 +45,7 @@ public class IfcDecRelDefinesByProperties<T extends IfcFileObject> extends IfcDe
 
     @Override
     public List getList() {
-        return null;
+        return list;
     }
 
     public IfcDecRelDefinesByProperties(String GUID, User user, IfcDecRoot owner) {
@@ -52,6 +57,16 @@ public class IfcDecRelDefinesByProperties<T extends IfcFileObject> extends IfcDe
 
     @Override
     protected void initialize(IfcDecRoot owner) {
+        list = new ArrayList();
+    }
+
+    @Override
+    public void add(IfcDecRoot item) {
+
+    }
+
+    @Override
+    public void addAll(List item) {
 
     }
 
@@ -69,21 +84,6 @@ public class IfcDecRelDefinesByProperties<T extends IfcFileObject> extends IfcDe
 
 
         return String.format(Constants.IFCRELDEFINESBYPROPERTIES, guid, ownerHistory, name, description, relatedObjects, relatingProperty);
-
-    }
-
-    @Override
-    public boolean add(Object o) {
-        return false;
-    }
-
-    @Override
-    public Object set(int index, Object element) {
-        return null;
-    }
-
-    @Override
-    public void add(int index, Object element) {
 
     }
 

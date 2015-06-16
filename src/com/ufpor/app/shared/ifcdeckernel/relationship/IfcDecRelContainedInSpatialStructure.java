@@ -9,6 +9,7 @@ import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpatialElement;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpatialStructureElement;
 
 import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.NotPersistent;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import java.util.ArrayList;
@@ -28,12 +29,25 @@ public class IfcDecRelContainedInSpatialStructure<T extends IfcDecProduct, E ext
     private IfcDecSpatialStructureElement relatingStructure;
     private List<IfcDecProduct> relatedElements;
 
+    @NotPersistent
+    private List<T> list;
+
     @Persistent(defaultFetchGroup = "true")
     protected ArrayList<IfcDecSpace> children;
 
 
     public IfcDecRelContainedInSpatialStructure() {
         relatedElements = new ArrayList<>();
+    }
+
+    @Override
+    public void add(T item) {
+        list.add(item);
+    }
+
+    @Override
+    public void addAll(List<T> item) {
+        list.addAll(item);
     }
 
     @Override

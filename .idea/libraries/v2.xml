@@ -4,7 +4,9 @@
       <root url="file://$USER_HOME$/Development/appengine-java-sdk-1.9.12/lib/opt/user/datanucleus/v2" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/jdo-api-3.0.1-sources.jar!/" />
+    </SOURCES>
     <jarDirectory url="file://$USER_HOME$/Development/appengine-java-sdk-1.9.12/lib/opt/user/datanucleus/v2" recursive="false" />
   </library>
 </component>

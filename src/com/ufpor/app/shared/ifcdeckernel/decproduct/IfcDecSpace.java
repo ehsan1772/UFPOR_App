@@ -76,7 +76,6 @@ public class IfcDecSpace extends IfcDecSpatialStructureElement {
         User user = UserServiceFactory.getUserService().getCurrentUser();
 
         IfcDecSpace space = new IfcDecSpace(guid, user);
-
         IfcSpace.Type hierarchyType = SpaceServiceImpl.getHierarchyType(spaceType.getElementType());
 
         switch (hierarchyType) {
@@ -90,6 +89,7 @@ public class IfcDecSpace extends IfcDecSpatialStructureElement {
                 space.setCompositionType(IfcDecElementCompositionEnum.PARTIAL);
                 break;
         }
+
 
         return space;
 

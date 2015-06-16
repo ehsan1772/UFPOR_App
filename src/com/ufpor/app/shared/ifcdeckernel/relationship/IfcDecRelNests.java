@@ -37,6 +37,16 @@ public class IfcDecRelNests extends IfcDecRelDecomposes {
 
     }
 
+    @Override
+    public void add(IfcDecRoot item) {
+        getList().add(item);
+    }
+
+    @Override
+    public void addAll(List item) {
+        getList().addAll(item);
+    }
+
     public IfcDecRelNests(IfcDecObjectDefinition relatingObject) {
         this.relatingObject = relatingObject;
         relatedObjects = new ArrayList<IfcDecObjectDefinition>();
@@ -68,18 +78,4 @@ public class IfcDecRelNests extends IfcDecRelDecomposes {
         return null;
     }
 
-    @Override
-    public boolean add(Object o) {
-        return false;
-    }
-
-    @Override
-    public Object set(int index, Object element) {
-        return null;
-    }
-
-    @Override
-    public void add(int index, Object element) {
-
-    }
 }

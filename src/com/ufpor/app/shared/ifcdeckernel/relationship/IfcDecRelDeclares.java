@@ -9,6 +9,7 @@ import com.ufpor.app.shared.ifcdeckernel.IfcDecContext;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecObjectDefinition;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecRoot;
 
+import javax.jdo.annotations.NotPersistent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -21,7 +22,11 @@ public class IfcDecRelDeclares<T extends IfcDecRoot, E extends IfcDecRoot> exten
     public final static String TAG = IfcDecRelDeclares.class.getSimpleName();
     private static transient Logger logger = Logger.getLogger(TAG);
     private static IfcDecRelDeclares<IfcDecObjectDefinition, IfcDecContext> instance;
+
+    @NotPersistent
     private E owner;
+
+    @NotPersistent
     private ArrayList<T> list;
 
      public IfcDecRelDeclares() {
@@ -30,7 +35,17 @@ public class IfcDecRelDeclares<T extends IfcDecRoot, E extends IfcDecRoot> exten
 
     @Override
     protected void initialize(E owner) {
+        list = new ArrayList<>();
+    }
 
+    @Override
+    public void add(T item) {
+        list.add(item);
+    }
+
+    @Override
+    public void addAll(List<T> item) {
+        list.addAll(item);
     }
 
     public IfcDecRelDeclares(E relatingObject) {

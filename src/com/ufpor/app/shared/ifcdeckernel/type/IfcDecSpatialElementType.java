@@ -20,6 +20,9 @@ public class IfcDecSpatialElementType extends IfcDecTypeProduct {
         super(guid, user);
     }
 
+    public IfcDecSpatialElementType() {
+    }
+
     public String getElementType() {
         return elementType;
     }

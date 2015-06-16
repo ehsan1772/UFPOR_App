@@ -5,6 +5,7 @@ import com.google.appengine.api.datastore.PostLoadContext;
 import com.google.appengine.api.datastore.PutContext;
 import com.google.appengine.api.users.User;
 import com.ufpor.app.server.GuidCompressor;
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
 import com.ufpor.app.shared.ifcdeckernel.relationship.IfcDecRelAggregates;
 
@@ -31,14 +32,26 @@ public abstract class IfcDecObjectDefinition extends IfcDecRoot implements IfcDe
 
     protected IfcDecObjectDefinition(String GUID, User user) {
         super(GUID, user);
-        //Getting GUID
-        String guid = GuidCompressor.getNewIfcGloballyUniqueId();
-
-        childSpaces = new IfcDecRelAggregates();
+        childSpaces = new IfcDecRelAggregates<>();
     }
 
+    public IfcDecRelAggregates<IfcDecSpace, IfcDecSpace> getChildSpaces() {
+        return childSpaces;
+    }
+
+    public void setChildSpaces(IfcDecRelAggregates<IfcDecSpace, IfcDecSpace>  childSpaces) {
+        this.childSpaces = childSpaces;
+    }
+
+
     public void addChildSpace(IfcDecSpace child) {
+        if (childSpaces == null) {
+            //Getting GUID
+            String guid = GuidCompressor.getNewIfcGloballyUniqueId();
+            childSpaces = new IfcDecRelAggregates(guid, user, this);
+        }
         childSpaces.add(child);
+        prepareDataForStoreIfcDecContext(null);
     }
 
     protected IfcDecObjectDefinition() {
@@ -50,11 +63,28 @@ public abstract class IfcDecObjectDefinition extends IfcDecRoot implements IfcDe
     public void prepareDataForClient(PostLoadContext context) {
         super.prepareDataForClient(context);
 
+        if (childSpaces != null) {
+            childSpaces.prepareDataForClient(context);
+        }
+
     }
 
     @Override
     public void prepareDataForStoreIfcDecContext(PutContext context) {
         super.prepareDataForStoreIfcDecContext(context);
 
+        if (childSpaces != null) {
+            childSpaces.prepareDataForStoreIfcDecContext(context);
+        }
+
+    }
+
+    @Override
+    public ArrayList<IfcFileObject> getRelatedObjects() {
+        ArrayList<IfcFileObject> list = super.getRelatedObjects();
+        if (childSpaces != null) {
+            list.add(childSpaces);
+        }
+        return list;
     }
 }

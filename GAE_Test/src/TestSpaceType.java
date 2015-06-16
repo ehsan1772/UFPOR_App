@@ -13,15 +13,15 @@ public class TestSpaceType extends BaseTest {
     public void testFullTest() {
         IfcClientProject project = TestProject.getNewTestProject();
         IfcClientSpaceType spaceType = getNewSpaceType("name!", "description", "longname");
-        IfcClientSpaceType spaceType2 = getNewSpaceType("name2!", "description2", "longname2");
-        IfcClientSpaceType spaceType3 = getNewSpaceType("name3!", "description3", "longname3");
-        IfcClientSpaceType spaceType4 = getNewSpaceType("name4!", "description4", "longname4");
+//        IfcClientSpaceType spaceType2 = getNewSpaceType("name2!", "description2", "longname2");
+//        IfcClientSpaceType spaceType3 = getNewSpaceType("name3!", "description3", "longname3");
+//        IfcClientSpaceType spaceType4 = getNewSpaceType("name4!", "description4", "longname4");
 
         String projectKey = newProjectSaveTest(project);
         String spaceTypeKey = saveNewSpaceTypeTest(projectKey, spaceType);
-        String spaceTypeKey2 = saveNewSpaceTypeTest(projectKey, spaceType2);
-        String spaceTypeKey3 = saveNewSpaceTypeTest(projectKey, spaceType3);
-        String spaceTypeKey4 = saveNewSpaceTypeTest(projectKey, spaceType4);
+//        String spaceTypeKey2 = saveNewSpaceTypeTest(projectKey, spaceType2);
+//        String spaceTypeKey3 = saveNewSpaceTypeTest(projectKey, spaceType3);
+//        String spaceTypeKey4 = saveNewSpaceTypeTest(projectKey, spaceType4);
 
         IfcDecSpaceType decSpaceType = spaceTypeValuesTest(spaceTypeKey);
 

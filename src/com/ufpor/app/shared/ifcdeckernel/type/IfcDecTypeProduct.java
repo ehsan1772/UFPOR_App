@@ -15,4 +15,7 @@ public class IfcDecTypeProduct extends IfcDecTypeObject {
     public IfcDecTypeProduct(String guid, User user) {
         super(guid, user);
     }
+
+    public IfcDecTypeProduct() {
+    }
 }

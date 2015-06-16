@@ -23,48 +23,42 @@ import java.util.logging.Logger;
  */
 @PersistenceCapable
 @Inheritance(customStrategy = "complete-table")
-public class IfcDecRelAggregates<T extends IfcDecRoot, E extends IfcDecRoot> extends IfcDecRelDecomposes<T, E> {
-    public final static String TAG = IfcDecRelAggregates.class.getSimpleName();
+public class IfcDecRelAggregates2<T extends IfcDecRoot, E extends IfcDecRoot> extends IfcDecRelDecomposes2<T, E> {
+    public final static String TAG = IfcDecRelAggregates2.class.getSimpleName();
     private static transient Logger logger = Logger.getLogger(TAG);
 
     @NotPersistent
     private E relatingObject;
+
     @NotPersistent
     private List<T> relatedObjects;
 
     @Persistent(defaultFetchGroup = "true")
-    private ArrayList<IfcDecSpace> childSpaces;
+    private List<IfcDecSpace> childSpaces;
 
     @Persistent(defaultFetchGroup = "true")
     private IfcDecSpace parent;
 
-    public IfcDecRelAggregates() {
+    public IfcDecRelAggregates2() {
         super();
-        relatedObjects = new ArrayList<>();
-        childSpaces = new ArrayList<>();
+        // relatedObjects = new ArrayList<IfcDecObjectDefinition>();
     }
 
-    public IfcDecRelAggregates(String GUID, User user, E owner) {
+    public IfcDecRelAggregates2(String GUID, User user, E owner) {
         super(GUID, user, owner);
+        this.relatingObject = relatingObject;
         relatedObjects = new ArrayList<>();
-        relatingObject = owner;
-        childSpaces = new ArrayList<>();
     }
 
     @Override
     protected void initialize(E owner) {
-//        relatedObjects = new ArrayList<>();
-//        relatingObject = owner;
+        relatedObjects = new ArrayList<>();
+        relatingObject = owner;
     }
 
     @Override
     public void add(T item) {
         relatedObjects.add(item);
-    }
-
-    @Override
-    public void addAll(List<T> item) {
-        getList().addAll(item);
     }
 
     @Override
@@ -74,7 +68,6 @@ public class IfcDecRelAggregates<T extends IfcDecRoot, E extends IfcDecRoot> ext
 
     @Override
     public List<T> getList() {
-
         return relatedObjects;
     }
 
@@ -89,34 +82,28 @@ public class IfcDecRelAggregates<T extends IfcDecRoot, E extends IfcDecRoot> ext
 
     }
 
-
     @Override
     public void prepareDataForClient(PostLoadContext context) {
         super.prepareDataForClient(context);
         relatedObjects = new ArrayList<>();
         relatingObject = (E) parent;
 
-        if (childSpaces != null) {
-            for (IfcDecSpace child : childSpaces) {
-                relatedObjects.add((T) child);
-            }
+        for (IfcDecSpace child : childSpaces) {
+            relatedObjects.add((T) child);
         }
     }
 
     @Override
     public void prepareDataForStoreIfcDecContext(PutContext context) {
         super.prepareDataForStoreIfcDecContext(context);
+        childSpaces = new ArrayList<>();
 
         if (relatingObject instanceof IfcDecSpace) {
             parent = (IfcDecSpace) relatingObject;
         }
 
-        if (childSpaces == null) {
-            childSpaces = new ArrayList<>();
-        }
-
         for (T child : relatedObjects) {
-            if (child instanceof IfcDecSpace && !childSpaces.contains(child)) {
+            if (child instanceof IfcDecSpace) {
                 childSpaces.add((IfcDecSpace) child);
             }
         }
@@ -124,11 +111,7 @@ public class IfcDecRelAggregates<T extends IfcDecRoot, E extends IfcDecRoot> ext
 
     @Override
     public ArrayList<IfcFileObject> getRelatedObjects() {
-        if (getList().size() != 0) {
-            return new ArrayList<IfcFileObject>(getList());
-        } else {
-            return null;
-        }
+        return null;
     }
 
     @Override

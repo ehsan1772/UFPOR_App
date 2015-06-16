@@ -12,6 +12,7 @@ import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by Ehsan Barekati on 10/30/14.
@@ -88,4 +89,8 @@ public abstract class IfcDecRoot extends GAEObject implements Serializable, IfcF
         ifcPhysicalNumber = number;
     }
 
+    @Override
+    public ArrayList<IfcFileObject> getRelatedObjects() {
+        return new ArrayList<>();
+    }
 }

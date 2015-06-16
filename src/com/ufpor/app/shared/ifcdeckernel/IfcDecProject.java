@@ -124,6 +124,7 @@ public class IfcDecProject extends IfcDecContext {
 
     @PrePut(kinds = {"IfcDecProject"})
     public void prepareDataForStore(PutContext context) {
+        super.prepareDataForStoreIfcDecContext(context);
         spatialStructureRoot_Space = new ArrayList<IfcDecSpace>();
         if (spatialStructureRoot != null) {
             for (IfcDecSpatialElement element : spatialStructureRoot) {
@@ -139,6 +140,7 @@ public class IfcDecProject extends IfcDecContext {
 
     @PostLoad(kinds = {"IfcDecProject"})
     public void prepareDataForClient(PostLoadContext context) {
+        super.prepareDataForClient(context);
         spatialStructureRoot = new ArrayList<IfcDecSpatialElement>();
         spatialStructureRoot.addAll(spatialStructureRoot_Space);
     }
@@ -157,7 +159,7 @@ public class IfcDecProject extends IfcDecContext {
 
     @Override
     public ArrayList<IfcFileObject> getRelatedObjects() {
-        ArrayList<IfcFileObject> results = new ArrayList<>();
+        ArrayList<IfcFileObject> results = super.getRelatedObjects();
         results.add(getUnitsInContext());
         results.addAll(getIsDefinedBy());
 
@@ -177,6 +179,11 @@ public class IfcDecProject extends IfcDecContext {
         results.add(declaresObject);
 
         return results;
+    }
+
+    @Override
+    public void addChildSpace(IfcDecSpace child) {
+        super.addChildSpace(child);
     }
 
     @Override

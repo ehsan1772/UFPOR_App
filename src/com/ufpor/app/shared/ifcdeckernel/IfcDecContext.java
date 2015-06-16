@@ -5,6 +5,7 @@ import com.google.appengine.api.datastore.PostLoadContext;
 import com.google.appengine.api.datastore.PrePut;
 import com.google.appengine.api.datastore.PutContext;
 import com.google.appengine.api.users.User;
+import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
 import com.ufpor.app.shared.ifcdeckernel.property.*;
 import com.ufpor.app.shared.ifcdeckernel.relationship.IfcDecRelDeclares;
@@ -108,7 +109,7 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
 
     public ArrayList<IfcDecDefinitionSelect> getDeclares() {
         ArrayList<IfcDecDefinitionSelect> declares = new ArrayList<IfcDecDefinitionSelect>();
-        declares.addAll(declaresObject);
+        declares.addAll(declaresObject.getList());
         for (IfcDecPropertyDefinition prop : declaresProperty) {
             declares.add((IfcDecDefinitionSelect) prop);
         }
@@ -182,15 +183,17 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
         super.prepareDataForStoreIfcDecContext(context);
         isDefinedBy_PropertySet = new ArrayList<IfcDecPropertySet>();
         isDefinedBy_QuantitySet = new ArrayList<IfcDecElementQuantity>();
-        for (IfcDecPropertySetDefinitionSelect element : isDefinedBy) {
-            if (element instanceof IfcDecPropertySet) {
-                ((IfcDecPropertySet) element).onPrePut();
-                isDefinedBy_PropertySet.add((IfcDecPropertySet) element);
-            }
+        if (isDefinedBy != null) {
+            for (IfcDecPropertySetDefinitionSelect element : isDefinedBy) {
+                if (element instanceof IfcDecPropertySet) {
+                    ((IfcDecPropertySet) element).onPrePut();
+                    isDefinedBy_PropertySet.add((IfcDecPropertySet) element);
+                }
 
-            if (element instanceof IfcDecElementQuantity) {
-                ((IfcDecElementQuantity) element).onPrePut();
-                isDefinedBy_QuantitySet.add((IfcDecElementQuantity) element);
+                if (element instanceof IfcDecElementQuantity) {
+                    ((IfcDecElementQuantity) element).onPrePut();
+                    isDefinedBy_QuantitySet.add((IfcDecElementQuantity) element);
+                }
             }
         }
 
@@ -212,6 +215,11 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
         objectType = new IfcDecLabel(objectTypeString);
         longName = new IfcDecLabel(longNameString);
         phase = new IfcDecLabel(phaseString);
+    }
+
+    @Override
+    public ArrayList<IfcFileObject> getRelatedObjects() {
+        return super.getRelatedObjects();
     }
 
 }

@@ -34,7 +34,7 @@ import java.util.logging.Logger;
  */
 public class EnvironmentServiceImpl extends RemoteServiceServlet implements EnvironmentService {
     private static final Logger LOG = Logger.getLogger(EnvironmentServiceImpl.class.getName());
-    private static final PersistenceManagerFactory PMF = JDOHelper.getPersistenceManagerFactory("transactions-optional");
+    public static final PersistenceManagerFactory PMF = JDOHelper.getPersistenceManagerFactory("transactions-optional");
     private static final String TAG = EnvironmentServiceImpl.class.getSimpleName();
     private boolean isTest = false;
     private final static User TestUser = new User("test@test.com", "test.com", "test", "com");
@@ -483,6 +483,15 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
         finally {
             pm2.close();
         }
+    }
+
+    @Override
+    public IfcDecProject getProjectByKey(String key) {
+        PersistenceManager pm2 = getPersistenceManager();
+        IfcDecProject result = pm2.getObjectById(IfcDecProject.class, key);
+        result.prepareDataForClient(null);
+        pm2.close();
+        return result;
     }
 
     public String getProjectKeyByName(String projectName) {
