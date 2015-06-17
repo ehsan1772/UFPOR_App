@@ -22,18 +22,18 @@ public class TestSpace extends BaseTest {
         IfcClientSpaceType spaceType = getNewSpaceType("name!", "description", "longname");
         String spaceTypeKey = saveNewSpaceTypeTest(projectKey, spaceType);
 
-        String childrenKey = addSpaceToTheProject(null, projectKey, spaceTypeKey);
-        String childrenKey2 = addSpaceToTheProject(null, projectKey, spaceTypeKey);
+        String spaceKey1 = addSpaceToTheProject(null, projectKey, spaceTypeKey);
+        String spaceKey2 = addSpaceToTheProject(null, projectKey, spaceTypeKey);
 
 
-        testIfChildrenHasAmember(childrenKey);
+     //   testIfChildrenHasAmember(childrenKey);
 
         IfcDecProject proj = getEnvironmentService().getProjectByKey(projectKey);
 
-//        testIfSpaceIsPersisted(spaceKey, projectKey, 0);
+        testIfSpaceIsPersisted(spaceKey1, projectKey, 0);
 
 //        String spaceKey2 = addSpaceToTheProject(null, projectKey, spaceTypeKey);
-//        testIfSpaceIsPersisted(spaceKey2, projectKey, 1);
+        testIfSpaceIsPersisted(spaceKey2, projectKey, 1);
 //
 //        testIfChileSpaceIsAddedToTheProject(projectKey, spaceKey2);
 //

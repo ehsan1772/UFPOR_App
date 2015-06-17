@@ -70,7 +70,7 @@ public class SpaceServiceImpl extends RemoteServiceServlet implements SpaceServi
 
         pm.close();
 
-        spaceKey = children.getKey();
+        spaceKey = space.getKey();
 
         return spaceKey;
     }
