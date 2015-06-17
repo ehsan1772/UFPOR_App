@@ -6,6 +6,7 @@ import com.ufpor.app.client.view.EnvironmentDM;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
 import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
 import com.ufpor.app.shared.ifcclient.type.IfcClientSpaceType;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecObjectDefinition;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecProject;
 
 import java.util.List;
@@ -43,4 +44,6 @@ public interface EnvironmentServiceAsync {
     void addSpaceType(IfcClientSpaceType spaceType, String projectKey, boolean isTest,AsyncCallback<String> async);
 
     void getProjectByKey(String key, AsyncCallback<IfcDecProject> async);
+
+    void getIfcDecObjectDefinitionByKey(String key, AsyncCallback<IfcDecObjectDefinition> async);
 }

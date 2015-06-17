@@ -32,4 +32,21 @@ public abstract class GAEObject implements Serializable {
     public String getKey() {
         return key;
     }
+
+    //this way items with the same key will be considered equal in the BiMap in IfcFileManager
+    @Override
+    public int hashCode() {
+        if (key != null && !key.isEmpty()) {
+            return key.hashCode();
+        }
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof  GAEObject && key != null && !key.isEmpty()) {
+            return key.equals(((GAEObject) obj).getKey());
+        }
+        return super.equals(obj);
+    }
 }

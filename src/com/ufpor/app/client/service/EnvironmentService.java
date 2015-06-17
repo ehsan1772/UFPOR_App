@@ -8,6 +8,7 @@ import com.ufpor.app.client.view.EnvironmentDM;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
 import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
 import com.ufpor.app.shared.ifcclient.type.IfcClientSpaceType;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecObjectDefinition;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecProject;
 
 import java.util.List;
@@ -46,6 +47,8 @@ public interface EnvironmentService extends RemoteService {
     public void deleteProjectByName(String name);
 
     public IfcDecProject getProjectByKey(String key);
+
+    public IfcDecObjectDefinition getIfcDecObjectDefinitionByKey(String key);
 
     /**
      * Utility/Convenience class.

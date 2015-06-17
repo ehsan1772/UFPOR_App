@@ -3,16 +3,16 @@ package com.ufpor.app.shared.ifcdeckernel.relationship;
 import com.google.appengine.api.datastore.PostLoadContext;
 import com.google.appengine.api.datastore.PutContext;
 import com.google.appengine.api.users.User;
+import com.ufpor.app.server.EnvironmentServiceImpl;
 import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
 import com.ufpor.app.server.ifcphysical.IfcFileObject;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecObjectDefinition;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecRoot;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
 
-import javax.jdo.annotations.Inheritance;
-import javax.jdo.annotations.NotPersistent;
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
+import javax.jdo.PersistenceManager;
+import javax.jdo.annotations.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -35,8 +35,14 @@ public class IfcDecRelAggregates<T extends IfcDecRoot, E extends IfcDecRoot> ext
     @Persistent(defaultFetchGroup = "true")
     private ArrayList<IfcDecSpace> childSpaces;
 
-    @Persistent(defaultFetchGroup = "true")
-    private IfcDecSpace parent;
+    @Persistent(serialized = "true")
+    private Class parentClass;
+
+    @Persistent
+    private String parentKey;
+
+    @Persistent(defaultFetchGroup = "true", mappedBy = "childSpaces")
+    private IfcDecObjectDefinition parent;
 
     public IfcDecRelAggregates() {
         super();
@@ -49,6 +55,8 @@ public class IfcDecRelAggregates<T extends IfcDecRoot, E extends IfcDecRoot> ext
         relatedObjects = new ArrayList<>();
         relatingObject = owner;
         childSpaces = new ArrayList<>();
+        parentKey = owner.getKey();
+        parentClass = owner.getClass();
     }
 
     @Override
@@ -93,23 +101,21 @@ public class IfcDecRelAggregates<T extends IfcDecRoot, E extends IfcDecRoot> ext
     @Override
     public void prepareDataForClient(PostLoadContext context) {
         super.prepareDataForClient(context);
-        relatedObjects = new ArrayList<>();
-        relatingObject = (E) parent;
 
         if (childSpaces != null) {
             for (IfcDecSpace child : childSpaces) {
                 relatedObjects.add((T) child);
             }
         }
+
+        PersistenceManager pm = EnvironmentServiceImpl.PMF.getPersistenceManager();
+
+        relatingObject = (E) pm.getObjectById(parentClass, parentKey);
     }
 
     @Override
     public void prepareDataForStoreIfcDecContext(PutContext context) {
         super.prepareDataForStoreIfcDecContext(context);
-
-        if (relatingObject instanceof IfcDecSpace) {
-            parent = (IfcDecSpace) relatingObject;
-        }
 
         if (childSpaces == null) {
             childSpaces = new ArrayList<>();
@@ -140,7 +146,7 @@ public class IfcDecRelAggregates<T extends IfcDecRoot, E extends IfcDecRoot> ext
         String description = getDescription();
 
         //IfcRelAggregates
-        String relatingObject = String.valueOf(fileManager.getNumber(getOwner()));
+        String relatingObjectString = String.valueOf(fileManager.getNumber(relatingObject));
 
         IfcDecRoot rr = getList().get(0);
 
@@ -151,7 +157,7 @@ public class IfcDecRelAggregates<T extends IfcDecRoot, E extends IfcDecRoot> ext
                 ownerHistory,
                 name,
                 description,
-                relatingObject,
+                relatingObjectString,
                 relatedObjects);
 
         return result;

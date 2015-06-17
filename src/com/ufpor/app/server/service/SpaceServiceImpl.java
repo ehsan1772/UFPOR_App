@@ -31,17 +31,11 @@ public class SpaceServiceImpl extends RemoteServiceServlet implements SpaceServi
     public String addSpaceInstance(Type parentType, String parentSpaceKey, String spaceTypeKey) {
         PersistenceManager pm = PMF.getPersistenceManager();
 
-
         IfcDecSpaceType spaceType = pm.getObjectById(IfcDecSpaceType.class, spaceTypeKey);
         Type hierarchyType = getHierarchyType(spaceType.getElementType());
 
         IfcDecObjectDefinition parent = pm.getObjectById(IfcDecProject.class, parentSpaceKey);
-        pm.close();
 
-        pm = PMF.getPersistenceManager();
-        IfcDecRelAggregates children = pm.getObjectById(IfcDecRelAggregates.class, parent.getChildSpaces().getKey());
-
-        String spaceKey = null;
         IfcDecSpace space = null;
 
         switch (hierarchyType) {
@@ -60,8 +54,8 @@ public class SpaceServiceImpl extends RemoteServiceServlet implements SpaceServi
             case SPACE_COMPLEX:
                 space = IfcDecSpace.getInstance(spaceType);
                 space.prepareDataForStoreIfcDecContext(null);
-                children.add(space);
-                children.prepareDataForStoreIfcDecContext(null);
+                parent.addChildSpace(space);
+                parent.prepareDataForStoreIfcDecContext(null);
             case SPACE_ELEMENT:
                 break;
             case SPACE_PARTIAL:
@@ -69,10 +63,7 @@ public class SpaceServiceImpl extends RemoteServiceServlet implements SpaceServi
         }
 
         pm.close();
-
-        spaceKey = space.getKey();
-
-        return spaceKey;
+        return space.getKey();
     }
 
     @Override

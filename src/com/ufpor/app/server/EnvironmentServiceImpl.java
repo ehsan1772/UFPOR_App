@@ -12,6 +12,7 @@ import com.ufpor.app.server.ifcphysical.IfcFileManager;
 import com.ufpor.app.shared.ifcclient.IfcClientProject;
 import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
 import com.ufpor.app.shared.ifcclient.type.IfcClientSpaceType;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecObjectDefinition;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecProject;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
 import com.ufpor.app.shared.ifcdeckernel.property.IfcDecUnit;
@@ -489,6 +490,15 @@ public class EnvironmentServiceImpl extends RemoteServiceServlet implements Envi
     public IfcDecProject getProjectByKey(String key) {
         PersistenceManager pm2 = getPersistenceManager();
         IfcDecProject result = pm2.getObjectById(IfcDecProject.class, key);
+        result.prepareDataForClient(null);
+        pm2.close();
+        return result;
+    }
+
+    @Override
+    public IfcDecObjectDefinition getIfcDecObjectDefinitionByKey(String key) {
+        PersistenceManager pm2 = getPersistenceManager();
+        IfcDecObjectDefinition result = pm2.getObjectById(IfcDecObjectDefinition.class, key);
         result.prepareDataForClient(null);
         pm2.close();
         return result;

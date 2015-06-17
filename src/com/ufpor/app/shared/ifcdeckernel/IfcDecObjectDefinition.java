@@ -18,7 +18,6 @@ import java.util.ArrayList;
 /**
  * Created by Ehsan Barekati on 10/30/14.
  */
-
 @PersistenceCapable
 @Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
 public abstract class IfcDecObjectDefinition extends IfcDecRoot implements IfcDecDefinitionSelect {
@@ -32,7 +31,7 @@ public abstract class IfcDecObjectDefinition extends IfcDecRoot implements IfcDe
 
     protected IfcDecObjectDefinition(String GUID, User user) {
         super(GUID, user);
-        childSpaces = new IfcDecRelAggregates<>();
+      //  childSpaces = new IfcDecRelAggregates<>();
     }
 
     public IfcDecRelAggregates<IfcDecSpace, IfcDecSpace> getChildSpaces() {
