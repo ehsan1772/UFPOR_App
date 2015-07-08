@@ -7,6 +7,8 @@ import com.ufpor.app.shared.ifcdeckernel.IfcDecProject;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
 import com.ufpor.app.shared.ifcdeckernel.type.IfcDecSpaceType;
 
+import java.util.ArrayList;
+
 /**
  * Created by Ehsan Barekati on 3/30/15.
  */
@@ -17,64 +19,20 @@ public class TestSpace extends BaseTest {
         IfcClientProject project = TestProject.getNewTestProject();
         String projectKey = newProjectSaveTest(project);
 
-        IfcDecProject proj0 = getEnvironmentService().getProjectByKey(projectKey);
-
         IfcClientSpaceType spaceType = getNewSpaceType("name!", "description", "longname");
         String spaceTypeKey = saveNewSpaceTypeTest(projectKey, spaceType);
 
+  //      printIfcFile(projectKey);
         String spaceKey1 = addSpaceToTheProject(null, projectKey, spaceTypeKey);
-        String spaceKey2 = addSpaceToTheProject(null, projectKey, spaceTypeKey);
+ //       testIfSpaceIsPersisted(spaceKey1, projectKey, 0);
 
 
-     //   testIfChildrenHasAmember(childrenKey);
-
-        IfcDecProject proj = getEnvironmentService().getProjectByKey(projectKey);
-
-        testIfSpaceIsPersisted(spaceKey1, projectKey, 0);
-
-//        String spaceKey2 = addSpaceToTheProject(null, projectKey, spaceTypeKey);
-        testIfSpaceIsPersisted(spaceKey2, projectKey, 1);
+//        IfcDecSpaceType decSpaceType = spaceTypeValuesTest(spaceTypeKey);
 //
-//        testIfChileSpaceIsAddedToTheProject(projectKey, spaceKey2);
-//
-//        String spaceKey3 = addSpaceToTheProject(null, projectKey, spaceTypeKey);
-//        testIfSpaceIsPersisted(spaceKey3, projectKey, 2);
-//
-//        testIfChileSpaceIsAddedToTheProject(projectKey, spaceKey3);
-
-        IfcDecSpaceType decSpaceType = spaceTypeValuesTest(spaceTypeKey);
-
-        valueMatchTest(decSpaceType, spaceType);
+//        valueMatchTest(decSpaceType, spaceType);
 
         ifcStringTest(projectKey);
-    }
-
-    private void testIfChildrenHasAmember(String childrenKey) {
-        int size = getSpaceService().getIfcRelAggregateByKey(childrenKey);
-        assertEquals(size, 2);
-    }
-
-    private void testIfChileSpaceIsAddedToTheProject(String projectKey, String spaceKey) {
-        IfcDecProject proj = getEnvironmentService().getProjectByKey(projectKey);
-        assertNotNull(proj.getChildSpaces());
-    }
-
-    private void testIfSpaceIsPersisted(String spaceKey, String projectKey, int index) {
-        IfcDecSpace space = getSpaceService().getSpaceByKey(spaceKey);
-        assertNotNull(space);
-
-        IfcDecProject project = getEnvironmentService().getProjectByKey(projectKey);
-
-        assertEquals(space.getKey(), project.getChildSpaces().getList().get(index).getKey());
-    }
-
-    private String addSpaceToTheProject(String spaceType, String projectKey, String spaceTypeKey) {
-        String spaceKey = getSpaceService().addSpaceInstance(IfcSpace.Type.PROJECT, projectKey, spaceTypeKey);
-        assertNotNull(spaceKey);
-        assertTrue(spaceKey.length() > 0);
-
-        System.out.println("Space Key = " + spaceKey);
-        return spaceKey;
+        printIfcFile(projectKey);
     }
 
     private void ifcStringTest(String projectKey) {
@@ -100,8 +58,225 @@ public class TestSpace extends BaseTest {
             System.out.println(fc);
         }
 
+        ArrayList<TestUtils.LineItem> lines = TestUtils.getLines(ifc);
+
+        testLines(lines);
+
         System.out.print(ifc);
     }
+
+
+    private void testLines(ArrayList<TestUtils.LineItem> lines) {
+        //getting the project
+        TestUtils.LineItem project = TestUtils.findByName("IFCPROJECT", lines);
+
+        assertNotNull(project);
+        lines.remove(project);
+        assertEquals(project.properties.size(), 9);
+
+        //finding IFCUNITASSIGNMENT
+        String unitsNumber = project.properties.get(project.properties.size() - 1);
+        TestUtils.LineItem units = TestUtils.findByNumber(unitsNumber, lines);
+        assertNotNull(units);
+        lines.remove(units);
+        assertEquals(units.properties.size(), 3);
+
+        for (String numberString : units.properties) {
+            TestUtils.LineItem unit = TestUtils.findByNumber(numberString, lines);
+            assertNotNull(unit);
+            lines.remove(unit);
+        }
+
+        //finding IFCRELDECLARES
+        TestUtils.LineItem ifcreldeclares = TestUtils.findByName("IFCRELDECLARES", lines);
+        assertNotNull(ifcreldeclares);
+        lines.remove(ifcreldeclares);
+
+        for (TestUtils.LineItem item : lines) {
+            System.out.println(item.source);
+        }
+
+        //finding IFCRELDEFINESBYPROPERTIES for project
+        ArrayList<TestUtils.LineItem> ifcreldefinesByProperties = TestUtils.findAllByName("IFCRELDEFINESBYPROPERTIES", lines);
+        assertEquals(ifcreldefinesByProperties.size(), 1);
+
+        for (TestUtils.LineItem ifcreldefinesByProperty : ifcreldefinesByProperties) {
+            if (ifcreldefinesByProperty.properties.get(4).contains(String.valueOf(project.number))) {
+                String elementQuantityNumber = TestUtils.findNumbers(ifcreldefinesByProperty.properties.get(5)).get(0);
+                TestUtils.LineItem elementQuantity = TestUtils.findByNumber(elementQuantityNumber, lines);
+
+                String elementQuantityAreaNumber = TestUtils.findNumbers(elementQuantity.properties.get(5)).get(0);
+                TestUtils.LineItem elementQuantityArea = TestUtils.findByNumber(elementQuantityAreaNumber, lines);
+
+                //finding the constraints
+                testConstraint(elementQuantityArea, lines);
+
+                lines.remove(ifcreldefinesByProperty);
+                lines.remove(elementQuantity);
+                lines.remove(elementQuantityArea);
+
+
+            }
+        }
+
+
+        //declaring spaceType
+        TestUtils.LineItem spaceType = TestUtils.findByNumber(ifcreldeclares.properties.get(ifcreldeclares.properties.size() - 1), lines);
+        assertEquals(spaceType.type, "IFCSPACETYPE");
+        lines.remove(spaceType);
+
+        ArrayList<String> numbers = TestUtils.findNumbers(spaceType.properties.get(5));
+
+        assertEquals(numbers.size(), 2);
+
+        TestUtils.LineItem propertySet = TestUtils.findByNumber(numbers.get(0), lines);
+        TestUtils.LineItem elementQuantity = TestUtils.findByNumber(numbers.get(1), lines);
+
+        assertEquals(propertySet.type, "IFCPROPERTYSET");
+        assertEquals(elementQuantity.type, "IFCELEMENTQUANTITY");
+
+        testProperties(propertySet, lines);
+        lines.remove(propertySet);
+        testQuantities(elementQuantity, lines);
+
+        //getting the IFCRELAGGREGATES
+        TestUtils.LineItem aggregates = TestUtils.findByName("IFCRELAGGREGATES", lines);
+        assertNotNull(aggregates);
+        lines.remove(aggregates);
+
+        String spaceNumber = TestUtils.findNumbers(aggregates.properties.get(5)).get(0);
+        TestUtils.LineItem space = TestUtils.findByNumber(spaceNumber, lines);
+        assertNotNull(space);
+        lines.remove(space);
+
+        assertEquals(lines.size(), 1);
+        lines.remove(elementQuantity);
+
+        assertEquals(lines.size(), 0);
+        int i = 0;
+
+
+    }
+
+    private void testConstraint(TestUtils.LineItem item, ArrayList<TestUtils.LineItem> lines) {
+        //finding all the constraint relationships
+        ArrayList<TestUtils.LineItem> constraints = TestUtils.findAllByName("IFCRESOURCECONSTRAINTRELATIONSHIP", lines);
+
+        TestUtils.LineItem constraint = getConstraint(constraints, item);
+
+        assertNotNull(constraint);
+        constraints.remove(constraint);
+        TestUtils.LineItem objective = TestUtils.findByNumber(TestUtils.findNumbers(constraint.properties.get(2)).get(0), lines);
+        assertEquals(objective.type, "IFCOBJECTIVE");
+        lines.remove(objective);
+
+        ArrayList<String> metrics = TestUtils.findNumbers(objective.properties.get(7));
+        for (String metric : metrics) {
+            TestUtils.LineItem met = TestUtils.findByNumber(metric, lines);
+            assertNotNull(met);
+            lines.remove(met);
+        }
+
+        lines.remove(constraint);
+    }
+
+    private void testQuantities(TestUtils.LineItem elementQuantity, ArrayList<TestUtils.LineItem> lines) {
+        //finding all the constraint relationships
+        ArrayList<TestUtils.LineItem> constraints = TestUtils.findAllByName("IFCRESOURCECONSTRAINTRELATIONSHIP", lines);
+
+        ArrayList<String> nums = TestUtils.findNumbers(elementQuantity.properties.get(5));
+
+        for (String num : nums) {
+            TestUtils.LineItem property = TestUtils.findByNumber(num, lines);
+            lines.remove(property);
+            assertNotNull(property);
+            TestUtils.LineItem constraint = getConstraint(constraints, property);
+            assertNotNull(constraint);
+            constraints.remove(constraint);
+            TestUtils.LineItem objective = TestUtils.findByNumber(TestUtils.findNumbers(constraint.properties.get(2)).get(0), lines);
+            assertEquals(objective.type, "IFCOBJECTIVE");
+            lines.remove(objective);
+            ArrayList<String> metrics = TestUtils.findNumbers(objective.properties.get(7));
+            for (String metric : metrics) {
+                TestUtils.LineItem met = TestUtils.findByNumber(metric, lines);
+                assertNotNull(met);
+                lines.remove(met);
+            }
+
+            lines.remove(constraint);
+            lines.remove(property);
+        }
+
+
+        int i = 0;
+
+    }
+
+    private TestUtils.LineItem getConstraint(ArrayList<TestUtils.LineItem> constraints, TestUtils.LineItem property) {
+        for (TestUtils.LineItem constraint : constraints) {
+            if (Integer.valueOf(TestUtils.findNumbers(constraint.properties.get(3)).get(0)) == property.number) {
+                return constraint;
+            }
+        }
+
+        return null;
+    }
+
+    private void testProperties(TestUtils.LineItem propertySet, ArrayList<TestUtils.LineItem> lines) {
+        ArrayList<String> nums = TestUtils.findNumbers(propertySet.properties.get(4));
+        assertEquals(nums.size(), 7);
+        for (String num : nums) {
+            TestUtils.LineItem property = TestUtils.findByNumber(num, lines);
+            assertNotNull(property);
+            lines.remove(property);
+        }
+    }
+
+    private void testIfChildrenHasAmember(String childrenKey) {
+        int size = getSpaceService().getIfcRelAggregateByKey(childrenKey);
+        assertEquals(size, 2);
+    }
+
+    private void testIfChileSpaceIsAddedToTheProject(String projectKey, String spaceKey) {
+        IfcDecProject proj = getEnvironmentService().getProjectByKey(projectKey);
+        assertNotNull(proj.getChildSpaces());
+    }
+
+    private void testIfSpaceIsPersisted(String spaceKey, String projectKey, int index) {
+        IfcDecSpace space = getSpaceService().getSpaceByKey(spaceKey);
+        assertNotNull(space);
+
+        IfcDecProject project = getEnvironmentService().getProjectByKey(projectKey);
+
+        assertEquals(space.getKey(), project.getChildSpaces().getList().get(index).getKey());
+    }
+
+    private String addSpaceToTheProject(String spaceType, String projectKey, String spaceTypeKey) {
+        String spaceKey = getSpaceService().addSpaceInstance(IfcSpace.Type.PROJECT, projectKey, spaceTypeKey);
+//        assertNotNull(spaceKey);
+//        assertTrue(spaceKey.length() > 0);
+
+        System.out.println("Space Key = " + spaceKey);
+        return spaceKey;
+    }
+
+    private void printIfcFile(String projectKey) {
+        String ifc = null;
+        try {
+            ifc = getEnvironmentService().getIfcString(projectKey, true);
+        } catch (NotLoggedInException e) {
+            e.printStackTrace();
+        }
+
+        String[] ifcs = ifc.split("\n");
+
+        for (String fc : ifcs) {
+            System.out.println(fc);
+        }
+
+        System.out.print(ifc);
+    }
+
 
     private void valueMatchTest(IfcDecSpaceType decSpaceType, IfcClientSpaceType spaceType) {
         assertEquals(decSpaceType.getName(), spaceType.getName());

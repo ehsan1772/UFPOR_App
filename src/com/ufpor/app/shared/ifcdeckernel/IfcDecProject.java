@@ -125,7 +125,9 @@ public class IfcDecProject extends IfcDecContext {
     @PrePut(kinds = {"IfcDecProject"})
     public void prepareDataForStore(PutContext context) {
         super.prepareDataForStoreIfcDecContext(context);
-        spatialStructureRoot_Space = new ArrayList<IfcDecSpace>();
+        if (spatialStructureRoot_Space == null) {
+            spatialStructureRoot_Space = new ArrayList<IfcDecSpace>();
+        }
         if (spatialStructureRoot != null) {
             for (IfcDecSpatialElement element : spatialStructureRoot) {
                 if (element instanceof IfcDecSpace) {

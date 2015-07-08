@@ -27,7 +27,7 @@ import java.util.List;
 @PersistenceCapable
 @Inheritance(customStrategy = "complete-table")
 public class IfcDecRelDefinesByProperties<T extends IfcFileObject> extends IfcDecRelDefines {
-    private IfcDecObject owner;
+    private IfcDecRoot owner;
 
     @NotPersistent
     private ArrayList<T> list;
@@ -57,17 +57,18 @@ public class IfcDecRelDefinesByProperties<T extends IfcFileObject> extends IfcDe
 
     @Override
     protected void initialize(IfcDecRoot owner) {
+        this.owner = owner;
         list = new ArrayList();
     }
 
     @Override
     public void add(IfcDecRoot item) {
-
+        list.add((T) item);
     }
 
     @Override
     public void addAll(List item) {
-
+        list.addAll(item);
     }
 
     @Override

@@ -43,6 +43,8 @@ public class IfcDecPropertySet extends IfcDecPropertySetDefinition {
         result.setProperties(properties);
 
         result.addRelatedObjectsProp(relatedObject);
+
+        result.isRelForIfcRequired = true;
         return result;
     }
 
@@ -106,7 +108,9 @@ public class IfcDecPropertySet extends IfcDecPropertySetDefinition {
     public ArrayList<IfcFileObject> getRelatedObjects() {
         ArrayList<IfcFileObject> result = new ArrayList<IfcFileObject>(properties);
 
-        result.add(getRelatedObjectsProp());
+        if (isRelForIfcRequired) {
+            result.add(getRelatedObjectsProp());
+        }
 
         return result;
     }

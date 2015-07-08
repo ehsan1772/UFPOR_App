@@ -24,6 +24,9 @@ public abstract class IfcDecPropertyDefinition extends IfcDecRoot implements Ifc
     @NotPersistent
     protected IfcDecRelDefinesByProperties<IfcFileObject> relatedObjectsProp;
 
+    @Persistent
+    protected boolean isRelForIfcRequired;
+
     public IfcDecPropertyDefinition(String GUID, User user, IfcFileObject... relatedObjects) {
         super(GUID, user);
 
@@ -58,5 +61,9 @@ public abstract class IfcDecPropertyDefinition extends IfcDecRoot implements Ifc
 
     public void setConstraints(ArrayList<IfcDecConstraint> constraints) {
         this.constraints = constraints;
+    }
+
+    public void setRelForIfcRequired(boolean required) {
+        isRelForIfcRequired = required;
     }
 }

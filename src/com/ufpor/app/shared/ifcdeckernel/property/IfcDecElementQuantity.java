@@ -23,6 +23,7 @@ import java.util.Arrays;
 @PersistenceCapable
 @Inheritance(customStrategy = "complete-table")
 public class IfcDecElementQuantity extends IfcDecQuantitySet {
+
     public ArrayList<IfcDecPhysicalQuantity> getQuantities() {
         return quantities;
     }
@@ -73,6 +74,8 @@ public class IfcDecElementQuantity extends IfcDecQuantitySet {
             }
 
         }
+
+        result.isRelForIfcRequired = true;
         return result;
 
     }
@@ -90,7 +93,6 @@ public class IfcDecElementQuantity extends IfcDecQuantitySet {
                 result.getQuantities().add(IfcDecQuantityLength.getClientInstance((IfcDecQuantityLength) quantity));
             }
         }
-
 
         return result;
     }
@@ -147,7 +149,9 @@ public class IfcDecElementQuantity extends IfcDecQuantitySet {
             result.add(q);
         }
 
-        result.add(getRelatedObjectsProp());
+        if (isRelForIfcRequired) {
+            result.add(getRelatedObjectsProp());
+        }
 
         return result;
     }

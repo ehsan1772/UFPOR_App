@@ -98,15 +98,6 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
         return isDefinedBy;
     }
 
-    public void setIsDefinedBy(ArrayList<IfcDecPropertySetDefinitionSelect> isDefinedBy) {
-        this.isDefinedBy = new ArrayList<IfcDecPropertySetDefinitionSelect>();
-        for (IfcDecPropertySetDefinitionSelect item : isDefinedBy) {
-            if (item instanceof IfcDecPropertySetDefinition) {
-                this.isDefinedBy.add((IfcDecPropertySetDefinition) item);
-            }
-        }
-    }
-
     public ArrayList<IfcDecDefinitionSelect> getDeclares() {
         ArrayList<IfcDecDefinitionSelect> declares = new ArrayList<IfcDecDefinitionSelect>();
         declares.addAll(declaresObject.getList());
@@ -181,16 +172,22 @@ public abstract class IfcDecContext extends IfcDecObjectDefinition {
     @PrePut(kinds = {"IfcDecProject"})
     public void prepareDataForStoreIfcDecContext(PutContext context) {
         super.prepareDataForStoreIfcDecContext(context);
-        isDefinedBy_PropertySet = new ArrayList<IfcDecPropertySet>();
-        isDefinedBy_QuantitySet = new ArrayList<IfcDecElementQuantity>();
+
+        if (isDefinedBy_PropertySet == null) {
+            isDefinedBy_PropertySet = new ArrayList<IfcDecPropertySet>();
+        }
+
+        if (isDefinedBy_QuantitySet == null ) {
+            isDefinedBy_QuantitySet = new ArrayList<IfcDecElementQuantity>();
+        }
         if (isDefinedBy != null) {
             for (IfcDecPropertySetDefinitionSelect element : isDefinedBy) {
-                if (element instanceof IfcDecPropertySet) {
+                if (element instanceof IfcDecPropertySet && !isDefinedBy_PropertySet.contains(element)) {
                     ((IfcDecPropertySet) element).onPrePut();
                     isDefinedBy_PropertySet.add((IfcDecPropertySet) element);
                 }
 
-                if (element instanceof IfcDecElementQuantity) {
+                if (element instanceof IfcDecElementQuantity && !isDefinedBy_QuantitySet.contains(element)) {
                     ((IfcDecElementQuantity) element).onPrePut();
                     isDefinedBy_QuantitySet.add((IfcDecElementQuantity) element);
                 }

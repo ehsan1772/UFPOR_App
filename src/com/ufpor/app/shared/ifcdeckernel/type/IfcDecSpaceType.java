@@ -78,6 +78,7 @@ public class IfcDecSpaceType extends IfcDecSpatialStructureElementType {
             }
 
             type.addPropert(prop);
+            prop.setRelForIfcRequired(false);
         }
 
         return type;

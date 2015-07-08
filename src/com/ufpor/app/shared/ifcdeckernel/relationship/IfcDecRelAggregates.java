@@ -12,9 +12,14 @@ import com.ufpor.app.shared.ifcdeckernel.IfcDecRoot;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
 
 import javax.jdo.PersistenceManager;
-import javax.jdo.annotations.*;
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.NotPersistent;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,10 +35,10 @@ public class IfcDecRelAggregates<T extends IfcDecRoot, E extends IfcDecRoot> ext
     @NotPersistent
     private E relatingObject;
     @NotPersistent
-    private List<T> relatedObjects;
+    private Set<T> relatedObjects;
 
     @Persistent(defaultFetchGroup = "true")
-    private ArrayList<IfcDecSpace> childSpaces;
+    private Set<IfcDecSpace> childSpaces;
 
     @Persistent(serialized = "true")
     private Class parentClass;
@@ -46,15 +51,15 @@ public class IfcDecRelAggregates<T extends IfcDecRoot, E extends IfcDecRoot> ext
 
     public IfcDecRelAggregates() {
         super();
-        relatedObjects = new ArrayList<>();
-        childSpaces = new ArrayList<>();
+        relatedObjects = new HashSet<>();
+        childSpaces = new HashSet<>();
     }
 
     public IfcDecRelAggregates(String GUID, User user, E owner) {
         super(GUID, user, owner);
-        relatedObjects = new ArrayList<>();
+        relatedObjects = new HashSet<>();
         relatingObject = owner;
-        childSpaces = new ArrayList<>();
+        childSpaces = new HashSet<>();
         parentKey = owner.getKey();
         parentClass = owner.getClass();
     }
@@ -82,8 +87,7 @@ public class IfcDecRelAggregates<T extends IfcDecRoot, E extends IfcDecRoot> ext
 
     @Override
     public List<T> getList() {
-
-        return relatedObjects;
+        return new ArrayList<>(relatedObjects);
     }
 
     public boolean addRelatedObject(T relatedObject) {
@@ -118,7 +122,7 @@ public class IfcDecRelAggregates<T extends IfcDecRoot, E extends IfcDecRoot> ext
         super.prepareDataForStoreIfcDecContext(context);
 
         if (childSpaces == null) {
-            childSpaces = new ArrayList<>();
+            childSpaces = new HashSet<>();
         }
 
         for (T child : relatedObjects) {

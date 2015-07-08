@@ -3,6 +3,7 @@ package com.ufpor.app.shared.ifcdeckernel.decproduct;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.ufpor.app.server.GuidCompressor;
+import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
 import com.ufpor.app.server.ifcphysical.IfcFileObject;
 import com.ufpor.app.server.service.SpaceServiceImpl;
@@ -12,6 +13,7 @@ import com.ufpor.app.shared.ifcdeckernel.IfcDecElementCompositionEnum;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecLengthMeasure;
 import com.ufpor.app.shared.ifcdeckernel.relationship.IfcDecRelAggregates;
 import com.ufpor.app.shared.ifcdeckernel.type.IfcDecSpaceType;
+import com.ufpor.app.shared.utils.TU;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.PersistenceCapable;
@@ -122,6 +124,45 @@ public class IfcDecSpace extends IfcDecSpatialStructureElement {
 
     @Override
     public String getObjectString(IfcFileManagerI fileManager) {
-        return null;
+        //IfcRoot
+        String GUI = getGlobalId().getValue();
+        String ownerHistory = getOwnerHistory() == null ? "$" : fileManager.getNumber(getOwnerHistory());
+        String name = TU.isEmpty(getName()) ? "$" : getName();
+        String description = TU.isEmpty(getDescription()) ? "$" : getDescription();
+
+        //IfcObjectDefinition (everything is inverse)
+
+        //IfcObject
+        String objectType = getObjectType() == null ? "$" : getObjectType().getValue();
+
+        //IfcProduct
+        String objectPlacement = "$";
+        String representation = "$";
+
+        //IfcSpatialElement
+        String longName = getLongName() == null ? "$" : getLongName().getValue();
+
+        //IfcSpatialStructureElement
+        String compositionType = (getCompositionType() == null) ? "$" : getCompositionType().toString();
+
+        //IfcSpace
+        String predefinedType = (getPredefinedType() == null) ? "$" : getPredefinedType().toString();
+        String elevationWithFlooring = (getElevationWithFlooring() == null) ? "$" : String.valueOf(getElevationWithFlooring().getValue());
+
+        String ifcSpace = String.format(Constants.IFCSPACE,
+                GUI,
+                ownerHistory,
+                name,
+                description,
+                objectType,
+                objectPlacement,
+                representation,
+                longName,
+                compositionType,
+                predefinedType,
+                elevationWithFlooring
+        );
+
+        return ifcSpace;
     }
 }

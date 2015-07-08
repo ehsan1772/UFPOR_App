@@ -35,6 +35,7 @@ public class SpaceServiceImpl extends RemoteServiceServlet implements SpaceServi
         Type hierarchyType = getHierarchyType(spaceType.getElementType());
 
         IfcDecObjectDefinition parent = pm.getObjectById(IfcDecProject.class, parentSpaceKey);
+        parent.prepareDataForClient(null);
 
         IfcDecSpace space = null;
 
