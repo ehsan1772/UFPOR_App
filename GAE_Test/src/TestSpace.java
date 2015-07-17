@@ -149,13 +149,19 @@ public class TestSpace extends BaseTest {
         assertNotNull(space);
         lines.remove(space);
 
-        assertEquals(lines.size(), 1);
+
         lines.remove(elementQuantity);
+        assertEquals(lines.size(), 1);
+
+        TestUtils.LineItem definesByType = TestUtils.findByName("IFCRELDEFINESBYTYPE", lines);
+
+        assertEquals(TestUtils.findNumbers(definesByType.properties.get(4)).get(0), String.valueOf(spaceType.number));
+        assertEquals(TestUtils.findNumbers(definesByType.properties.get(5)).get(0), String.valueOf(space.number));
+
+        assertEquals(lines.size(), 1);
+        lines.remove(definesByType);
 
         assertEquals(lines.size(), 0);
-        int i = 0;
-
-
     }
 
     private void testConstraint(TestUtils.LineItem item, ArrayList<TestUtils.LineItem> lines) {

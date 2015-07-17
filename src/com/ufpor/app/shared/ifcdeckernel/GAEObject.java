@@ -15,6 +15,7 @@ public abstract class GAEObject implements Serializable {
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     @Extension(vendorName = "datanucleus", key = "gae.encoded-pk", value = "true")
     protected String key;
+
     @Persistent
     protected User user;
 
@@ -32,6 +33,7 @@ public abstract class GAEObject implements Serializable {
     public String getKey() {
         return key;
     }
+
 
     //this way items with the same key will be considered equal in the BiMap in IfcFileManager
     @Override

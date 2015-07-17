@@ -1,5 +1,6 @@
 package com.ufpor.app.shared.ifcdeckernel.decproduct;
 
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.ufpor.app.server.GuidCompressor;
@@ -11,7 +12,6 @@ import com.ufpor.app.shared.datatransfer.IfcSpace;
 import com.ufpor.app.shared.ifcclient.product.IfcClientSpace;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecElementCompositionEnum;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecLengthMeasure;
-import com.ufpor.app.shared.ifcdeckernel.relationship.IfcDecRelAggregates;
 import com.ufpor.app.shared.ifcdeckernel.type.IfcDecSpaceType;
 import com.ufpor.app.shared.utils.TU;
 
@@ -30,9 +30,6 @@ public class IfcDecSpace extends IfcDecSpatialStructureElement {
     protected IfcDecSpaceTypeEnum predefinedType;
     @Persistent(defaultFetchGroup = "true")
     protected IfcDecLengthMeasure elevationWithFlooring;
-
-    @Persistent(defaultFetchGroup = "true")
-    protected IfcDecRelAggregates<IfcDecSpace, IfcDecSpace> childSpaces;
 
     public IfcDecSpace(String GUID, User user) {
         super(GUID, user);

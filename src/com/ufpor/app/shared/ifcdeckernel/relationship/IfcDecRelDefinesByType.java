@@ -1,5 +1,6 @@
 package com.ufpor.app.shared.ifcdeckernel.relationship;
 
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PostLoadContext;
 import com.google.appengine.api.datastore.PutContext;
 import com.google.appengine.api.users.User;
@@ -7,9 +8,11 @@ import com.ufpor.app.server.EnvironmentServiceImpl;
 import com.ufpor.app.server.ifcphysical.Constants;
 import com.ufpor.app.server.ifcphysical.IfcFileManagerI;
 import com.ufpor.app.server.ifcphysical.IfcFileObject;
-import com.ufpor.app.shared.ifcdeckernel.IfcDecObjectDefinition;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecGloballyUniqueId;
+import com.ufpor.app.shared.ifcdeckernel.IfcDecObject;
 import com.ufpor.app.shared.ifcdeckernel.IfcDecRoot;
 import com.ufpor.app.shared.ifcdeckernel.decproduct.IfcDecSpace;
+import com.ufpor.app.shared.ifcdeckernel.type.IfcDecTypeObject;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.annotations.Inheritance;
@@ -20,26 +23,25 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Created by Ehsan Barekati on 10/30/14.
+ * Created by Ehsan Barekati on 7/13/15.
  */
 @PersistenceCapable
 @Inheritance(customStrategy = "complete-table")
-public class IfcDecRelAggregates<T extends IfcDecRoot, E extends IfcDecRoot> extends IfcDecRelDecomposes<T, E> {
-    public final static String TAG = IfcDecRelAggregates.class.getSimpleName();
+public class IfcDecRelDefinesByType extends IfcDecRelDefines<IfcDecObject> {
+    public final static String TAG = IfcDecRelDefinesByType.class.getSimpleName();
     private static transient Logger logger = Logger.getLogger(TAG);
 
     @NotPersistent
-    private E relatingObject;
+    private IfcDecTypeObject relatingObject;
 
     @NotPersistent
-    private Set<T> relatedObjects;
+    private Set<IfcDecRoot> relatedObjects;
 
     @Persistent(defaultFetchGroup = "true")
-    private Set<String> childSpaces;
+    private Set<String> definedSpaces;
 
     @Persistent(serialized = "true")
     private Class parentClass;
@@ -47,55 +49,44 @@ public class IfcDecRelAggregates<T extends IfcDecRoot, E extends IfcDecRoot> ext
     @Persistent
     private String parentKey;
 
-
-    public IfcDecRelAggregates() {
+    public IfcDecRelDefinesByType() {
         super();
         relatedObjects = new HashSet<>();
-        childSpaces = new HashSet<>();
     }
 
-    public IfcDecRelAggregates(String GUID, User user, E owner) {
+    public IfcDecRelDefinesByType(String GUID, User user, IfcDecTypeObject owner) {
         super(GUID, user, owner);
         relatedObjects = new HashSet<>();
         relatingObject = owner;
-        childSpaces = new HashSet<>();
+        definedSpaces = new HashSet<>();
         parentKey = owner.getKey();
         parentClass = owner.getClass();
     }
 
-    @Override
-    protected void initialize(E owner) {
-    }
 
     @Override
-    public void add(T item) {
-        relatedObjects.add(item);
-    }
-
-    @Override
-    public void addAll(List<T> item) {
-        getList().addAll(item);
-    }
-
-    @Override
-    public E getOwner() {
+    public IfcDecRoot getOwner() {
         return relatingObject;
     }
 
     @Override
-    public List<T> getList() {
-        return new ArrayList<>(relatedObjects);
+    public List getList() {
+        return new ArrayList(relatedObjects);
     }
 
-    public boolean addRelatedObject(T relatedObject) {
-        if (!relatedObjects.contains(relatingObject)) {
-            relatedObjects.add(relatedObject);
-            return true;
-        } else {
-            logger.log(Level.SEVERE, "The instance to with the relation points as provided by RelatingObject shall not be contained in the list of RelatedObjects.");
-            return false;
-        }
+    @Override
+    protected void initialize(IfcDecRoot owner) {
 
+    }
+
+    @Override
+    public void add(IfcDecRoot item) {
+        relatedObjects.add(item);
+    }
+
+    @Override
+    public void addAll(List item) {
+        relatedObjects.addAll(item);
     }
 
 
@@ -104,56 +95,45 @@ public class IfcDecRelAggregates<T extends IfcDecRoot, E extends IfcDecRoot> ext
         super.prepareDataForClient(context);
         PersistenceManager pm = EnvironmentServiceImpl.PMF.getPersistenceManager();
 
-        if (childSpaces != null) {
-            for (String child : childSpaces) {
-
-                relatedObjects.add((T) pm.getObjectById(IfcDecSpace.class, child));
+        if (definedSpaces != null) {
+            for (String definedObject : definedSpaces) {
+                relatedObjects.add(pm.getObjectById(IfcDecSpace.class, definedObject));
             }
         }
 
-        relatingObject = (E) pm.getObjectById(parentClass, parentKey);
+        relatingObject = (IfcDecTypeObject) pm.getObjectById(parentClass, parentKey);
     }
 
     @Override
     public void prepareDataForStoreIfcDecContext(PutContext context) {
         super.prepareDataForStoreIfcDecContext(context);
 
-        if (childSpaces == null) {
-            childSpaces = new HashSet<>();
+        if (definedSpaces == null) {
+            definedSpaces = new HashSet<>();
         }
 
-        for (T child : relatedObjects) {
-            if (child instanceof IfcDecSpace && !childSpaces.contains(child.getKey())) {
-                childSpaces.add(child.getKey());
+        for (IfcDecRoot defineObject : relatedObjects) {
+            if (defineObject instanceof IfcDecSpace && !definedSpaces.contains(defineObject)) {
+                definedSpaces.add(defineObject.getKey());
             }
         }
     }
 
     @Override
-    public ArrayList<IfcFileObject> getRelatedObjects() {
-        if (getList().size() != 0) {
-            return new ArrayList<IfcFileObject>(getList());
-        } else {
-            return null;
-        }
-    }
-
-    @Override
     public String getObjectString(IfcFileManagerI fileManager) {
+        IfcDecGloballyUniqueId id = getGlobalId();
         //IfcRoot
         String globalId = getGlobalId().getValue();
         String ownerHistory = "*";
         String name = getName();
         String description = getDescription();
 
-        //IfcRelAggregates
+        //IfcRelDefinesByType
         String relatingObjectString = String.valueOf(fileManager.getNumber(relatingObject));
-
-        IfcDecRoot rr = getList().get(0);
 
         String relatedObjects = fileManager.getNumberString((List<IfcFileObject>) (List<?>) getList());
 
-        String result = String.format(Constants.IFCRELAGGREGATES,
+        String result = String.format(Constants.IFCRELDEFINESBYTYPE,
                 globalId,
                 ownerHistory,
                 name,

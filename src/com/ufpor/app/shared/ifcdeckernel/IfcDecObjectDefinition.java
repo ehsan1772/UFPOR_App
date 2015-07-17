@@ -26,19 +26,18 @@ public abstract class IfcDecObjectDefinition extends IfcDecRoot implements IfcDe
     protected ArrayList<Key> hasContext;
 
     @Persistent(defaultFetchGroup = "true")
-    protected IfcDecRelAggregates<IfcDecSpace, IfcDecSpace> childSpaces;
+    protected IfcDecRelAggregates<IfcDecRoot, IfcDecRoot> childSpaces;
 
 
     protected IfcDecObjectDefinition(String GUID, User user) {
         super(GUID, user);
-      //  childSpaces = new IfcDecRelAggregates<>();
     }
 
-    public IfcDecRelAggregates<IfcDecSpace, IfcDecSpace> getChildSpaces() {
+    public IfcDecRelAggregates<IfcDecRoot, IfcDecRoot> getChildSpaces() {
         return childSpaces;
     }
 
-    public void setChildSpaces(IfcDecRelAggregates<IfcDecSpace, IfcDecSpace>  childSpaces) {
+    public void setChildSpaces(IfcDecRelAggregates<IfcDecRoot, IfcDecRoot>  childSpaces) {
         this.childSpaces = childSpaces;
     }
 

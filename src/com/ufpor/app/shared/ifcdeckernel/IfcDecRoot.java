@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @PersistenceCapable
 @Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
 public abstract class IfcDecRoot extends GAEObject implements Serializable, IfcFileObject {
-    @Persistent
+    @Persistent(defaultFetchGroup = "true")
     protected IfcDecGloballyUniqueId globalId;
     @Persistent
     private IfcDecOwnerHistory ownerHistory;

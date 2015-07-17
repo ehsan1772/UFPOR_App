@@ -33,8 +33,10 @@ public class IfcDecRelDefinesByProperties<T extends IfcFileObject> extends IfcDe
     private ArrayList<T> list;
 
     private IfcDecPropertySetDefinition relatingObject;
+
     @Persistent(defaultFetchGroup = "true")
     private IfcDecPropertySet propertySet;
+
     @Persistent(defaultFetchGroup = "true")
     private IfcDecElementQuantity elementQuantity;
 

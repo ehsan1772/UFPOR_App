@@ -55,6 +55,12 @@ public class SpaceServiceImpl extends RemoteServiceServlet implements SpaceServi
             case SPACE_COMPLEX:
                 space = IfcDecSpace.getInstance(spaceType);
                 space.prepareDataForStoreIfcDecContext(null);
+
+                pm.makePersistent(space);
+
+                spaceType.addDefinedObject(space);
+                spaceType.prepareDataForStoreIfcDecContext(null);
+
                 parent.addChildSpace(space);
                 parent.prepareDataForStoreIfcDecContext(null);
             case SPACE_ELEMENT:
