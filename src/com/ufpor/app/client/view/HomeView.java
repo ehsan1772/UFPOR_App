@@ -260,28 +260,30 @@ public class HomeView extends Composite implements PopupBase.PopupBaseHost, Resi
 
             @Override
             public void onSuccess(List<IfcClientSpaceType> result) {
-                GWT.log(result.size() + " Space Types received for project " + projectName);
-                envContainer.clear();
-                ArrayList<EnvironmentTreeItem> cacheList = new ArrayList<EnvironmentTreeItem>();
+                if (result != null && result.size() > 0) {
+                    GWT.log(result.size() + " Space Types received for project " + projectName);
+                    envContainer.clear();
+                    ArrayList<EnvironmentTreeItem> cacheList = new ArrayList<EnvironmentTreeItem>();
 
-                for (IfcClientSpaceType env : result) {
-                    EnvironmentTreeItem b = new EnvironmentTreeItem(true, true, env);
-                    cacheList.add(b);
-                    b.setName(env.getName());
-                    for (IfcClientPropertySetDefinition propset : env.getProperties()) {
-                        if (propset instanceof IfcClientPropertySet) {
-                            for (IfcClientProperty nextProp : ((IfcClientPropertySet) propset).getProperties()) {
-                                if (nextProp.getName().equals("GrossPlannedArea")) {
-                                    String area = ((IfcClientText) ((IfcClientPropertySingleValue) nextProp).getNominalValue()).getValue();
-                                    b.setArea(area);
+                    for (IfcClientSpaceType env : result) {
+                        EnvironmentTreeItem b = new EnvironmentTreeItem(true, true, env);
+                        cacheList.add(b);
+                        b.setName(env.getName());
+                        for (IfcClientPropertySetDefinition propset : env.getProperties()) {
+                            if (propset instanceof IfcClientPropertySet) {
+                                for (IfcClientProperty nextProp : ((IfcClientPropertySet) propset).getProperties()) {
+                                    if (nextProp.getName().equals("GrossPlannedArea")) {
+                                        String area = ((IfcClientText) ((IfcClientPropertySingleValue) nextProp).getNominalValue()).getValue();
+                                        b.setArea(area);
+                                    }
                                 }
                             }
                         }
+                        envContainer.add(b);
                     }
-                    envContainer.add(b);
-                }
 
-                App.addToCache(SPACE_TYPE, cacheList);
+                    App.addToCache(SPACE_TYPE, cacheList);
+                }
             }
         });
     }

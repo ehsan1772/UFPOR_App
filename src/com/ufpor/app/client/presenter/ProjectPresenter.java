@@ -43,14 +43,18 @@ public class ProjectPresenter implements ProjectPresenterI, FullPopUpView.Presen
     private KeyUpHandler maxAreaChanged = new KeyUpHandler() {
         @Override
         public void onKeyUp(KeyUpEvent event) {
-            project.setMaxArea(Double.valueOf(projectView1.getSecondTextBoxLText()));
+            if (projectView1.getSecondTextBoxLText().length() > 0) {
+                project.setMaxArea(Double.valueOf(projectView1.getSecondTextBoxLText()));
+            }
         }
     };
 
     private KeyUpHandler minAreaChanged = new KeyUpHandler() {
         @Override
         public void onKeyUp(KeyUpEvent event) {
-            project.setMinArea(Double.valueOf(projectView1.getThirdTextBoxLText()));
+            if (projectView1.getThirdTextBoxLText().length() > 0) {
+                project.setMinArea(Double.valueOf(projectView1.getThirdTextBoxLText()));
+            }
         }
     };
 
